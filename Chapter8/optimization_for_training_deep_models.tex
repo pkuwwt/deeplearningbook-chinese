@@ -349,7 +349,7 @@
 % -- 276 end
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/63.png}}
 \else
 \centerline{\includegraphics{Chapter8/figures/grad_norm_increases_color}}
 \fi
@@ -491,7 +491,7 @@
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/64.png}}
 \else
 \centerline{\includegraphics{Chapter8/figures/plot_atmu_relu_5}}
 \fi
@@ -545,7 +545,7 @@
 % 281 end
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/65.png}}
 \else
 \centerline{\includegraphics{Chapter8/figures/cliff_color}}
 \fi
@@ -653,7 +653,7 @@
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/66.png}}
 \else
 \centerline{\includegraphics{Chapter8/figures/bad_global_color}}
 \fi
@@ -838,7 +838,7 @@
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/67.png}}
 \else
 \centerline{\includegraphics{Chapter8/figures/momentum_color}}
 \fi
@@ -1457,7 +1457,7 @@ Adam通常被认为对\gls{hyperparameter}的选择相当鲁棒，尽管\gls{lea
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/68.png}}
 \else
 \centerline{\includegraphics{Chapter8/figures/steepest_descent_quadratic_color}}
 \fi
@@ -1779,7 +1779,7 @@ Polyak平均\citep{Polyak+Juditsky-1992}会平均优化算法在参数空间访�
 
 % -- 314 --
 
-在\gls{greedy_supervised_pretraining}的原始版本\citep{Bengio-nips-2006-short}中，每个阶段包括一个仅涉及最终\gls{NN}的子集层的监督学习训练任务。
+在\gls{greedy_supervised_pretraining}的原始版本\citep{Bengio-NIPS2007}中，每个阶段包括一个仅涉及最终\gls{NN}的子集层的监督学习训练任务。
 \gls{greedy_supervised_pretraining}的一个例子如\figref{fig:chap8_deep_sup}所示，其中每个附加的\gls{hidden_layer}作为浅层监督\gls{MLP}的一部分\gls{pretraining}，以先前训练的\gls{hidden_layer}输出作为输入。
 \cite{Simonyan2015}~\gls{pretraining}深度卷积网络（11层权重），然后使用该网络前四层和最后三层初始化更深的网络（多达19层权重），并非一次\gls{pretraining}一层。
 非常深的新网络的中间层是随机初始化的。
@@ -1788,11 +1788,11 @@ Polyak平均\citep{Polyak+Juditsky-1992}会平均优化算法在参数空间访�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/69.png}}
 \else
 \centerline{\includegraphics{Chapter8/figures/deep_sup}}
 \fi
-\caption{一种形式的\gls{greedy_supervised_pretraining}的示意图~\citep{Bengio-nips-2006-small}。
+\caption{一种形式的\gls{greedy_supervised_pretraining}的示意图~\citep{Bengio-NIPS2007}。
 (a)我们从训练一个足够浅的架构开始。
 (b)同一个架构的另一描绘。
 (c)我们只保留原始网络的输入到隐藏层，并丢弃隐藏到输出层。 

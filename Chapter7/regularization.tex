@@ -156,7 +156,7 @@ $\alpha$越大，对应\gls{regularization}惩罚越大。
 这种效应如\figref{fig:chap7_reg_l2}所示。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/54.png}}
 \else
 \centerline{\includegraphics{Chapter7/figures/reg_l2}}
 \fi
@@ -541,7 +541,7 @@ $ \eta \SetE_{p(\Vx,y)}[\norm{\nabla_{\MW}~\hat y(\Vx)}^2]$。
 \end{enumerate}
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/55.png}}
 \else
 \centerline{\includegraphics{Chapter7/figures/multi_factor_output}}
 \fi
@@ -630,7 +630,7 @@ $ \eta \SetE_{p(\Vx,y)}[\norm{\nabla_{\MW}~\hat y(\Vx)}^2]$。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/56.png}}
 \else
 \centerline{\includegraphics{Chapter7/figures/learning_curve_color}}
 \fi
@@ -717,7 +717,7 @@ $ \eta \SetE_{p(\Vx,y)}[\norm{\nabla_{\MW}~\hat y(\Vx)}^2]$。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/57.png}}
 \else
 \centerline{\includegraphics[width=0.8\textwidth]{Chapter7/figures/reg_l1_vs_l2_mistake}}
 \fi
@@ -953,7 +953,7 @@ $\Omega(\Vh) = \norm{\Vh}_1 = \sum_i |h_i|$。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/58.png}}
 \else
 \centerline{\includegraphics{Chapter7/figures/bagging}}
 \fi
@@ -984,7 +984,7 @@ $\Omega(\Vh) = \norm{\Vh}_1 = \sum_i |h_i|$。
 不是所有构建\gls{ensemble}的技术都是为了让\gls{ensemble}模型比单一模型更加\gls{regularization}。
 例如，一种被称为\firstgls{boosting}的技术\citep{ConfLT:Freund:gametheorie,ConfML:Freund:AdaBoostCompar}构建比单个模型\gls{capacity}更高的\gls{ensemble}模型。
 通过向\gls{ensemble}逐步添加\gls{NN}，\gls{boosting}已经被应用于构建神经网络的\gls{ensemble}\citep{Schwenk-nips10}。
-通过逐渐增加\gls{NN}的\gls{hidden_unit}，\gls{boosting}也可以将单个神经网络解释为一个\gls{ensemble}。
+通过逐渐增加\gls{NN}的\gls{hidden_unit}，\gls{boosting}也可以将单个神经网络解释为一个\gls{ensemble}\citep{bengio_convex_2006}。
 
 \section{\glsentrytext{dropout}}
 \label{sec:dropout}
@@ -1001,7 +1001,7 @@ $\Omega(\Vh) = \norm{\Vh}_1 = \sum_i |h_i|$。
 为了简单起见，我们在这里提出乘零的简单\gls{dropout}算法，但是它被简单修改后，可以与从网络中移除单元的其他操作结合使用。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/59.png}}
 \else
 \centerline{\includegraphics{Chapter7/figures/subnetworks}}
 \fi
@@ -1028,7 +1028,7 @@ $\Omega(\Vh) = \norm{\Vh}_1 = \sum_i |h_i|$。
 \figref{fig:chap7_dropout_fprop}说明了在\gls{dropout}下的前向传播。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/60.png}}
 \else
 \centerline{\includegraphics{Chapter7/figures/dropout_fprop}}
 \fi
@@ -1271,7 +1271,7 @@ P_{\text{ensemble}}(\RSy = \Sy \mid \RVv)  = \frac{\tilde{P}_{\text{ensemble}}(\
 见\figref{fig:chap7_panda_577}中的例子。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/61.png}}
 \else
 \centering
 \begin{tabular}{>{\centering\arraybackslash}m{.2\figwidth}m{.5in}>{\centering\arraybackslash}m{.2\figwidth}m{.1in}>{\centering\arraybackslash}m{.2\figwidth}}
@@ -1353,7 +1353,7 @@ $\ +\ .007\ \times$ &%
 \gls{tangent_prop}不仅用于\gls{supervised_learning}\citep{Simard92-short}，还在\gls{RL}\citep{Thrun-NIPS1994}中有所应用。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/62.png}}
 \else
 \centerline{\includegraphics{Chapter7/figures/mtc_color}}
 \fi

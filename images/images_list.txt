@@ -1,0 +1,169 @@
+Figure 1.1: Example of diﬀerent representations: suppose we want to separate two
+Figure 1.2: Illustration of a deep learning model. It is diﬃcult for a computer to understand
+Figure 1.3: Illustration of computational graphs mapping an input to an output where
+Figure 1.4: A Venn diagram showing how deep learning is a kind of representation learning,
+Figure 1.5: Flowcharts showing how the diﬀerent parts of an AI system relate to each
+Figure 1.6: The high-level organization of the book. An arrow from one chapter to another
+Figure 1.7: The ﬁgure shows two of the three historical waves of artiﬁcial neural nets
+Figure 1.8: Dataset sizes have increased greatly over time. In the early 1900s, statisticians
+Figure 1.9: Example inputs from the MNIST dataset. The “NIST” stands for National
+Figure 1.10: Initially, the number of connections between neurons in artiﬁcial neural
+Figure 1.11: Since the introduction of hidden units, artiﬁcial neural networks have doubled
+Figure 1.12: Since deep networks reached the scale necessary to compete in the ImageNet
+Figure 2.1: The transpose of the matrix can be thought of as a mirror image across the
+Figure 2.2: Example identity matrix: This is I3 .
+Figure 2.3: An example of the eﬀect of eigenvectors and eigenvalues. Here, we have
+Figure 3.1: The normal distribution: The normal distribution N (x ; µ, σ 2 ) exhibits
+Figure 3.2: Samples from a Gaussian mixture model. In this example, there are three
+Figure 3.3: The logistic sigmoid function.
+Figure 3.4: The softplus function.
+Figure 3.5: This plot shows how distributions that are closer to deterministic have low
+Figure 3.6: The KL divergence is asymmetric. Suppose we have a distributionp(x ) and
+Figure 3.7: A directed graphical model over random variables a, b, c, d and e. This graph
+Figure 3.8: An undirected graphical model over random variablesa, b, c, d and e. This
+Figure 4.1: An illustration of how the gradient descent algorithm uses the derivatives of a
+Figure 4.2: Examples of each of the three types of critical points in 1-D. A critical point is
+Figure 4.3: Optimization algorithms may fail to ﬁnd a global minimum when there are
+Figure 4.4: The second derivative determines the curvature of a function. Here we show
+Figure 4.5: A saddle point containing both positive and negative curvature. The function
+Figure 4.6: Gradient descent fails to exploit the curvature information contained in the
+Figure 5.1: A linear regression problem, with a training set consisting of ten data points,
+Figure 5.2: We ﬁt three models to this example training set. The training data was
+Figure 5.3: Typical relationship between capacity and error. Training and test error
+Figure 5.4: The eﬀect of the training dataset size on the train and test error, as well as
+Figure 5.5: We ﬁt a high-degree polynomial regression model to our example training set
+Figure 5.6: As capacity increases (x-axis), bias (dotted) tends to decrease and variance
+Figure 5.7: Diagrams describing how a decision tree works. (Top)Each node of the tree
+Figure 5.8: PCA learns a linear projection that aligns the direction of greatest variance
+Figure 5.9: As the number of relevant dimensions of the data increases (from left to
+Figure 5.10: Illustration of how the nearest neighbor algorithm breaks up the input space
+Figure 5.11: Data sampled from a distribution in a two-dimensional space that is actually
+Figure 5.12: Sampling images uniformly at random (by randomly picking each pixel
+Figure 5.13: Training examples from the QMUL Multiview Face Dataset (Gong et al., 2000)
+Figure 6.1: Solving the XOR problem by learning a representation. The bold numbers
+Figure 6.2: An example of a feedforward network, drawn in two diﬀerent styles. Speciﬁcally,
+Figure 6.3: The rectiﬁed linear activation function. This activation function is the default
+Figure 6.4: Samples drawn from a neural network with a mixture density output layer.
+Figure 6.5: An intuitive, geometric explanation of the exponential advantage of deeper
+Figure 6.6: Empirical results showing that deeper networks generalize better when used
+Figure 6.7: Deeper models tend to perform better. This is not merely because the model is
+Figure 6.8: Examples of computational graphs. (a)The graph using the × operation
+Figure 6.9: A computational graph that results in repeated subexpressions when computing
+Figure 6.10: An example of the symbol-to-symbol approach to computing derivatives. In
+Figure 6.11: The computational graph used to compute the cost used to train our example
+Figure 7.1: An illustration of the eﬀect of L 2 (or weight decay) regularization on the value
+Figure 7.2: Multi-task learning can be cast in several ways in deep learning frameworks
+Figure 7.3: Learning curves showing how the negative log-likelihood loss changes over
+Figure 7.4: An illustration of the eﬀect of early stopping. (Left)The solid contour lines
+Figure 7.5: A cartoon depiction of how bagging works. Suppose we train an 8 detector on
+Figure 7.6: Dropout trains an ensemble consisting of all sub-networks that can be
+Figure 7.7: An example of forward propagation through a feedforward network using
+Figure 7.8: A demonstration of adversarial example generation applied to GoogLeNet
+Figure 7.9: Illustration of the main idea of the tangent prop algorithm (Simard et al.,
+Figure 8.1: Gradient descent often does not arrive at a critical point of any kind. In this
+Figure 8.2: A visualization of the cost function of a neural network. Image adapted
+Figure 8.3: The objective function for highly nonlinear deep neural networks or for
+Figure 8.4: Optimization based on local downhill moves can fail if the local surface does
+Figure 8.5: Momentum aims primarily to solve two problems: poor conditioning of the
+Figure 8.6: The method of steepest descent applied to a quadratic cost surface. The
+Figure 8.7: Illustration of one form of greedy supervised pretraining (Bengio et al., 2007).
+Figure 9.1: An example of 2-D convolution without kernel-ﬂipping. In this case we restrict
+Figure 9.2: Sparse connectivity, viewed from below: We highlight one input unit, x3 ,
+Figure 9.3: Sparse connectivity, viewed from above: We highlight one output unit, s3 ,
+Figure 9.4: The receptive ﬁeld of the units in the deeper layers of a convolutional network
+Figure 9.5: Parameter sharing: Black arrows indicate the connections that use a particular
+Figure 9.6: Eﬃciency of edge detection. The image on the right was formed by taking
+Figure 9.7: The components of a typical convolutional neural network layer. There are two
+Figure 9.8: Max pooling introduces invariance. (Top)A view of the middle of the output
+Figure 9.9: Example of learned invariances: A pooling unit that pools over multiple features
+Figure 9.10: Pooling with downsampling. Here we use max-pooling with a pool width of
+Figure 9.11: Examples of architectures for classiﬁcation with convolutional networks. The
+Figure 9.12: Convolution with a stride. In this example, we use a stride of two.
+Figure 9.13: The eﬀect of zero padding on network size: Consider a convolutional network
+Figure 9.14: Comparison of local connections, convolution, and full connections.
+Figure 9.15: A convolutional network with the ﬁrst two output channels connected to
+Figure 9.16: A comparison of locally connected layers, tiled convolution, and standard
+Figure 9.17: An example of a recurrent convolutional network for pixel labeling. The
+Figure 9.18: Gabor functions with a variety of parameter settings. White indicates
+Figure 9.19: Many machine learning algorithms learn features that detect edges or speciﬁc
+Figure 10.1: The classical dynamical system described by equation 10.1, illustrated as an
+Figure 10.2: A recurrent network with no outputs. This recurrent network just processes
+Figure 10.3: The computational graph to compute the training loss of a recurrent network
+Figure 10.4: An RNN whose only recurrence is the feedback connection from the output
+Figure 10.5: Time-unfolded recurrent neural network with a single output at the end
+Figure 10.6: Illustration of teacher forcing. Teacher forcing is a training technique that is
+Figure 10.7: Fully connected graphical model for a sequence y (1) , y (2), . . . , y (t) , . . . : every
+Figure 10.8: Introducing the state variable in the graphical model of the RNN, even
+Figure 10.9: An RNN that maps a ﬁxed-length vectorx into a distribution over sequences
+Figure 10.10: A conditional recurrent neural network mapping a variable-length sequence
+Figure 10.11: Computation of a typical bidirectional recurrent neural network, meant
+Figure 10.12: Example of an encoder-decoder or sequence-to-sequence RNN architecture,
+Figure 10.13: A recurrent neural network can be made deep in many ways (Pascanu
+Figure 10.14: A recursive network has a computational graph that generalizes that of the
+Figure 10.15: When composing many nonlinear functions (like the linear-tanh layer shown
+Figure 10.16: Block diagram of the LSTM recurrent network “cell.” Cells are connected
+Figure 10.17: Example of the eﬀect of gradient clipping in a recurrent network with
+Figure 10.18: A schematic of an example of a network with an explicit memory, capturing
+Figure 11.1: Typical relationship between the learning rate and the training error. Notice
+Figure 11.2: Comparison of grid search and random search. For illustration purposes we
+Figure 12.1: GCN maps examples onto a sphere. (Left)Raw input data may have any norm.
+Figure 12.2: A comparison of global and local contrast normalization. Visually, the eﬀects
+Figure 12.3: Two-dimensional visualizations of word embeddings obtained from a neural
+Figure 12.4: Illustration of a simple hierarchy of word categories, with 8 wordsw0 , . . . , w7
+Figure 12.5: The encoder-decoder architecture to map back and forth between a surface
+Figure 12.6: A modern attention mechanism, as introduced by Bahdanau et al. (2015), is
+Figure 13.1: The directed graphical model describing the linear factor model family, in
+Figure 13.2: Example samples and weights from a spike and slab sparse coding model
+Figure 13.3: Flat Gaussian capturing probability concentration near a low-dimensional
+Figure 14.1: The general structure of an autoencoder, mapping an input x to an output
+Figure 14.2: The structure of a stochastic autoencoder, in which both the encoder and the
+Figure 14.3: The computational graph of the cost function for a denoising autoencoder,
+Figure 14.4: A denoising autoencoder is trained to map a corrupted data point x̃ back to
+Figure 14.5: Vector ﬁeld learned by a denoising autoencoder around a 1-D curved manifold
+Figure 14.6: An illustration of the concept of a tangent hyperplane. Here we create a
+Figure 14.7: If the autoencoder learns a reconstruction function that is invariant to small
+Figure 14.8: Non-parametric manifold learning procedures build a nearest neighbor graph
+Figure 14.9: If the tangent planes (see ﬁgure 14.6) at each location are known, then they
+Figure 14.10: Illustration of tangent vectors of the manifold estimated by local PCA
+Figure 15.1: Visualization via nonlinear projection of the learning trajectories of diﬀerent
+Figure 15.2: Example architecture for multi-task or transfer learning when the output
+Figure 15.3: Transfer learning between two domains x and y enables zero-shot learning.
+Figure 15.4: Example of a density over x that is a mixture over three components.
+Figure 15.5: An autoencoder trained with mean squared error for a robotics task has
+Figure 15.6: Predictive generative networks provide an example of the importance of
+Figure 15.7: Illustration of how a learning algorithm based on a distributed representation
+Figure 15.8: Illustration of how the nearest neighbor algorithm breaks up the input space
+Figure 15.9: A generative model has learned a distributed representation that disentangles
+Figure 16.1: Probabilistic modeling of natural images. (Top)Example 32× 32 pixel color
+Figure 16.2: A directed graphical model depicting the relay race example. Alice’s ﬁnishing
+Figure 16.3: An undirected graph representing how your roommate’s health h r , your
+Figure 16.4:
+Figure 16.5: This graph implies that E(a, b, c, d, e, f ) can be written as Ea,b (a, b) +
+Figure 16.6: (a) The path between random variablea and random variable b through s is
+Figure 16.7: An example of reading separation properties from an undirected graph. Here
+Figure 16.8: All of the kinds of active paths of length two that can exist between random
+Figure 16.9: From this graph, we can read out several d-separation properties. Examples
+Figure 16.10: Examples of complete graphs, which can describe any probability distribution.
+Figure 16.11: Examples of converting directed models (top row) to undirected models
+Figure 16.12: Converting an undirected model to a directed model. (Left)This undirected
+Figure 16.13: An example of how a factor graph can resolve ambiguity in the interpretation
+Figure 16.14: An RBM drawn as a Markov network.
+Figure 16.15: Samples from a trained RBM, and its weights. Image reproduced with
+Figure 17.1: Paths followed by Gibbs sampling for three distributions, with the Markov
+Figure 17.2: An illustration of the slow mixing problem in deep probabilistic models.
+Figure 18.1: The view of algorithm 18.1 as having a “positive phase” and “negative phase.”
+Figure 18.2: An illustration of how the negative phase of contrastive divergence (algorithm 18.2) can fail to suppress spurious modes. A spurious mode is a mode that is
+Figure 19.1: Intractable inference problems in deep learning are usually the result of
+Figure 19.2: The graph structure of a binary sparse coding model with four hidden units.
+Figure 20.1: Examples of models that may be built with restricted Boltzmann machines.
+Figure 20.2: The graphical model for a deep Boltzmann machine with one visible layer
+Figure 20.3: A deep Boltzmann machine, re-arranged to reveal its bipartite graph structure.
+Figure 20.4: The deep Boltzmann machine training procedure used to classify the MNIST
+Figure 20.5: An illustration of the multi-prediction training process for a deep Boltzmann
+Figure 20.6: Examples of two-dimensional coordinate systems for high-dimensional manifolds, learned by a variational autoencoder (Kingma and Welling, 2014a). Two dimensions
+Figure 20.7: Images generated by GANs trained on the LSUN dataset. (Left)Images
+Figure 20.8: A fully visible belief network predicts the i -th variable from the i − 1
+Figure 20.9: A neural auto-regressive network predicts the i -th variable xi from the i − 1
+Figure 20.10: An illustration of the neural autoregressive density estimator (NADE). The
+Figure 20.11: Each step of the Markov chain associated with a trained denoising autoencoder, that generates the samples from the probabilistic model implicitly trained by the
+Figure 20.12: Illustration of clamping the right half of the image and running the Markov

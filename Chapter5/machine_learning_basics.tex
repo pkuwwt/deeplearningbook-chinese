@@ -354,7 +354,7 @@ Iris（鸢尾花卉）\gls{dataset}~\citep{Fisher-1936}是统计学家和\gls{ML
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/30.png}}
 \else
 \centerline{\includegraphics{Chapter5/figures/linreg_color}}
 \fi
@@ -474,7 +474,7 @@ $9$次函数能够表示正确的函数，但是因为训练参数比训练\gls{
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/31.png}}
 \else
 \centerline{\includegraphics{Chapter5/figures/underfit_just_right_overfit_color}}
 \fi
@@ -520,7 +520,7 @@ $9$次函数能够表示正确的函数，但是因为训练参数比训练\gls{
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/32.png}}
 \else
 \centerline{\includegraphics{Chapter5/figures/generalization_vs_capacity_color}}
 \fi
@@ -564,7 +564,7 @@ $9$次函数能够表示正确的函数，但是因为训练参数比训练\gls{
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/33.png}}
 \else
 \centerline{\includegraphics{Chapter5/figures/training_size_grows}}
 \fi
@@ -634,7 +634,7 @@ $9$次函数能够表示正确的函数，但是因为训练参数比训练\gls{
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/34.png}}
 \else
 \centerline{\includegraphics{Chapter5/figures/underfit_just_right_overfit_wd_color}}
 \fi
@@ -962,7 +962,7 @@ $9$次函数能够表示正确的函数，但是因为训练参数比训练\gls{
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/35.png}}
 \else
 \centerline{\includegraphics{Chapter5/figures/bias_variance_tradeoff}}
 \fi
@@ -1448,7 +1448,7 @@ $k$-最近邻的一个弱点是它不能学习出哪一个\gls{feature}比其他
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/36.png}}
 \else
 \centerline{\includegraphics{Chapter5/figures/decision_tree}}
 \fi
@@ -1510,7 +1510,7 @@ $k$-最近邻的一个弱点是它不能学习出哪一个\gls{feature}比其他
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/37.png}}
 \else
 \centerline{\includegraphics{Chapter5/figures/pca_color}}
 \fi
@@ -1771,7 +1771,7 @@ $k$-均值聚类初始化$k$个不同的中心点$\{\Vmu^{(1)},\dots,\Vmu^{(k)}\
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/38.png}}
 \else
 \begin{tabular}{ccc}
     \includegraphics[width=0.3\textwidth]{Chapter5/figures/curse_1d_color} & \includegraphics[width=0.3\textwidth]{Chapter5/figures/curse_2d_color} & \includegraphics[width=0.3\textwidth]{Chapter5/figures/curse_3d_color}
@@ -1815,7 +1815,7 @@ $k$-均值聚类初始化$k$个不同的中心点$\{\Vmu^{(1)},\dots,\Vmu^{(k)}\
 一类重要的核函数是\firstgls{local_kernel}，其核函数$k(\Vu,\Vv)$在$\Vu=\Vv$时很大，
 当$\Vu$和$\Vv$距离拉大时而减小。
 局部核可以看作是执行模版匹配的相似函数，用于度量测试\gls{example:chap5} $\Vx$和每个训练\gls{example:chap5} $\Vx^{(i)}$有多么相似。
-近年来深度学习的很多推动力源自研究局部模版匹配的局限性，以及\gls{DL}如何克服这些局限性\citep{NIPS2005_424}。
+近年来深度学习的很多推动力源自研究局部模版匹配的局限性，以及\gls{DL}如何克服这些局限性\citep{bengio_curse_2006}。
 
 决策树也有平滑学习的局限性，因为它将输入空间分成和叶节点一样多的区间，并在每个区间使用单独的参数（或者有些决策树的拓展有多个参数）。
 如果\gls{target}函数需要至少拥有$n$个叶节点的树才能精确表示，那么至少需要$n$个训练\gls{example:chap5}去拟合。
@@ -1830,7 +1830,7 @@ $k$-均值聚类初始化$k$个不同的中心点$\{\Vmu^{(1)},\dots,\Vmu^{(k)}\
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/39.png}}
 \else
 \centerline{\includegraphics{Chapter5/figures/non_distributed}}
 \fi
@@ -1859,7 +1859,7 @@ $k$-均值聚类初始化$k$个不同的中心点$\{\Vmu^{(1)},\dots,\Vmu^{(k)}\
 
 这些问题，即是否可以有效地表示复杂的函数以及所估计的函数是否可以很好地泛化到新的输入，答案是有。
 关键观点是，只要我们通过额外假设生成数据的分布来建立区域间的依赖关系，那么$O(k)$个\gls{example:chap5}足以描述多如$O(2^k)$的大量区间。
-通过这种方式，我们确实能做到非局部的泛化\citep{Bengio+Monperrus-2005,NIPS2005_539}。
+通过这种方式，我们确实能做到非局部的泛化\citep{Bengio+Monperrus-2005,Bengio+Monperrus-2005}。
 为了利用这些优势，许多不同的\gls{DL}算法都提出了一些适用于多种\,\glssymbol{AI}\,任务的隐式或显式的假设。
 
 
@@ -1896,7 +1896,7 @@ $k$-均值聚类初始化$k$个不同的中心点$\{\Vmu^{(1)},\dots,\Vmu^{(k)}\
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/40.png}}
 \else
 \centerline{\includegraphics{Chapter5/figures/one_dim_manifold_and_data_color}}
 \fi
@@ -1913,7 +1913,7 @@ $k$-均值聚类初始化$k$个不同的中心点$\{\Vmu^{(1)},\dots,\Vmu^{(k)}\
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/41.png}}
 \else
 \centerline{\includegraphics[width=0.7\textwidth]{Chapter5/figures/noise}}
 \fi
@@ -1961,7 +1961,7 @@ $k$-均值聚类初始化$k$个不同的中心点$\{\Vmu^{(1)},\dots,\Vmu^{(k)}\
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/42.png}}
 \else
 \centerline{\includegraphics[width=0.8\textwidth]{Chapter5/figures/QMUL-facedataset}}
 \fi

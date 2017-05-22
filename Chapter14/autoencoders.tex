@@ -24,7 +24,7 @@
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/118.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/autoencoder}}
 \fi
@@ -265,7 +265,7 @@ p_{\text{model}}(h_i) = \frac{\lambda}{2} e^{-\lambda | h_i |},
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/119.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/stochastic-autoencoder}}
 \fi
@@ -307,7 +307,7 @@ $p_{\text{reconstruct}} (\Vx \mid \tilde \Vx) = p_{\text{decoder}}(\Vx \mid\Vh)$
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/120.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/DAE}}
 \fi
@@ -344,7 +344,7 @@ $p_{\text{reconstruct}} (\Vx \mid \tilde \Vx) = p_{\text{decoder}}(\Vx \mid\Vh)$
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/121.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/denoising_task}}
 \fi
@@ -387,7 +387,7 @@ $g(f(\tilde \Vx))$对可能产生$\tilde \Vx$的原始点$\Vx$的质心进行估
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/122.png}}
 \else
 \centerline{\includegraphics[width=0.8\textwidth]{Chapter14/figures/vector_field_color}}
 \fi
@@ -450,7 +450,7 @@ $d$维\gls{manifold}上的一点$\Vx$，\gls{tangent_plane}由能张成\gls{mani
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/123.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/tangent_plane_color}}
 \fi
@@ -495,7 +495,7 @@ $\Vx$是从训练数据挑出的这一事实很关键，因为这意味着在\gl
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/124.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/1d_autoencoder_color}}
 \fi
@@ -523,11 +523,11 @@ $\Vx$是从训练数据挑出的这一事实很关键，因为这意味着在\gl
 \gls{manifold_learning}大多专注于试图捕捉到这些\gls{manifold}的\gls{unsupervised_learning}过程。
 最初始的学习非线性\gls{manifold}的\gls{ML}研究专注基于\firstgls{nearest_neighbor_graph}的\firstgls{nonparametric}方法。
 该图中每个训练样例对应一个节点，它的边连接近邻点对。
-如\figref{fig:chap14_faces_graph_manifold}所示，这些方法\citep{Scholkopf98,Roweis2000-lle-small,Tenenbaum2000-isomap,Brand2003-small,Belkin+Niyogi-2003,Donoho+Carrie-03,Weinberger04a-small,SNE-nips15-small,VanDerMaaten08-small}将每个节点与张成实例和近邻之间的差向量变化方向的\gls{tangent_plane}相关联。
+如\figref{fig:chap14_faces_graph_manifold}所示，这些方法\citep{Scholkopf98,Roweis2000-lle-small,Tenenbaum2000-isomap,Brand2003,Belkin+Niyogi-2003,Donoho+Carrie-03,Weinberger04a-small,SNE-nips15-small,VanDerMaaten08-small}将每个节点与张成实例和近邻之间的差向量变化方向的\gls{tangent_plane}相关联。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/125.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/faces_graph_manifold}}
 \fi
@@ -545,13 +545,13 @@ $\Vx$是从训练数据挑出的这一事实很关键，因为这意味着在\gl
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/126.png}}
 \else
 \centerline{\includegraphics[width=0.8\textwidth]{Chapter14/figures/tiling-a-manifold}}
 \fi
 \caption{如果每个位置处的切平面（见\figref{fig:chap14_tangent_plane_color}）是已知的，则它们可以平铺后形成全局坐标系或密度函数。
 每个局部块可以被认为是局部欧几里德坐标系或者是局部平面高斯或``薄饼''，在与薄饼正交的方向上具有非常小的方差而在定义坐标系的方向上具有非常大的方差。
-这些高斯的混合提供了估计的密度函数，如\gls{manifold}中的~\ENNAME{Parzen}~窗口算法\citep{Vincent-Bengio-2003-short} 或其非局部的基于\gls{NN}的变体\citep{Bengio-Larochelle-NLMP-NIPS-2006-short}。
+这些高斯的混合提供了估计的密度函数，如\gls{manifold}中的~\ENNAME{Parzen}~窗口算法\citep{Vincent-Bengio-2003-short} 或其非局部的基于\gls{NN}的变体\citep{Bengio+Monperrus-2005}。
 }
 \label{fig:chap14_tiling-a-manifold}
 \end{figure}
@@ -622,7 +622,7 @@ $f$扩展到数据\gls{manifold}的中间或远处是合理的（见\figref{fig:
 \begin{figure}[ht]
 \centering
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/127.png}}
 \else
 % ?? I do NOT which is correct ...
 \begin{tabular}{p{.1\figwidth}|p{.86\figwidth}}

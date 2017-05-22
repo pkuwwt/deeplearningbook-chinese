@@ -110,7 +110,7 @@
 
 基于\gls{unsupervised}标准的贪心逐层训练过程，早已被用来规避\gls{supervised}问题中\gls{DNN}难以联合训练多层的问题。
 这种方法至少可以追溯神经认知机~\citep{Fukushima75}。
-深度学习的复兴始于2006年，源于发现这种贪心学习过程能够为多层联合训练过程找到一个好的初始值，甚至可以成功训练全连接的结构~\citep{Hinton06-small,Hinton-Science2006,HintonG2006,Bengio-nips-2006,ranzato-07-small}。
+深度学习的复兴始于2006年，源于发现这种贪心学习过程能够为多层联合训练过程找到一个好的初始值，甚至可以成功训练全连接的结构~\citep{Hinton06-small,Hinton-Science2006,HintonG2006,Bengio-NIPS2007,ranzato-07-small}。
 在此发现之前，只有深度卷积网络或深度循环网络这类特殊结构的深度网络被认为是有可能训练的。
 现在我们知道训练具有全连接的深度结构时，不再需要使用\gls{greedy_layer_wise_unsupervised_pretraining}，但\gls{unsupervised}\gls{pretraining}是第一个成功的方法。
 
@@ -151,7 +151,7 @@
 % 520 end
 
 在很多分类任务中，\gls{greedy_layer_wise_unsupervised_pretraining}能够在\gls{test_error}上获得重大提升。
-这一观察结果始于2006年对\gls{DNN}的重新关注~\citep{Hinton06-small,Bengio-nips-2006,ranzato-07-small}。
+这一观察结果始于2006年对\gls{DNN}的重新关注~\citep{Hinton06-small,Bengio-NIPS2007,ranzato-07-small}。
 然而，在很多其他问题上，\gls{unsupervised}\gls{pretraining}不能带来改善，甚至还会带来明显的负面影响。
 \cite{Ma-et-al-2015}研究了\gls{pretraining}对\gls{ML_model}在化学活性预测上的影响。
 结果发现，平均而言\gls{pretraining}是有轻微负面影响的，但在有些问题上会有显著帮助。
@@ -270,7 +270,7 @@
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/128.png}}
 \else
 \centerline{\includegraphics{Chapter15/figures/isomap_color}}
 \fi
@@ -348,7 +348,7 @@
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/129.png}}
 \else
 \centerline{\includegraphics{Chapter15/figures/multi_task_input}}
 \fi
@@ -444,7 +444,7 @@
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/130.png}}
 \else
 \centerline{\includegraphics{Chapter15/figures/maps_between_representations}}
 \fi
@@ -505,7 +505,7 @@ $\Vh_{\Vx}$空间中的相似性度量表示$\Vx$空间中任意点对之间的�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/131.png}}
 \else
 \centerline{\includegraphics{Chapter15/figures/mixture_model_color}}
 \fi
@@ -574,7 +574,7 @@ $\Vh_{\Vx}$空间中的相似性度量表示$\Vx$空间中任意点对之间的�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/132.png}}
 \else
 \begin{tabular}{cc}
 输入 & 重构 \\
@@ -614,7 +614,7 @@ $\Vh_{\Vx}$空间中的相似性度量表示$\Vx$空间中任意点对之间的�
 % 536 head
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/133.png}}
 \else
 \begin{tabular}{ccc}
 真实图 & \glssymbol{mean_squared_error} & 对抗学习 \\
@@ -675,7 +675,7 @@ $n$维二元向量是一个\gls{distributed_representation}的示例，有$2^n$�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/134.png}}
 \else
 \centerline{\includegraphics{Chapter15/figures/distributed}}
 \fi
@@ -706,7 +706,7 @@ $n$维二元向量是一个\gls{distributed_representation}的示例，有$2^n$�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/135.png}}
 \else
 \centerline{\includegraphics{Chapter15/figures/non_distributed}}
 \fi
@@ -830,7 +830,7 @@ $n$个相应半空间的指数级数量的交集确定了该\gls{distributed_rep
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/136.png}}
 \else
 \begin{tabular}{ccccccc}
 \includegraphics[width=0.1\textwidth]{Chapter15/figures/man_with_glasses} &
