@@ -1085,7 +1085,7 @@
 
 有些启发式方法可用于选择权重的初始大小。
 一种初始化$m$个输入和$n$输出的全连接层的权重的启发式方法是从分布$U(-\frac{1}{\sqrt{m}}, \frac{1}{\sqrt{m}})$中采样权重，
-而~\cite{Glorot+al-AI-2011-small}建议使用\firstgls{normalized_initialization}
+而~\cite{Glorot-Bengio2010}建议使用\firstgls{normalized_initialization}
 \begin{equation}
     W_{i,j} \sim U \left(-\sqrt{\frac{6}{m+n}}, \sqrt{\frac{6}{m+n}}\right) .
 \end{equation}

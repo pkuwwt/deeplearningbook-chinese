@@ -202,7 +202,7 @@ $f^{(1)}$应该是哪种函数？线性模型到目前为止都表现不错，�
 此前，为了描述线性回归模型，我们使用权重向量和一个标量的偏置参数来描述从输入向量到输出标量的仿射变换。
 现在，因为我们描述的是向量$\Vx$到向量$\Vh$的仿射变换，所以我们需要一整个向量的偏置参数。
 激活函数$g$通常选择对每个元素分别起作用的函数，有$h_i =g(\Vx^\top \MW_{:, i} + c_i)$。
-在现代神经网络中，默认的推荐是使用由激活函数$g(z)=\max\{0, z\}$定义的\firstgls{ReLU}或者称为~\glssymbol{ReLU}~\citep{Jarrett-ICCV2009-small,Nair-2010-small,Glorot+al-AI-2011-small}，如\figref{fig:chap6_relu_color}所示。
+在现代神经网络中，默认的推荐是使用由激活函数$g(z)=\max\{0, z\}$定义的\firstgls{ReLU}或者称为~\glssymbol{ReLU}~\citep{Jarrett-ICCV2009,Nair-2010-small,Glorot+al-AI-2011-small}，如\figref{fig:chap6_relu_color}所示。
 % fig 6.3
 \begin{figure}[!htb]
 \ifOpenSource
@@ -1069,7 +1069,7 @@ O \left ( k^{(l-1)+d} \right ).
 这可以从表示学习的观点来解释， 我们相信学习的问题包含发现一组潜在的\gls{factors_of_variation}，它们可以根据其他更简单的潜在的\gls{factors_of_variation}来描述。
 或者，我们可以将深度结构的使用解释为另一种信念，那就是我们想要学得的函数是包含多个步骤的计算机程序，其中每个步骤使用前一步骤的输出。
 这些中间输出不一定是\gls{factors_of_variation}，而是可以类似于网络用来组织其内部处理的计数器或指针。
-根据经验，更深的模型似乎确实在广泛的任务中泛化得更好\citep{Bengio-NIPS2007,Erhan2009,Bengio-2009-book,UTLC+LISA-2011-small,Ciresan-et-al-2012,Krizhevsky-2012-small,sermanet-cvpr-13,Farabet-et-al-2013,couprie-iclr-13,LISA-EmotiW2013,Goodfellow+et+al-ICLR2014a,Szegedy-et-al-arxiv2014}。
+根据经验，更深的模型似乎确实在广泛的任务中泛化得更好\citep{Bengio-NIPS2007,Erhan2009,Bengio-2009-book,UTLC+LISA-2011-small,Ciresan-et-al-2012,Krizhevsky-2012,sermanet-cvpr-13,Farabet-et-al-2013,couprie-iclr-13,LISA-EmotiW2013,Goodfellow+et+al-ICLR2014a,Szegedy-et-al-arxiv2014}。
 \figref{fig:chap6_depth_color}和\figref{fig:chap6_model_size_color}展示了一些实验结果的例子。
 这表明使用深层架构确实在模型学习的函数空间上表示了一个有用的先验。
 % fig 6.6
@@ -1139,7 +1139,7 @@ O \left ( k^{(l-1)+d} \right ).
 输入$\Vx$提供初始信息，然后传播到每一层的\gls{hidden_unit}，最终产生输出$\hat{\Vy}$。
 这称之为~\firstgls{forward_propagation}。
 在训练过程中，前向传播可以持续向前直到它产生一个标量代价函数$J(\Vtheta)$。
-\firstgls{back_propagation}算法\citep{RHW}，经常简称为\textbf{\glsdesc{BP}}，允许来自代价函数的信息通过网络向后流动，以便计算梯度。
+\firstgls{back_propagation}算法\citep{Rumelhart86b-small}，经常简称为\textbf{\glsdesc{BP}}，允许来自代价函数的信息通过网络向后流动，以便计算梯度。
 
 % -- 197 --
 
@@ -1843,9 +1843,9 @@ Krylov方法是用于执行各种操作的一组迭代技术，这些操作包�
 尽管整流在早期很普及，在20世纪80年代，整流很大程度上被~\gls{sigmoid}~所取代，也许是因为当神经网络非常小时，\gls{sigmoid}~表现更好。
 到21世纪初，由于有些迷信的观念，认为必须避免具有不可导点的激活函数，所以避免了\gls{ReLU}。
 这在2009年开始发生改变。
-\cite{Jarrett-ICCV2009-small}观察到，在神经网络结构设计的几个不同因素中``使用整流非线性是提高识别系统性能的最重要的唯一因素''。
+\cite{Jarrett-ICCV2009}观察到，在神经网络结构设计的几个不同因素中``使用整流非线性是提高识别系统性能的最重要的唯一因素''。
 
-对于小的数据集，\cite{Jarrett-ICCV2009-small}观察到，使用整流非线性甚至比学习\gls{hidden_layer}的权重值更加重要。
+对于小的数据集，\cite{Jarrett-ICCV2009}观察到，使用整流非线性甚至比学习\gls{hidden_layer}的权重值更加重要。
 随机的权重足以通过\gls{rectifier_network}传播有用的信息，允许在顶部的分类器层学习如何将不同的特征向量映射到类标识。
 
 当有更多数据可用时，学习开始提取足够的有用知识来超越随机选择参数的性能。

@@ -116,7 +116,6 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 
 由于实现高效~\glssymbol{GPU}~代码的困难性，研究人员应该组织好他们的工作流程，避免对每一个新的模型或算法都编写新的~\glssymbol{GPU}~代码。
 通常来讲，人们会选择建立一个包含高效操作（如卷积和矩阵乘法）的软件库解决这个问题，然后再从库中调用所需要的操作确定模型。
-%例如，\gls{ML}库Pylearn2 \citep{pylearn2_arxiv_2013}通过调用Theano \citep{bergstra+al:2010-scipy-short,Bastien-2012}和cuda-convnet \citep{Krizhevsky2010tr}提供的高性能操作，囊括了许多\gls{ML}算法。
 例如，\gls{ML}库Pylearn2 \citep{pylearn2_arxiv_2013}将其所有的\gls{ML}算法都通过调用Theano~\citep{bergstra+al:2010-scipy-short,Bastien-2012}和cuda-convnet~\citep{Krizhevsky2010tr} 所提供的高性能操作来指定。
 这种分解方法还可以简化对多种硬件的支持。
 例如，同一个Theano程序可以在CPU或者~\glssymbol{GPU}~上运行，而不需要改变调用Theano的方式。
@@ -199,7 +198,7 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 一般来说，加速数据处理系统的一种策略是构造一个系统，这个系统用\firstgls{dynamic_structure}描述图中处理输入的所需计算过程。
 在给定一个输入的情况中，数据处理系统可以动态地决定运行神经网络系统的哪一部分。
 单个神经网络内部同样也存在\gls{dynamic_structure}，给定输入信息，决定特征（\gls{hidden_unit}）哪一部分用于计算。
-这种神经网络中的\gls{dynamic_structure}有时被称为\firstgls{conditional_computation}\citep{bengio2013estimating,bengio-arxiv13-condcomp}。
+这种神经网络中的\gls{dynamic_structure}有时被称为\firstgls{conditional_computation}\citep{bengio2013,bengio-arxiv13-condcomp}。
 由于模型结构许多部分可能只跟输入的一小部分有关，只计算那些需要的特征可以起到加速的目的。
 % 436 
 
@@ -707,7 +706,7 @@ P({\tt THE\ DOG\ RAN\ AWAY}) = P_3({\tt THE\ DOG\ RAN}) P_3({\tt DOG\ RAN\ AWAY}
 % -- 452 --
 
 使用\gls{distributed_representation}来改进\gls{NLP}模型的基本思想不必局限于\gls{NN}。
-它还可以用于\gls{graphical_model}，其中\gls{distributed_representation}是多个\gls{latent_variable}的形式。
+它还可以用于\gls{graphical_model}，其中\gls{distributed_representation}是多个\gls{latent_variable}的形式\citep{Mnih-Hinton2007}。
 
 \subsection{高维输出}
 \label{sec:high_dimensional_outputs}
@@ -937,7 +936,7 @@ $|\SetV|$因子可以降低到$\log |\SetV|$一样低，而无需执行与$|\Set
 最早的机器翻译\gls{NN}探索中已经纳入了\gls{encoder}和\gls{decoder}的想法(Allen 1987; Chrisman 1991; Forcada
 and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途是通过\gls{NLM}升级翻译系统的\gls{language_model}~\citep{Schwenk-et-al-IWSLT2006,Schwenk-2010}。
 之前，大多数机器翻译系统在该组件使用~\gls{n_gram}~模型。
-机器翻译中基于~\gls{n_gram}~的模型不仅包括传统的回退~\gls{n_gram}~模型，而且包括\textbf{最大熵语言模型}(maximum entropy language models)，其中给定上下文中常见的词，affine-softmax层预测下一个词。
+机器翻译中基于~\gls{n_gram}~的模型不仅包括传统的回退~\gls{n_gram}~模型\citep{Jelinek+Mercer80,Katz87,Chen+Goodman99}，而且包括\textbf{最大熵语言模型}(maximum entropy language models)\citep{Berger1996}，其中给定上下文中常见的词，affine-softmax层预测下一个词。
 
 传统\gls{language_model}仅仅报告自然语言句子的概率。
 因为机器翻译涉及给定输入句子产生输出句子，所以将自然\gls{language_model}扩展为条件的是有意义的。

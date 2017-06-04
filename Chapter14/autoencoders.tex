@@ -551,7 +551,7 @@ $\Vx$是从训练数据挑出的这一事实很关键，因为这意味着在\gl
 \fi
 \caption{如果每个位置处的切平面（见\figref{fig:chap14_tangent_plane_color}）是已知的，则它们可以平铺后形成全局坐标系或密度函数。
 每个局部块可以被认为是局部欧几里德坐标系或者是局部平面高斯或``薄饼''，在与薄饼正交的方向上具有非常小的方差而在定义坐标系的方向上具有非常大的方差。
-这些高斯的混合提供了估计的密度函数，如\gls{manifold}中的~\ENNAME{Parzen}~窗口算法\citep{Vincent-Bengio-2003-short} 或其非局部的基于\gls{NN}的变体\citep{Bengio+Monperrus-2005}。
+这些高斯的混合提供了估计的密度函数，如\gls{manifold}中的~\ENNAME{Parzen}~窗口算法\citep{Vincent-Bengio-2003-short} 或其非局部的基于\gls{NN}的变体\citep{Bengio2006c}。
 }
 \label{fig:chap14_tiling-a-manifold}
 \end{figure}
@@ -669,7 +669,7 @@ $f$和$g$都是由线性仿射变换后进行逐元素非线性变换的标准\g
 
 \firstall{PSD}是\gls{sparse_coding}和参数化\gls{AE}~\citep{koray-psd-08}的混合模型。
 参数化\gls{encoder}被训练为能预测迭代推断的输出。
-\glssymbol{PSD}~被应用于图片和视频中对象识别的\gls{unsupervised}特征学习\citep{Koray-08-small,koray-nips-10-small,Jarrett-ICCV2009-small,farabet-suml-11}，在音频中也有所应用\citep{henaff-ismir-11-small}。
+\glssymbol{PSD}~被应用于图片和视频中对象识别的\gls{unsupervised}特征学习\citep{Koray-08-small,koray-nips-10-small,Jarrett-ICCV2009,farabet-suml-11}，在音频中也有所应用\citep{henaff-ismir-11-small}。
 这个模型由一个\gls{encoder} $f(\Vx)$和一个\gls{decoder} $g(\Vh)$组成，并且都是参数化的。
 在训练过程中，$\Vh$由优化算法控制。
 优化过程是最小化

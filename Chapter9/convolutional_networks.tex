@@ -873,7 +873,7 @@ h(\TSK, \TSG, s)_{i, j, k} &=& \frac{\partial }{\partial \TEV_{i, j, k}} J(\TSV,
  
 % -- 351 --
  
-随机过滤器经常在\gls{convolutional_network}中表现得出乎意料得好~\cite{Jarrett-ICCV2009-small,Saxe-ICML2011,pinto2011scaling,cox2011beyond}。
+随机过滤器经常在\gls{convolutional_network}中表现得出乎意料得好~\cite{Jarrett-ICCV2009,Saxe-ICML2011,pinto2011scaling,cox2011beyond}。
 \cite{Saxe-ICML2011}~说明，由卷积和随后的\gls{pooling}组成的层，当赋予随机权重时，自然地变得具有频率选择性和平移不变性。
 他们认为这提供了一种廉价的方法来选择\gls{convolutional_network}的结构：首先通过仅训练最后一层来评估几个\gls{convolutional_network}结构的性能，然后选择最好的结构并使用更昂贵的方法来训练整个网络。
 
@@ -885,7 +885,7 @@ h(\TSK, \TSG, s)_{i, j, k} &=& \frac{\partial }{\partial \TEV_{i, j, k}} J(\TSV,
 并非一次训练整个卷积层，我们可以训练一小块模型，就像~\cite{Coates2011}使用$k$均值做的那样。
 然后，我们可以用来自这个小块模型的参数来定义卷积层的核。
 这意味着使用无监督学习来训练\gls{convolutional_network}\emph{并且在训练的过程中完全不使用卷积}是可能的。
-使用这种方法，我们可以训练非常大的模型，并且只在推断期间产生高计算成本\citep{ranzato-cvpr-07-small,Jarrett-ICCV2009-small,koray-nips-10-small,icml2013_coates13}。
+使用这种方法，我们可以训练非常大的模型，并且只在推断期间产生高计算成本\citep{ranzato-cvpr-07-small,Jarrett-ICCV2009,koray-nips-10-small,icml2013_coates13}。
 这种方法大约在2007到2013年间流行，当时标记的数据集很小，并且计算能力有限。
 如今，大多数\gls{convolutional_network}以纯粹\gls{supervised}的方式训练，在每次训练迭代中使用通过整个网络的完整的前向和反向传播。
  
@@ -1128,10 +1128,10 @@ V1是大脑对视觉输入开始执行显著高级处理的第一个区域。
 到90年代末，NEC部署的这个系统已经被用于读取美国10％以上的支票。
 后来，微软部署了若干个基于\gls{convolutional_network}的OCR和手写识别系统\citep{simard-03-small}。 
 关于\gls{convolutional_network}的这种应用和更现代应用的更多细节，参考\chapref{chap:applications}。
-读者可以参考\citep{Lecun_convolutionalnetworks}了解2010年之前的更为深入的\gls{convolutional_network}历史。
+读者可以参考\citep{lecun_convolutional_2010}了解2010年之前的更为深入的\gls{convolutional_network}历史。
 
 \gls{convolutional_network}也被用作在许多比赛中的取胜手段。
-当前对深度学习的商业兴趣的热度始于\cite{Krizhevsky-2012-small}赢得了ImageNet对象识别挑战，但是在那之前，\gls{convolutional_network}也已经被用于赢得前些年影响较小的其他机器学习和计算机视觉竞赛了。
+当前对深度学习的商业兴趣的热度始于\cite{Krizhevsky-2012}赢得了ImageNet对象识别挑战，但是在那之前，\gls{convolutional_network}也已经被用于赢得前些年影响较小的其他机器学习和计算机视觉竞赛了。
  
 % -- 360 --
  
