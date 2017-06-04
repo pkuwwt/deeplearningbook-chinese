@@ -12,7 +12,7 @@
 这可能给人一种印象——成为\gls{ML}专家的最重要因素是了解各种各样的\gls{ML}技术，并熟悉各种不同的数学。
 在实践中，正确使用一个普通算法通常比草率地使用一个不清楚的算法效果更好。
 正确应用一个算法需要掌握一些相当简单的方法论。
-本章的许多建议都来自~\cite{ng-lecture-advice}。
+本章的许多建议都来自~\cite{Ng-2015}。
 
 
 我们建议参考以下几个实践设计流程：
@@ -32,7 +32,7 @@
 \end{itemize}
 
 
-我们将使用街景地址号码\gls{transcription_system}~\citep{Goodfellow+et+al-ICLR2014a}作为一个运行示例。
+我们将使用街景地址号码\gls{transcription_system}~\citep{Goodfellow-et-al-2014d}作为一个运行示例。
 该应用的目标是将建筑物添加到谷歌地图。
 街景车拍摄建筑物，并记录与每张建筑照片相关的GPS坐标。
 \gls{convolutional_network}识别每张照片上的地址号码，由谷歌地图数据库在正确的位置添加该地址。
@@ -175,14 +175,14 @@
 
 如果我们的任务和另一个被广泛研究的任务相似，那么通过复制先前研究中已知性能良好的模型和算法，可能会得到很好的效果。
 甚至可以从该任务中复制一个训练好的模型。
-例如，通常会使用在ImageNet上训练好的\gls{convolutional_network}的特征来解决其他\gls{CV}任务\citep{girshickregion}。
+例如，通常会使用在ImageNet上训练好的\gls{convolutional_network}的特征来解决其他\gls{CV}任务\citep{Girshick-et-al-2015}。
 % 414 head
 
 
 一个常见问题是项目开始时是否使用\gls{unsupervised_learning}，我们将在第三部分进一步探讨这个问题。
  这个问题和特定领域有关。
 在某些领域，比如\gls{NLP}，能够大大受益于\gls{unsupervised_learning}技术，如学习\gls{unsupervised}\gls{word_embeddings}。
-在其他领域，如\gls{CV}，除非是在\gls{semi_supervised}的设定下（\gls{labeled}样本数量很少）\citep{Kingma-et-al-NIPS2014,Rasmus-et-al-arxiv2015}，目前\gls{unsupervised_learning}并没有带来益处。
+在其他领域，如\gls{CV}，除非是在\gls{semi_supervised}的设定下（\gls{labeled}样本数量很少）\citep{Kingma-et-al-2014,Rasmus-et-al-2015}，目前\gls{unsupervised_learning}并没有带来益处。
 如果应用所在环境中，\gls{unsupervised_learning}被认为是很重要的，那么将其包含在第一个\gls{end_to_end}\gls{baseline}中。
 否则，只有在解决\gls{unsupervised}问题时，才会第一次尝试时使用\gls{unsupervised_learning}。
 在发现初始\gls{baseline}\gls{overfitting}的时候，我们可以尝试加入\gls{unsupervised_learning}。
@@ -298,7 +298,7 @@
 相比其他\gls{hyperparameter}，它以一种更复杂的方式控制模型的有效\gls{capacity}——当\gls{learning_rate}适合优化问题时，模型的有效\gls{capacity}最高，此时\gls{learning_rate}是\emph{正确}的，既不是特别大也不是特别小。
 \gls{learning_rate}关于\emph{\gls{training_error}}具有U形曲线，如\figref{fig:chap11_lr}所示。
 当\gls{learning_rate}过大时，\gls{GD}可能会不经意地增加而非减少\gls{training_error}。
-在理想化的二次情况下，如果\gls{learning_rate}是最佳值的两倍大时，会发生这种情况\citep{LeCun+98backprop-small}。
+在理想化的二次情况下，如果\gls{learning_rate}是最佳值的两倍大时，会发生这种情况\citep{LeCun-et-al-1998a}。
 当\gls{learning_rate}太小，训练不仅慢，还有可能永久停留在一个很高的\gls{training_error}。
 关于这种效应，我们知之甚少（不会发生于一个凸\gls{loss_function}中）。
 % 417 end
@@ -437,7 +437,7 @@
 这个图说明了通常只有一个\gls{hyperparameter}对结果有着重要的影响。
 在这个例子中，只有水平轴上的\gls{hyperparameter}对结果有重要的作用。
 \gls{grid_search}将大量的计算浪费在了指数量级的对结果无影响的\gls{hyperparameter}中，相比之下\gls{random_search}几乎每次测试都测试了对结果有影响的每个\gls{hyperparameter}的独一无二的值。
-此图经~\citet{Bergstra+Bengio-LW2011}允许转载。}
+此图经~\citet{Bergstra-Bengio-2012}允许转载。}
 \label{fig:chap11_grid_vs_random}
 \end{figure}
 
@@ -463,7 +463,7 @@
 
 \subsection{\glsentrytext{random_search}}
 \label{sec:random_search}
-幸运的是，有一个替代\gls{grid_search}的方法，并且编程简单，使用更方便，能更快地收敛到\gls{hyperparameter}的良好取值：\gls{random_search}~\citep{Bergstra+Bengio-2012-small}。
+幸运的是，有一个替代\gls{grid_search}的方法，并且编程简单，使用更方便，能更快地收敛到\gls{hyperparameter}的良好取值：\gls{random_search}~\citep{Bergstra-Bengio-2012}。
 % 422
 
 
@@ -481,7 +481,7 @@
 
 与\gls{grid_search}不同，我们\emph{不需要离散化}\gls{hyperparameter}的值。这允许我们在一个更大的集合上进行搜索，而不产生额外的计算代价。%?? bin 不知道如何翻译bin，你有什么好的翻译没 
 实际上，如\figref{fig:chap11_grid_vs_random}所示，当有几个\gls{hyperparameter}对\gls{performance_metrics}没有显著影响时，\gls{random_search}相比于\gls{grid_search}指数级地高效。
-\cite{Bergstra+Bengio-2012-small}进行了详细的研究并发现相比于\gls{grid_search}， \gls{random_search}能够更快地减小\gls{validation_set}误差（就每个模型运行的试验数而言）。
+\cite{Bergstra-Bengio-2012}进行了详细的研究并发现相比于\gls{grid_search}， \gls{random_search}能够更快地减小\gls{validation_set}误差（就每个模型运行的试验数而言）。
 % 422 end
 
 与\gls{grid_search}一样，我们通常会重复运行不同版本的\gls{random_search}，以基于前一次运行的结果改进下一次搜索。
@@ -499,7 +499,7 @@
 \gls{hyperparameter}搜索问题可以转化为一个优化问题。
 决策变量是\gls{hyperparameter}。
 优化的\gls{cost}是\gls{hyperparameter}训练出来的模型在\gls{validation_set}上的误差。
-在简化的设定下，可以计算\gls{validation_set}上可导误差函数关于\gls{hyperparameter}的梯度，然后我们遵循这个梯度更新\citep{bengio:1999:snowbird,bengio-hyper-NC00,maclaurin2015gradient}。
+在简化的设定下，可以计算\gls{validation_set}上可导误差函数关于\gls{hyperparameter}的梯度，然后我们遵循这个梯度更新\citep{Bengio-et-al-1999,Bengio-2000,Maclaurin-et-al-2015}。
 令人遗憾的是，在大多数实际设定中，这个梯度是不可用的。
 这可能是因为其高额的计算代价和存储成本，也可能是因为\gls{validation_set}误差在\gls{hyperparameter}上本质上不可导，例如\gls{hyperparameter}是离散值的情况。
 % 423 mid
@@ -508,7 +508,7 @@
 为了弥补梯度的缺失，我们可以对\gls{validation_set}误差建模，然后通过优化该模型来提出新的\gls{hyperparameter}猜想。
 大部分基于模型的\gls{hyperparameter}搜索算法，都是使用贝叶斯回归模型来估计每个\gls{hyperparameter}的\gls{validation_set}误差期望和该期望的不确定性。
 因此，优化涉及到探索（探索高度不确定的\gls{hyperparameter}，可能带来显著的效果提升，也可能效果很差）和使用（使用已经确信效果不错的\gls{hyperparameter}——通常是先前见过的非常熟悉的\gls{hyperparameter}）之间的权衡。
-关于\gls{hyperparameter}优化的最前沿方法还包括Spearmint~\citep{Snoek+al-NIPS2012-small}，TPE~\citep{Bergstra+al-NIPS2011}和SMAC~\citep{hutter+hoos+leyton+brown:2011}。
+关于\gls{hyperparameter}优化的最前沿方法还包括Spearmint~\citep{Snoek-et-al-2012}，TPE~\citep{Bergstra-et-al-2011}和SMAC~\citep{Hutter-et-al-2011}。
 
 
 % 423 end
@@ -521,7 +521,7 @@
 
 大部分\gls{hyperparameter}优化算法比\gls{random_search}更复杂，并且具有一个共同的缺点，在它们能够从实验中提取任何信息之前，它们需要运行完整的训练实验。
 相比于人类实践者手动搜索，考虑实验早期可以收集的信息量，这种方法是相当低效的，因为手动搜索通常可以很早判断出某组\gls{hyperparameter}是否是完全病态的。
-\cite{swersky2014freeze}提出了一个可以维护多个实验的早期版本算法。
+\cite{Swersky-et-al-2014}提出了一个可以维护多个实验的早期版本算法。
 在不同的时间点，\gls{hyperparameter}优化算法可以选择开启一个新实验，``冻结''正在运行但希望不大的实验，或是``解冻''并恢复早期被冻结的，但现在根据更多信息后又有希望的实验。
 
 
@@ -630,7 +630,7 @@
 
 % 427 head
 
-如果我们可以在复数上进行数值计算，那么使用复数作为函数的输入会有非常高效的数值方法估算梯度\citep{Squire+Trapp-1998}。
+如果我们可以在复数上进行数值计算，那么使用复数作为函数的输入会有非常高效的数值方法估算梯度\citep{Squire-Trapp-1998}。
 该方法基于如下观察
 \begin{align}
 	f(x + i\epsilon) &= f(x) + i\epsilon f'(x) + O(\epsilon^2) ,\\
@@ -649,7 +649,7 @@
 对于双曲正切单元而言，预激活绝对值的平均值可以告诉我们该单元的饱和程度。
 在深度网络中，传播梯度的快速增长或快速消失，可能会阻碍优化过程。
 最后，比较参数梯度和参数的量级也是有帮助的。
-正如\citep{Bottou-DLSS2015}所建议的，我们希望参数在一个\gls{minibatch}更新中变化的幅度是参数量值$1\%$这样的级别，而不是$50\%$或者$0.001\%$（这会导致参数移动得太慢）。
+正如\citep{Bottou-2015}所建议的，我们希望参数在一个\gls{minibatch}更新中变化的幅度是参数量值$1\%$这样的级别，而不是$50\%$或者$0.001\%$（这会导致参数移动得太慢）。
 也有可能是某些参数以良好的步长移动，而另一些停滞。
 如果数据是稀疏的（比如自然语言），有些参数可能很少更新，检测它们变化时应该记住这一点。
 

@@ -3,9 +3,9 @@
 \chapter{前言}
 \label{chap:introduction}
 远在古希腊时期，发明家就梦想着创造能自主思考的机器。
-神话人物皮格马利翁(Pygmalion)、代达罗斯(Daedalus)和赫淮斯托斯(Hephaestus)可以被看作传说中的发明家，而加拉蒂亚(Galatea)、塔洛斯(Talos)和潘多拉(Pandora)则可以被视为人造生命\citep{ovid2004metamorphoses,sparkes1996red,stubbs_hesiods_1998}。
+神话人物皮格马利翁(Pygmalion)、代达罗斯(Daedalus)和赫淮斯托斯(Hephaestus)可以被看作传说中的发明家，而加拉蒂亚(Galatea)、塔洛斯(Talos)和潘多拉(Pandora)则可以被视为人造生命\citep{Ovid-Martin-2004,Sparkes-1996,Tandy-1997}。
 
-当人类第一次构思可编程计算机时，就已经在思考计算机能否变得智能（尽管这距造出第一台计算机还有一百多年）\citep{menabrea_sketch_1843}。
+当人类第一次构思可编程计算机时，就已经在思考计算机能否变得智能（尽管这距造出第一台计算机还有一百多年）\citep{Lovelace-1842}。
 如今，\firstall{AI}已经成为一个具有众多实际应用和活跃研究课题的领域，并且正在蓬勃发展。
 我们期望通过智能软件自动地处理常规劳动、理解语音或图像、帮助医学诊断和支持基础科学研究。
 
@@ -23,7 +23,7 @@
 % -- 1 --
 
 \glssymbol{AI}~许多早期的成功发生在相对朴素且形式化的环境中， 而且不要求计算机具备很多关于世界的知识。
-例如，IBM的深蓝（Deep Blue）国际象棋系统在1997年击败了世界冠军\ENNAME{Garry Kasparov}\citep{Hsu2002}。
+例如，IBM的深蓝（Deep Blue）国际象棋系统在1997年击败了世界冠军\ENNAME{Garry Kasparov}\citep{Hsu-2002}。
 显然国际象棋是一个非常简单的领域，因为它仅含有64个位置并只能以严格限制的方式移动32个棋子。
 设计一种成功的国际象棋策略是巨大的成就，但向计算机描述棋子及其允许的走法并不是挑战的困难所在。
 国际象棋完全可以由一个非常简短的、完全形式化的规则列表来描述，并可以容易地由程序员事先准备好。
@@ -39,12 +39,12 @@
 计算机可以使用逻辑推理规则来自动地理解这些形式化语言中的声明。
 这就是众所周知的\gls{AI}的\firstgls{knowledge_base}方法。
 然而，这些项目最终都没有取得重大的成功。
-其中最著名的项目是Cyc \citep{Lenat-1989-book}。
+其中最著名的项目是Cyc \citep{Lenat-Guha-1989}。
 Cyc包括一个\gls{inference}引擎和一个使用CycL语言描述的声明数据库。
 这些声明是由人类监督者输入的。
 这是一个笨拙的过程。
 人们设法设计出足够复杂的形式化规则来精确地描述世界。
-例如，Cyc不能理解一个关于名为~\ENNAME{Fred}~的人在早上剃须的故事\citep{MachineChangedWorld}。
+例如，Cyc不能理解一个关于名为~\ENNAME{Fred}~的人在早上剃须的故事\citep{Linde-1992}。
 它的推理引擎检测到故事中的不一致性：它知道人没有电气零件，但由于~\ENNAME{Fred}~正拿着一个电动剃须刀，它认为实体
 ``正在剃须的Fred''\,(``FredWhileShaving'')含有电气部件。
 因此它产生了这样的疑问——\ENNAME{Fred}~在刮胡子的时候是否仍然是一个人。
@@ -52,7 +52,7 @@ Cyc包括一个\gls{inference}引擎和一个使用CycL语言描述的声明数�
 依靠硬编码的知识体系面对的困难表明，\glssymbol{AI}~系统需要具备自己获取知识的能力，即从原始数据中提取模式的能力。
 这种能力被称为\firstgls{ML}。
 引入\gls{ML}使计算机能够解决涉及现实世界知识的问题，并能作出看似主观的决策。
-比如，一个被称为\firstgls{logistic_regression}的简单\gls{ML}算法可以决定是否建议剖腹产\citep{MorYosef90}。
+比如，一个被称为\firstgls{logistic_regression}的简单\gls{ML}算法可以决定是否建议剖腹产\citep{Mor-Yosef-et-al-1990}。
 而同样是简单\gls{ML}算法的\firstgls{naive_bayes}则可以区分垃圾电子邮件和合法电子邮件。
 
 % -- 2 --
@@ -150,7 +150,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 有了第一\gls{hidden_layer}描述的边缘，第二\gls{hidden_layer}可以容易地搜索可识别为角和扩展轮廓的边集合。
 给定第二\gls{hidden_layer}中关于角和轮廓的图像描述，第三\gls{hidden_layer}可以找到轮廓和角的特定集合来检测特定对象的整个部分。
 最后，根据图像描述中包含的对象部分，可以识别图像中存在的对象。
-经~\citet{zeiler2014visualizing}许可转载此图。
+经~\citet{Zeiler-Fergus-2014}许可转载此图。
 }
 \label{fig:chap1_deep_learning}
 \end{figure}
@@ -304,10 +304,10 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 \centerline{\includegraphics{Chapter1/figures/cybernetics_connectionism_ngrams_color}}
 \fi
 \caption{根据Google图书中短语``\gls{cybernetics}''、``\gls{connectionism}''或``\gls{NN}''频率衡量的\gls{ANN}研究的历史浪潮（图中展示了三次浪潮的前两次，第三次最近才出现）。
-第一次浪潮开始于20世纪40年代到20世纪60年代的\gls{cybernetics}，随着生物学习理论的发展\citep{McCulloch43,Hebb49}
+第一次浪潮开始于20世纪40年代到20世纪60年代的\gls{cybernetics}，随着生物学习理论的发展\citep{McCulloch-Pitts-1943,Hebb-1949}
 和第一个模型的实现（如感知机~\citep{Rosenblatt-1958}） ，能实现单个神经元的训练。
-第二次浪潮开始于1980-1995年间的\gls{connectionism}方法，可以使用反向传播\citep{Rumelhart86b-small} 训练具有一两个\gls{hidden_layer}的神经网络。
-当前第三次浪潮，也就是深度学习，大约始于2006年\citep{Hinton06,Bengio-NIPS2007,ranzato-07-small}，并且现在在2016年以书的形式出现。
+第二次浪潮开始于1980-1995年间的\gls{connectionism}方法，可以使用反向传播\citep{Rumelhart-et-al-1986a} 训练具有一两个\gls{hidden_layer}的神经网络。
+当前第三次浪潮，也就是深度学习，大约始于2006年\citep{Hinton-et-al-2006,Bengio-et-al-2007,Ranzato-et-al-2007a}，并且现在在2016年以书的形式出现。
 另外两次浪潮类似地出现在书中的时间比相应的科学活动晚得多。
 }
 \label{fig:chap1_cybernetics_connectionism_ngrams_color}
@@ -318,7 +318,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 我们今天知道的一些最早的学习算法，是旨在模拟生物学习的计算模型，即大脑怎样学习或为什么能学习的模型。
 其结果是\gls{DL}以\firstall{ANN}之名而淡去。
 彼时，\gls{DL}模型被认为是受生物大脑（无论人类大脑或其他动物的大脑）所启发而设计出来的系统。
-尽管有些\gls{ML}的\gls{NN}有时被用来理解大脑功能\citep{hinton1991lesioning}，但它们一般都没有被设计成生物功能的真实模型。
+尽管有些\gls{ML}的\gls{NN}有时被用来理解大脑功能\citep{Hinton-Shallice-1991}，但它们一般都没有被设计成生物功能的真实模型。
 \gls{DL}的神经观点受两个主要思想启发。
 一个想法是大脑作为例子证明智能行为是可能的，因此，概念上，建立智能的直接途径是逆向大脑背后的计算原理，并复制其功能。
 另一种看法是，理解大脑和人类智能背后的原理也非常有趣，因此\gls{ML}模型除了解决工程应用的能力， 如果能让人类对这些基本的科学问题有进一步的认识也将会很有用。
@@ -334,12 +334,12 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 这些模型希望学习一组权重$\Sw_1, \dots, \Sw_n $，并计算它们的输出$f(\Vx, \Vw) = \Sx_1 \Sw_1 + \dots + \Sx_n \Sw_n$。
 如\figref{fig:chap1_cybernetics_connectionism_ngrams_color}所示，这第一波\gls{NN}研究浪潮被称为\gls{cybernetics}。
 
-\ENNAME{McCulloch-Pitts}~神经元\citep{McCulloch43}是脑功能的早期模型。
+\ENNAME{McCulloch-Pitts}~神经元\citep{McCulloch-Pitts-1943}是脑功能的早期模型。
 该线性模型通过检验函数$f(\Vx,\Vw)$的正负来识别两种不同类别的输入。
 显然，模型的权重需要正确设置后才能使模型的输出对应于期望的类别。
 这些权重可以由操作人员设定。
 在20世纪50年代，感知机\citep{Rosenblatt-1958,Rosenblatt-1962}成为第一个能根据每个类别的输入\gls{example}来学习权重的模型。
-约在同一时期，\textbf{自适应线性单元}(adaptive linear element, ADALINE)简单地返回函数$f(\Vx)$本身的值来预测一个实数\citep{Widrow60}，并且它还可以学习从数据预测这些数。
+约在同一时期，\textbf{自适应线性单元}(adaptive linear element, ADALINE)简单地返回函数$f(\Vx)$本身的值来预测一个实数\citep{Widrow-Hoff-1960}，并且它还可以学习从数据预测这些数。
 
 这些简单的学习算法大大影响了\gls{ML}的现代景象。
 用于调节ADALINE权重的训练算法是被称为\firstgls{SGD}的一种特例。
@@ -350,7 +350,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 
 \gls{linear_model}有很多局限性。
 最著名的是，它们无法学习异或（XOR）函数，即$f([0,1], \Vw) = 1$和$f([1,0], \Vw)=1$，但$f([1,1], \Vw)=0$和$f([0,0],\Vw)= 0$。
-观察到\gls{linear_model}这个缺陷的批评者对受生物学启发的学习普遍地产生了抵触\citep{Minsky69}。
+观察到\gls{linear_model}这个缺陷的批评者对受生物学启发的学习普遍地产生了抵触\citep{Minsky-Papert-1969}。
 这导致了\gls{NN}热潮的第一次大衰退。
 
 现在，神经科学被视为\gls{DL}研究的一个重要灵感来源，但它已不再是该领域的主要指导。
@@ -359,20 +359,20 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 
 如今神经科学在\gls{DL}研究中的作用被削弱，主要原因是我们根本没有足够的关于大脑的信息来作为指导去使用它。
 要获得对被大脑实际使用算法的深刻理解，我们需要有能力同时监测（至少是）数千相连神经元的活动。
-我们不能够做到这一点，所以我们甚至连大脑最简单、最深入研究的部分都还远远没有理解\citep{olshausen:2005}。
+我们不能够做到这一点，所以我们甚至连大脑最简单、最深入研究的部分都还远远没有理解\citep{Olshausen-Field-2005}。
 
 神经科学已经给了我们依靠单一\gls{DL}算法解决许多不同任务的理由。
-神经学家们发现，如果将雪貂的大脑重新连接，使视觉信号传送到听觉区域，它们可以学会用大脑的听觉处理区域去``看''~\citep{von2000visual}。
+神经学家们发现，如果将雪貂的大脑重新连接，使视觉信号传送到听觉区域，它们可以学会用大脑的听觉处理区域去``看''~\citep{Von-Melchner-et-al-2000}。
 这暗示着大多数哺乳动物的大脑能够使用单一的算法就可以解决其大脑可以解决的大部分不同任务。
 在这个假设之前，\gls{ML}研究是比较分散的，研究人员在不同的社群研究自然语言处理、计算机视觉、运动规划和语音识别。
 如今，这些应用社群仍然是独立的，但是对于\gls{DL}研究团体来说，同时研究许多或甚至所有这些应用领域是很常见的。
 
 我们能够从神经科学得到一些粗略的指南。
 仅通过计算单元之间的相互作用而变得智能的基本思想是受大脑启发的。
-新认知机\citep{Fukushima80}受哺乳动物视觉系统的结构启发，引入了一个处理图片的强大模型架构，它后来成为了现代卷积网络的基础\citep{LeCun98-small}（我们将会在\secref{sec:the_neuroscientific_basis_for_convolutional_networks}看到）。
+新认知机\citep{Fukushima-1980}受哺乳动物视觉系统的结构启发，引入了一个处理图片的强大模型架构，它后来成为了现代卷积网络的基础\citep{LeCun-et-al-1998b}（我们将会在\secref{sec:the_neuroscientific_basis_for_convolutional_networks}看到）。
 目前大多数\gls{NN}是基于一个称为\firstgls{ReLU}的神经单元模型。
-原始认知机\citep{Fukushima75}受我们关于大脑功能知识的启发， 引入了一个更复杂的版本。
-简化的现代版通过吸收来自不同观点的思想而形成，\citet{Nair-2010}和~\citet{Glorot+al-AI-2011-small}援引神经科学作为影响，\citet{Jarrett-ICCV2009}援引更多面向工程的影响。
+原始认知机\citep{Fukushima-1975}受我们关于大脑功能知识的启发， 引入了一个更复杂的版本。
+简化的现代版通过吸收来自不同观点的思想而形成，\citet{Nair-Hinton-2010}和~\citet{Glorot-et-al-2011a}援引神经科学作为影响，\citet{Jarrett-et-al-2009}援引更多面向工程的影响。
 虽然神经科学是灵感的重要来源，但它不需要被视为刚性指导。
 我们知道，真实的神经元计算着与现代\gls{ReLU}非常不同的函数，但更接近真实神经网络的系统并没有导致\gls{ML}性能的提升。
 此外，虽然神经科学已经成功地启发了一些\gls{NN}\emph{架构}，但我们对用于神经科学的生物学习还没有足够多的了解，因此也就不能为训练这些架构用的\emph{学习算法}提供太多的借鉴。
@@ -390,19 +390,19 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 研究人员在两个领域之间来回研究是很常见的。
 \gls{DL}领域主要关注如何构建计算机系统，从而成功解决需要智能才能解决的任务，而计算神经科学领域主要关注构建大脑如何真实工作的比较精确的模型。
 
-在20世纪80年代，神经网络研究的第二次浪潮在很大程度上是伴随一个被称为\firstgls{connectionism}或\textbf{并行分布处理}( parallel distributed processing)潮流而出现的\citep{Rumelhart86,mcclelland_appeal_1986}。
+在20世纪80年代，神经网络研究的第二次浪潮在很大程度上是伴随一个被称为\firstgls{connectionism}或\textbf{并行分布处理}( parallel distributed processing)潮流而出现的\citep{Rumelhart-et-al-1986c,McClelland-et-al-1995}。
 \gls{connectionism}是在认知科学的背景下出现的。
 认知科学是理解思维的跨学科途径，即它融合多个不同的分析层次。
 在20世纪80年代初期，大多数认知科学家研究符号推理模型。
 尽管这很流行，但符号模型很难解释大脑如何真正使用神经元实现推理功能。 
-\gls{connectionism}者开始研究真正基于神经系统实现的认知模型\citep{Touretzky1985}，其中很多复苏的想法可以追溯到心理学家~\ENNAME{Donald Hebb}~在20世纪40年代的工作\citep{Hebb49}。
+\gls{connectionism}者开始研究真正基于神经系统实现的认知模型\citep{Touretzky-Minton-1985}，其中很多复苏的想法可以追溯到心理学家~\ENNAME{Donald Hebb}~在20世纪40年代的工作\citep{Hebb-1949}。
 
 \gls{connectionism}的中心思想是，当网络将大量简单的计算单元连接在一起时可以实现智能行为。
 这种见解同样适用于生物神经系统中的神经元，因为它和计算模型中\gls{hidden_unit}起着类似的作用。
 
 在上世纪80年代的\gls{connectionism}期间形成的几个关键概念在今天的\gls{DL}中仍然是非常重要的。
 
-其中一个概念是\firstgls{distributed_representation}\citep{Hinton-et-al-PDP1986}。
+其中一个概念是\firstgls{distributed_representation}\citep{Hinton-et-al-1986}。
 其思想是：系统的每一个输入都应该由多个特征\gls{representation}，并且每一个特征都应该参与到多个可能输入的\gls{representation}。
 例如，假设我们有一个能够识别红色、绿色、或蓝色的汽车、卡车和鸟类的视觉系统，
 \gls{representation}这些输入的其中一个方法是将九个可能的组合：红卡车，红汽车，红鸟，绿卡车等等使用单独的神经元或\gls{hidden_unit}激活。
@@ -413,22 +413,22 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 
 % -- 16 --
 
-\gls{connectionism}潮流的另一个重要成就是反向传播在训练具有内部\gls{representation}的深度\gls{NN}中的成功使用以及反向传播算法的普及\citep{Rumelhart86b-small,Lecun-these87}。
+\gls{connectionism}潮流的另一个重要成就是反向传播在训练具有内部\gls{representation}的深度\gls{NN}中的成功使用以及反向传播算法的普及\citep{Rumelhart-et-al-1986a,LeCun-1987}。
 这个算法虽然曾黯然失色不再流行，但截至写书之时，它仍是训练深度模型的主导方法。% ??
 
 在20世纪90年代，研究人员在使用\gls{NN}进行序列建模的方面取得了重要进展。
-\citet{Hochreiter91}和~\citet{Bengio1994ITNN}指出了对长序列进行建模的一些根本性数学难题，这将在\secref{sec:the_challenge_of_long_term_dependencies}中描述。
-\citet{Hochreiter+Schmidhuber-1997}引入\firstall{LSTM}网络来解决这些难题。
+\citet{Hochreiter-1991}和~\citet{Bengio-et-al-1994}指出了对长序列进行建模的一些根本性数学难题，这将在\secref{sec:the_challenge_of_long_term_dependencies}中描述。
+\citet{Hochreiter-Schmidhuber-1997}引入\firstall{LSTM}网络来解决这些难题。
 如今，\glssymbol{LSTM}~在许多序列建模任务中广泛应用，包括Google的许多自然语言处理任务。
 
 \gls{NN}研究的第二次浪潮一直持续到上世纪90年代中期。
 基于\gls{NN}和其他\glssymbol{AI}技术的创业公司开始寻求投资，其做法野心勃勃但不切实际。
 当\glssymbol{AI}研究不能实现这些不合理的期望时，投资者感到失望。
 同时，\gls{ML}的其他领域取得了进步。
-比如，核方法\citep{Boser92,Cortes95,SchBurSmo99}和图模型\citep{Jordan98}都在很多重要任务上实现了很好的效果。
+比如，核方法\citep{Boser-et-al-1992,Cortes-Vapnik-1995,Scholkopf-et-al-1999}和图模型\citep{Jordan-1998}都在很多重要任务上实现了很好的效果。
 这两个因素导致了\gls{NN}热潮的第二次衰退，并一直持续到2007年。
 
-在此期间，\gls{NN}继续在某些任务上获得令人印象深刻的表现\citep{LeCun98-small,Bengio-nnlm2001}。
+在此期间，\gls{NN}继续在某些任务上获得令人印象深刻的表现\citep{LeCun-et-al-1998b,Bengio-et-al-2001}。
 加拿大高级研究所（CIFAR）通过其神经计算和自适应感知（NCAP）研究计划帮助维持\gls{NN}研究。
 该计划联合了分别由~\ENNAME{Geoffrey Hinton}、\ENNAME{Yoshua Bengio}和~\ENNAME{Yann LeCun}~领导的多伦多大学、蒙特利尔大学和纽约大学的\gls{ML}研究小组。
 这个多学科的CIFAR NCAP研究计划还囊括了神经科学家、人类和计算机视觉专家。
@@ -440,9 +440,9 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 这可能仅仅由于其计算代价太高，而以当时可用的硬件难以进行足够的实验。
 
 神经网络研究的第三次浪潮始于2006年的突破。
-\ENNAME{Geoffrey Hinton}~表明名为\gls{DBN}的\gls{NN}可以使用一种称为贪婪逐层预训练的策略来有效地训练\citep{Hinton06}，我们将在\secref{sec:greedy_layer_wise_unsupervised_pretraining}中更详细地描述。
-其他CIFAR附属研究小组很快表明，同样的策略可以被用来训练许多其他类型的深度网络\citep{Bengio-NIPS2007,ranzato-07-small}，并能系统地帮助提高在测试样例上的泛化能力。
-\gls{NN}研究的这一次浪潮普及了``\gls{DL}''这一术语的使用，强调研究者现在有能力训练以前不可能训练的比较深的神经网络，并着力于深度的理论重要性上\citep{Bengio+Lecun-chapter2007,Delalleau+Bengio-2011-small,Pascanu-et-al-ICLR2014,Montufar-et-al-NIPS2014}。
+\ENNAME{Geoffrey Hinton}~表明名为\gls{DBN}的\gls{NN}可以使用一种称为贪婪逐层预训练的策略来有效地训练\citep{Hinton-et-al-2006}，我们将在\secref{sec:greedy_layer_wise_unsupervised_pretraining}中更详细地描述。
+其他CIFAR附属研究小组很快表明，同样的策略可以被用来训练许多其他类型的深度网络\citep{Bengio-et-al-2007,Ranzato-et-al-2007a}，并能系统地帮助提高在测试样例上的泛化能力。
+\gls{NN}研究的这一次浪潮普及了``\gls{DL}''这一术语的使用，强调研究者现在有能力训练以前不可能训练的比较深的神经网络，并着力于深度的理论重要性上\citep{Bengio-LeCun-2007,Delalleau-Bengio-2011,Pascanu-et-al-2014a,Montufar-et-al-2014}。
 此时，深度\gls{NN}已经优于与之竞争的基于其他\gls{ML}技术以及手工设计功能的~\glssymbol{AI}~系统。
 在写这本书的时候，神经网络的第三次发展浪潮仍在继续，尽管深度学习的研究重点在这一段时间内发生了巨大变化。
 第三次浪潮已开始着眼于新的无监督学习技术和深度模型在小数据集的泛化能力，但目前更多的兴趣点仍是比较传统的监督学习算法和深度模型充分利用大型标注数据集的能力。
@@ -470,13 +470,13 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 \centerline{\includegraphics{Chapter1/figures/dataset_size_color}}
 \fi
 \caption{与日俱增的数据量。
-20世纪初，统计学家使用数百或数千的手动制作的度量来研究数据集\citep{garson:1900,student08ttest,anderson_irises_1935,Fisher-1936}。
-20世纪50年代到80年代，受生物启发的机器学习开拓者通常使用小的合成数据集，如低分辨率的字母位图，设计为在低计算成本下表明神经网络能够学习特定功能\citep{Widrow60,Rumelhart86c}。
-20世纪80年代和90年代，机器学习变得更加统计，并开始利用包含成千上万个样本的更大数据集，如手写扫描数字的MNIST数据集（如\figref{fig:chap1_mnist}）所示\citep{LeCun98-small}。
-在21世纪初的第一个十年，相同大小更复杂的数据集持续出现，如CIFAR-10数据集\citep{KrizhevskyHinton2009} 。
+20世纪初，统计学家使用数百或数千的手动制作的度量来研究数据集\citep{Garson-1900,Gosset-1908,Anderson-1935,Fisher-1936}。
+20世纪50年代到80年代，受生物启发的机器学习开拓者通常使用小的合成数据集，如低分辨率的字母位图，设计为在低计算成本下表明神经网络能够学习特定功能\citep{Widrow-Hoff-1960,Rumelhart-et-al-1986b}。
+20世纪80年代和90年代，机器学习变得更加统计，并开始利用包含成千上万个样本的更大数据集，如手写扫描数字的MNIST数据集（如\figref{fig:chap1_mnist}）所示\citep{LeCun-et-al-1998b}。
+在21世纪初的第一个十年，相同大小更复杂的数据集持续出现，如CIFAR-10数据集\citep{Krizhevsky-Hinton-2009} 。
 在这十年结束和下五年，明显更大的数据集（包含数万到数千万的样例）完全改变了深度学习的可能实现的事。
-这些数据集包括公共Street View House Numbers数据集 \citep{netzer_reading_2011}、各种版本的ImageNet数据集\citep{imagenet_cvpr09,deng_what_2010,Russakovsky2014imagenet}以及Sports-1M数据集\citep{karpathy_large-scale_2014}。
-在图顶部，我们看到翻译句子的数据集通常远大于其他数据集，如根据Canadian Hansard制作的IBM数据集\citep{brown1990statistical}和WMT 2014英法数据集\citep{schwenk2014wmt} 。
+这些数据集包括公共Street View House Numbers数据集 \citep{Netzer-et-al-2011}、各种版本的ImageNet数据集\citep{Deng-et-al-2009,Deng-et-al-2010a,Russakovsky-et-al-2014a}以及Sports-1M数据集\citep{Karpathy-et-al-2014}。
+在图顶部，我们看到翻译句子的数据集通常远大于其他数据集，如根据Canadian Hansard制作的IBM数据集\citep{Brown-et-al-1990}和WMT 2014英法数据集\citep{Schwenk-2014} 。
 }
 \label{fig:chap1_dataset_size_color}
 \end{figure}
@@ -521,32 +521,32 @@ Geoffrey Hinton将其描述为``机器学习的\emph{果蝇}''，这意味着机
 而现在，神经元之间的连接数大多是出于设计考虑。
 一些\gls{ANN}中每个神经元的连接数与猫一样多，并且对于其他神经网络来说，每个神经元的连接与较小哺乳动物（如小鼠）一样多是非常普遍的。
 甚至人类大脑每个神经元的连接也没有过高的数量。
-生物神经网络规模来自\citet{number_of_neurons}。
+生物神经网络规模来自\citet{Wikipedia-2015}。
 }
 \label{fig:chap1_number_of_synapses_color}
 {\tiny
 \begin{enumerate}
   \itemsep0em
   \item % 1
-    自适应线性单元~\citep{Widrow60}
+    自适应线性单元~\citep{Widrow-Hoff-1960}
   \item % 2
-    神经认知机~\citep{Fukushima80}
+    神经认知机~\citep{Fukushima-1980}
   \item % 3
-    GPU-加速 \gls{convolutional_network}~\citep{chellapilla:inria-00112631}
+    GPU-加速 \gls{convolutional_network}~\citep{Chellapilla-et-al-2006}
   \item % 4
-    \gls{DBM}~\citep{SalHinton09}
+    \gls{DBM}~\citep{Salakhutdinov-Hinton-2009a}
   \item % 5
-    \gls{unsupervised}\gls{convolutional_network}~\citep{Jarrett-ICCV2009}
+    \gls{unsupervised}\gls{convolutional_network}~\citep{Jarrett-et-al-2009}
   \item % 6
-    GPU-加速 \gls{MLP}~\citep{Ciresan-2010}
+    GPU-加速 \gls{MLP}~\citep{Ciresan-et-al-2010}
   \item % 7
-    分布式\gls{AE}~\citep{QuocLe-ICML2012}
+    分布式\gls{AE}~\citep{Le-et-al-2012}
   \item % 8
-    Multi-GPU \gls{convolutional_network}~\citep{Krizhevsky-2012}
+    Multi-GPU \gls{convolutional_network}~\citep{Krizhevsky-et-al-2012}
   \item % 9
-    COTS HPC  \gls{unsupervised}\gls{convolutional_network}~\citep{icml2013_coates13}
+    COTS HPC  \gls{unsupervised}\gls{convolutional_network}~\citep{Coates-et-al-2013}
   \item % 10
-    GoogLeNet~\citep{Szegedy-et-al-arxiv2014}
+    GoogLeNet~\citep{Szegedy-et-al-2014a}
 \end{enumerate}
 } % end tiny
 \end{figure}
@@ -567,7 +567,7 @@ Geoffrey Hinton将其描述为``机器学习的\emph{果蝇}''，这意味着机
 \fi
 \caption{与日俱增的神经网络规模。
 自从引入\gls{hidden_unit}，\gls{ANN}的大小大约每2.4年翻一倍。
-生物神经网络规模来自~\citet{number_of_neurons}。
+生物神经网络规模来自~\citet{Wikipedia-2015}。
 }
 \label{fig:chap1_number_of_neurons_color}
 {\tiny
@@ -576,43 +576,43 @@ Geoffrey Hinton将其描述为``机器学习的\emph{果蝇}''，这意味着机
   \item % 1
     感知机~\citep{Rosenblatt-1958,Rosenblatt-1962}
   \item % 2
-    自适应线性单元~\citep{Widrow60}
+    自适应线性单元~\citep{Widrow-Hoff-1960}
   \item % 3
-    神经认知机~\citep{Fukushima80}
+    神经认知机~\citep{Fukushima-1980}
   \item % 4
-    早期后向传播网络~\citep{Rumelhart86c}
+    早期后向传播网络~\citep{Rumelhart-et-al-1986b}
   \item % 5
-    用于语音识别的\gls{RNN}~\citep{Robinson+Fallside91}
+    用于语音识别的\gls{RNN}~\citep{Robinson-Fallside-1991}
   \item % 6
-    用于语音识别的\gls{MLP}~\citep{Bengio91z}
+    用于语音识别的\gls{MLP}~\citep{Bengio-et-al-1991}
   \item % 7
-    \gls{meanfield}sigmoid\gls{BN}~\citep{Saul+96}
+    \gls{meanfield}sigmoid\gls{BN}~\citep{Saul-et-al-1996}
   \item % 8
-    LeNet-5~\citep{LeCun98-small}
+    LeNet-5~\citep{LeCun-et-al-1998b}
   \item % 9
-    \gls{ESN}~\citep{Jaeger+Haas-2004}
+    \gls{ESN}~\citep{Jaeger-Haas-2004}
   \item % 10
-    \gls{DBN}~\citep{Hinton06}
+    \gls{DBN}~\citep{Hinton-et-al-2006}
   \item % 11
-    GPU-加速\gls{convolutional_network}~\citep{chellapilla:inria-00112631}
+    GPU-加速\gls{convolutional_network}~\citep{Chellapilla-et-al-2006}
   \item % 12
-    \gls{DBM}~\citep{SalHinton09}
+    \gls{DBM}~\citep{Salakhutdinov-Hinton-2009a}
   \item % 13
-    GPU-加速\gls{DBN}~\citep{RainaICML09}
+    GPU-加速\gls{DBN}~\citep{Raina-et-al-2009}
   \item % 14
-    \gls{unsupervised}\gls{convolutional_network}~\citep{Jarrett-ICCV2009}
+    \gls{unsupervised}\gls{convolutional_network}~\citep{Jarrett-et-al-2009}
   \item % 15
-    GPU-加速\gls{MLP}~\citep{Ciresan-2010}
+    GPU-加速\gls{MLP}~\citep{Ciresan-et-al-2010}
   \item % 16
-    OMP-1 网络~\citep{Coates2011b}
+    OMP-1 网络~\citep{Coates-Ng-2011}
   \item % 17
-    分布式\gls{AE}~\citep{QuocLe-ICML2012}
+    分布式\gls{AE}~\citep{Le-et-al-2012}
   \item % 18
-    Multi-GPU\gls{convolutional_network}~\citep{Krizhevsky-2012}
+    Multi-GPU\gls{convolutional_network}~\citep{Krizhevsky-et-al-2012}
   \item % 19
-    COTS HPC \gls{unsupervised}\gls{convolutional_network}~\citep{icml2013_coates13}
+    COTS HPC \gls{unsupervised}\gls{convolutional_network}~\citep{Coates-et-al-2013}
   \item % 20
-    GoogLeNet~\citep{Szegedy-et-al-arxiv2014}
+    GoogLeNet~\citep{Szegedy-et-al-2014a}
 \end{enumerate}
 }
 \end{figure}
@@ -632,12 +632,12 @@ Geoffrey Hinton将其描述为``机器学习的\emph{果蝇}''，这意味着机
 20世纪80年代以来，\gls{DL}提供精确识别和预测的能力一直在提高。
 而且，\gls{DL}持续成功地被应用于越来越广泛的实际问题中。
 
-最早的深度模型被用来识别裁剪紧凑且非常小的图像中的单个对象\citep{Rumelhart86b-small}。
+最早的深度模型被用来识别裁剪紧凑且非常小的图像中的单个对象\citep{Rumelhart-et-al-1986a}。
 此后，\gls{NN}可以处理的图像尺寸逐渐增加。
-现代对象识别网络能处理丰富的高分辨率照片，并且不需要在被识别的对象附近进行裁剪\citep{Krizhevsky-2012}。
+现代对象识别网络能处理丰富的高分辨率照片，并且不需要在被识别的对象附近进行裁剪\citep{Krizhevsky-et-al-2012}。
 类似地，最早的网络只能识别两种对象（或在某些情况下，单类对象的存在与否），而这些现代网络通常能够识别至少\NUMTEXT{1000}个不同类别的对象。
 对象识别中最大的比赛是每年举行的ImageNet大型视觉识别挑战（ILSVRC）。
-\gls{DL}迅速崛起的激动人心的一幕是卷积网络第一次大幅赢得这一挑战，它将最高水准的前5错误率从~\NUMTEXT{26.1\%}~降到~\NUMTEXT{15.3\%}~\citep{Krizhevsky-2012}，这意味着该卷积网络针对每个图像的可能类别生成一个顺序列表，除了15.3\%的测试样本，其他测试样本的正确类标都出现在此列表中的前5项里。
+\gls{DL}迅速崛起的激动人心的一幕是卷积网络第一次大幅赢得这一挑战，它将最高水准的前5错误率从~\NUMTEXT{26.1\%}~降到~\NUMTEXT{15.3\%}~\citep{Krizhevsky-et-al-2012}，这意味着该卷积网络针对每个图像的可能类别生成一个顺序列表，除了15.3\%的测试样本，其他测试样本的正确类标都出现在此列表中的前5项里。
 此后，深度卷积网络连续地赢得这些比赛，截至写本书时，\gls{DL}的最新结果将这个比赛中的前5错误率降到了~\NUMTEXT{3.6\%}， 如\figref{fig:chap1_imagenet_color}所示。
 
 \begin{figure}[!htb]
@@ -648,7 +648,7 @@ Geoffrey Hinton将其描述为``机器学习的\emph{果蝇}''，这意味着机
 \fi
 \caption{日益降低的错误率。
 由于深度网络达到了在ImageNet大规模视觉识别挑战中竞争所必需的规模，它们每年都能赢得胜利，并且产生越来越低的错误率。
-数据来源于 \citet{Russakovsky2014imagenet}和~\citet{He-et-al-arxiv2015}。}
+数据来源于 \citet{Russakovsky-et-al-2014a}和~\citet{He-et-al-2015}。}
 \label{fig:chap1_imagenet_color}
 \end{figure}
 
@@ -656,20 +656,20 @@ Geoffrey Hinton将其描述为``机器学习的\emph{果蝇}''，这意味着机
 
 \gls{DL}也对语音识别产生了巨大影响。
 语音识别在20世纪90年代得到提高后，直到约2000年都停滞不前。
-\gls{DL}的引入\citep{dahl2010phonerec,Deng-2010,Seide2011,Hinton-et-al-2012}使得语音识别错误率陡然下降，有些错误率甚至降低了一半。
+\gls{DL}的引入\citep{Dahl-et-al-2010,Deng-et-al-2010b,Seide-et-al-2011,Hinton-et-al-2012a}使得语音识别错误率陡然下降，有些错误率甚至降低了一半。
 我们将在\secref{sec:speech_recognition}更详细地探讨这个历史。
 
-深度网络在行人检测和图像分割中也取得了引人注目的成功\citep{sermanet-cvpr-13,Farabet-et-al-2013,couprie-iclr-13}，并且在交通标志分类上取得了超越人类的表现\citep{Ciresan-et-al-2012}。
+深度网络在行人检测和图像分割中也取得了引人注目的成功\citep{Sermanet-et-al-2013,Farabet-et-al-2013,Couprie-et-al-2013}，并且在交通标志分类上取得了超越人类的表现\citep{Ciresan-et-al-2012}。
 
 在深度网络的规模和精度有所提高的同时，它们可以解决的任务也日益复杂。
-\citet{Goodfellow+et+al-ICLR2014a}表明，\gls{NN}可以学习输出描述图像的整个字符序列，而不是仅仅识别单个对象。
-此前，人们普遍认为，这种学习需要对序列中的单个元素进行标注\citep{gulcehre_knowledge_2016}。
+\citet{Goodfellow-et-al-2014d}表明，\gls{NN}可以学习输出描述图像的整个字符序列，而不是仅仅识别单个对象。
+此前，人们普遍认为，这种学习需要对序列中的单个元素进行标注\citep{Gulcehre-Bengio-2013}。
 \gls{RNN}，如之前提到的~\glssymbol{LSTM}~序列模型，现在用于对序列和其他序列之间的关系进行建模，而不是仅仅固定输入之间的关系。
-这种序列到序列的学习似乎引领着另一个应用的颠覆性发展，即机器翻译\citep{Sutskever-et-al-NIPS2014,Bahdanau-et-al-ICLR2015-small}。
+这种序列到序列的学习似乎引领着另一个应用的颠覆性发展，即机器翻译\citep{Sutskever-et-al-2014,Bahdanau-et-al-2015}。
 
 % -- 24 --
 
-这种复杂性日益增加的趋势已将其推向逻辑结论，即神经图灵机\citep{Graves-et-al-arxiv2014}的引入，它能学习读取存储单元和向存储单元写入任意内容。
+这种复杂性日益增加的趋势已将其推向逻辑结论，即神经图灵机\citep{Graves-et-al-2014a}的引入，它能学习读取存储单元和向存储单元写入任意内容。
 这样的\gls{NN}可以从期望行为的\gls{example}中学习简单的程序。
 例如，从杂乱和排好序的\gls{example}中学习对一系列数进行排序。
 这种自我编程技术正处于起步阶段，但原则上未来可以适用于几乎所有的任务。
@@ -677,18 +677,18 @@ Geoffrey Hinton将其描述为``机器学习的\emph{果蝇}''，这意味着机
 
 \gls{DL}的另一个最大的成就是其在\firstgls{RL}领域的扩展。
 在\gls{RL}中，一个自主的智能体必须在没有人类操作者指导的情况下，通过试错来学习执行任务。
-DeepMind表明，基于\gls{DL}的\gls{RL}系统能够学会玩Atari视频游戏，并在多种任务中可与人类匹敌\citep{mnih_human-level_2015}。
-\gls{DL}也显著改善了机器人\gls{RL}的性能\citep{finn2015learning}。
+DeepMind表明，基于\gls{DL}的\gls{RL}系统能够学会玩Atari视频游戏，并在多种任务中可与人类匹敌\citep{Mnih-et-al-2015}。
+\gls{DL}也显著改善了机器人\gls{RL}的性能\citep{Finn-et-al-2015}。
 
 许多\gls{DL}应用都是高利润的。现在\gls{DL}被许多顶级的技术公司使用，包括Google、Microsoft、Facebook、IBM、Baidu、Apple、Adobe、Netflix、NVIDIA和NEC等。
 
 \gls{DL}的进步也严重依赖于软件基础架构的进展。
-软件库如Theano~\citep{bergstra+al:2010-scipy,Bastien-2012}、PyLearn2~\citep{pylearn2_arxiv_2013}、Torch~\citep{Torch-2011}、DistBelief~\citep{Dean-et-al-NIPS2012}、Caffe~\citep{Jia13caffe}、MXNet~\citep{chen2015mxnet}和TensorFlow~\citep{tensorflow}都能支持重要的研究项目或商业产品。
+软件库如Theano~\citep{Bergstra-et-al-2010,Bastien-et-al-2012}、PyLearn2~\citep{Goodfellow-et-al-2013c}、Torch~\citep{Collobert-et-al-2011b}、DistBelief~\citep{Dean-et-al-2012}、Caffe~\citep{Jia-2013}、MXNet~\citep{Chen-et-al-2015}和TensorFlow~\citep{Abadi-et-al-2015}都能支持重要的研究项目或商业产品。
 
 \gls{DL}也为其他科学做出了贡献。
-用于对象识别的现代卷积网络为神经科学家们提供了可以研究的视觉处理模型\citep{dicarlo-tutorial-2013}。
+用于对象识别的现代卷积网络为神经科学家们提供了可以研究的视觉处理模型\citep{DiCarlo-2013}。
 \gls{DL}也为处理海量数据以及在科学领域作出有效的预测提供了非常有用的工具。
-它已成功地用于预测分子如何相互作用从而帮助制药公司设计新的药物\citep{Dahl-et-al-arxiv2014}，搜索亚原子粒子\citep{baldi2014searching}，以及自动解析用于构建人脑三维图的显微镜图像\citep{knowles-barley_deep_2014}等。
+它已成功地用于预测分子如何相互作用从而帮助制药公司设计新的药物\citep{Dahl-et-al-2014}，搜索亚原子粒子\citep{Baldi-et-al-2014}，以及自动解析用于构建人脑三维图的显微镜图像\citep{KnowlesBarley-et-al-2014}等。
 我们期待\gls{DL}未来能够出现在越来越多的科学领域中。
 
 % -- 25 --

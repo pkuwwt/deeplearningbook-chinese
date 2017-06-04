@@ -40,7 +40,7 @@
 \fi
 \caption{\gls{DL}中难以处理的推断问题通常是由于结构化图模型中\gls{latent_variable}的相互作用。
 这些相互作用产生于一个\gls{latent_variable}与另一个\gls{latent_variable}或者当\gls{vstructure}的子节点可观察时与更长的激活路径相连。
-\emph{(左)}一个\gls{hidden_unit}存在连接的\firstgls{srbm}~\citep{Osindero+Hinton-2008}。
+\emph{(左)}一个\gls{hidden_unit}存在连接的\firstgls{srbm}~\citep{Osindero-Hinton-2008}。
 由于存在大量\gls{latent_variable}的\gls{clique}，\gls{latent_variable}的直接连接使得后验分布难以处理。
 \emph{(中)}一个\gls{DBM}，被分层从而使得不存在层内连接，由于层之间的连接其后验分布仍然难以处理。
 \emph{(右)}当可见变量可观察时这个有向模型的\gls{latent_variable}之间存在相互作用，因为每两个\gls{latent_variable}都是\gls{coparent}。
@@ -128,7 +128,7 @@
 
 我们介绍的第一个最大化下界$\CalL$的算法是\firstall{EM}算法。
 在\gls{latent_variable}模型中，这是一个非常常见的训练算法。
-在这里我们描述 \citet{emview} 所提出的~\glssymbol{EM}~算法。
+在这里我们描述 \citet{Neal-Hinton-1999} 所提出的~\glssymbol{EM}~算法。
 与大多数我们在本章中介绍的其他算法不同的是，\glssymbol{EM}~并不是一个\gls{approximate_inference}算法，而是一种能够学到近似后验的算法。
 % 626
 
@@ -281,7 +281,7 @@ p(\Vv\mid\Vh) = \CalN(\Vv;{\MW}\Vh + \Vb,\beta^{-1}{\MI}).
 % 629
 
 
-关于$\MH$的最小化问题需要某些特别设计的算法，例如特征符号搜索方法~\citep{HonglakLee-2007}。
+关于$\MH$的最小化问题需要某些特别设计的算法，例如特征符号搜索方法~\citep{Lee-et-al-2007}。
 % 629
 
 
@@ -308,7 +308,7 @@ p(\Vv\mid\Vh) = \CalN(\Vv;{\MW}\Vh + \Vb,\beta^{-1}{\MI}).
 \end{align}
 这被称为\firstgls{mean_field}方法。
 更一般地说，我们可以通过选择分布$q$的形式来选择任何\gls{graphical_models}的结构，通过选择变量之间的相互作用来灵活地决定近似程度的大小。
-这种完全通用的\gls{graphical_models}方法被称为\firstgls{structured_variational_inference} \citep{Saul96}。
+这种完全通用的\gls{graphical_models}方法被称为\firstgls{structured_variational_inference} \citep{Saul-Jordan-1996}。
 % 630 
 
 
@@ -368,7 +368,7 @@ p(\Vv\mid\Vh) = \CalN(\Vv;{\MW}\Vh + \Vb,\beta^{-1}{\MI}).
 % 631
 
 
-为了具体化这些描述，我们接下来会讲如何将变分推断应用到\firstgls{binary_sparse_coding}模型（这里我们所描述的模型是 \citet{henniges2010binary} 提出的，但是我们采用了传统、通用的\gls{mean_field}方法，而原文作者采用了一种特殊设计的算法）中。
+为了具体化这些描述，我们接下来会讲如何将变分推断应用到\firstgls{binary_sparse_coding}模型（这里我们所描述的模型是 \citet{Henniges-et-al-2010} 提出的，但是我们采用了传统、通用的\gls{mean_field}方法，而原文作者采用了一种特殊设计的算法）中。
 数学推导过程非常详细，为希望完全了解我们描述过的变分推断和变分学习高级概念描述的读者所准备。
 而对于并不计划推导或者实现变分学习算法的读者来说，可以放心跳过，直接阅读下一节，这并不会遗漏新的高级概念。
 建议那些从事\gls{binary_sparse_coding}研究的读者可以重新看一下\secref{sec:useful_properties_of_common_functions}中描述的一些经常在概率模型中出现的有用的函数性质。
@@ -565,7 +565,7 @@ p(\Vv\mid\Vh) &= \CalN(\Vv;\MW \Vh,{\Vbeta}^{-1}),
 取而代之的是，我们使用一种被称为\firstgls{damping}的启发式技巧来实现块更新。
 在\gls{damping}方法中，对$\hat{\Vh}$中的每一个元素我们都可以解出最优值，然后对于所有的值都在这个方向上移动一小步。
 这个方法不能保证每一步都能增加$\CalL$，但是对于许多模型都很有效。
-关于在\gls{message_passing}算法中如何选择同步程度以及使用\gls{damping}策略可以参考 \citet{koller-book2009} 。
+关于在\gls{message_passing}算法中如何选择同步程度以及使用\gls{damping}策略可以参考 \citet{Koller-Friedman-2009} 。
  % 637 head 
 
 
@@ -785,7 +785,7 @@ $\SetE_{\RSh_2\sim q(\RSh\mid\Vv)}[h_2]$和$\SetE_{\RSh_2\sim q(\RSh\mid\Vv)}[h_
 % 641
 
 当然，上述模型只是为了说明情况的一个简单例子。
-\gls{DL}中关于变分学习中连续型变量的实际应用可以参考~\citet{Goodfeli-et-al-TPAMI-Deep-PrePrint-2013-small}。
+\gls{DL}中关于变分学习中连续型变量的实际应用可以参考~\citet{Goodfellow-et-al-2013d}。
 % 641
 
 
@@ -846,7 +846,7 @@ $\CalL(\Vv,\Vtheta,q)\approx \log p(\Vv;\Vtheta)$和$\log p(\Vv;\Vtheta)\ll \log
 训练一个可以用$\Vv$来推断$\Vh$的模型的一个主要难点在于我们没有一个\gls{supervised}训练集来训练模型。
 给定一个$\Vv$，我们无法获知一个合适的$\Vh$。
 从$\Vv$到$\Vh$的映射依赖于模型族的选择，并且在学习过程中随着${\Vtheta}$的改变而变化。
-\firstgls{wake_sleep}算法~\citep{Hinton95,Frey96}通过从模型分布中抽取$\Vv$和$\Vh$的样本来解决这个问题。
+\firstgls{wake_sleep}算法~\citep{Hinton-et-al-1995b,Frey-et-al-1996}通过从模型分布中抽取$\Vv$和$\Vh$的样本来解决这个问题。
 例如，在\gls{directed_model}中，这可以通过执行从$\Vh$开始并在$\Vv$结束的\gls{ancestral_sampling}来高效地完成。
 然后这个推断网络可以被训练来执行反向的映射：预测哪一个$\Vh$产生了当前的$\Vv$。
 %<bad>这种方法的主要缺点是我们将只能够训练推断网络在模型下具有高概率的$\Vv$值。
@@ -877,7 +877,7 @@ $\CalL(\Vv,\Vtheta,q)\approx \log p(\Vv;\Vtheta)$和$\log p(\Vv;\Vtheta)\ll \log
 % 644    19.5.2 
 
 这种\gls{learned}\gls{approximate_inference}策略已经被应用到了其他模型中。
-\citet{Salakhutdinov+Larochelle-2010}证明了在\gls{learned}推断网络中的单遍传递相比于在\gls{DBM}中的迭代\gls{mean_field}\gls{fixed_point_equation}能够得到更快的推断。
+\citet{Salakhutdinov-Larochelle-2010}证明了在\gls{learned}推断网络中的单遍传递相比于在\gls{DBM}中的迭代\gls{mean_field}\gls{fixed_point_equation}能够得到更快的推断。
 其训练过程基于运行推断网络，然后运行一步\gls{mean_field}来改进其估计，并训练推断网络来输出这个更精细的估计以代替其原始估计。
 % 644
 
@@ -886,11 +886,11 @@ $\CalL(\Vv,\Vtheta,q)\approx \log p(\Vv;\Vtheta)$和$\log p(\Vv;\Vtheta)\ll \log
 这可以被看作是\gls{AE}和\gls{sparse_coding}之间的混合。
 为模型设计概率语义是可能的，其中\gls{encoder}可以被视为执行\gls{learned}近似~\glssymbol{MAP}~推断。
 由于其浅层的\gls{encoder}，PSD不能实现我们在\gls{mean_field}推断中看到的单元之间的那种竞争。
-然而，该问题可以通过训练深度\gls{encoder}实现\gls{learned}\gls{approximate_inference}来补救，如ISTA技术~\citep{Gregor+LeCun-ICML2010}。
+然而，该问题可以通过训练深度\gls{encoder}实现\gls{learned}\gls{approximate_inference}来补救，如ISTA技术~\citep{Gregor-LeCun-2010b}。
 % 644
 
 
-近来\gls{learned}\gls{approximate_inference}已经成为了\gls{VAE}形式的\gls{generative_model}中的主要方法之一 \citep{Kingma-arxiv2013,Rezende-et-al-ICML2014}。
+近来\gls{learned}\gls{approximate_inference}已经成为了\gls{VAE}形式的\gls{generative_model}中的主要方法之一 \citep{Kingma-2013,Rezende-et-al-2014}。
 在这种优美的方法中，不需要为推断网络构造显式的目标。
 反之，推断网络仅仅被用来定义$\CalL$，然后调整推断网络的参数来增大$\CalL$。
 我们将在\secref{sec:variational_autoencoders}中详细介绍这种模型。

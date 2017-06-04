@@ -3,7 +3,7 @@
 \chapter{\glsentrytext{convolutional_network}}
 \label{chap:convolutional_networks}
 
-\firstgls{convolutional_network}\citep{LeCun89a}，也叫做\firstall{CNN}，是一种专门用来处理具有类似网格结构的数据的神经网络。
+\firstgls{convolutional_network}\citep{LeCun-1989}，也叫做\firstall{CNN}，是一种专门用来处理具有类似网格结构的数据的神经网络。
 例如时间序列数据（可以认为是在时间轴上有规律地采样形成的一维网格）和图像数据（可以看作是二维的像素网格）。
 \gls{convolutional_network}在诸多应用领域都表现优异。
 ``\gls{CNN}''一词表明该网络使用了\firstgls{convolution}这种数学运算。
@@ -304,7 +304,7 @@ S(i, j) = (I*K)(i, j) = \sum_m \sum_n I(i+m, j+n) K(m, n).
 \end{figure}
 
 \gls{pooling}函数使用某一位置的相邻输出的总体统计特征来代替网络在该位置的输出。
-例如，\firstgls{max_pooling}函数\citep{zhou1988computation}给出相邻矩形区域内的最大值。
+例如，\firstgls{max_pooling}函数\citep{Zhou-Chellappa-1988}给出相邻矩形区域内的最大值。
 其他常用的\gls{pooling}函数包括相邻矩形区域内的平均值、$L^2$范数以及基于据中心像素距离的加权平均函数。
 
 % -- 330 --
@@ -353,7 +353,7 @@ S(i, j) = (I*K)(i, j) = \sum_m \sum_n I(i+m, j+n) K(m, n).
 当输入中出现5时，相应的过滤器会匹配它并且在探测单元中引起大的激活。
 然后，无论哪个探测单元被激活，\gls{max_pooling}单元都具有大的激活。
 我们在这里演示了网络如何处理两个不同的输入，这导致两个不同的探测单元被激活，然而对\gls{pooling}单元的影响大致相同。
-这个原则在\,\gls{maxout}\,网络\citep{Goodfellow-et-al-ICML2013}和其他卷积网络中更有影响。
+这个原则在\,\gls{maxout}\,网络\citep{Goodfellow-et-al-2013a}和其他卷积网络中更有影响。
 空间位置上的\gls{max_pooling}对于平移是天然不变的；这种多通道方法只在学习其他变换时是必要的。}
 \label{fig:chap9_learned_rotation}
 \end{figure}
@@ -384,10 +384,10 @@ S(i, j) = (I*K)(i, j) = \sum_m \sum_n I(i+m, j+n) K(m, n).
 例如我们想对不同大小的图像进行分类时，分类层的输入必须是固定的大小，而这通常通过调整\gls{pooling}区域的偏置大小来实现，这样分类层总是能接收到相同数量的统计特征而不管最初的输入大小了。
 例如，最终的\gls{pooling}层可能会输出四组综合统计特征，每组对应着图像的一个象限，而与图像的大小无关。
 
-一些理论工作对于在不同情况下应当使用哪种\gls{pooling}函数给出了一些指导\citep{boureau-icml-10}。
-将特征一起动态地\gls{pooling}也是可行的，例如，对于感兴趣特征的位置运行聚类算法\citep{boureau-iccv-11}。
+一些理论工作对于在不同情况下应当使用哪种\gls{pooling}函数给出了一些指导\citep{Boureau-et-al-2010}。
+将特征一起动态地\gls{pooling}也是可行的，例如，对于感兴趣特征的位置运行聚类算法\citep{Boureau-et-al-2011}。
 这种方法对于每幅图像产生一个不同的\gls{pooling}区域集合。
-另一种方法是先\emph{学习}一个单独的\gls{pooling}结构，再应用到全部的图像中\citep{jia2012beyond}。
+另一种方法是先\emph{学习}一个单独的\gls{pooling}结构，再应用到全部的图像中\citep{Jia-et-al-2012}。
 
 \gls{pooling}可能会使得一些利用自顶向下信息的神经网络结构变得复杂，例如\gls{BM}和\gls{AE}。
 这些问题将在\chapref{part:deep_learning_research}中当我们遇到这些类型的网络时进一步讨论。
@@ -445,7 +445,7 @@ S(i, j) = (I*K)(i, j) = \sum_m \sum_n I(i+m, j+n) K(m, n).
 其中一个关键的洞察是卷积和\gls{pooling}可能导致\gls{underfitting}。
 与任何其他先验类似，卷积和\gls{pooling}只有当先验的假设合理且正确时才有用。
 如果一项任务依赖于保存精确的空间信息，那么在所有的特征上使用\gls{pooling}将会增大训练误差。
-一些\gls{convolutional_network}结构~\citep{Szegedy-et-al-arxiv2014}为了既获得具有较高不变性的特征又获得当平移不变性不合理时不会导致\gls{underfitting}的特征，被设计成在一些通道上使用\gls{pooling}而在另一些通道上不使用。
+一些\gls{convolutional_network}结构~\citep{Szegedy-et-al-2014a}为了既获得具有较高不变性的特征又获得当平移不变性不合理时不会导致\gls{underfitting}的特征，被设计成在一些通道上使用\gls{pooling}而在另一些通道上不使用。
 当一项任务涉及到要对输入中相隔较远的信息进行合并时，那么卷积所利用的先验可能就不正确了。
 
 另一个关键洞察是当我们比较卷积模型的统计学习表现时，只能以基准中的其他卷积模型作为比较的对象。
@@ -561,7 +561,7 @@ S(i, j) = (I*K)(i, j) = \sum_m \sum_n I(i+m, j+n) K(m, n).
  
 % -- 339 --
 
-在一些情况下，我们并不是真的想使用卷积，而是想用一些局部连接的网络层\citep{LeCun86,LeCun89a}。
+在一些情况下，我们并不是真的想使用卷积，而是想用一些局部连接的网络层\citep{LeCun-1986,LeCun-1989}。
 在这种情况下，我们的\gls{MLP}对应的邻接矩阵是相同的，但每一个连接都有它自己的权重，用一个6维的张量$\TSW$来表示。
 $\TSW$的索引分别是：输出的通道$i$，输出的行$j$和列$k$，输入的通道$l$，输入的行偏置$m$和列偏置$n$。
 局部连接层的线性部分可以表示为
@@ -610,7 +610,7 @@ $\TSW$的索引分别是：输出的通道$i$，输出的行$j$和列$k$，输�
 \label{fig:chap9_conv_groups}
 \end{figure}
 
-\firstgls{tiled_convolution}\citep{Gregor+LeCun-2010,Le2010}对卷积层和局部连接层进行了折衷。
+\firstgls{tiled_convolution}\citep{Gregor-LeCun-2010a,Le-et-al-2010}对卷积层和局部连接层进行了折衷。
 这里并不是对\emph{每一个}空间位置的权重集合进行学习，我们学习一组核使得当我们在空间移动时它们可以循环利用。
 这意味着在近邻的位置上拥有不同的过滤器，就像局部连接层一样，但是对于这些参数的存储需求仅仅会增长常数倍，这个常数就是核的集合的大小，而不是整个输出的特征映射的大小。
 \figref{fig:chap9_tiled}对局部连接层、\gls{tiled_convolution}和标准卷积进行了比较。
@@ -672,7 +672,7 @@ $\TSK$在这里并没有对输出映射中的每一个位置使用单独的索�
 
 通过卷积定义的矩阵转置的乘法就是这样一种运算。
 这种运算用于在卷积层反向传播误差的导数，所以它在训练多于一个\gls{hidden_layer}的\gls{convolutional_network}时是必要的。
-如果我们想要从\gls{hidden_layer}单元重构可视化单元时，同样的运算也是需要的\citep{Simard92-short}。
+如果我们想要从\gls{hidden_layer}单元重构可视化单元时，同样的运算也是需要的\citep{Simard-et-al-1992}。
 重构可视化单元是本书第\ref{part:deep_learning_research}部分的模型广泛用到的一种运算，这些模型包括\gls{AE}、\glssymbol{RBM}和稀疏编码等等。
 构建这些模型的卷积化的版本都要用到转置化卷积。
 类似核梯度运算，这种输入梯度运算在某些情况下可以用卷积来实现，但在一般情况下需要用到第三种运算来实现。%这里不是很懂
@@ -681,7 +681,7 @@ $\TSK$在这里并没有对输出映射中的每一个位置使用单独的索�
 在一些情况下，不同大小的输入通过\gls{forward_propagation}过程能够得到相同大小的输出映射，所以必须明确地告知转置运算原始输入的大小。
 
 这三种运算——卷积、从输出到权重的反向传播和从输出到输入的反向传播——对于训练任意深度的前馈\gls{convolutional_network}，以及训练带有（基于卷积的转置的）重构函数的\gls{convolutional_network}，这三种运算都足以计算它们所需的所有梯度。
-对于完全一般的多维、多样例情况下的公式，完整的推导可以参考~\cite{Goodfellow-TR2010}。 
+对于完全一般的多维、多样例情况下的公式，完整的推导可以参考~\cite{Goodfellow-2010}。 
 为了直观说明这些公式是如何起作用的，我们这里给出一个二维单个样例的版本。
  
 % -- 345 --
@@ -744,13 +744,13 @@ h(\TSK, \TSG, s)_{i, j, k} &=& \frac{\partial }{\partial \TEV_{i, j, k}} J(\TSV,
 
 经常出现的一个问题是输出平面可能比输入平面要小，如\figref{fig:chap9_zero_pad_shrink}所示。
 用于对图像中单个对象分类的常用结构中，网络空间维数的最大减少来源于使用大\gls{stride}的\gls{pooling}层。
-为了产生与输入大小相似的输出映射，我们可以避免把\gls{pooling}放在一起\citep{jain2007supervised}。
-另一种策略是单纯地产生一张低分辨率的标签网格\citep{Pinheiro+Collobert-ICML2014,Pinheiro+Collobert-CVPR2015}。
+为了产生与输入大小相似的输出映射，我们可以避免把\gls{pooling}放在一起\citep{Jain-et-al-2007}。
+另一种策略是单纯地产生一张低分辨率的标签网格\citep{Pinheiro-Collobert-2014,Pinheiro-Collobert-2015}。
 最后，原则上可以使用具有单位\gls{stride}的\gls{pooling}操作。
 
 对图像逐个像素标记的一种策略是先产生图像标签的原始猜测，然后使用相邻像素之间的交互来修正该原始猜测。
-重复这个修正步骤数次对应于在每一步使用相同的卷积，该卷积在深层网络的最后几层之间共享权重\citep{jain2007supervised}。
-这使得在层之间共享参数的连续的卷积层所执行的一系列运算，形成了一种特殊的\gls{RNN}~\citep{Pinheiro+Collobert-ICML2014,Pinheiro+Collobert-CVPR2015}。
+重复这个修正步骤数次对应于在每一步使用相同的卷积，该卷积在深层网络的最后几层之间共享权重\citep{Jain-et-al-2007}。
+这使得在层之间共享参数的连续的卷积层所执行的一系列运算，形成了一种特殊的\gls{RNN}~\citep{Pinheiro-Collobert-2014,Pinheiro-Collobert-2015}。
 \figref{fig:chap9_iterative}给出了这样一个循环\gls{convolutional_network}的结构。
 % fig 9.17
 \begin{figure}[!htb]
@@ -776,10 +776,10 @@ h(\TSK, \TSG, s)_{i, j, k} &=& \frac{\partial }{\partial \TEV_{i, j, k}} J(\TSV,
 
 % -- 347 --
  
-一旦对每个像素都进行了预测，我们就可以使用各种方法来进一步处理这些预测，以便获得图像在区域上的分割\citep{Briggman-et-al-NIPS2009,Turaga2010,Farabet-et-al-2013}。
+一旦对每个像素都进行了预测，我们就可以使用各种方法来进一步处理这些预测，以便获得图像在区域上的分割\citep{Briggman-et-al-2009,Turaga-et-al-2010,Farabet-et-al-2013}。
 一般的想法是假设大片相连的像素倾向于对应着相同的标签。
 图模型可以描述相邻像素间的概率关系。
-或者，\gls{convolutional_network}可以被训练来最大化地近似图模型的训练目标\citep{Ning-et-al-2005,Thompson-et-al-NIPS2014}。
+或者，\gls{convolutional_network}可以被训练来最大化地近似图模型的训练目标\citep{Ning-et-al-2005,Thompson-et-al-2014}。
 
 \section{数据类型}
 \label{sec:data_types}
@@ -807,7 +807,7 @@ h(\TSK, \TSG, s)_{i, j, k} &=& \frac{\partial }{\partial \TEV_{i, j, k}} J(\TSV,
 \end{table}
 % -- 349 --
  
-\gls{convolutional_network}用于视频的例子，可以参考~\cite{Chen-Ting-2010}。
+\gls{convolutional_network}用于视频的例子，可以参考~\cite{Chen-et-al-2010}。
 
 到目前为止，我们仅讨论了训练和测试数据中的每个样例都有相同的空间维度的情况。
 \gls{convolutional_network}的一个优点是它们还可以处理具有可变的空间尺度的输入。
@@ -864,7 +864,7 @@ h(\TSK, \TSG, s)_{i, j, k} &=& \frac{\partial }{\partial \TEV_{i, j, k}} J(\TSV,
 其中一种是简单地随机初始化它们。
 另一种是手动设计它们，例如设置每个核在一个特定的方向或尺度来检测边缘。
 最后，可以使用无监督的标准来学习核。
-例如，\cite{Coates2011}将$k$均值聚类算法应用于小图像块，然后使用每个学得的中心作为卷积核。
+例如，\cite{Coates-et-al-2011}将$k$均值聚类算法应用于小图像块，然后使用每个学得的中心作为卷积核。
 第\ref{part:deep_learning_research}部分描述了更多的无监督学习方法。
 使用无监督的标准来学习特征，允许这些特征的确定与位于网络结构顶层的分类层相分离。
 然后只需提取一次全部训练集的特征，构造用于最后一层的新训练集。
@@ -873,19 +873,19 @@ h(\TSK, \TSG, s)_{i, j, k} &=& \frac{\partial }{\partial \TEV_{i, j, k}} J(\TSV,
  
 % -- 351 --
  
-随机过滤器经常在\gls{convolutional_network}中表现得出乎意料得好~\cite{Jarrett-ICCV2009,Saxe-ICML2011,pinto2011scaling,cox2011beyond}。
-\cite{Saxe-ICML2011}~说明，由卷积和随后的\gls{pooling}组成的层，当赋予随机权重时，自然地变得具有频率选择性和平移不变性。
+随机过滤器经常在\gls{convolutional_network}中表现得出乎意料得好~\cite{Jarrett-et-al-2009,Saxe-et-al-2011,Pinto-et-al-2011,Cox-Pinto-2011}。
+\cite{Saxe-et-al-2011}~说明，由卷积和随后的\gls{pooling}组成的层，当赋予随机权重时，自然地变得具有频率选择性和平移不变性。
 他们认为这提供了一种廉价的方法来选择\gls{convolutional_network}的结构：首先通过仅训练最后一层来评估几个\gls{convolutional_network}结构的性能，然后选择最好的结构并使用更昂贵的方法来训练整个网络。
 
 一个中间方法是学习特征，但是使用那种不需要在每个梯度计算步骤中都进行完整的前向和反向传播的方法。
 与多层感知机一样，我们使用\gls{greedy_layer_wise_pretraining}，单独训练第一层，然后一次性地从第一层提取所有特征，之后用那些特征单独训练第二层，以此类推。
 \chapref{chap:optimization_for_training_deep_models}描述了如何实现\gls{supervised}的\gls{greedy_layer_wise_pretraining}，第\ref{part:deep_learning_research}部分将此扩展到了无监督的范畴。
-卷积模型的\gls{greedy_layer_wise_pretraining}的经典模型是卷积\gls{DBN}\citep{HonglakL2009}。
+卷积模型的\gls{greedy_layer_wise_pretraining}的经典模型是卷积\gls{DBN}\citep{Lee-et-al-2009}。
 \gls{convolutional_network}为我们提供了相对于多层感知机更进一步采用预训练策略的机会。
-并非一次训练整个卷积层，我们可以训练一小块模型，就像~\cite{Coates2011}使用$k$均值做的那样。
+并非一次训练整个卷积层，我们可以训练一小块模型，就像~\cite{Coates-et-al-2011}使用$k$均值做的那样。
 然后，我们可以用来自这个小块模型的参数来定义卷积层的核。
 这意味着使用无监督学习来训练\gls{convolutional_network}\emph{并且在训练的过程中完全不使用卷积}是可能的。
-使用这种方法，我们可以训练非常大的模型，并且只在推断期间产生高计算成本\citep{ranzato-cvpr-07-small,Jarrett-ICCV2009,koray-nips-10-small,icml2013_coates13}。
+使用这种方法，我们可以训练非常大的模型，并且只在推断期间产生高计算成本\citep{Ranzato-et-al-2007b,Jarrett-et-al-2009,Kavukcuoglu-et-al-2010,Coates-et-al-2013}。
 这种方法大约在2007到2013年间流行，当时标记的数据集很小，并且计算能力有限。
 如今，大多数\gls{convolutional_network}以纯粹\gls{supervised}的方式训练，在每次训练迭代中使用通过整个网络的完整的前向和反向传播。
  
@@ -901,7 +901,7 @@ h(\TSK, \TSG, s)_{i, j, k} &=& \frac{\partial }{\partial \TEV_{i, j, k}} J(\TSV,
 虽然\gls{convolutional_network}也经过许多其他领域的指导，但是神经网络的一些关键设计原则来自于神经科学。
 
 \gls{convolutional_network}的历史始于神经科学实验，远早于相关计算模型的发展。
-为了确定关于哺乳动物视觉系统如何工作的许多最基本的事实，神经生理学家David Hubel和Torsten Wiesel合作多年\citep{Hubel+Wiesel-1959,Hubel62,Hubel+Wiesel-1968}。
+为了确定关于哺乳动物视觉系统如何工作的许多最基本的事实，神经生理学家David Hubel和Torsten Wiesel合作多年\citep{Hubel-Wiesel-1959,Hubel-Wiesel-1962,Hubel-Wiesel-1968}。
 他们的成就最终获得了诺贝尔奖。
 他们的发现对当代深度学习模型有最大影响的是基于记录猫的单个神经元的活动。
 他们观察了猫的脑内神经元如何响应投影在猫前面屏幕上精确位置的图像。
@@ -935,7 +935,7 @@ V1是大脑对视觉输入开始执行显著高级处理的第一个区域。
   这些细胞响应类似于由简单细胞检测的那些特征，但是复杂细胞对于特征的位置微小偏移具有不变性。 
   这启发了\gls{convolutional_network}的\gls{pooling}单元。
   复杂细胞对于照明中的一些变化也是不变的，不能简单地通过在空间位置上\gls{pooling}来刻画。 
-  这些不变性激发了\gls{convolutional_network}中的一些跨通道\gls{pooling}策略，例如maxout单元\citep{Goodfellow-et-al-ICML2013}。
+  这些不变性激发了\gls{convolutional_network}中的一些跨通道\gls{pooling}策略，例如maxout单元\citep{Goodfellow-et-al-2013a}。
 \end{enumerate}
 
 虽然我们最了解V1，但是一般认为相同的基本原理也适用于视觉系统的其他区域。
@@ -943,7 +943,7 @@ V1是大脑对视觉输入开始执行显著高级处理的第一个区域。
 当我们穿过大脑的多个解剖层时，我们最终找到了响应一些特定概念的细胞，并且这些细胞对输入的很多种变换都具有不变性。
 这些细胞被昵称为``祖母细胞''——这个想法是一个人可能有一个神经元，当看到他祖母的照片时该神经元被激活，无论祖母是出现在照片的左边或右边，无论照片是她的脸部的特写镜头还是她的全身照，也无论她处在光亮还是黑暗中，等等。
 
-这些祖母细胞已经被证明确实存在于人脑中，在一个被称为\emph{内侧颞叶}的区域\citep{quiroga2005invariant}。
+这些祖母细胞已经被证明确实存在于人脑中，在一个被称为\emph{内侧颞叶}的区域\citep{Quiroga-et-al-2005}。
 研究人员测试了单个神经元是否会响应名人的照片。
 他们发现了后来被称为``Halle Berry神经元''的神经元：由Halle Berry的概念激活的单个神经元。
 当一个人看到Halle Berry的照片，Halle Berry的图画，甚至包含单词``Halle Berry''的文本时，这个神经元会触发。
@@ -957,7 +957,7 @@ V1是大脑对视觉输入开始执行显著高级处理的第一个区域。
 这发生在瞥见对象的前100ms内。
 如果允许一个人继续观察对象更多的时间，那么信息将开始回流，因为大脑使用自上而下的反馈来更新较低级脑区中的激活。
 然而，如果我们打断人的注视，并且只观察前100ms内的大多数前向激活导致的放电率，那么IT被证明与\gls{convolutional_network}非常相似。
-\gls{convolutional_network}可以预测IT放电率，并且在执行对象识别任务时与人类（时间有限的情况）非常类似\citep{dicarlo-tutorial-2013}。
+\gls{convolutional_network}可以预测IT放电率，并且在执行对象识别任务时与人类（时间有限的情况）非常类似\citep{DiCarlo-2013}。
 
 话虽如此，\gls{convolutional_network}和哺乳动物的视觉系统之间还是有许多区别。
 这些区别有一些是计算神经科学家所熟知的，但超出了本书的范围。
@@ -971,7 +971,7 @@ V1是大脑对视觉输入开始执行显著高级处理的第一个区域。
   人类大脑控制几次眼动，称为\firstgls{saccade}，以瞥见场景中最显眼的或任务相关的部分。
   将类似的\gls{attention_mechanism}融入深度学习模型是一个活跃的研究方向。
   在深度学习的背景下，\gls{attention_mechanism}对于自然语言处理是最成功的，参考\secref{sec:using_an_attention_mechanism_and_aligning_pieces_of_data}。
-  研究者已经研发了几种具有视觉机制的视觉模型，但到目前为止还没有成为主导方法\citep{Larochelle2010,Denil2012}。
+  研究者已经研发了几种具有视觉机制的视觉模型，但到目前为止还没有成为主导方法\citep{Larochelle-Hinton-2010,Denil-et-al-2012}。
   
   \item 人类视觉系统集成了许多其他感觉，例如听觉，以及像我们的心情和想法一样的因素。
   \gls{convolutional_network}迄今为止纯粹是视觉的。
@@ -986,20 +986,20 @@ V1是大脑对视觉输入开始执行显著高级处理的第一个区域。
   \item 虽然前馈IT放电频率刻画了与\gls{convolutional_network}特征很多相同的信息，但是仍不清楚中间计算的相似程度。
   大脑可能使用非常不同的激活和\gls{pooling}函数。
   单个神经元的激活可能不能用单个线性过滤器的响应来很好地表征。
-  最近的V1模型涉及对每个神经元的多个二次过滤器\citep{rust:2005}。
+  最近的V1模型涉及对每个神经元的多个二次过滤器\citep{Rust-et-al-2005}。
   事实上，我们的``简单细胞''和``复杂细胞''的草图图片可能并没有区别；简单细胞和复杂细胞可能是相同种类的细胞，但是它们的``参数''使得它们能够实现从我们所说的``简单''到``复杂''的连续的行为。
 \end{itemize}
  
 % -- 355 --
  
 还值得一提的是，神经科学很少告诉我们该如何\emph{训练}\gls{convolutional_network}。
-具有跨多个空间位置的\gls{parameter_sharing}的模型结构，可以追溯到早期关于视觉的联结主义模型\citep{Marr76}，但是这些模型没有使用现代的反向传播算法和梯度下降。
-例如，\citep{Fukushima80}结合了现代\gls{convolutional_network}的大多数模型结构设计元素，但依赖于层次化的无监督聚类算法。
+具有跨多个空间位置的\gls{parameter_sharing}的模型结构，可以追溯到早期关于视觉的联结主义模型\citep{Marr-Poggio-1976}，但是这些模型没有使用现代的反向传播算法和梯度下降。
+例如，\citep{Fukushima-1980}结合了现代\gls{convolutional_network}的大多数模型结构设计元素，但依赖于层次化的无监督聚类算法。
 
-\cite{Lang+Hinton88}引入反向传播来训练\firstall{TDNNs}。
+\cite{Lang-Hinton-1988}引入反向传播来训练\firstall{TDNNs}。
 使用当代术语来说，TDNN是用于时间序列的一维\gls{convolutional_network}。
 用于这些模型的反向传播不受任何神经科学观察的启发，并且被一些人认为是生物不可信的。
-在基于使用反向传播训练的TDNN成功之后，\cite{LeCun89d}通过将相同的训练算法应用于图像的2维卷积来发展现代\gls{convolutional_network}。
+在基于使用反向传播训练的TDNN成功之后，\cite{LeCun-et-al-1989}通过将相同的训练算法应用于图像的2维卷积来发展现代\gls{convolutional_network}。
 
 到目前为止，我们已经描述了简单细胞对于某些特征是如何呈现粗略的线性和选择性，复杂细胞是如何更加的非线性，并且对于这些简单细胞特征的某些变换具有不变性，以及在选择性和不变性之间交替放置的层可以产生对非常特定现象的祖母细胞。
 我们还没有精确描述这些单个细胞检测到了什么。
@@ -1009,7 +1009,7 @@ V1是大脑对视觉输入开始执行显著高级处理的第一个区域。
 在生物神经网络中，我们不能访问权重本身。
 相反，我们在神经元自身中放置一个电极，在动物视网膜前显示几个白噪声图像样本，并记录这些样本中的每一个是如何导致神经元激活的。
 然后，我们可以对这些响应拟合线性模型，以获得近似的神经元权重。
-这种方法被称为\firstgls{reverse_correlation}\citep{ringach2004reverse}。
+这种方法被称为\firstgls{reverse_correlation}\citep{Ringach-Shapley-2004}。
  
 % -- 356 --
  
@@ -1091,12 +1091,12 @@ V1是大脑对视觉输入开始执行显著高级处理的第一个区域。
 换句话说，复杂细胞对于图像在方向$\tau$上的微小变换或者翻转图像（用白色代替黑色，反之亦然）具有不变性。
 
 神经科学和机器学习之间最显著的对应关系，是从视觉上比较机器学习模型学得的特征与使用V1得到的特征。
-\cite{Olshausen+Field-1996}说明，一个简单的无监督学习算法，稀疏编码，学习的特征具有与简单细胞类似的感受野。
+\cite{Olshausen-Field-1996}说明，一个简单的无监督学习算法，稀疏编码，学习的特征具有与简单细胞类似的感受野。
 从那时起，我们发现，当应用于自然图像时，极其多样的统计学习算法学习类\gls{Gabor_function}的特征。这包括大多数深度学习算法，它们在其第一层中学习这些特征。
 \figref{fig:chap9_feature_detectors}给出了一些例子。
 因为如此众多不同的学习算法学习边缘检测器，所以很难仅基于学习算法学得的特征，来断定哪一个特定的学习算法是``正确''的大脑模型（虽然，当应用于自然图像时，如果一个算法\emph{不能}学得某种检测器时，它能够作为一种否定标志）。
 这些特征是自然图像的统计结构的重要部分，并且可以通过许多不同的统计建模方法来重新获得。
-读者可以参考\citep{hyvarinen-book2009}来获得自然图像统计领域的综述。
+读者可以参考\citep{Hyvarinen-et-al-2009}来获得自然图像统计领域的综述。
 % fig 9.19
 \begin{figure}
 \ifOpenSource
@@ -1124,14 +1124,14 @@ V1是大脑对视觉输入开始执行显著高级处理的第一个区域。
 它们是将研究大脑获得的深刻理解成功用于机器学习应用的关键例子。
 它们也是第一个表现良好的深度模型之一，远远早于任意深度模型被认为是可行的。
 \gls{convolutional_network}也是第一个解决重要商业应用的神经网络，并且仍然是当今深度学习商业应用的前沿。
-例如，在20世纪90年代，AT\&T的神经网络研究小组开发了一个用于读取支票的\gls{convolutional_network}\citep{chapter-gradient-document-2001}。
+例如，在20世纪90年代，AT\&T的神经网络研究小组开发了一个用于读取支票的\gls{convolutional_network}\citep{LeCun-et-al-1998b}。
 到90年代末，NEC部署的这个系统已经被用于读取美国10％以上的支票。
-后来，微软部署了若干个基于\gls{convolutional_network}的OCR和手写识别系统\citep{simard-03-small}。 
+后来，微软部署了若干个基于\gls{convolutional_network}的OCR和手写识别系统\citep{Simard-et-al-2003}。 
 关于\gls{convolutional_network}的这种应用和更现代应用的更多细节，参考\chapref{chap:applications}。
-读者可以参考\citep{lecun_convolutional_2010}了解2010年之前的更为深入的\gls{convolutional_network}历史。
+读者可以参考\citep{LeCun-et-al-2010}了解2010年之前的更为深入的\gls{convolutional_network}历史。
 
 \gls{convolutional_network}也被用作在许多比赛中的取胜手段。
-当前对深度学习的商业兴趣的热度始于\cite{Krizhevsky-2012}赢得了ImageNet对象识别挑战，但是在那之前，\gls{convolutional_network}也已经被用于赢得前些年影响较小的其他机器学习和计算机视觉竞赛了。
+当前对深度学习的商业兴趣的热度始于\cite{Krizhevsky-et-al-2012}赢得了ImageNet对象识别挑战，但是在那之前，\gls{convolutional_network}也已经被用于赢得前些年影响较小的其他机器学习和计算机视觉竞赛了。
  
 % -- 360 --
  

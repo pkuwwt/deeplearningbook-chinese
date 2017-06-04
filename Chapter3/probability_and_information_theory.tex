@@ -19,7 +19,7 @@
 
 如果你已经对概率论和信息论很熟悉了，那么除了\secref{sec:structured_probabilistic_models_chap3}以外的整章内容，你都可以跳过。
 而在\secref{sec:structured_probabilistic_models_chap3}中，我们会介绍用来描述机器学习中\gls{structured_probabilistic_models}的图。
-即使你对这些主题没有任何的先验知识，本章对于完成深度学习的研究项目来说也已经足够，尽管如此我们还是建议你能够参考一些额外的资料，例如~\cite{Jaynes03}。
+即使你对这些主题没有任何的先验知识，本章对于完成深度学习的研究项目来说也已经足够，尽管如此我们还是建议你能够参考一些额外的资料，例如~\cite{Jaynes-2003}。
 
 % -- 51 --
 
@@ -35,7 +35,7 @@
 %(这里uncertain和stochastic有什么区别？)
 不确定性和随机性可能来自多个方面。
 至少从20世纪80年代开始，研究人员就对使用概率论来量化不确定性提出了令人信服的论据。
-这里给出的许多论据都是根据~\cite{Pearl88}的工作总结或启发得到的。
+这里给出的许多论据都是根据~\cite{Pearl-1988}的工作总结或启发得到的。
 
 几乎所有的活动都需要一些在不确定性存在的情况下进行推理的能力。
 事实上，除了那些被定义为真的数学\gls{statement}，我们很难认定某个命题是千真万确的或者确保某件事一定会发生。
@@ -76,7 +76,7 @@
 
 关于不确定性的常识推理，如果我们已经列出了若干条我们期望它具有的性质，那么满足这些性质的唯一一种方法就是将\gls{bayesian_probability}和\gls{frequentist_probability}视为等同的。
 例如，如果我们要在扑克牌游戏中根据玩家手上的牌计算她能够获胜的概率，我们使用和医生情境完全相同的公式，就是我们依据病人的某些症状计算她是否患病的概率。
-为什么一小组常识性假设蕴含了必须是相同的公理控制两种概率？更多的细节参见~\cite{Ramsey1926}。
+为什么一小组常识性假设蕴含了必须是相同的公理控制两种概率？更多的细节参见~\cite{Ramsey-1926}。
 
 % -- 53 --
 
@@ -338,7 +338,7 @@ P(\RSx = x) = \phi^x (1-\phi)^{1-x}\\
 \subsection{\glsentrytext{multinoulli_distribution}}
 \label{sec:multinoulli_distribution}
 
-\firstgls{multinoulli_distribution}或者\firstgls{categorical_distribution}是指在具有$k$个不同状态的单个离散型\gls{RV}上的分布，其中$k$是一个有限值。\footnote{``multinoulli''这个术语是最近被Gustavo Lacerdo发明、被\cite{MurphyBook2012}推广的。
+\firstgls{multinoulli_distribution}或者\firstgls{categorical_distribution}是指在具有$k$个不同状态的单个离散型\gls{RV}上的分布，其中$k$是一个有限值。\footnote{``multinoulli''这个术语是最近被Gustavo Lacerdo发明、被\cite{Murphy-2012}推广的。
 \gls{multinoulli_distribution}是\firstgls{multinomial_distribution}的一个特例。
 \gls{multinomial_distribution}是$\{0,\ldots, n\}^k$中的向量的分布，用于表示当对~\gls{multinoulli_distribution}采样$n$次时$k$个类中的每一个被访问的次数。
 很多文章使用``\gls{multinomial_distribution}''而实际上说的是~\gls{multinoulli_distribution}，但是他们并没有说是对$n=1$的情况，这点需要注意。}
@@ -544,7 +544,7 @@ sigmoid函数在变量取绝对值非常大的正值或负值时会出现\firstg
 \label{fig:chap3_sigmoid_color}
 \end{figure}
 
-另外一个经常遇到的函数是\firstgls{softplus_function}\citep{secondorder:2001:nips}：
+另外一个经常遇到的函数是\firstgls{softplus_function}\citep{Dugas-et-al-2001}：
 \begin{equation}
 \zeta(x) = \log(1+\exp(x)).
 \end{equation}
@@ -683,7 +683,7 @@ p_x(\Vx) = p_y(g(\Vx)) \left | \det \left ( \frac{\partial g(\Vx)}{\partial \Vx}
 在机器学习中，我们也可以把信息论应用在连续型变量上，而信息论中一些消息长度的解释不怎么使用。
 信息论是电子工程和计算机科学中许多领域的基础。
 在本书中，我们主要使用信息论的一些关键思想来描述\gls{PD}或者量化\gls{PD}之间的相似性。
-有关信息论的更多细节，参见~\cite{cover-book2006}或者~\cite{MacKay03}。
+有关信息论的更多细节，参见~\cite{Cover-Thomas-2006}或者~\cite{MacKay-2003}。
 
 信息论的基本想法是一个不太可能的事件居然发生了，要比一个非常可能的事件发生，能提供更多的信息。
 消息说：``今天早上太阳升起''信息量是如此之少以至于没有必要发送，但一条消息说：``今天早上有日食''信息量就很丰富。

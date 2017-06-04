@@ -169,7 +169,7 @@ $q$分布经常会取一些简单常用的分布使得我们能够从$q$分布�
 例如，\gls{importance_sampling}被应用于加速训练具有大规模词表的神经网络\gls{language_model}的过程中（见\secref{sec:importance_sampling_chap12}）或者其他有着大量输出结点的\gls{NN}中。   
 此外，还可以看到\gls{importance_sampling}应用于估计\gls{partition_function}（一个概率分布的归一化常数），详见\secref{sec:estimating_the_partition_function}，以及在深度有向图模型比如\gls{VAE}中估计对数似然（详见\secref{sec:variational_autoencoders}）。
 采用\gls{SGD}训练模型参数时\gls{importance_sampling}可以用来改进对\gls{cost_function}梯度的估计，尤其是分类器这样的模型，其中\gls{cost_function}的大部分\gls{cost}来自于少量错误分类的样本。    
-在这种情况下，更加频繁地抽取这些困难的样本可以减小梯度估计的方差~\citep{Hinton06}。 
+在这种情况下，更加频繁地抽取这些困难的样本可以减小梯度估计的方差~\citep{Hinton-et-al-2006}。 
 % 586 
 
 
@@ -180,7 +180,7 @@ $q$分布经常会取一些简单常用的分布使得我们能够从$q$分布�
 在深度学习中，当分布$p_{\text{model}}(\RVx)$表示成无向模型时，这种情况往往会发生。
 在这种情况下，为了从分布$p_{\text{model}}(\RVx)$中近似采样，我们引入了一种称为\firstgls{markov_chain}的数学工具。
 利用\gls{markov_chain}来进行\gls{monte_carlo}估计的这一类算法被称为\firstall{mcmc}方法。
-\citet{koller-book2009}花了大量篇幅来描述\gls{mcmc}算法在\gls{ML}中的应用。
+\citet{Koller-Friedman-2009}花了大量篇幅来描述\gls{mcmc}算法在\gls{ML}中的应用。
 \glssymbol{mcmc}~技术最标准、最一般的的理论保证只适用于那些各状态概率均不为零的模型。
 因此，这些技术最方便的使用方法是用于从\firstgls{energy_based_model}即$p(\Vx)\propto \exp(-E(\Vx))$中采样，见\secref{sec:energy_based_models}。
 在~\glssymbol{energy_based_model}~的公式表述中，每一个状态所对应的概率都不为零。
@@ -261,7 +261,7 @@ q^{(t+1)}(x') = \sum_{x} q^{(t)}(x) T(x'\mid x).
 
 矩阵$\MA$有一种特殊的结构，因为它的每一列都代表一个概率分布。
 这样的矩阵被称为\firstgls{stochastic_matrix}。
-如果对于任意状态$x$到任意其他状态$x'$存在一个$t$使得转移概率不为$0$，那么Perron-Frobenius定理~\citep{perron1907theorie,frobenius1908matrizen}可以保证这个矩阵的最大特征值是实数且大小为$1$。
+如果对于任意状态$x$到任意其他状态$x'$存在一个$t$使得转移概率不为$0$，那么Perron-Frobenius定理~\citep{Perron-1907,Frobenius-1908}可以保证这个矩阵的最大特征值是实数且大小为$1$。
 我们可以看到所有的特征值随着时间呈现指数变化： 
 \begin{align}
 \Vv^{(t)} = (\MV \text{diag}(\Vlambda)\MV^{-1})^{t} \Vv^{(0)} = \MV \text{diag}(\Vlambda)^t \MV^{-1} \Vv^{(0)}.
@@ -498,13 +498,13 @@ $\beta$参数可以被理解为\firstgls{temperature}的倒数，反映了\gls{e
 \firstgls{tempering}作为一种通用的策略，它通过从$\beta<1$模型中采样来实现在$p_1$的不同\gls{mode}之间快速\gls{mixing}。
 % 594
 
-基于\firstgls{tempering_transition}~\citep{Neal94b}的\gls{markov_chain}临时从高\gls{temperature}的分布中采样使其在不同\gls{mode}之间\gls{mixing}，然后继续从单位\gls{temperature}的分布中采样。
+基于\firstgls{tempering_transition}~\citep{Neal-1994}的\gls{markov_chain}临时从高\gls{temperature}的分布中采样使其在不同\gls{mode}之间\gls{mixing}，然后继续从单位\gls{temperature}的分布中采样。
 这些技巧被应用在一些模型比如\,\glssymbol{RBM}中~\citep{Salakhutdinov-2010}。
 另一种方法是利用\firstgls{parallel_tempering}~\citep{Iba-2001}。
 其中\gls{markov_chain}并行地模拟许多不同\gls{temperature}的不同状态。
 最高\gls{temperature}的状态\gls{mixing}较慢，相比之下最低\gls{temperature}的状态，即\gls{temperature}为$1$时，采出了精确的样本。
 转移算子包括了两个\gls{temperature}之间的随机跳转，所以一个高\gls{temperature}状态分布槽中的样本有足够大的概率跳转到低\gls{temperature}分布的槽中。
-这个方法也被应用到了\,\glssymbol{RBM}中~\citep{Desjardins+al-2010-small,Cho10IJCNN}。
+这个方法也被应用到了\,\glssymbol{RBM}中~\citep{Desjardins-et-al-2010,Cho-et-al-2010}。
 尽管\gls{tempering}这种方法前景可期，现今它仍然无法让我们在采样复杂的\gls{energy_based_model}中更进一步。
 一个可能的原因是在\firstgls{critical_temperatures}时\gls{temperature}转移算子必须设置得非常慢（因为\gls{temperature}需要逐渐下降）来确保\gls{tempering}的有效性。
 % 594
@@ -519,7 +519,7 @@ $\beta$参数可以被理解为\firstgls{temperature}的倒数，反映了\gls{e
 在许多\gls{representation_learning}算法如\gls{AE}和\,\glssymbol{RBM}\,中，$\Vh$的边缘分布相比于$\Vx$上的原始数据分布，通常表现为更加均匀、更趋近于\gls{unimodal}。
 或许可以说，这是因为利用了所有可用的表示空间并尽量减小\gls{reconstruction_error}。
 因为当训练集上的不同样本之间在$\Vh$空间能够被非常容易地区分时，我们也会很容易地最小化\gls{reconstruction_error}。
-\citet{Bengio-et-al-ICML2013-small}观察到这样的现象，堆叠越深的\gls{regularize}\gls{AE}或者\,\glssymbol{RBM}，顶端$\Vh$空间的边缘分布越趋向于均匀和发散，而且不同\gls{mode}（比如说实验中的类别）所对应区域之间的间距也会越小。
+\citet{Bengio-et-al-2013a}观察到这样的现象，堆叠越深的\gls{regularize}\gls{AE}或者\,\glssymbol{RBM}，顶端$\Vh$空间的边缘分布越趋向于均匀和发散，而且不同\gls{mode}（比如说实验中的类别）所对应区域之间的间距也会越小。
 在高层空间中训练\,\glssymbol{RBM}\,会使得~\gls{gibbs_sampling}在\gls{mode}间\gls{mixing}得更快。
 然而，如何利用这种观察到的现象来辅助训练深度\gls{generative_model}或者从中采样仍然有待探索。
 % 595

@@ -281,7 +281,7 @@ $\tilde{w_i} = \frac{H_{i,i}}{H_{i,i} + \alpha} w_i^*$。
  
 由$L^1$\gls{regularization}导出的\gls{sparse}性质已经被广泛地用于\firstgls{feature_selection}机制。
 \gls{feature_selection}从可用的特征子集选择出有意义的特征，化简\gls{ML}问题。
-著名的LASSO~\citep{Tibshirani95}（Least Absolute Shrinkage and
+著名的LASSO~\citep{Tibshirani-1995}（Least Absolute Shrinkage and
 Selection Operator）模型将$L^1$惩罚和\gls{linear_model}结合，并使用最小二乘\gls{cost_function}。 
 $L^1$惩罚使部分子集的权重为零，表明相应的特征可以被安全地忽略。
  
@@ -354,11 +354,11 @@ $L^1$惩罚使部分子集的权重为零，表明相应的特征可以被安全
 当使用较高的学习率时，很可能进入正反馈，即大的权重诱导大\gls{gradient}，然后使得权重获得较大更新。
 如果这些更新持续增加权重的大小，$\Vtheta$就会迅速增大，直到离原点很远而发生溢出。
 重投影的显式约束可以防止这种反馈环引起权重无限制地持续增加。
-\cite{Hinton-et-al-arxiv2012}建议结合使用约束和高学习速率，这样能更快地探索参数空间，并保持一定的稳定性。
+\cite{Hinton-et-al-2012c}建议结合使用约束和高学习速率，这样能更快地探索参数空间，并保持一定的稳定性。
 
 % -- 231 --
 
-\cite{Hinton-et-al-arxiv2012}尤其推荐由\cite{Srebro05}引入的策略：约束\gls{NN}层的权重矩阵每列的范数，而不是限制整个权重矩阵的~\ENNAME{Frobenius}~范数。
+\cite{Hinton-et-al-2012c}尤其推荐由\cite{Srebro-Shraibman-2005}引入的策略：约束\gls{NN}层的权重矩阵每列的范数，而不是限制整个权重矩阵的~\ENNAME{Frobenius}~范数。
 分别限制每一列的范数可以防止某一\gls{hidden_unit}有非常大的权重。
 如果我们将此约束转换成~\ENNAME{Lagrange}~函数中的一个惩罚，这将与$L^2$ \gls{weight_decay}类似但每个\gls{hidden_unit}的权重都具有单独的~\glssymbol{KKT}~乘子。
 每个~\glssymbol{KKT}~乘子分别会被动态更新，以使每个\gls{hidden_unit}服从约束。
@@ -427,15 +427,15 @@ $L^1$惩罚使部分子集的权重为零，表明相应的特征可以被安全
 能保持我们希望的分类不变，但不容易执行的转换也是存在的。
 例如，平面外绕轴转动难以通过简单的几何运算在输入像素上实现。
 
-数据集增强对语音识别任务也是有效的\citep{Jaitly_VTLP_2013}。
+数据集增强对语音识别任务也是有效的\citep{Jaitly-Hinton-2013}。
 
-在\gls{NN}的输入层注入噪声\citep{SietsmaDow91}也可以被看作是数据增强的一种方式。
+在\gls{NN}的输入层注入噪声\citep{Sietsma-Dow-1991}也可以被看作是数据增强的一种方式。
 对于许多分类甚至一些回归任务而言，即使小的随机噪声被加到输入，任务仍应该是能够被解决的。
-然而 ，\gls{NN}被证明对噪声不是非常健壮\citep{TangElias10}。
+然而 ，\gls{NN}被证明对噪声不是非常健壮\citep{Tang-Eliasmith-2010}。
 改善\gls{NN}健壮性的方法之一是简单地将随机噪声添加到输入再进行训练。
-输入噪声注入是一些\gls{unsupervised_learning}算法的一部分，如\gls{DAE}\citep{VincentPLarochelleH2008}。
+输入噪声注入是一些\gls{unsupervised_learning}算法的一部分，如\gls{DAE}\citep{Vincent-et-al-2008}。
 向\gls{hidden_unit}施加噪声也是可行的，这可以被看作在多个抽象层上进行的数据集增强。
-\cite{Poole14}最近表明，噪声的幅度被细心调整后，该方法是非常高效的。
+\cite{Poole-et-al-2014}最近表明，噪声的幅度被细心调整后，该方法是非常高效的。
 我们将在\secref{sec:dropout}介绍一个强大的\gls{regularization}策略~\gls{dropout}，该策略可以被看作是通过与噪声\emph{相乘}构建新输入的过程。
 
 在比较\gls{ML}基准测试的结果时，考虑其采取的数据集增强是很重要的。
@@ -455,12 +455,12 @@ $L^1$惩罚使部分子集的权重为零，表明相应的特征可以被安全
 \label{sec:noise_robustness}
 
 \secref{sec:dataset_augmentation_chap7}已经提出将噪声作用于输入，作为数据集增强策略。
-对于某些模型而言，向输入添加方差极小的噪声等价于对权重施加范数惩罚\citep{Bishop1995,bishop95training}。
+对于某些模型而言，向输入添加方差极小的噪声等价于对权重施加范数惩罚\citep{Bishop-1995a,Bishop-1995b}。
 在一般情况下，噪声注入远比简单地收缩参数强大，特别是噪声被添加到\gls{hidden_unit}时会更加强大。
 向\gls{hidden_unit}添加噪声是值得单独讨论重要的话题；在\secref{sec:dropout}所述~\gls{dropout}~算法是这种做法的主要发展方向。
 
 另一种\gls{regularization}模型的噪声使用方式是将其加到的权重。
-这项技术主要用于\gls{RNN}~\citep{JimGilesHorne1996,Graves-2011}。
+这项技术主要用于\gls{RNN}~\citep{Jim-et-al-1996,Graves-2011}。
 这可以被解释为关于权重的贝叶斯\gls{inference}的随机实现。
 贝叶斯学习过程将权重视为不确定的，并且可以通过概率分布表示这种不确定性。
 向权重添加噪声是反映这种不确定性的一种实用的随机方法。
@@ -486,7 +486,7 @@ $L^1$惩罚使部分子集的权重为零，表明相应的特征可以被安全
 对于小的$\eta$，最小化带权重噪声（方差为$\eta \MI$\,）的$J$等同于最小化附加\gls{regularization}项的$J$：
 $ \eta \SetE_{p(\Vx,y)}[\norm{\nabla_{\MW}~\hat y(\Vx)}^2]$。
 这种形式的\gls{regularization}鼓励参数进入权重小扰动对输出相对影响较小的参数空间区域。
-换句话说，它推动模型进入对权重小的变化相对不敏感的区域，找到的点不只是极小点，还是由平坦区域所包围的最小点\citep{Hochreiter95}。
+换句话说，它推动模型进入对权重小的变化相对不敏感的区域，找到的点不只是极小点，还是由平坦区域所包围的最小点\citep{Hochreiter-Schmidhuber-1995}。
 在简化的线性回归中（例如，$\hat y(\Vx) = \Vw^\top \Vx + b$），正则项退化为$ \eta \SetE_{p(\Vx)}[\norm{\Vx}^2]$，这与函数的参数无关，因此不会对$\tilde J_{\Vw}$关于模型参数的梯度有影响。
 
 % -- 235 --
@@ -516,21 +516,21 @@ $ \eta \SetE_{p(\Vx,y)}[\norm{\nabla_{\MW}~\hat y(\Vx)}^2]$。
 学习\gls{representation}的目的是使相同类中的\gls{example}有类似的表示。
 \gls{unsupervised_learning}可以为如何在\gls{representation}空间聚集\gls{example}提供有用线索。
 在输入空间紧密聚集的\gls{example}应该被映射到类似的表示。
-在许多情况下，新空间上的线性分类器可以达到较好的泛化\citep{Belkin+Niyogi-2002,Chapelle+al-2003}。
+在许多情况下，新空间上的线性分类器可以达到较好的泛化\citep{Belkin-Niyogi-2002,Chapelle-et-al-2003}。
 这种方法的一个经典变种是使用\gls{PCA}作为分类前（在投影后的数据上分类）的预处理步骤。
 
 我们可以构建这样一个模型，其中生成模型$P(\RVx)$或$P(\RVx, \RVy)$与判别模型$P(\RVy \mid \RVx)$共享参数，而不用分离\gls{unsupervised}和\gls{supervised}部分。
 我们权衡\gls{supervised}模型\gls{criterion} $-\log P(\RVy \mid \RVx)$和\gls{unsupervised}或生成模型\gls{criterion}（如$-\log P(\RVx)$或$-\log P(\RVx, \RVy)$）。
-生成模型\gls{criterion}表达了对\gls{supervised_learning}问题解的特殊形式的先验知识\citep{LasserreJ2006}，即$P(\RVx)$的结构通过某种共享参数的方式连接到$P(\RVy \mid \RVx)$。
-通过控制在总\gls{criterion}中的生成\gls{criterion}，我们可以获得比纯生成或纯判别训练\gls{criterion}更好的权衡\citep{LasserreJ2006,Larochelle+Bengio-2008-small}。
+生成模型\gls{criterion}表达了对\gls{supervised_learning}问题解的特殊形式的先验知识\citep{Lasserre-et-al-2006}，即$P(\RVx)$的结构通过某种共享参数的方式连接到$P(\RVy \mid \RVx)$。
+通过控制在总\gls{criterion}中的生成\gls{criterion}，我们可以获得比纯生成或纯判别训练\gls{criterion}更好的权衡\citep{Lasserre-et-al-2006,Larochelle-Bengio-2008}。
 
-\cite{Russ+Geoff-nips-2007}描述了一种学习回归\gls{kernel_machines}中核函数的方法，其中建模$P(\RVx)$时使用的未标记样本大大提高了$P(\RVy \mid \RVx)$的效果。
+\cite{Salakhutdinov-Hinton-2008}描述了一种学习回归\gls{kernel_machines}中核函数的方法，其中建模$P(\RVx)$时使用的未标记样本大大提高了$P(\RVy \mid \RVx)$的效果。
 
-更多\gls{semi_supervised_learning}的信息，请参阅~\cite{SSL-Book-2006}。
+更多\gls{semi_supervised_learning}的信息，请参阅~\cite{Chapelle-et-al-2006}。
 
 \section{\glsentrytext{multitask_learning}}
 \label{sec:multitask_learning}
-\gls{multitask_learning}~\citep{caruana93a}是通过合并几个任务中的样例（可以视为对参数施加的软约束）来提高泛化的一种方式。
+\gls{multitask_learning}~\citep{Caruana-1993}是通过合并几个任务中的样例（可以视为对参数施加的软约束）来提高泛化的一种方式。
 额外的训练样本以同样的方式将模型的参数推向泛化更好的方向，当模型的一部分在任务之间共享时，模型的这一部分更多地被约束为良好的值（假设共享是合理的），往往能更好地泛化。
 
 \figref{fig:chap7_multi_factor_output}展示了\gls{multitask_learning}中非常普遍的一种形式，其中不同的\gls{supervised}任务（给定$\RVx$预测$\RVy^{(i)}$）共享相同的输入$\RVx$以及一些中间层表示$\Vh^{(\text{share})}$，能学习共同的因素池。
@@ -554,7 +554,7 @@ $ \eta \SetE_{p(\Vx,y)}[\norm{\nabla_{\MW}~\hat y(\Vx)}^2]$。
 \label{fig:chap7_multi_factor_output}
 \end{figure}
 
-因为共享参数，其统计强度可大大提高（共享参数的样本数量相对于单任务模式增加的比例），并能改善泛化和泛化误差的范围\citep{baxter95a}。
+因为共享参数，其统计强度可大大提高（共享参数的样本数量相对于单任务模式增加的比例），并能改善泛化和泛化误差的范围\citep{Baxter-1995}。
 当然，仅当不同的任务之间存在某些统计关系的假设是合理（意味着某些参数能通过不同任务共享）时才会发生这种情况。
 
 从\gls{DL}的观点看，底层的先验知识如下：\emph{能解释数据变化（在与之相关联的不同任务中观察到）的因素中，某些因素是跨两个或更多任务共享的。}
@@ -709,7 +709,7 @@ $ \eta \SetE_{p(\Vx,y)}[\norm{\nabla_{\MW}~\hat y(\Vx)}^2]$。
 \paragraph{\gls{early_stopping}为何具有\gls{regularization}效果:}
 目前为止，我们已经声明\gls{early_stopping}是一种\gls{regularization}策略，但我们只通过展示验证集误差的学习曲线是一个U型曲线来支持这种说法。
 \gls{early_stopping}\gls{regularization}模型的真正机制是什么呢？ 
-\cite{Bishop1995}和~\cite{Sjoberg95}认为\gls{early_stopping}可以将优化过程的参数空间限制在初始参数值$\Vtheta_0$的小邻域内。
+\cite{Bishop-1995a}和~\cite{Sjoberg-Ljung-1995}认为\gls{early_stopping}可以将优化过程的参数空间限制在初始参数值$\Vtheta_0$的小邻域内。
 更具体地，想象用学习率$\epsilon$进行$\tau$个优化步骤（对应于$\tau$个训练迭代）。
 我们可以将$\epsilon \tau$作为有效\gls{capacity}的度量。
 假设\gls{gradient}有界，限制迭代的次数和学习速率能够限制从$\Vtheta_0$到达的参数空间的大小，如\figref{fig:chap7_reg_l1_vs_l2_mistake}所示。
@@ -811,7 +811,7 @@ $\forall i, w_i^{(A)}$应该与$ w_i^{(B)}$接近。
 $\Omega(\Vw^{(A)}, \Vw^{(B)}) = \norm{\Vw^{(A)}-\Vw^{(B)}}_2^2$。
 在这里我们使用$L^2$惩罚，但也可以使用其他选择。
 
-这种方法由\cite{LasserreJ2006}提出，\gls{regularization}一个模型（\gls{supervised}模式下训练的分类器）的参数，使其接近另一个\gls{unsupervised}模式下训练的模型（捕捉观察到的输入数据的分布）的参数。
+这种方法由\cite{Lasserre-et-al-2006}提出，\gls{regularization}一个模型（\gls{supervised}模式下训练的分类器）的参数，使其接近另一个\gls{unsupervised}模式下训练的模型（捕捉观察到的输入数据的分布）的参数。
 这种构造架构使得许多分类模型中的参数能与之对应的\gls{unsupervised}模型的参数匹配。
 
 参数范数惩罚是\gls{regularization}参数使其彼此接近的一种方式，而更流行的方法是使用约束：\emph{强迫某些参数相等}。
@@ -897,18 +897,18 @@ $\Omega(\Vw^{(A)}, \Vw^{(B)}) = \norm{\Vw^{(A)}-\Vw^{(B)}}_2^2$。
 正如对参数的$L^1$惩罚诱导参数\gls{sparse}性，对\gls{representation}元素的$L^1$惩罚诱导\gls{sparse}的\gls{representation}：
 $\Omega(\Vh) = \norm{\Vh}_1 = \sum_i |h_i|$。
 当然$L^1$惩罚是使\gls{representation}\gls{sparse}的方法之一。
-其他方法还包括从\gls{representation}上的\ENNAME{Student}-$t$先验导出的惩罚\citep{Olshausen+Field-1996,Bergstra-Phd-2011}和\gls{KL}惩罚\citep{Larochelle+Bengio-2008}有利于表示元素约束于单位区间上。
-\cite{HonglakL2008-small}和\cite{Goodfellow2009}都提供了\gls{regularization}几个样本平均激活的例子，即令$\frac{1}{m}\sum_i \Vh^{(i)}$接近某些目标值（如每项都是$.01$的向量）。
+其他方法还包括从\gls{representation}上的\ENNAME{Student}-$t$先验导出的惩罚\citep{Olshausen-Field-1996,Bergstra-2011}和\gls{KL}惩罚\citep{Larochelle-Bengio-2008}有利于表示元素约束于单位区间上。
+\cite{Lee-et-al-2008}和\cite{Goodfellow-et-al-2009}都提供了\gls{regularization}几个样本平均激活的例子，即令$\frac{1}{m}\sum_i \Vh^{(i)}$接近某些目标值（如每项都是$.01$的向量）。
 
 还有一些其他方法通过激活值的硬性约束来获得\gls{representation}\gls{sparse}。
-例如，\textbf{正交匹配追踪}(orthogonal matching pursuit)\citep{pati93orthogonal}通过解决\gls{constrained_optimization}问题将输入值$\Vx$编码成\gls{representation} $\Vh$
+例如，\textbf{正交匹配追踪}(orthogonal matching pursuit)\citep{Pati-et-al-1993}通过解决\gls{constrained_optimization}问题将输入值$\Vx$编码成\gls{representation} $\Vh$
 \begin{align}
  \underset{\Vh, \norm{\Vh}_0 < k}{\argmin} \norm{\Vx - \MW \Vh}^2,
 \end{align}
 其中$\norm{\Vh}_0 $是$\Vh$中非零项的个数。
 当$\MW$被约束为正交时，我们可以高效地解决这个问题。
 这种方法通常被称为\ENNAME{OMP}-$k$，通过$k$指定允许的非零特征数量。
-\cite{Coates2011b}证明\ENNAME{OMP}-$1$可以成为深度架构中非常有效的特征提取器。
+\cite{Coates-Ng-2011}证明\ENNAME{OMP}-$1$可以成为深度架构中非常有效的特征提取器。
 
 % -- 248 --
 
@@ -917,7 +917,7 @@ $\Omega(\Vh) = \norm{\Vh}_1 = \sum_i |h_i|$。
 
 \section{\glsentrytext{bagging}和其他\glsentrytext{ensemble}方法}
 \label{sec:bagging_and_other_ensemble_methods}
-\firstgls{bagging}是通过结合几个模型降低泛化误差的技术\citep{ML:Breiman:bagging}。
+\firstgls{bagging}是通过结合几个模型降低泛化误差的技术\citep{Breiman-1994}。
 主要想法是分别训练几个不同的模型，然后让所有模型表决测试样例的输出。
 这是\gls{ML}中常规策略的一个例子，被称为\firstgls{model_averaging}。
 采用这种策略的技术被称为\gls{ensemble}方法。
@@ -979,20 +979,20 @@ $\Omega(\Vh) = \norm{\Vh}_1 = \sum_i |h_i|$。
 在作为科学论文算法的基准时，它通常是不鼓励使用的，因为任何\gls{ML}算法都可以从\gls{model_averaging}中大幅获益（以增加计算和存储为代价）。
 
 \gls{ML}比赛中的取胜算法通常是使用超过几十种\gls{model_averaging}的方法。
-最近一个突出的例子是\ENNAME{Netflix Grand Prize}\citep{Koren09}。
+最近一个突出的例子是\ENNAME{Netflix Grand Prize}\citep{Koren-2009}。
 
 不是所有构建\gls{ensemble}的技术都是为了让\gls{ensemble}模型比单一模型更加\gls{regularization}。
-例如，一种被称为\firstgls{boosting}的技术\citep{ConfLT:Freund:gametheorie,ConfML:Freund:AdaBoostCompar}构建比单个模型\gls{capacity}更高的\gls{ensemble}模型。
-通过向\gls{ensemble}逐步添加\gls{NN}，\gls{boosting}已经被应用于构建神经网络的\gls{ensemble}\citep{Schwenk-nips10}。
-通过逐渐增加\gls{NN}的\gls{hidden_unit}，\gls{boosting}也可以将单个神经网络解释为一个\gls{ensemble}\citep{bengio_convex_2006}。
+例如，一种被称为\firstgls{boosting}的技术\citep{Freund-Schapire-1996b,Freund-Schapire-1996a}构建比单个模型\gls{capacity}更高的\gls{ensemble}模型。
+通过向\gls{ensemble}逐步添加\gls{NN}，\gls{boosting}已经被应用于构建神经网络的\gls{ensemble}\citep{Schwenk-Bengio-1998}。
+通过逐渐增加\gls{NN}的\gls{hidden_unit}，\gls{boosting}也可以将单个神经网络解释为一个\gls{ensemble}\citep{Bengio-et-al-2006a}。
 
 \section{\glsentrytext{dropout}}
 \label{sec:dropout}
-\firstgls{dropout}\citep{Srivastava14}提供了\gls{regularization}一大类模型的方法，计算方便但功能强大。
+\firstgls{dropout}\citep{Srivastava-et-al-2014}提供了\gls{regularization}一大类模型的方法，计算方便但功能强大。
 在第一种近似下，\gls{dropout}可以被认为是\gls{ensemble}大量深层\gls{NN}的实用\gls{bagging}方法。
 \gls{bagging}涉及训练多个模型，并在每个测试样本上评估多个模型。
 当每个模型都是一个很大的\gls{NN}时，这似乎是不切实际的，因为训练和评估这样的网络需要花费很多运行时间和内存。
-通常我们只能\gls{ensemble}五至十个神经网络，如\cite{Szegedy-et-al-arxiv2014}\gls{ensemble}了六个神经网络赢得ILSVRC，超过这个数量就会迅速变得难以处理。
+通常我们只能\gls{ensemble}五至十个神经网络，如\cite{Szegedy-et-al-2014a}\gls{ensemble}了六个神经网络赢得ILSVRC，超过这个数量就会迅速变得难以处理。
 \gls{dropout}提供了一种廉价的\gls{bagging}\gls{ensemble}近似，能够训练和评估指数级数量的\gls{NN}。
 
 具体而言，\gls{dropout}训练的\gls{ensemble}包括所有从基础网络除去非输出单元后形成的子网络，如\figref{fig:chap7_subnetworks}所示。
@@ -1085,7 +1085,7 @@ $\Vmu$中的每项都是二值的且独立于其他项采样。
 
 然而，一个更好的方法能不错地近似整个\gls{ensemble}的预测，且只需一个前向传播的代价。
 要做到这一点，我们改用\gls{ensemble}成员预测分布的几何平均而不是算术平均。
-\cite{WardeFarley+al-ICLR2014}提出的论点和经验证据表明，在这个情况下几何平均与算术平均表现得差不多。
+\cite{WardeFarley-et-al-2014}提出的论点和经验证据表明，在这个情况下几何平均与算术平均表现得差不多。
 
 多个概率分布的几何平均不能保证是一个概率分布。
 为了保证结果是一个概率分布，我们要求没有子模型给某一事件分配概率0，并重新标准化所得分布。
@@ -1101,7 +1101,7 @@ p_{\text{ensemble}}(y \mid \Vx)  = \frac{\tilde{p}_{\text{ensemble}}(y \mid \Vx)
  {\sum_{y'}\tilde{p}_{\text{ensemble}}(y' \mid \Vx) }.
 \end{align}
  
-涉及\gls{dropout}的一个重要观点\citep{Hinton-et-al-arxiv2012}是，我们可以通过评估模型中$p(y \mid \Vx)$来近似$ p_{\text{ensemble}}$：
+涉及\gls{dropout}的一个重要观点\citep{Hinton-et-al-2012c}是，我们可以通过评估模型中$p(y \mid \Vx)$来近似$ p_{\text{ensemble}}$：
 该模型具有所有单元，但我们将模型的权重修改为和单元$i$的概率的乘积。
 这个修改的动机是得到从该单元输出的正确期望值。
 我们把这种方法称为\firstgls{weight_scaling_inference_rule}。
@@ -1157,12 +1157,12 @@ P_{\text{ensemble}}(\RSy = \Sy \mid \RVv)  = \frac{\tilde{P}_{\text{ensemble}}(\
 \gls{weight_scaling_inference_rule}在其他设定下也是精确的，包括条件正态输出的回归网络以及那些隐藏层不包含非线性的深度网络。
 然而，\gls{weight_scaling_inference_rule}对具有非线性的深度模型仅仅是一个近似。
 虽然这个近似尚未有理论上的分析，但在实践中往往效果很好。
-\cite{Goodfellow-et-al-ICML2013}实验发现，\gls{ensemble}预测\gls{weight_scaling_inference_rule}比\gls{monte_carlo}近似的效果更好（在分类精度方面）。
+\cite{Goodfellow-et-al-2013a}实验发现，\gls{ensemble}预测\gls{weight_scaling_inference_rule}比\gls{monte_carlo}近似的效果更好（在分类精度方面）。
 即使允许\gls{monte_carlo}近似采样多达1000子网络时也比不过\gls{ensemble}。
-\cite{gal2015bayesian}发现一些模型可以通过二十个样本和\gls{monte_carlo}近似获得更好的分类精度。
+\cite{Gal-Ghahramani-2015}发现一些模型可以通过二十个样本和\gls{monte_carlo}近似获得更好的分类精度。
 似乎\gls{inference}近似的最佳选择是与问题相关的。
 
-\cite{Srivastava14}显示，\gls{dropout}比其他标准的计算开销小的\gls{regularization}方法（如\gls{weight_decay}、过滤器范数约束和\gls{sparse}激活的\gls{regularization}）更有效。
+\cite{Srivastava-et-al-2014}显示，\gls{dropout}比其他标准的计算开销小的\gls{regularization}方法（如\gls{weight_decay}、过滤器范数约束和\gls{sparse}激活的\gls{regularization}）更有效。
 \gls{dropout}也可以与其他形式的\gls{regularization}合并，得到进一步的提升。
 
 计算方便是\gls{dropout}的一个优点。
@@ -1174,7 +1174,7 @@ P_{\text{ensemble}}(\RSy = \Sy \mid \RVv)  = \frac{\tilde{P}_{\text{ensemble}}(\
 
 \gls{dropout}的另一个显著优点是不怎么限制适用的模型或训练过程。
 几乎在所有使用\gls{distributed_representation}且可以用\gls{SGD}训练的模型上都表现很好。
-包括前馈神经网络、概率模型，如\gls{RBM}\citep{Srivastava14}，以及\gls{RNN}\citep{Bayer-et-al-arXiv-2014,Pascanu-et-al-ICLR2014}。
+包括前馈神经网络、概率模型，如\gls{RBM}\citep{Srivastava-et-al-2014}，以及\gls{RNN}\citep{Bayer-Osendorfer-2014,Pascanu-et-al-2014a}。
 许多效果差不多的其他\gls{regularization}策略对模型结构的限制更严格。
 
 虽然\gls{dropout}在特定模型上每一步的代价是微不足道的，但在一个完整的系统上使用\gls{dropout}的代价可能非常显著。
@@ -1185,18 +1185,18 @@ P_{\text{ensemble}}(\RSy = \Sy \mid \RVv)  = \frac{\tilde{P}_{\text{ensemble}}(\
 在这些情况下，使用\gls{dropout}和更大模型的计算代价可能超过\gls{regularization}带来的好处。
 
 只有极少的训练样本可用时，\gls{dropout}不会很有效。
-在只有不到5000的样本的\ENNAME{Alternative Splicing}数据集上\citep{Xiong2011}，贝叶斯神经网络\citep{Neal1996}比\gls{dropout}表现得更好\citep{Srivastava14}。
+在只有不到5000的样本的\ENNAME{Alternative Splicing}数据集上\citep{Neal-1996}，贝叶斯神经网络\citep{Xiong-et-al-2011}比\gls{dropout}表现得更好\citep{Srivastava-et-al-2014}。
 当有其他未分类的数据可用时，\gls{unsupervised}特征学习也比\gls{dropout}更有优势。
 
 
-\cite{Wager+al-2013}表明，当\gls{dropout}作用于\gls{linear_regression}时，相当于每个输入特征具有不同\gls{weight_decay}系数的$L^2$\gls{weight_decay}。 每个特征的\gls{weight_decay}系数的大小是由其方差来确定的。
+\cite{Wager-et-al-2013}表明，当\gls{dropout}作用于\gls{linear_regression}时，相当于每个输入特征具有不同\gls{weight_decay}系数的$L^2$\gls{weight_decay}。 每个特征的\gls{weight_decay}系数的大小是由其方差来确定的。
 其他\gls{linear_model}也有类似的结果。
 而对于深度模型而言，\gls{dropout}与\gls{weight_decay}是不等同的。
 
 
 使用\gls{dropout}训练时的随机性不是这个方法成功的必要条件。
 它仅仅是近似所有子模型总和的一个方法。
-\cite{WangManning-ICML2013-small}导出了近似这种边缘分布的解析解。
+\cite{Wang-Manning-2013}导出了近似这种边缘分布的解析解。
 他们的近似被称为\firstgls{fast_dropout}，减小梯度计算中的随机性而获得更快的收敛速度。
 这种方法也可以在测试时应用，能够比\gls{weight_scaling_inference_rule}更合理地（但计算也更昂贵）近似所有子网络的平均。
 \gls{fast_dropout}在小神经网络上的性能几乎与标准的\gls{dropout}相当，但在大问题上尚未产生显著改善或尚未应用。
@@ -1204,7 +1204,7 @@ P_{\text{ensemble}}(\RSy = \Sy \mid \RVv)  = \frac{\tilde{P}_{\text{ensemble}}(\
 % -- 258 --
 
 随机性对实现\gls{dropout}的\gls{regularization}效果不是必要的，同时也不是充分的。
-为了证明这一点，\cite{WardeFarley+al-ICLR2014}使用一种被称为\firstgls{dropout_boosting}的方法设计了一个对照实验，具有与传统\gls{dropout}方法完全相同的噪声\gls{mask}， 但缺乏\gls{regularization}效果。
+为了证明这一点，\cite{WardeFarley-et-al-2014}使用一种被称为\firstgls{dropout_boosting}的方法设计了一个对照实验，具有与传统\gls{dropout}方法完全相同的噪声\gls{mask}， 但缺乏\gls{regularization}效果。
 \gls{dropout_boosting}训练整个\gls{ensemble}以最大化训练集上的似然。
 从传统\gls{dropout}类似于\gls{bagging}的角度来看，这种方式类似于\gls{boosting}。
 如预期一样，和单一模型训练整个网络相比，\gls{dropout_boosting}几乎没有\gls{regularization}效果。
@@ -1213,7 +1213,7 @@ P_{\text{ensemble}}(\RSy = \Sy \mid \RVv)  = \frac{\tilde{P}_{\text{ensemble}}(\
 
 \gls{dropout}启发其他以随机方法训练指数量级的共享权重的\gls{ensemble}。
 \ENNAME{DropConnect}是
-\gls{dropout}的一个特殊情况，其中一个标量权重和单个\gls{hidden_unit}状态之间的每个乘积被认为是可以丢弃的一个单元\citep{Wan+al-ICML2013-small}。
+\gls{dropout}的一个特殊情况，其中一个标量权重和单个\gls{hidden_unit}状态之间的每个乘积被认为是可以丢弃的一个单元\citep{Wan-et-al-2013}。
 随机\gls{pooling}是构造\gls{CNN}\gls{ensemble}的一种随机\gls{pooling}的形式(见\secref{sec:pooling})，其中每个卷积网络参与每个特征图的不同空间位置。
 目前为止，\gls{dropout}仍然是最广泛使用的隐式\gls{ensemble}方法。
 
@@ -1226,7 +1226,7 @@ P_{\text{ensemble}}(\RSy = \Sy \mid \RVv)  = \frac{\tilde{P}_{\text{ensemble}}(\
 我们可以认为由向量$\Vmu$参数化的任何形式的修改，是对$\Vmu$所有可能的值训练$p(y \mid \Vx, \Vmu)$的\gls{ensemble}。
 注意，这里不要求$\Vmu$具有有限数量的值。
 例如，$\Vmu$可以是实值。
-\cite{Srivastava14}表明，权重乘以$\Vmu \sim \CalN(\mathbf{1}, \MI)$比基于二值\gls{mask}\gls{dropout}表现得更好。
+\cite{Srivastava-et-al-2014}表明，权重乘以$\Vmu \sim \CalN(\mathbf{1}, \MI)$比基于二值\gls{mask}\gls{dropout}表现得更好。
 由于$\SetE[\Vmu] = 1$，标准网络自动实现\gls{ensemble}的近似\gls{inference}，而不需要\gls{weight_scaling_inference_rule}。
 
 % -- 259 --
@@ -1237,10 +1237,10 @@ P_{\text{ensemble}}(\RSy = \Sy \mid \RVv)  = \frac{\tilde{P}_{\text{ensemble}}(\
 并且是共享\gls{hidden_unit}的\gls{ensemble}模型。
 这意味着无论其他\gls{hidden_unit}是否在模型中，每个\gls{hidden_unit}必须都能够表现良好。
 \gls{hidden_unit}必须准备好进行模型之间的交换和互换。
-\cite{Hinton-et-al-arxiv2012-small}由生物学的想法受到启发：有性繁殖涉及到两个不同生物体之间交换基因，进化产生的压力使得基因不仅是良好的而且要准备好不同有机体之间的交换。
+\cite{Hinton-et-al-2012c}由生物学的想法受到启发：有性繁殖涉及到两个不同生物体之间交换基因，进化产生的压力使得基因不仅是良好的而且要准备好不同有机体之间的交换。
 这样的基因和这些特点对环境的变化是非常稳健的，因为它们一定会正确适应任何一个有机体或模型不寻常的特性。
 因此\gls{dropout}\gls{regularization}每个\gls{hidden_unit}不仅是一个很好的特征，更要在许多情况下是良好的特征。
-\cite{WardeFarley+al-ICLR2014}将\gls{dropout}与大\gls{ensemble}的训练相比并得出结论：相比独立模型\gls{ensemble}获得泛化误差，\gls{dropout}会带来额外的改进。
+\cite{WardeFarley-et-al-2014}将\gls{dropout}与大\gls{ensemble}的训练相比并得出结论：相比独立模型\gls{ensemble}获得泛化误差，\gls{dropout}会带来额外的改进。
 
 \gls{dropout}强大的大部分原因来自施加到\gls{hidden_unit}的\gls{mask}噪声，了解这一事实是重要的。
 这可以看作是对输入内容的信息高度智能化、自适应破坏的一种形式，而不是对输入原始值的破坏。
@@ -1266,7 +1266,7 @@ P_{\text{ensemble}}(\RSy = \Sy \mid \RVv)  = \frac{\tilde{P}_{\text{ensemble}}(\
 在许多情况下，\gls{NN}在独立同分布的测试集上进行评估已经达到了人类表现。
 因此，我们自然要怀疑这些模型在这些任务上是否获得了真正的人类层次的理解。
 为了探索网络对底层任务的理解层次，我们可以探索这个模型错误分类的例子。
-\cite{Szegedy-ICLR2014}发现，在精度达到人类水平的\gls{NN}上通过优化过程故意构造数据点，其上的误差率接近\NUMTEXT{100\%}，模型在这个输入点$\Vx'$的输出与附近的数据点$\Vx$非常不同。
+\cite{Szegedy-et-al-2014b}发现，在精度达到人类水平的\gls{NN}上通过优化过程故意构造数据点，其上的误差率接近\NUMTEXT{100\%}，模型在这个输入点$\Vx'$的输出与附近的数据点$\Vx$非常不同。
 在许多情况下，$\Vx'$与$\Vx$非常近似，人类观察者不会察觉原始样本和\firstgls{adversarial_example}之间的差异，但是网络会作出非常不同的预测。
 见\figref{fig:chap7_panda_577}中的例子。
 \begin{figure}[!htb]
@@ -1290,9 +1290,9 @@ $\ +\ .007\ \times$ &%
 \end{tabular}    
 \fi
 \caption[Fast adversarial sample generation]{
-在ImageNet上应用GoogLeNet~\citep{Szegedy-et-al-arxiv2014}的\gls{adversarial_example}生成的演示。
+在ImageNet上应用GoogLeNet~\citep{Szegedy-et-al-2014a}的\gls{adversarial_example}生成的演示。
 通过添加一个不可察觉的小向量（其中元素等于\gls{cost_function}相对于输入的梯度元素的符号），我们可以改变GoogLeNet对此图像的分类结果。
-经\citet{Goodfellow-2015-adversarial}许可转载。
+经\citet{Goodfellow-et-al-2014b}许可转载。
 }
 \label{fig:chap7_panda_577}
 \end{figure}
@@ -1300,10 +1300,10 @@ $\ +\ .007\ \times$ &%
 % -- 261 --
 
 \gls{adversarial_example}在很多领域有很多影响，例如计算机安全，这超出了本章的范围。
-然而，它们在\gls{regularization}的背景下很有意思，因为我们可以通过\firstgls{adversarial_training}减少原有独立同分布的测试集的错误率——在对抗扰动的训练集样本上训练网络\citep{Szegedy-ICLR2014,Goodfellow-2015-adversarial}。
+然而，它们在\gls{regularization}的背景下很有意思，因为我们可以通过\firstgls{adversarial_training}减少原有独立同分布的测试集的错误率——在对抗扰动的训练集样本上训练网络\citep{Szegedy-et-al-2014b,Goodfellow-et-al-2014b}。
 
 
-\cite{Goodfellow-2015-adversarial}表明，这些\gls{adversarial_example}的主要原因之一是过度线性。
+\cite{Goodfellow-et-al-2014b}表明，这些\gls{adversarial_example}的主要原因之一是过度线性。
 \gls{NN}主要是基于线性块构建的。
 因此在一些实验中，它们实现的整体函数被证明是高度线性的。
 这些线性函数很容易优化。
@@ -1320,7 +1320,7 @@ $\ +\ .007\ \times$ &%
 在与数据集中的标签不相关联的点$\Vx$处，模型本身为其分配一些标签$\hat y$。
 模型的标记$\hat y$未必是真正的标签，但如果模型是高品质的，那么$\hat y$提供正确标签的可能性很大。
 我们可以搜索一个\gls{adversarial_example} $\Vx'$，导致分类器输出一个标签$y'$且$y' \neq \hat y$。
-不使用真正的标签，而是由训练好的模型提供标签产生的\gls{adversarial_example}被称为\firstgls{virtual_adversarial_example}\citep{miyato2015distributional}。
+不使用真正的标签，而是由训练好的模型提供标签产生的\gls{adversarial_example}被称为\firstgls{virtual_adversarial_example}\citep{Miyato-et-al-2015}。
 我们可以训练分类器为$\Vx$和$\Vx'$分配相同的标签。
 这鼓励分类器学习一个沿着未标签数据所在流形上任意微小变化都很鲁棒的函数。
 驱动这种方法的假设是，不同的类通常位于分离的流形上，并且小扰动不会使数据点从一个类的流形跳到另一个类的流形上。
@@ -1334,7 +1334,7 @@ $\ +\ .007\ \times$ &%
 \label{sec:tangent_distance_tangent_prop_and_manifold_tangent_classifier}
 如\secref{sec:manifold_learning}所述，许多\gls{ML}的目标旨在假设数据位于低维流形附近来克服维数灾难。
 
-一个利用流形假设的早期尝试是\firstgls{tangent_distance}算法\citep{Simard93-small,Simard98}。
+一个利用流形假设的早期尝试是\firstgls{tangent_distance}算法\citep{Simard-et-al-1993,Simard-et-al-1998}。
 它是一种非参数的最近邻算法，其中使用的度量不是通用的欧几里德距离，而是根据邻近流形关于聚集概率的知识导出的。
 这个算法假设我们尝试分类的样本和同一流形上的样本具有相同的类别。
 由于分类器应该对局部因素（对应于流形上的移动）的变化保持不变，一种合理的度量是将点$\Vx_1$和$\Vx_2$各自所在流形$M_1$和$M_2$的距离作为点$\Vx_1$和$\Vx_2$之间的最近邻距离。
@@ -1342,7 +1342,7 @@ $\ +\ .007\ \times$ &%
 这可以通过求解一个低维线性系统（就流形的维数而言）来实现。
 当然，这种算法需要制定一个切向量。
 
-受相关启发，\firstgls{tangent_prop}算法\citep{Simard92-short}（\figref{fig:chap7_mtc_color}）训练带有额外惩罚的\gls{NN}分类器，使\gls{NN}的每个输出$f(\Vx)$对已知的变化因素是局部不变的。
+受相关启发，\firstgls{tangent_prop}算法\citep{Simard-et-al-1992}（\figref{fig:chap7_mtc_color}）训练带有额外惩罚的\gls{NN}分类器，使\gls{NN}的每个输出$f(\Vx)$对已知的变化因素是局部不变的。
 这些变化因素对应于沿着的相同样本聚集的流形的移动。
 这里实现局部不变性的方法是要求$\nabla_{\Vx} f(\Vx)$与已知流形的切向$\Vv^{(i)}$正交，或者等价地通过\gls{regularization}惩罚$\Omega$使$f$在$\Vx$的$\Vv^{(i)}$方向的导数较小：
 \begin{align} \label{eq:767}
@@ -1350,14 +1350,14 @@ $\ +\ .007\ \times$ &%
 \end{align}
 这个\gls{regularization}项当然可以通过适当的超参数缩放，并且对于大多数\gls{NN}，我们需要对许多输出求和(此处为描述简单，$f(\Vx)$为唯一输出)。
 与\gls{tangent_distance}算法一样，我们根据切向量推导先验，通常从变换（如平移、旋转和缩放图像）的效果获得形式知识。
-\gls{tangent_prop}不仅用于\gls{supervised_learning}\citep{Simard92-short}，还在\gls{RL}\citep{Thrun-NIPS1994}中有所应用。
+\gls{tangent_prop}不仅用于\gls{supervised_learning}\citep{Simard-et-al-1992}，还在\gls{RL}\citep{Thrun-1995}中有所应用。
 \begin{figure}[!htb]
 \ifOpenSource
 \centerline{\includegraphics[scale=0.5]{images/62.png}}
 \else
 \centerline{\includegraphics{Chapter7/figures/mtc_color}}
 \fi
-\caption{\gls{tangent_prop}算法\citep{Simard92-short}和\gls{manifold}正切分类器主要思想的示意图\citep{Dauphin-et-al-NIPS2011-small}，它们都\gls{regularization}分类器的输出函数$f(\Vx)$。
+\caption{\gls{tangent_prop}算法\citep{Simard-et-al-1992}和\gls{manifold}正切分类器主要思想的示意图\citep{Rifai-et-al-2011c}，它们都\gls{regularization}分类器的输出函数$f(\Vx)$。
 每条曲线表示不同类别的\gls{manifold}，这里表示嵌入二维空间中的一维\gls{manifold}。
 在一条曲线上，我们选择单个点并绘制一个与类别\gls{manifold}（平行并接触\gls{manifold}）相切的向量以及与类别\gls{manifold}（与\gls{manifold}正交）垂直的向量。
 在多维情况下，可以存在许多切线方向和法线方向。
@@ -1385,13 +1385,13 @@ $\ +\ .007\ \times$ &%
 
 % -- 264 --
 
-\gls{tangent_prop}也涉及到\gls{double_backprop}\citep{DruckerLeCun92}和\gls{adversarial_training}\citep{Szegedy-ICLR2014,Goodfellow-2015-adversarial}。
+\gls{tangent_prop}也涉及到\gls{double_backprop}\citep{Drucker-LeCun-1992}和\gls{adversarial_training}\citep{Szegedy-et-al-2014b,Goodfellow-et-al-2014b}。
 \gls{double_backprop}\gls{regularization}使\gls{jacobian}矩阵偏小，而\gls{adversarial_training}找到原输入附近的点，训练模型在这些点上产生与原来输入相同的输出。
 \gls{tangent_prop}和手动指定转换的数据集增强都要求模型在输入变化的某些特定的方向上保持不变。
 \gls{double_backprop}和\gls{adversarial_training}都要求模型对输入所有方向中的变化（只要该变化较小）都应当保持不变。
 正如数据集增强是\gls{tangent_prop}非无限小的版本，\gls{adversarial_training}是\gls{double_backprop}非无限小的版本。
 
-流形正切分类器\citep{Dauphin-et-al-NIPS2011}无需知道切线向量的先验。
+流形正切分类器\citep{Rifai-et-al-2011c}无需知道切线向量的先验。
 我们将在\chapref{chap:autoencoders}看到，\gls{AE}可以估算流形的切向量。
 流形正切分类器使用这种技术来避免用户指定切向量。
 如\figref{fig:chap14_cifar_cae}所示，这些估计的切向量不仅对图像经典几何变换（如转化、旋转和缩放）保持不变，还必须掌握对特定对象（如移动身体的部分）保持不变的因素。

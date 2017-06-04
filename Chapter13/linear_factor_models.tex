@@ -15,7 +15,7 @@
 
 
 在本章中，我们描述了一些基于\gls{latent_variable}的最简单的概率模型：\firstgls{linear_factor}。
-这些模型有时被用来作为混合模型的组成模块~\citep{Hinton-nips95,ghahramani96em,Roweis+Saul+Hinton-2002}或者更大的深度概率模型~\citep{tang2012deep}。
+这些模型有时被用来作为混合模型的组成模块~\citep{Hinton-et-al-1995a,Ghahramani-Hinton-1996,Roweis-et-al-2002}或者更大的深度概率模型~\citep{Tang-et-al-2012}。
 同时，也介绍了构建\gls{generative_model}所需的许多基本方法，在此基础上更先进的深度模型也将得到进一步扩展。
 % 479
 
@@ -65,7 +65,7 @@
 \firstgls{PPCA}、\gls{FA}和其他\gls{linear_factor}是上述等式（\eqnref{eqn:131}和\eqnref{eqn:132}）的特殊情况，并且仅在对观测到$\Vx$之前的噪声分布和\gls{latent_variable} $\Vh$先验的选择上有所不同。
 % 480
 
-在\firstgls{FA}~\citep{Bartholomew-1987,Basilevsky94}中，\gls{latent_variable}的先验是一个方差为单位矩阵的\gls{gaussian_distribution}
+在\firstgls{FA}~\citep{Bartholomew-1987,Basilevsky-1994}中，\gls{latent_variable}的先验是一个方差为单位矩阵的\gls{gaussian_distribution}
 \begin{align}
 \label{eqn:133}
 \RVh \sim \CalN(\Vh; \mathbf{0},\MI),
@@ -99,12 +99,12 @@
 \RVx = \MW\RVh + \Vb + \sigma\RVz,
 \end{align}
 其中$\RVz \sim \CalN(\Vz;\mathbf{0},\MI)$是高斯噪声。
-之后~\citet{tipping99mixtures}提出了一种迭代的~\glssymbol{EM}~算法来估计参数$\MW$和$\sigma^2$。
+之后~\citet{Tipping-Bishop-1999}提出了一种迭代的~\glssymbol{EM}~算法来估计参数$\MW$和$\sigma^2$。
 % 481
 
 
 这个\firstgls{PPCA}模型利用了这样一种观察现象：除了一些微小残余的\firstgls{reconstruction_error}（至多为$\sigma^2$），数据中的大多数变化可以由\gls{latent_variable} $\Vh$描述。
-通过\citet{tipping99mixtures}的研究我们可以发现，当$\sigma \xrightarrow{} 0$时，\gls{PPCA}~退化为~\glssymbol{PCA}。
+通过\citet{Tipping-Bishop-1999}的研究我们可以发现，当$\sigma \xrightarrow{} 0$时，\gls{PPCA}~退化为~\glssymbol{PCA}。
 在这种情况下，给定$\Vx$情况下$\Vh$的条件期望等于将$\Vx - \Vb$投影到$\MW$的$d$列所生成的空间上，与~\glssymbol{PCA}~一样。
 % 481
 
@@ -119,7 +119,7 @@
 % 481
 
 
-\firstall{ICA}是最古老的\gls{representation_learning}算法之一~\citep{Herault+Ans-1984,Jutten+Herault-91,Comon94,Hyvarinen-1999,Hyvarinen-2001,Hinton-ICA-2001,Teh-2003}。
+\firstall{ICA}是最古老的\gls{representation_learning}算法之一~\citep{Herault-Ans-1984,Jutten-Herault-1991,Comon-1994,Hyvarinen-1999,Hyvarinen-et-al-2001a,Hinton-et-al-2001,Teh-et-al-2003}。
 它是一种建模线性因子的方法，旨在将观察到的信号分离成许多潜在信号，这些潜在信号通过缩放和叠加可以恢复成观察数据。
 这些信号是完全独立的，而不是仅仅彼此不相关\footnote{\secref{sec:expectation_variance_and_covariance}讨论了不相关变量和独立变量之间的差异。}。
 % 481
@@ -175,15 +175,15 @@
 
 
 正如~\glssymbol{PCA}~可以推广到\chapref{chap:autoencoders}中描述的非线性\gls{AE}，\glssymbol{ICA}~也可以推广到非线性\gls{generative_model}，其中我们使用非线性函数$f$来生成观测数据。
-关于非线性~\glssymbol{ICA}~最初的工作可以参考~\citet{hyvarinen1999nonlinear}，它和\gls{ensemble_learning}的成功结合可以参见~\citet{roberts2001independent,lappalainen2000nonlinear}。
-\glssymbol{ICA}~的另一个非线性扩展是\firstall{NICE}方法~\citep{Dinh-et-al-arxiv2014}，这个方法堆叠了一系列可逆变换（在\gls{encoder}阶段），其特性是能高效地计算每个变换的~\gls{jacobian}~行列式。
+关于非线性~\glssymbol{ICA}~最初的工作可以参考~\citet{Hyvarinen-Pajunen-1999}，它和\gls{ensemble_learning}的成功结合可以参见~\citet{Roberts-Everson-2001,Lappalainen-et-al-2000}。
+\glssymbol{ICA}~的另一个非线性扩展是\firstall{NICE}方法~\citep{Dinh-et-al-2014}，这个方法堆叠了一系列可逆变换（在\gls{encoder}阶段），其特性是能高效地计算每个变换的~\gls{jacobian}~行列式。
 这使得我们能够精确地计算似然，并且像~\glssymbol{ICA}~一样，\glssymbol{NICE}~尝试将数据变换到具有因子的边缘分布的空间。
 由于非线性\gls{encoder}的使用，这种方法更可能成功。%\footnote{译者注：相比于~\glssymbol{ICA}}
 因为\gls{encoder}和一个能进行完美逆变换的\gls{decoder}相关联，所以可以直接从模型生成样本（首先从$p(\Vh)$采样，然后使用\gls{decoder}）。
 % 483
 
 
-\glssymbol{ICA}~的另一个推广是通过鼓励组内统计依赖关系、抑制组间依赖关系来学习特征组\citep{Hyvarinen-Hoyer1999,Hyvarinen2001b}。
+\glssymbol{ICA}~的另一个推广是通过鼓励组内统计依赖关系、抑制组间依赖关系来学习特征组\citep{Hyvarinen-Hoyer-1999,Hyvarinen-et-al-2001b}。
 当相关单元的组被选为不重叠时，这被称为\firstgls{ISA}。
 我们还可以向每个\gls{hidden_unit}分配空间坐标，并且空间上相邻的单元组形成一定程度的重叠。
 这能够鼓励相邻的单元学习类似的特征。
@@ -197,7 +197,7 @@
 % 484 head
 
 
-\firstall{SFA}是使用来自时间信号的信息学习不变特征的\gls{linear_factor}~\citep{WisSej2002}。
+\firstall{SFA}是使用来自时间信号的信息学习不变特征的\gls{linear_factor}~\citep{Wiskott-Sejnowski-2002}。
 % 484
 
 
@@ -210,7 +210,7 @@
 % 484
 
 
-\gls{slow_principle}早于\gls{SFA}，并已被应用于各种模型~\citep{Hinton89b,Foldiak89,MobahiCollobertWestonICML2009,Bergstra+Bengio-2009}。
+\gls{slow_principle}早于\gls{SFA}，并已被应用于各种模型~\citep{Hinton-1989,Foldiak-1989,Mobahi-et-al-2009,Bergstra-Bengio-2009}。
 一般来说，我们可以将\gls{slow_principle}应用于可以使用\gls{GD}训练的任何可微分模型。 
 为了引入\gls{slow_principle}，我们可以向\gls{cost_function}添加以下项
 \begin{align}
@@ -229,7 +229,7 @@ $L$的一个常见选择是\gls{mean_squared_error}。
 
 
 
-\glssymbol{SFA}~算法~\citep{WisSej2002}先将$f(\Vx;\theta)$定义为线性变换，然后求解如下优化问题
+\glssymbol{SFA}~算法~\citep{Wiskott-Sejnowski-2002}先将$f(\Vx;\theta)$定义为线性变换，然后求解如下优化问题
 \begin{align}
 	\label{eqn:138}
 	\min_{\Vtheta} \SetE_t  (f(\Vx^{(t+1)})_i - f(\Vx^{(t)})_i  )^2
@@ -271,7 +271,7 @@ $L$的一个常见选择是\gls{mean_squared_error}。
 
 
 当在自然场景视频的小块空间部分上训练时，使用二次基扩展的~\glssymbol{SFA}~所学习到的特征与V1皮层中那些复杂细胞的特征有许多共同特性~\citep{Berkes-Wiskott-2005}。
-当在计算机渲染的3D环境内随机运动的视频上训练时，深度~\glssymbol{SFA}~模型能够学习的特征与大鼠脑中用于导航的神经元学到的特征有许多共同特性~\citep{franzius2007slowness}。
+当在计算机渲染的3D环境内随机运动的视频上训练时，深度~\glssymbol{SFA}~模型能够学习的特征与大鼠脑中用于导航的神经元学到的特征有许多共同特性~\citep{Franzius-et-al-2007}。
 因此从生物学角度上来说~\glssymbol{SFA}~是一个合理的有依据的模型。
 % 485
 
@@ -285,7 +285,7 @@ $L$的一个常见选择是\gls{mean_squared_error}。
 % 486
 
 
-深度~\glssymbol{SFA}~也已经被用于学习用在\gls{object_recognition}和姿态估计的特征~\citep{Franzius2008}。
+深度~\glssymbol{SFA}~也已经被用于学习用在\gls{object_recognition}和姿态估计的特征~\citep{Franzius-et-al-2008}。
 到目前为止，\gls{slow_principle}尚未成为任何最先进应用的基础。
 究竟是什么因素限制了其性能仍有待研究。
 我们推测，或许慢度先验太过强势，并且，最好添加这样一个先验使得当前\gls{time_step}到下一个\gls{time_step}的预测更加容易，而不是加一个先验使得特征近似为一个常数。
@@ -299,7 +299,7 @@ $L$的一个常见选择是\gls{mean_squared_error}。
 % 486
 
 
-\firstgls{sparse_coding}~\citep{Olshausen+Field-1996}是一个\gls{linear_factor}，已作为一种\gls{unsupervised}特征学习和特征提取机制得到了广泛研究。
+\firstgls{sparse_coding}~\citep{Olshausen-Field-1996}是一个\gls{linear_factor}，已作为一种\gls{unsupervised}特征学习和特征提取机制得到了广泛研究。
 严格来说，术语``\gls{sparse_coding}''是指在该模型中推断$\Vh$值的过程，而``稀疏建模''是指设计和学习模型的过程，但是通常这两个概念都可以用术语``\gls{sparse_coding}''描述。
 % 486
 
@@ -313,7 +313,7 @@ p(\Vx\mid \Vh) = \CalN
 % 486
 
 
-分布$p(\Vh)$通常选取为一个峰值很尖锐且接近$0$的分布~\citep{Olshausen+Field-1996}。
+分布$p(\Vh)$通常选取为一个峰值很尖锐且接近$0$的分布~\citep{Olshausen-Field-1996}。
 常见的选择包括可分解的Laplace、Cauchy或者可分解的Student-t分布。
 例如，以稀疏惩罚系数$\lambda$为参数的Laplace先验可以表示为
 \begin{align}
@@ -368,7 +368,7 @@ p(h_i)\propto \frac{1}{(1+\frac{h_i^2}{\nu})^{\frac{\nu+1}{2}}}.
 
 如果我们从Laplace先验中采样$\Vh$，$\Vh$的元素实际上为$0$是一个零概率事件。
 \gls{generative_model}本身并不稀疏，只有\gls{feature_extractor}是稀疏的。
-\citet{Goodfeli-et-al-TPAMI-Deep-PrePrint-2013-small}描述了不同模型族中的近似推断，如\gls{ss}\gls{sparse_coding}模型，其中先验的样本通常包含许多真正的$0$。
+\citet{Goodfellow-et-al-2013d}描述了不同模型族中的近似推断，如\gls{ss}\gls{sparse_coding}模型，其中先验的样本通常包含许多真正的$0$。
 % 488 head
 
 与非参数\gls{encoder}结合的\gls{sparse_coding}方法原则上可以比任何特定的参数化\gls{encoder}更好地最小化重构误差和对数先验的组合。
@@ -378,8 +378,8 @@ p(h_i)\propto \frac{1}{(1+\frac{h_i^2}{\nu})^{\frac{\nu+1}{2}}}.
 对于\gls{sparse_coding}模型的绝大多数形式，推断问题是凸的，优化过程总能找到最优编码（除非出现退化的情况，例如重复的权重向量）。
 显然，稀疏和重构成本仍然可以在不熟悉的点上升，但这归因于\gls{decoder}权重中的\gls{generalization_error}，而不是\gls{encoder}中的\gls{generalization_error}。
 当\gls{sparse_coding}用作分类器的\gls{feature_extractor}，而不是使用参数化的函数来预测编码值时，基于优化的\gls{sparse_coding}模型的编码过程中较小的\gls{generalization_error}可以得到更好的\gls{generalization}能力。
-\citet{Coates2011b}证明了在\gls{object_recognition}任务中\gls{sparse_coding}特征比基于参数化的\gls{encoder}（线性-\gls{sigmoid}~\gls{AE}）的特征拥有更好的泛化能力。
-受他们的工作启发，\citet{Goodfeli-et-al-TPAMI-Deep-PrePrint-2013-small}表明一种\gls{sparse_coding}的变体在标签极少（每类20个或更少标签）的情况中比相同情况下的其他\gls{feature_extractor}拥有更好的\gls{generalization}能力。
+\citet{Coates-Ng-2011}证明了在\gls{object_recognition}任务中\gls{sparse_coding}特征比基于参数化的\gls{encoder}（线性-\gls{sigmoid}~\gls{AE}）的特征拥有更好的泛化能力。
+受他们的工作启发，\citet{Goodfellow-et-al-2013d}表明一种\gls{sparse_coding}的变体在标签极少（每类20个或更少标签）的情况中比相同情况下的其他\gls{feature_extractor}拥有更好的\gls{generalization}能力。
 % 488 
 
 
@@ -387,7 +387,7 @@ p(h_i)\propto \frac{1}{(1+\frac{h_i^2}{\nu})^{\frac{\nu+1}{2}}}.
 非参数\gls{encoder}的主要缺点是在给定$\Vx$的情况下需要大量的时间来计算$\Vh$，因为非参数方法需要运行迭代算法。
 在\chapref{chap:autoencoders}中讲到的参数化\gls{AE}方法仅使用固定数量的层，通常只有一层。
 另一个缺点是它不直接通过非参数\gls{encoder}进行\gls{back_propagate}，这使得我们很难采用先使用\gls{unsupervised}方式\gls{pretraining}\gls{sparse_coding}模型然后使用\gls{supervised}方式对其进行\gls{fine_tuning}的方法。
-允许近似导数的\gls{sparse_coding}模型的修改版本确实存在但未被广泛使用~\citep{Bradley+Bagnell-2009-small}。
+允许近似导数的\gls{sparse_coding}模型的修改版本确实存在但未被广泛使用~\citep{Bagnell-Bradley-2009}。
 % 488  end
 
 像其他\gls{linear_factor}一样，\gls{sparse_coding}经常产生糟糕的样本，如\figref{fig:s3c_samples}所示。
@@ -409,7 +409,7 @@ p(h_i)\propto \frac{1}{(1+\frac{h_i^2}{\nu})^{\frac{\nu+1}{2}}}.
 问题在于特征的\gls{factorial}先验会导致特征子集合随机的组合。
 一些这样的子集能够合成可识别的MNIST集上的数字。
 这也促进了拥有更强大\gls{latent}编码分布的\gls{generative_model}的发展。
-此图经~\citet{Goodfeli-et-al-TPAMI-Deep-PrePrint-2013-small}允许转载。}
+此图经~\citet{Goodfellow-et-al-2013d}允许转载。}
 \label{fig:s3c_samples}
 \end{figure}
 
@@ -422,7 +422,7 @@ p(h_i)\propto \frac{1}{(1+\frac{h_i^2}{\nu})^{\frac{\nu+1}{2}}}.
 % 489 au
 
 
-\gls{linear_factor}，包括~\glssymbol{PCA}~和\gls{FA}，可以理解为学习一个\gls{manifold}~\citep{hinton97modelling}。
+\gls{linear_factor}，包括~\glssymbol{PCA}~和\gls{FA}，可以理解为学习一个\gls{manifold}~\citep{Hinton-et-al-1997}。
 我们可以将\gls{PPCA}~定义为高概率的薄饼状区域，即一个\gls{gaussian_distribution}，沿着某些轴非常窄，就像薄饼沿着其垂直轴非常平坦，但沿着其他轴是细长的，正如薄饼在其水平轴方向是很宽的一样。
 \figref{fig:PPCA_pancake}解释了这种现象。
 \glssymbol{PCA}~可以理解为将该薄饼与更高维空间中的线性\gls{manifold}对准。

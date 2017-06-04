@@ -202,7 +202,7 @@ $f^{(1)}$应该是哪种函数？线性模型到目前为止都表现不错，�
 此前，为了描述线性回归模型，我们使用权重向量和一个标量的偏置参数来描述从输入向量到输出标量的仿射变换。
 现在，因为我们描述的是向量$\Vx$到向量$\Vh$的仿射变换，所以我们需要一整个向量的偏置参数。
 激活函数$g$通常选择对每个元素分别起作用的函数，有$h_i =g(\Vx^\top \MW_{:, i} + c_i)$。
-在现代神经网络中，默认的推荐是使用由激活函数$g(z)=\max\{0, z\}$定义的\firstgls{ReLU}或者称为~\glssymbol{ReLU}~\citep{Jarrett-ICCV2009,Nair-2010-small,Glorot+al-AI-2011-small}，如\figref{fig:chap6_relu_color}所示。
+在现代神经网络中，默认的推荐是使用由激活函数$g(z)=\max\{0, z\}$定义的\firstgls{ReLU}或者称为~\glssymbol{ReLU}~\citep{Jarrett-et-al-2009,Nair-Hinton-2010,Glorot-et-al-2011a}，如\figref{fig:chap6_relu_color}所示。
 % fig 6.3
 \begin{figure}[!htb]
 \ifOpenSource
@@ -614,7 +614,7 @@ softmax函数然后可以对$z$指数化和归一化来获得需要的$\hat{\Vy}
 
 除了对数似然之外的许多目标函数对softmax函数不起作用。
 具体来说，那些不使用对数来抵消softmax中的指数的目标函数，当指数函数的变量取非常小的负值时会造成梯度消失，从而无法学习。
-特别是，平方误差对于softmax单元来说是一个很差的损失函数，即使模型做出高度可信的不正确预测，也不能训练模型改变其输出\citep{Bridle90}。
+特别是，平方误差对于softmax单元来说是一个很差的损失函数，即使模型做出高度可信的不正确预测，也不能训练模型改变其输出\citep{Bridle-1990}。
 要理解为什么这些损失函数可能失败，我们需要检查softmax函数本身。
 
 像~\gls{sigmoid}~一样，softmax激活函数可能会饱和。
@@ -715,7 +715,7 @@ softmax函数因此提供了argmax的``软化''版本。max函数相应的软化
 % -- 183 --
 
 我们经常想要执行多峰回归(multimodal regression)，即预测条件分布$p(\Vy\mid\Vx)$的实值，该条件分布对于相同的$\Vx$值在$\Vy$空间中有多个不同的峰值。
-在这种情况下，高斯混合是输出的自然表示\citep{Jacobs-nc91,bishop1994mixture}。
+在这种情况下，高斯混合是输出的自然表示\citep{Jacobs-et-al-1991,Bishop-1994}。
 将高斯混合作为其输出的神经网络通常被称为\firstgls{mixture_density_network}。
 具有$n$个分量的高斯混合输出由下面的条件分布定义：
 \begin{equation}
@@ -739,11 +739,11 @@ p(\Vy\mid\Vx) = \sum_{i=1}^n p(\RSc = i \mid \Vx) \CalN(\Vy; \Vmu^{(i)}(\Vx), \V
 如果给定了混合模型的正确的负对数似然，梯度下降将自动地遵循正确的过程。
 \end{enumerate}
 有报告说基于梯度的优化方法对于混合条件高斯（作为神经网络的输出）可能是不可靠的，部分是因为涉及到除法（除以方差）可能是数值不稳定的（当某个方差对于特定的实例变得非常小时，会导致非常大的梯度）。
-一种解决方法是\firstgls{clip_gradients}（见\secref{sec:clipping_gradients}），另外一种是启发式缩放梯度\citep{Uria+al-ICML2014}。
+一种解决方法是\firstgls{clip_gradients}（见\secref{sec:clipping_gradients}），另外一种是启发式缩放梯度\citep{Murray-Larochelle-2014}。
 
 % -- 184 --
 
-高斯混合输出在语音生成模型\citep{schuster1999supervised}和物理运动\citep{Graves-arxiv2013}中特别有效。
+高斯混合输出在语音生成模型\citep{Schuster-1999}和物理运动\citep{Graves-2013}中特别有效。
 混合密度策略为网络提供了一种方法来表示多种输出模式，并且控制输出的方差，这对于在这些实数域中获得高质量的结果是至关重要的。
 混合密度网络的一个实例如\figref{fig:chap6_mdn_color}所示。
 % fig 6.4
@@ -835,13 +835,13 @@ p(\Vy\mid\Vx) = \sum_{i=1}^n p(\RSc = i \mid \Vx) \CalN(\Vy; \Vmu^{(i)}(\Vx), \V
 
 \gls{ReLU}的三个扩展基于当$z_i<0$时使用一个非零的斜率$\alpha_i$：$h_i =g(\Vz, \Valpha)_i = \max(0, z_i) + \alpha_i \min(0, z_i)$。
 \firstgls{absolute_value_rectification}固定$\alpha_i=-1$来得到$g(z)=|z|$。
-它用于图像中的对象识别\citep{Jarrett-ICCV2009}，其中寻找在输入照明极性反转下不变的特征是有意义的。
+它用于图像中的对象识别\citep{Jarrett-et-al-2009}，其中寻找在输入照明极性反转下不变的特征是有意义的。
 \gls{ReLU}的其他扩展比这应用地更广泛。
-\firstgls{leaky_ReLU}\citep{Maas-et-al-ICML2013}将$\alpha_i$固定成一个类似0.01的小值，\firstgls{PReLU}或者~\textbf{\glssymbol{PReLU}}~将$\alpha_i$作为学习的参数\citep{He-et-al-arxiv2015}。
+\firstgls{leaky_ReLU}\citep{Maas-et-al-2013}将$\alpha_i$固定成一个类似0.01的小值，\firstgls{PReLU}或者~\textbf{\glssymbol{PReLU}}~将$\alpha_i$作为学习的参数\citep{He-et-al-2015}。
 
 % -- 187 --
 
-\firstgls{maxout_unit}\citep{Goodfellow_maxout_2013}进一步扩展了\gls{ReLU}。
+\firstgls{maxout_unit}\citep{Goodfellow-et-al-2013a}进一步扩展了\gls{ReLU}。
 \gls{maxout_unit}将$\Vz$划分为每组具有$k$个值的组，而不是使用作用于每个元素的函数$g(z)$。
 每个\gls{maxout_unit}则输出每组中的最大元素：
 \begin{equation}
@@ -857,13 +857,13 @@ g(\Vz)_i = \underset{j\in \SetG^{(i)}}{\max} z_j
 maxout层的参数化当然也将与这些层不同，所以即使是maxout学习去实现和其他种类的层相同的$\Vx$的函数这种情况下，学习的机理也是不一样的。
 
 每个~\gls{maxout_unit}现在由$k$个权重向量来参数化，而不仅仅是一个，所以~\gls{maxout_unit}通常比\gls{ReLU}需要更多的正则化。
-如果训练集很大并且每个单元的块数保持很低的话，它们可以在没有正则化的情况下工作得不错\citep{cai2013deep}。
+如果训练集很大并且每个单元的块数保持很低的话，它们可以在没有正则化的情况下工作得不错\citep{Cai-et-al-2013}。
 
 \gls{maxout_unit}还有一些其他的优点。
 在某些情况下，要求更少的参数可以获得一些统计和计算上的优点。
 具体来说，如果由$n$个不同的线性过滤器描述的特征可以在不损失信息的情况下，用每一组$k$个特征的最大值来概括的话，那么下一层可以获得$k$倍更少的权重数 。
 
-因为每个单元由多个过滤器驱动，\gls{maxout_unit}具有一些冗余来帮助它们抵抗一种被称为\firstgls{catastrophic_forgetting}的现象，这个现象是说神经网络忘记了如何执行它们过去训练的任务\citep{Goodfellow+al-ICLR2014-small}。
+因为每个单元由多个过滤器驱动，\gls{maxout_unit}具有一些冗余来帮助它们抵抗一种被称为\firstgls{catastrophic_forgetting}的现象，这个现象是说神经网络忘记了如何执行它们过去训练的任务\citep{Goodfellow-et-al-2014a}。
 
 \gls{ReLU}和它们的这些扩展都是基于一个原则，那就是如果它们的行为更接近线性，那么模型更容易优化。
 使用线性行为更容易优化的一般性原则同样也适用于除深度线性网络以外的情景。
@@ -947,13 +947,13 @@ softmax单元很自然地表示具有$k$个可能值的离散型随机变量的�
 因为它对大部分$\Vx$都饱和到0，因此很难优化。
 
 \item \textbf{\gls{softplus}}函数：$g(a)=\zeta(a)=\log(1+e^a)$。
-这是\gls{ReLU}的平滑版本，由~\cite{Dugas01}引入用于函数近似，由~\cite{Nair-2010-small}引入用于无向概率模型的条件分布。
-\cite{Glorot+al-AI-2011-small}比较了softplus和\gls{ReLU}，发现后者的结果更好。
+这是\gls{ReLU}的平滑版本，由~\cite{Dugas-et-al-2001}引入用于函数近似，由~\cite{Nair-Hinton-2010}引入用于无向概率模型的条件分布。
+\cite{Glorot-et-al-2011a}比较了softplus和\gls{ReLU}，发现后者的结果更好。
 通常不鼓励使用~\gls{softplus_function}。
 softplus表明\gls{hidden_unit}类型的性能可能是非常反直觉的——因为它处处可导或者因为它不完全饱和，人们可能希望它具有优于\gls{ReLU}的点，但根据经验来看，它并没有。
 
 \item \firstgls{hard_tanh}：它的形状和$\text{tanh}$以及\gls{ReLU}类似，但是不同于后者，它是有界的，$g(a)=\max(-1, \min(1,a))$。
-它由~\cite{Collobert04}引入。
+它由~\cite{Collobert-2004}引入。
 \end{itemize}
 
 \gls{hidden_unit}的设计仍然是一个活跃的研究领域，许多有用的\gls{hidden_unit}类型仍有待发现。
@@ -992,8 +992,8 @@ softplus表明\gls{hidden_unit}类型的性能可能是非常反直觉的——�
 
 乍一看，我们可能认为学习非线性函数需要为我们想要学习的那种非线性专门设计一类模型族。
 幸运的是，具有\gls{hidden_layer}的\gls{feedforward_network}提供了一种万能近似框架。
-具体来说，\firstgls{universal_approximation_theorem}\citep{Hornik89,Cybenko89}表明，一个\gls{feedforward_neural_network}如果具有线性输出层和至少一层具有任何一种``挤压''性质的激活函数（例如\gls{logistic_sigmoid}激活函数）的\gls{hidden_layer}，只要给予网络足够数量的\gls{hidden_unit}，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。
-\gls{feedforward_network}的导数也可以任意好地来近似函数的导数\citep{hornik1990universal}。
+具体来说，\firstgls{universal_approximation_theorem}\citep{Hornik-et-al-1989,Cybenko-1989}表明，一个\gls{feedforward_neural_network}如果具有线性输出层和至少一层具有任何一种``挤压''性质的激活函数（例如\gls{logistic_sigmoid}激活函数）的\gls{hidden_layer}，只要给予网络足够数量的\gls{hidden_unit}，它可以以任意的精度来近似任何从一个有限维空间到另一个有限维空间的Borel可测函数。
+\gls{feedforward_network}的导数也可以任意好地来近似函数的导数\citep{Hornik-et-al-1990}。
 Borel可测的概念超出了本书的范畴；对于我们想要实现的目标，只需要知道定义在$\SetR^n$的有界闭集上的任意连续函数是Borel可测的，因此可以用神经网络来近似。
 神经网络也可以近似从任何有限维离散空间映射到另一个的任意函数。
 虽然原始定理最初以具有特殊激活函数的单元的形式来描述，这个激活函数当变量取绝对值非常大的正值和负值时都会饱和，\gls{universal_approximation_theorem}也已经被证明对于更广泛类别的激活函数也是适用的，其中就包括现在常用的\gls{ReLU}~\citep{Leshno-et-al-1993}。
@@ -1010,7 +1010,7 @@ Borel可测的概念超出了本书的范畴；对于我们想要实现的目标
 不存在万能的过程既能够验证训练集上的特殊样本，又能够选择一个函数来扩展到训练集上没有的点。
 
 \gls{universal_approximation_theorem}说明了，存在一个足够大的网络能够达到我们所希望的任意精度，但是定理并没有说这个网络有多大。
-\cite{Barron93}提供了单层网络近似一大类函数所需大小的一些界。
+\cite{Barron-1993}提供了单层网络近似一大类函数所需大小的一些界。
 不幸的是，在最坏情况下，可能需要指数数量的\gls{hidden_unit}（可能一个\gls{hidden_unit}对应着一个需要区分的输入配置）。
 这在二进制情况下很容易看到：向量$\Vv\in \{0,1\}^n$上的可能的二进制函数的数量是$2^{2^n}$，并且选择一个这样的函数需要$2^n$位，这通常需要$O(2^n)$的自由度。
 
@@ -1022,11 +1022,11 @@ Borel可测的概念超出了本书的范畴；对于我们想要实现的目标
 存在一些函数族能够在网络的深度大于某个值$d$时被高效地近似，而当深度被限制到小于或等于$d$时需要一个远远大于之前的模型。
 在很多情况下，浅层模型所需的\gls{hidden_unit}的数量是$n$的指数级。
 这个结果最初被证明是在那些不与连续可微的神经网络类似的机器学习模型中出现，但现在已经扩展到了这些模型。
-第一个结果是关于逻辑门电路的\citep{Hastad86}。
-后来的工作将这些结果扩展到了具有非负权重的线性阈值单元\citep{Hastad91,Hajnal-et-al-1993}，然后扩展到了具有连续值激活的网络\citep{Maass-1992,Maass-et-al-1994}。
+第一个结果是关于逻辑门电路的\citep{Hastad-1986}。
+后来的工作将这些结果扩展到了具有非负权重的线性阈值单元\citep{Hastad-Goldmann-1991,Hajnal-et-al-1993}，然后扩展到了具有连续值激活的网络\citep{Maass-1992,Maass-et-al-1994}。
 许多现代神经网络使用\gls{ReLU}。
 \cite{Leshno-et-al-1993}证明带有一大类非多项式激活函数族的浅层网络，包括\gls{ReLU}，具有万能的近似性质，但是这些结果并没有强调深度或效率的问题——它们仅指出足够宽的\gls{rectifier_network}能够表示任意函数。
-\cite{Montufar-et-al-NIPS2014}指出一些用深度\gls{rectifier_network}表示的函数可能需要浅层网络（一个\gls{hidden_layer}）指数级的\gls{hidden_unit}才能表示。
+\cite{Montufar-et-al-2014}指出一些用深度\gls{rectifier_network}表示的函数可能需要浅层网络（一个\gls{hidden_layer}）指数级的\gls{hidden_unit}才能表示。
 更确切的说，他们说明分段线性网络（可以通过整流非线性或~\gls{maxout_unit}获得）可以表示区域的数量是网络深度的指数级的函数。%这里为什么是非线性？
 \figref{fig:chap6_space_folding}解释了带有\gls{absolute_value_rectification}的网络是如何创建函数的镜像图像的，这些函数在某些\gls{hidden_unit}的顶部计算，作用于\gls{hidden_unit}的输入。
 每个\gls{hidden_unit}指定在哪里折叠输入空间，来创造镜像响应（在绝对值非线性的两侧）。
@@ -1039,17 +1039,17 @@ Borel可测的概念超出了本书的范畴；对于我们想要实现的目标
 \centerline{\includegraphics[width=\textwidth]{Chapter6/figures/space_folding.jpg}}
 \fi
 \caption{ % This is a screenshot.
-关于更深的整流网络具有指数优势的一个直观的几何解释，来自~\cite{Montufar-et-al-NIPS2014}。 
+关于更深的整流网络具有指数优势的一个直观的几何解释，来自~\cite{Montufar-et-al-2014}。 
 \emph{(左)}\gls{absolute_value_rectification}单元对其输入中的每对镜像点有相同的输出。
 镜像的对称轴由单元的权重和偏置定义的超平面给出。 在该单元顶部计算的函数（绿色决策面）将是横跨该对称轴的更简单模式的一个镜像。 
 \emph{(中)}该函数可以通过折叠对称轴周围的空间来得到。
 \emph{(右)}另一个重复模式可以在第一个的顶部折叠（由另一个下游单元）以获得另外的对称性（现在重复四次，使用了两个\gls{hidden_layer}）。 
-经~\cite{Montufar-et-al-NIPS2014}许可改编此图。}
+经~\cite{Montufar-et-al-2014}许可改编此图。}
 \label{fig:chap6_space_folding}
 \end{figure}
 
 
-\cite{Montufar-et-al-NIPS2014}的主要定理指出，具有$d$个输入、深度为$l$、每个\gls{hidden_layer}具有$n$个单元的深度\gls{rectifier_network}可以描述的线性区域的数量是
+\cite{Montufar-et-al-2014}的主要定理指出，具有$d$个输入、深度为$l$、每个\gls{hidden_layer}具有$n$个单元的深度\gls{rectifier_network}可以描述的线性区域的数量是
 \begin{equation}
 O \left ( {n \choose d}^{d(l-1)} n^d \right ),
 \end{equation}
@@ -1069,7 +1069,7 @@ O \left ( k^{(l-1)+d} \right ).
 这可以从表示学习的观点来解释， 我们相信学习的问题包含发现一组潜在的\gls{factors_of_variation}，它们可以根据其他更简单的潜在的\gls{factors_of_variation}来描述。
 或者，我们可以将深度结构的使用解释为另一种信念，那就是我们想要学得的函数是包含多个步骤的计算机程序，其中每个步骤使用前一步骤的输出。
 这些中间输出不一定是\gls{factors_of_variation}，而是可以类似于网络用来组织其内部处理的计数器或指针。
-根据经验，更深的模型似乎确实在广泛的任务中泛化得更好\citep{Bengio-NIPS2007,Erhan2009,Bengio-2009-book,UTLC+LISA-2011-small,Ciresan-et-al-2012,Krizhevsky-2012,sermanet-cvpr-13,Farabet-et-al-2013,couprie-iclr-13,LISA-EmotiW2013,Goodfellow+et+al-ICLR2014a,Szegedy-et-al-arxiv2014}。
+根据经验，更深的模型似乎确实在广泛的任务中泛化得更好\citep{Bengio-et-al-2007,Erhan-et-al-2009,Bengio-2009,Mesnil-et-al-2011,Ciresan-et-al-2012,Krizhevsky-et-al-2012,Sermanet-et-al-2013,Farabet-et-al-2013,Couprie-et-al-2013,Kahou-et-al-2013,Goodfellow-et-al-2014d,Szegedy-et-al-2014a}。
 \figref{fig:chap6_depth_color}和\figref{fig:chap6_model_size_color}展示了一些实验结果的例子。
 这表明使用深层架构确实在模型学习的函数空间上表示了一个有用的先验。
 % fig 6.6
@@ -1081,7 +1081,7 @@ O \left ( k^{(l-1)+d} \right ).
 \fi
 \caption{深度的影响。
 实验结果表明，当从地址照片转录多位数字时，更深层的网络能够更好地\gls{generalization}。
-数据来自~\cite{Goodfellow+et+al-ICLR2014a}。
+数据来自~\cite{Goodfellow-et-al-2014d}。
 测试集上的准确率随着深度的增加而不断增加。
 \figref{fig:chap6_model_size_color}给出了一个对照实验，它说明了对模型尺寸其他方面的增加并不能产生相同的效果。}
 \label{fig:chap6_depth_color}
@@ -1097,7 +1097,7 @@ O \left ( k^{(l-1)+d} \right ).
 \caption{参数数量的影响。
 更深的模型往往表现更好。
 这不仅仅是因为模型更大。
-\cite{Goodfellow+et+al-ICLR2014a}的这项实验表明，增加\gls{convolutional_network}层中参数的数量，但是不增加它们的深度，在提升测试集性能方面几乎没有效果，如此图所示。
+\cite{Goodfellow-et-al-2014d}的这项实验表明，增加\gls{convolutional_network}层中参数的数量，但是不增加它们的深度，在提升测试集性能方面几乎没有效果，如此图所示。
 图例标明了用于画出每条曲线的网络深度，以及曲线表示的是卷积层还是全连接层的大小变化。
 我们可以观察到，在这种情况下，浅层模型在参数数量达到2000万时就过拟合，而深层模型在参数数量超过6000万时仍然表现良好。
 这表明，使用深层模型表达出了对模型可以学习的函数空间的有用偏好。
@@ -1139,7 +1139,7 @@ O \left ( k^{(l-1)+d} \right ).
 输入$\Vx$提供初始信息，然后传播到每一层的\gls{hidden_unit}，最终产生输出$\hat{\Vy}$。
 这称之为~\firstgls{forward_propagation}。
 在训练过程中，前向传播可以持续向前直到它产生一个标量代价函数$J(\Vtheta)$。
-\firstgls{back_propagation}算法\citep{Rumelhart86b-small}，经常简称为\textbf{\glsdesc{BP}}，允许来自代价函数的信息通过网络向后流动，以便计算梯度。
+\firstgls{back_propagation}算法\citep{Rumelhart-et-al-1986a}，经常简称为\textbf{\glsdesc{BP}}，允许来自代价函数的信息通过网络向后流动，以便计算梯度。
 
 % -- 197 --
 
@@ -1455,12 +1455,12 @@ $\CalB$中的计算和$\CalG$中的计算顺序完全相反，而且$\CalB$中�
 
 一些反向传播的方法采用计算图和一组用于图的输入的数值，然后返回在这些输入值处梯度的一组数值。
 我们将这种方法称为\,\textbf{符号到数值}的微分。
-这种方法用在诸如Torch~\citep{Torch-2011}和Caffe~\citep{Jia13caffe}之类的库中。
+这种方法用在诸如Torch~\citep{Collobert-et-al-2011b}和Caffe~\citep{Jia-2013}之类的库中。
 
 % -- 206 --
  
 另一种方法是采用计算图以及添加一些额外的节点到计算图中，这些额外的节点提供了我们所需导数的符号描述。
-这是Theano~\citep{bergstra+al:2010-scipy-small,Bastien-Theano-2012}和TensorFlow~\citep{tensorflow}所采用的方法。
+这是Theano~\citep{Bergstra-et-al-2010,Bastien-et-al-2012}和TensorFlow~\citep{Abadi-et-al-2015}所采用的方法。
 \figref{fig:chap6_symbol_to_symbol}给出了该方法如何工作的一个例子。
 这种方法的主要优点是导数可以使用与原始表达式相同的语言来描述。
 因为导数只是另外一张计算图，我们可以再次运行反向传播，对导数再进行求导就能得到更高阶的导数。
@@ -1723,7 +1723,7 @@ $\CalB$中的计算和$\CalG$中的计算顺序完全相反，而且$\CalB$中�
 它是一种称为\firstgls{reverse_mode_accumulation}的更广泛类型的技术的特殊情况。 
 其他方法以不同的顺序来计算链式法则的子表达式。 
 一般来说，确定一种计算的顺序使得计算开销最小，是困难的问题。 
-找到计算梯度的最优操作序列是NP完全问题\citep{naumann2008optimal}，在这种意义上，它可能需要将代数表达式简化为它们最廉价的形式。
+找到计算梯度的最优操作序列是NP完全问题\citep{Naumann-2008}，在这种意义上，它可能需要将代数表达式简化为它们最廉价的形式。
 
 例如，假设我们有变量$p_1,p_2\ldots,p_n$表示概率，以及变量$z_1,z_2,\ldots,z_n$表示未归一化的对数概率。
 假设我们定义
@@ -1734,7 +1734,7 @@ $\CalB$中的计算和$\CalG$中的计算顺序完全相反，而且$\CalB$中�
 人类数学家可以观察到$J$对$z_i$的导数采用了非常简单的形式：$p_iq_i-p_i$。
 \footnote{译者注：这里作者误写成了$q_i-p_i$。}
 反向传播算法不能够以这种方式来简化梯度，而是会通过原始图中的所有对数和指数操作显式地传播梯度。
-一些软件库如Theano~\citep{bergstra+al:2010-scipy-small,Bastien-Theano-2012}能够执行某些种类的代数替换来改进由纯反向传播算法提出的图。
+一些软件库如Theano~\citep{Bergstra-et-al-2010,Bastien-et-al-2012}能够执行某些种类的代数替换来改进由纯反向传播算法提出的图。
   
 % -- 215 --
   
@@ -1745,7 +1745,7 @@ $\CalB$中的计算和$\CalG$中的计算顺序完全相反，而且$\CalB$中�
 我们定义反向传播仅用于计算标量输出的梯度，但是反向传播可以扩展到计算~\gls{jacobian_matrix}（该~\gls{jacobian_matrix}或者来源于图中的$k$个不同标量节点，或者来源于包含$k$个值的张量值节点）。
 朴素的实现可能需要$k$倍的计算：对于原始前向图中的每个内部标量节点，朴素的实现计算$k$个梯度而不是单个梯度。
 当图的输出数目大于输入的数目时，有时更偏向于使用另外一种形式的自动微分，称为\firstgls{forward_mode_accumulation}。
-前向模式计算已经被提出用于循环神经网络梯度的实时计算，例如\citep{Williams89b}。
+前向模式计算已经被提出用于循环神经网络梯度的实时计算，例如\citep{Williams-Zipser-1989}。
 这也避免了存储整个图的值和梯度的需要，是计算效率和内存使用的折中。
 前向模式和后向模式的关系类似于左乘和右乘一系列矩阵之间的关系，例如
 \begin{equation}
@@ -1785,7 +1785,7 @@ $\CalB$中的计算和$\CalG$中的计算顺序完全相反，而且$\CalB$中�
 Krylov方法是用于执行各种操作的一组迭代技术，这些操作包括像近似求解矩阵的逆、或者近似矩阵的特征值或特征向量等，而不使用矩阵-向量乘法以外的任何操作。
 
 为了在Hesssian矩阵上使用Krylov方法，我们只需要能够计算Hessian矩阵$\MH$和一个任意向量$\Vv$间的乘积即可。
-实现这一目标的一种直观方法\citep{christianson1992automatic}是
+实现这一目标的一种直观方法\citep{Christianson-1992}是
 \begin{equation}
   \MH \Vv=\nabla_{\Vx} \left [ (\nabla_{\Vx} f(x))^\top \Vv\right ].
 \end{equation}
@@ -1805,21 +1805,21 @@ Krylov方法是用于执行各种操作的一组迭代技术，这些操作包�
   
 % -- 217 --
   
-处于反向传播算法底层的链式法则是17世纪发明的\citep{Leibniz-1676,LHopital-1696}。
-微积分和代数长期以来被用于求解优化问题的封闭形式，但梯度下降直到19世纪才作为优化问题的一种迭代近似的求解方法被引入\citep{cauchy1847}。
+处于反向传播算法底层的链式法则是17世纪发明的\citep{Leibniz-1676,L'Hopital-1696}。
+微积分和代数长期以来被用于求解优化问题的封闭形式，但梯度下降直到19世纪才作为优化问题的一种迭代近似的求解方法被引入\citep{Cauchy-1847}。
 
 从20世纪40年代开始，这些函数近似技术被用于导出诸如感知机的机器学习模型。 
 然而，最早的模型都是基于线性模型。 
 来自包括Marvin Minsky的批评指出了线性模型族的几个缺陷，例如它无法学习XOR函数，这导致了对整个神经网络方法的抵制。
 
 学习非线性函数需要\gls{MLP}的发展和计算该模型梯度的方法。
-基于动态规划的链式法则的高效应用开始出现在20世纪60年代和70年代，主要用于控制领域\citep{Kelley-1960,Bryson-et-al-1961,Dreyfus-1962,Bryson-1969,Dreyfus-1973}，也用于灵敏度分析\citep{Linnainmaa-1976}。 
+基于动态规划的链式法则的高效应用开始出现在20世纪60年代和70年代，主要用于控制领域\citep{Kelley-1960,Bryson-Denham-1961,Dreyfus-1962,Bryson-Ho-1969,Dreyfus-1973}，也用于灵敏度分析\citep{Linnainmaa-1976}。 
 \cite{Werbos-1981}提出应用这些技术来训练人工神经网络。
-这个想法以不同的方式被独立地重新发现后\citep{LeCun85,Parker-1985,Rumelhart86b-small}，最终在实践中得以发展。
-\firstgls{parallel_distributed_processing}一书在其中一章提供了第一次成功使用反向传播的一些实验的结果\citep{Rumelhart86c}，这对反向传播的普及做出了巨大的贡献，并且开启了一个研究多层神经网络非常活跃的时期。
+这个想法以不同的方式被独立地重新发现后\citep{LeCun-1985,Parker-1985,Rumelhart-et-al-1986a}，最终在实践中得以发展。
+\firstgls{parallel_distributed_processing}一书在其中一章提供了第一次成功使用反向传播的一些实验的结果\citep{Rumelhart-et-al-1986b}，这对反向传播的普及做出了巨大的贡献，并且开启了一个研究多层神经网络非常活跃的时期。
 然而，该书作者提出的想法，特别是Rumelhart 和Hinton提出的想法远远超过了反向传播。
 它们包括一些关键思想，关于可能通过计算实现认知和学习的几个核心方面，后来被冠以`` 联结主义''的名称，因为它强调了神经元之间的连接作为学习和记忆的轨迹的重要性。
-特别地，这些想法包括分布式表示的概念\citep{Hinton-et-al-PDP1986}。
+特别地，这些想法包括分布式表示的概念\citep{Hinton-et-al-1986}。
 
 在反向传播的成功之后，神经网络研究获得了普及，并在20世纪90年代初达到高峰。 
 随后，其他机器学习技术变得更受欢迎，直到2006年开始的现代深度学习复兴。
@@ -1838,21 +1838,21 @@ Krylov方法是用于执行各种操作的一组迭代技术，这些操作包�
 使用\gls{cross_entropy}损失大大提高了具有~\gls{sigmoid}~和softmax输出的模型的性能，而当使用\gls{mean_squared_error}损失时会存在饱和和学习缓慢的问题。
 
 另一个显著改善\gls{feedforward_network}性能的算法上的主要变化是使用分段线性\gls{hidden_unit}来替代~\gls{sigmoid}~\gls{hidden_unit}，例如用\gls{ReLU}。
-使用$\max\{0, z\}$函数的整流在早期神经网络中已经被引入，并且至少可以追溯到认知机（Cognitron）和神经认知机(Neocognitron)\citep{Fukushima75,Fukushima80}。
+使用$\max\{0, z\}$函数的整流在早期神经网络中已经被引入，并且至少可以追溯到认知机（Cognitron）和神经认知机(Neocognitron)\citep{Fukushima-1975,Fukushima-1980}。
 这些早期的模型没有使用\gls{ReLU}，而是将整流用于非线性函数。
 尽管整流在早期很普及，在20世纪80年代，整流很大程度上被~\gls{sigmoid}~所取代，也许是因为当神经网络非常小时，\gls{sigmoid}~表现更好。
 到21世纪初，由于有些迷信的观念，认为必须避免具有不可导点的激活函数，所以避免了\gls{ReLU}。
 这在2009年开始发生改变。
-\cite{Jarrett-ICCV2009}观察到，在神经网络结构设计的几个不同因素中``使用整流非线性是提高识别系统性能的最重要的唯一因素''。
+\cite{Jarrett-et-al-2009}观察到，在神经网络结构设计的几个不同因素中``使用整流非线性是提高识别系统性能的最重要的唯一因素''。
 
-对于小的数据集，\cite{Jarrett-ICCV2009}观察到，使用整流非线性甚至比学习\gls{hidden_layer}的权重值更加重要。
+对于小的数据集，\cite{Jarrett-et-al-2009}观察到，使用整流非线性甚至比学习\gls{hidden_layer}的权重值更加重要。
 随机的权重足以通过\gls{rectifier_network}传播有用的信息，允许在顶部的分类器层学习如何将不同的特征向量映射到类标识。
 
 当有更多数据可用时，学习开始提取足够的有用知识来超越随机选择参数的性能。
-\cite{Glorot+al-AI-2011-small}说明，在深度\gls{rectifier_network}中的学习比在激活函数具有曲率或两侧饱和的深度网络中的学习更容易。
+\cite{Glorot-et-al-2011a}说明，在深度\gls{rectifier_network}中的学习比在激活函数具有曲率或两侧饱和的深度网络中的学习更容易。
 
 \gls{ReLU}还具有历史意义，因为它们表明神经科学继续对深度学习算法的发展产生影响。
-\cite{Glorot+al-AI-2011-small}从生物学考虑\gls{ReLU}的导出。
+\cite{Glorot-et-al-2011a}从生物学考虑\gls{ReLU}的导出。
 半整流非线性旨在描述生物神经元的这些性质：(1) 对于某些输入，生物神经元是完全不活跃的。
 (2) 对于某些输入，生物神经元的输出和它的输入成比例。
 (3) 大多数时间，生物神经元是在它们不活跃的状态下进行操作（即它们应该具有\firstgls{sparse_activation}）。

@@ -5,7 +5,7 @@
 \gls{DL}是\gls{ML}的一个特定分支。
 我们要想充分理解\gls{DL}，必须对\gls{ML}的基本原理有深刻的理解。
 本章将探讨贯穿本书其余部分的一些\gls{ML}重要原理。
-我们建议新手读者或是希望更全面了解的读者参考一些更全面覆盖基础知识的\gls{ML}参考书，例如~\cite{MurphyBook2012}或者~\cite{bishop-book2006}。
+我们建议新手读者或是希望更全面了解的读者参考一些更全面覆盖基础知识的\gls{ML}参考书，例如~\cite{Murphy-2012}或者~\cite{Bishop-2006}。
 如果你已经熟知\gls{ML}，可以跳过前面的部分，前往\secref{sec:challenges_motivating_deep_learning}。
 \secref{sec:challenges_motivating_deep_learning}涵盖了一些传统\gls{ML}技术观点，这些技术对\gls{DL}的发展有着深远影响。
 
@@ -25,7 +25,7 @@
 \label{sec:learning_algorithms}
 \gls{ML}算法是一种能够从数据中学习的算法。
 然而，我们所谓的``学习''是什么意思呢？
-\cite{Mitchell:1997:ML}提供了一个简洁的定义：``对于某类任务$T$和\gls{performance_measures} $P$，一个计算机程序被认为可以从\gls{experience} $E$中学习是指，通过\gls{experience} $E$改进后，它在任务$T$上由\gls{performance_measures} $P$衡量的性能有所提升。''
+\cite{Mitchell-1997}提供了一个简洁的定义：``对于某类任务$T$和\gls{performance_measures} $P$，一个计算机程序被认为可以从\gls{experience} $E$中学习是指，通过\gls{experience} $E$改进后，它在任务$T$上由\gls{performance_measures} $P$衡量的性能有所提升。''
 \gls{experience} $E$，任务$T$和\gls{performance_measures} $P$的定义范围非常宽广，在本书中我们并不会试图去解释这些定义的具体意义。
 相反，我们会在接下来的章节中提供直观的解释和示例来介绍不同的任务、\gls{performance_measures}和\gls{experience}，这些将被用来构建\gls{ML}算法。
 
@@ -57,9 +57,9 @@
     当$y=f(\Vx)$时，模型将向量$\Vx$所代表的输入分类到数字码$y$所代表的类别。
     还有一些其他的分类问题，例如，$f$输出的是不同类别的概率分布。
     分类任务中有一个任务是对象识别，其中输入是图片（通常由一组像素亮度值表示），输出是表示图片物体的数字码。
-    例如，Willow Garage PR2机器人能像服务员一样识别不同饮料，并送给点餐的顾客\citep{Goodfellow2010}。
-    目前，最好的对象识别工作正是基于\gls{DL}的\citep{Krizhevsky-2012,Ioffe+Szegedy-2015}。
-    对象识别同时也是计算机识别人脸的基本技术，可用于标记相片合辑中的人脸\citep{Taigman-et-al-CVPR2014}，有助于计算机更自然地与用户交互。
+    例如，Willow Garage PR2机器人能像服务员一样识别不同饮料，并送给点餐的顾客\citep{Goodfellow-et-al-2010}。
+    目前，最好的对象识别工作正是基于\gls{DL}的\citep{Krizhevsky-et-al-2012,Ioffe-Szegedy-2015}。
+    对象识别同时也是计算机识别人脸的基本技术，可用于标记相片合辑中的人脸\citep{Taigman-et-al-2014}，有助于计算机更自然地与用户交互。
     
     \item \textbf{输入缺失分类}：
     当输入向量的每个度量不被保证的时候，分类问题将会变得更有挑战性。
@@ -69,7 +69,7 @@
     这种情况在医疗诊断中经常出现，因为很多类型的医学测试是昂贵的，对身体有害的。
     有效地定义这样一个大集合函数的方法是学习所有相关变量的概率分布，然后通过边缘化缺失变量来解决分类任务。 
     使用$n$个输入变量，我们现在可以获得每个可能的缺失输入集合所需的所有$2^n$个不同的分类函数，但是计算机程序仅需要学习一个描述联合概率分布的函数。
-    参见~\cite{Goodfellow-et-al-NIPS2013}了解以这种方式将深度概率模型应用于这类任务的示例。 
+    参见~\cite{Goodfellow-et-al-2013b}了解以这种方式将深度概率模型应用于这类任务的示例。 
     本节中描述的许多其他任务也可以推广到缺失输入的情况; 缺失输入分类只是\gls{ML}能够解决的问题的一个示例。
     
 % -- 97 --
@@ -83,22 +83,22 @@
     \item \textbf{\gls{transcribe}}：
     这类任务中，\gls{ML}系统观测一些相对非结构化表示的数据，并\gls{transcribe}信息为离散的文本形式。
     例如，光学字符识别要求计算机程序根据文本图片返回文字序列（ASCII码或者Unicode码）。
-    谷歌街景以这种方式使用\gls{DL}处理街道编号\citep{Goodfellow+et+al-ICLR2014a}。
+    谷歌街景以这种方式使用\gls{DL}处理街道编号\citep{Goodfellow-et-al-2014d}。
     另一个例子是语音识别，计算机程序输入一段音频波形，输出一序列音频记录中所说的字符或单词ID的编码。
     \gls{DL}是现代语音识别系统的重要组成部分，被各大公司广泛使用，包括微软，IBM和谷歌\citep{Hinton-et-al-2012b}。
 
     \item \textbf{机器翻译}：在机器翻译任务中，输入是一种语言的符号序列，计算机程序必须将其转化成另一种语言的符号序列。
     这通常适用于自然语言，如将英语译成法语。
-    最近，\gls{DL}已经开始在这个任务上产生重要影响\citep{Sutskever-et-al-NIPS2014,Bahdanau-et-al-ICLR2015-small}。
+    最近，\gls{DL}已经开始在这个任务上产生重要影响\citep{Sutskever-et-al-2014,Bahdanau-et-al-2015}。
 
     \item \textbf{结构化输出}：结构化输出任务的输出是向量或者其他包含多个值的数据结构，并且构成输出的这些不同元素间具有重要关系。
     这是一个很大的范畴，包括上述\gls{transcribe}任务和翻译任务在内的很多其他任务。
     例如语法分析——映射自然语言句子到语法结构树，并标记树的节点为动词、名词、副词等等。
-    参考~\cite{Collobert-AISTATS2011}将\gls{DL}应用到语法分析的示例。
+    参考~\cite{Collobert-2011}将\gls{DL}应用到语法分析的示例。
     另一个例子是图像的像素级分割，将每一个像素分配到特定类别。
-    例如，\gls{DL}可用于标注航拍照片中的道路位置\citep{MnihHinton2010}。
+    例如，\gls{DL}可用于标注航拍照片中的道路位置\citep{Mnih-Hinton-2010}。
     在这些标注型的任务中，输出的结构形式不需要和输入尽可能相似。
-    例如，在为图片添加描述的任务中，计算机程序观察到一幅图，输出描述这幅图的自然语言句子\citep{Kiros-et-al-ICML2014,Kiros-et-al-arxiv2014,Mao-et-al-2014,Vinyals-et-al-CVPR2015,Donahue-et-al-arxiv2014,Karpathy+Li-CVPR2015,Fang-et-al-CVPR2015,Xu-et-al-ICML2015}。
+    例如，在为图片添加描述的任务中，计算机程序观察到一幅图，输出描述这幅图的自然语言句子\citep{Kiros-et-al-2014a,Kiros-et-al-2014b,Mao-et-al-2015,Vinyals-et-al-2015b,Donahue-et-al-2014,Karpathy-Li-2015,Fang-et-al-2015,Xu-et-al-2015}。
     这类任务被称为\emph{结构化输出任务}是因为输出值之间内部紧密相关。
     例如，为图片添加标题的程序输出的单词必须组合成一个通顺的句子。
 
@@ -109,11 +109,11 @@
     通过对你的购买习惯建模，信用卡公司可以检测到你的卡是否被滥用。
     如果窃贼窃取你的信用卡或信用卡信息，窃贼采购物品的分布通常和你的不同。
     当该卡发生了不正常的购买行为时，信用卡公司可以尽快冻结该卡以防欺诈。
-    参考~\cite{chandola2009anomaly}了解欺诈检测方法。
+    参考~\cite{Chandola-et-al-2009}了解欺诈检测方法。
 
     \item \textbf{合成和采样}：在这类任务中，\gls{ML}程序生成一些和训练数据相似的新\gls{example:chap5}。
     通过\gls{ML}，合成和采样可能在媒体应用中非常有用，可以避免艺术家大量昂贵或者乏味费时的手动工作。
-    例如，视频游戏可以自动生成大型物体或风景的纹理，而不是让艺术家手动标记每个像素\citep{Luo+al-AISTATS2013-small}。
+    例如，视频游戏可以自动生成大型物体或风景的纹理，而不是让艺术家手动标记每个像素\citep{Luo-et-al-2013}。
     在某些情况下，我们希望采样或合成过程可以根据给定的输入生成一些特定类型的输出。
     例如，在语音合成任务中，我们提供书写的句子，要求程序输出这个句子语音的音频波形。
     这是一类\emph{结构化输出任务}，但是多了每个输入并非只有一个正确输出的条件，并且我们明确希望输出有很多变化，这可以使结果看上去更加自然和真实。
@@ -227,12 +227,12 @@ Iris（鸢尾花卉）\gls{dataset}~\citep{Fisher-1936}是统计学家和\gls{ML
 学习范式的其他变种也是有可能的。
 例如，半监督学习中，一些\gls{example:chap5}有监督\gls{target}，但其他\gls{example:chap5}没有。
 在多实例学习中，\gls{example:chap5}的整个集合被标记为含有或者不含有该类的\gls{example:chap5}，但是集合中单独的样本是没有标记的。
-参考~\cite{Kotzias2015}了解最近\gls{deep_model}进行多实例学习的示例。
+参考~\cite{Kotzias-et-al-2015}了解最近\gls{deep_model}进行多实例学习的示例。
 
 有些\gls{ML}算法并不是训练于一个固定的\gls{dataset}上。
 例如，\firstgls{reinforcement_learning}算法会和环境进行交互，所以学习系统和它的训练过程会有反馈回路。
 这类算法超出了本书的范畴。
-请参考~\cite{Sutton+Barto-98}或~\cite{Bertsekas+Tsitsiklis-book1996}了解强化学习相关知识，\cite{Mnih-et-al2013}介绍了强化学习方向的\gls{DL}方法。
+请参考~\cite{Sutton-Barto-1998}或~\cite{Bertsekas-Tsitsiklis-1996}了解强化学习相关知识，\cite{Mnih-et-al-2013}介绍了强化学习方向的\gls{DL}方法。
 
 大部分\gls{ML}算法简单地训练于一个\gls{dataset}上。
 \gls{dataset}可以用很多不同方式来表示。
@@ -498,7 +498,7 @@ $9$次函数能够表示正确的函数，但是因为训练参数比训练\gls{
 提高\gls{ML}模型泛化的现代思想可以追溯到早在托勒密时期的哲学家的思想。
 许多早期的学者提出一个简约原则，现在广泛被称为\firstgls{OR}（c. 1287-1387）。
 该原则指出，在同样能够解释已知观测现象的假设中，我们应该挑选``最简单''的那一个。
-这个想法是在20世纪，由统计学习理论创始人形式化并精确化的\citep{Vapnik71,Vapnik82,Blumer-et-al-1989,Vapnik95}。
+这个想法是在20世纪，由统计学习理论创始人形式化并精确化的\citep{Vapnik-Chervonenkis-1971,Vapnik-1982,Blumer-et-al-1989,Vapnik-1995}。
 
 统计学习理论提供了量化模型容量的不同方法。
 在这些中，最有名的是\firstall{VC}。
@@ -507,7 +507,7 @@ $9$次函数能够表示正确的函数，但是因为训练参数比训练\gls{
 假设存在$m$个不同$\Vx$点的训练集，分类器可以任意地标记该$m$个不同的$\Vx$点，\glssymbol{VC}\,维被定义为$m$的最大可能值。
 
 量化模型的容量使得统计学习理论可以进行量化预测。
-统计学习理论中最重要的结论阐述了训练误差和泛化误差之间差异的上界随着模型容量增长而增长，但随着训练\gls{example:chap5}增多而下降\citep{Vapnik71,Vapnik82,Blumer-et-al-1989,Vapnik95}。
+统计学习理论中最重要的结论阐述了训练误差和泛化误差之间差异的上界随着模型容量增长而增长，但随着训练\gls{example:chap5}增多而下降\citep{Vapnik-Chervonenkis-1971,Vapnik-1982,Blumer-et-al-1989,Vapnik-1995}。
 这些边界为\gls{ML}算法可以有效解决问题提供了理论验证，但是它们很少应用于实际中的\gls{DL}算法。
 一部分原因是边界太松，另一部分原因是很难确定\gls{DL}算法的容量。
 由于有效容量受限于优化算法的能力，确定\gls{DL}模型容量的问题特别困难。
@@ -541,7 +541,7 @@ $9$次函数能够表示正确的函数，但是因为训练参数比训练\gls{
 不像\gls{linear_regression}有固定长度的向量作为权重，\gls{nearest_neighbor_regression}模型存储了训练集中所有的$\MX$和$\Vy$。
 当需要为测试点$\Vx$分类时，模型会查询训练集中离该点最近的点，并返回相关的回归\gls{target}。
 换言之，$\hat{y}=y_i$其中$i=\argmin \norm{\MX_{i,:}-\Vx}_2^2$。
-该算法也可以扩展成$L^2$范数以外的距离度量，例如学成距离度量\citep{RoweisNCA2005}。
+该算法也可以扩展成$L^2$范数以外的距离度量，例如学成距离度量\citep{Goldberger-et-al-2005}。
 如果允许该算法通过平均$\MX_{i,:}$中所有邻近的向量对应的$y_i$来打破联系，那么该算法会在任意回归\gls{dataset}上达到最小可能的训练误差（如果存在两个相同的输入对应不同的输出，那么训练误差可能会大于零）。
 
 最后，我们也可以将参数学习算法嵌入另一个增加参数数目的算法来创建非参数学习算法。
@@ -583,7 +583,7 @@ $9$次函数能够表示正确的函数，但是因为训练参数比训练\gls{
 \gls{ML}保证找到一个在所关注的\emph{大多数}\gls{example:chap5}上\emph{可能}正确的规则。
 
 可惜，即使这样也不能解决整个问题。
-\gls{ML}的\firstgls{no_free_lunch_theorem}表明\citep{Wolpert1996}，在所有可能的数据生成分布上平均之后，每一个分类算法在未事先观测的点上都有相同的错误率。
+\gls{ML}的\firstgls{no_free_lunch_theorem}表明\citep{Wolpert-1996}，在所有可能的数据生成分布上平均之后，每一个分类算法在未事先观测的点上都有相同的错误率。
 换言之，在某种意义上，没有一个\gls{ML}算法总是比其他的要好。
 我们能够设想的最先进的算法和简单地将所有点归为同一类的简单算法有着相同的平均性能（在所有可能的任务上）。
 
@@ -709,7 +709,7 @@ $9$次函数能够表示正确的函数，但是因为训练参数比训练\gls{
 最常见的是$k$-折交叉验证过程，如\algref{alg:xv}所示，将\gls{dataset}分成$k$个不重合的子集。
 测试误差可以估计为$k$次计算后的平均测试误差。
 在第$i$次测试时，数据的第$i$个子集用于\gls{test_set}，其他的数据用于训练集。
-带来的一个问题是不存在平均误差方差的无偏估计\citep{Bengio-Grandvalet-JMLR-04}，但是我们通常会使用近似来解决。
+带来的一个问题是不存在平均误差方差的无偏估计\citep{Bengio-Grandvalet-2004}，但是我们通常会使用近似来解决。
 
 \begin{algorithm}
   \caption{$k$-折交叉验证算法。
@@ -1288,7 +1288,7 @@ $\VLambda_0=\text{diag}(\Vlambda_0)$。
 还有些\gls{regularizer}依赖于数据，当然也不会是一个先验概率分布。
 
 \glssymbol{MAP}\,\gls{bayesian_inference}提供了一个直观的方法来设计复杂但可解释的\gls{regularizer}。
-例如，更复杂的惩罚项可以通过混合高斯分布作为先验得到，而不是一个单独的高斯分布\citep{Nowlan-nips92}。
+例如，更复杂的惩罚项可以通过混合高斯分布作为先验得到，而不是一个单独的高斯分布\citep{Nowlan-Hinton-1992}。
 
 \section{\glsentrytext{supervised_learning}算法}
 \label{sec:supervised_learning_algorithms}
@@ -1330,7 +1330,7 @@ $\VLambda_0=\text{diag}(\Vlambda_0)$。
 
 \subsection{\glsentrytext{SVM}}
 \label{sec:support_vector_machines}
-\firstall{SVM}是\gls{supervised_learning}中最有影响力的方法之一\citep{Boser92,Cortes95}。
+\firstall{SVM}是\gls{supervised_learning}中最有影响力的方法之一\citep{Boser-et-al-1992,Cortes-Vapnik-1995}。
 类似于逻辑回归，这个模型也是基于线性函数$\Vw^\Tsp \Vx + b$的。
 不同于逻辑回归的是，支持向量机不输出概率，只输出类别。
 当$\Vw^\Tsp\Vx + b$为正时，\gls{SVM}预测属于正类。
@@ -1388,7 +1388,7 @@ $\Valpha$和$f(\Vx)$之间的关系也是线性的。
 
 \gls{SVM}不是唯一可以使用\gls{kernel_trick}来增强的算法。
 许多其他的线性模型也可以通过这种方式来增强。
-使用\gls{kernel_trick}的算法类别被称为\firstgls{kernel_machines}或\firstgls{kernel_methods}\citep{Williams+Rasmussen-nips8,Scholkopf99}。    
+使用\gls{kernel_trick}的算法类别被称为\firstgls{kernel_machines}或\firstgls{kernel_methods}\citep{Williams-Rasmussen-1996,Scholkopf-et-al-1999}。    
 
 核机器的一个主要缺点是计算决策函数的成本关于训练\gls{example:chap5}的数目是线性的。
 因为第$i$个\gls{example:chap5}贡献$\alpha_i k(\Vx, \Vx^{(i)})$到决策函数。
@@ -1401,7 +1401,7 @@ $\Valpha$和$f(\Vx)$之间的关系也是线性的。
 带通用核的核机器致力于泛化得更好。
 我们将在\secref{sec:challenges_motivating_deep_learning}解释原因。
 现代\gls{DL}的设计旨在克服核机器的这些限制。
-当前\gls{DL}的复兴始于~\cite{Hinton06-small}表明神经网络能够在MNIST基准数据上胜过RBF核的\gls{SVM}。
+当前\gls{DL}的复兴始于~\cite{Hinton-et-al-2006}表明神经网络能够在MNIST基准数据上胜过RBF核的\gls{SVM}。
 
 % -- 139 --
 
@@ -1435,7 +1435,7 @@ $k$-最近邻的一个弱点是它不能学习出哪一个\gls{feature}比其他
 
 % -- 140 --
 
-\firstgls{decision_tree}及其变种是另一类将输入空间分成不同的区域，每个区域有独立参数的算法\citep{Breiman84}。
+\firstgls{decision_tree}及其变种是另一类将输入空间分成不同的区域，每个区域有独立参数的算法\citep{Breiman-et-al-1984}。
 如\figref{fig:chap5_decision_tree}所示，决策树的每个节点都与输入空间的一个区域相关联，并且内部节点继续将区域分成子节点下的子区域（通常使用坐标轴拆分区域）。
 空间由此细分成不重叠的区域，叶节点和输入区域之间形成一一对应的关系。
 每个叶结点将其输入区域的每个点映射到相同的输出。
@@ -1460,7 +1460,7 @@ $k$-最近邻的一个弱点是它不能学习出哪一个\gls{feature}比其他
 尽管如此，在计算资源受限制时，它们都是很有用的学习算法。
 通过思考复杂算法和$k$-最近邻或决策树之间的相似性和差异，我们可以建立对更复杂学习算法的直觉。
 
-读者可以参考~\cite{MurphyBook2012,bishop-book2006,Hastie2001}或其他\gls{ML}教科书了解更多的传统\gls{supervised_learning}算法。
+读者可以参考~\cite{Murphy-2012,Bishop-2006,Hastie-et-al-2001}或其他\gls{ML}教科书了解更多的传统\gls{supervised_learning}算法。
 
 \section{\glsentrytext{unsupervised_learning}算法}
 \label{sec:unsupervised_learning_algorithms}
@@ -1476,7 +1476,7 @@ $k$-最近邻的一个弱点是它不能学习出哪一个\gls{feature}比其他
 
 有很多方式定义较简单的表示。最常见的三种包括低维表示、稀疏表示和独立表示。
 低维表示尝试将$\Vx$中的信息尽可能压缩在一个较小的表示中。
-稀疏表示将\gls{dataset}嵌入到输入项大多数为零的表示中\citep{Barlow89,Olshausen+Field-1996,Hinton+Ghahramani-97}。
+稀疏表示将\gls{dataset}嵌入到输入项大多数为零的表示中\citep{Barlow-1989,Olshausen-Field-1996,Hinton-Ghahramani-1997}。
 稀疏表示通常用于需要增加表示维数的情况，使得大部分为零的表示不会丢失很多信息。
 这会使得表示的整体结构倾向于将数据分布在表示空间的坐标轴上。
 独立表示试图\emph{分开}数据分布中变化的来源，使得表示的维度是统计独立的。
@@ -1815,7 +1815,7 @@ $k$-均值聚类初始化$k$个不同的中心点$\{\Vmu^{(1)},\dots,\Vmu^{(k)}\
 一类重要的核函数是\firstgls{local_kernel}，其核函数$k(\Vu,\Vv)$在$\Vu=\Vv$时很大，
 当$\Vu$和$\Vv$距离拉大时而减小。
 局部核可以看作是执行模版匹配的相似函数，用于度量测试\gls{example:chap5} $\Vx$和每个训练\gls{example:chap5} $\Vx^{(i)}$有多么相似。
-近年来深度学习的很多推动力源自研究局部模版匹配的局限性，以及\gls{DL}如何克服这些局限性\citep{bengio_curse_2006}。
+近年来深度学习的很多推动力源自研究局部模版匹配的局限性，以及\gls{DL}如何克服这些局限性\citep{Bengio-et-al-2006b}。
 
 决策树也有平滑学习的局限性，因为它将输入空间分成和叶节点一样多的区间，并在每个区间使用单独的参数（或者有些决策树的拓展有多个参数）。
 如果\gls{target}函数需要至少拥有$n$个叶节点的树才能精确表示，那么至少需要$n$个训练\gls{example:chap5}去拟合。
@@ -1859,7 +1859,7 @@ $k$-均值聚类初始化$k$个不同的中心点$\{\Vmu^{(1)},\dots,\Vmu^{(k)}\
 
 这些问题，即是否可以有效地表示复杂的函数以及所估计的函数是否可以很好地泛化到新的输入，答案是有。
 关键观点是，只要我们通过额外假设生成数据的分布来建立区域间的依赖关系，那么$O(k)$个\gls{example:chap5}足以描述多如$O(2^k)$的大量区间。
-通过这种方式，我们确实能做到非局部的泛化\citep{Bengio+Monperrus-2005,Bengio2006c}。
+通过这种方式，我们确实能做到非局部的泛化\citep{Bengio-Monperrus-2005,Bengio-et-al-2006c}。
 为了利用这些优势，许多不同的\gls{DL}算法都提出了一些适用于多种\,\glssymbol{AI}\,任务的隐式或显式的假设。
 
 
@@ -1948,7 +1948,7 @@ $k$-均值聚类初始化$k$个不同的中心点$\{\Vmu^{(1)},\dots,\Vmu^{(k)}\
 % -- 157 --
 
 这些支持流形假设的思维实验传递了一些支持它的直观理由。
-更严格的实验\citep{Cayton-2005,Narayanan+Mitter-NIPS2010,Scholkopf98-book,Roweis2000-lle-small,Tenenbaum2000-isomap,Brand2003,Belkin+Niyogi-nips2003,Donoho+Carrie-03,Weinberger04a}在\gls{AI}中备受关注的一大类\gls{dataset}上支持了这个假设。
+更严格的实验\citep{Cayton-2005,Narayanan-Mitter-2010,Scholkopf-et-al-1998,Roweis-Saul-2000,Tenenbaum-et-al-2000,Brand-2003,Belkin-Niyogi-2003,Donoho-Grimes-2003,Weinberger-Saul-2004}在\gls{AI}中备受关注的一大类\gls{dataset}上支持了这个假设。
 
 当数据位于低维流形中时，使用流形中的坐标而非$\SetR^n$中的坐标表示\gls{ML}数据更为自然。
 日常生活中，我们可以认为道路是嵌入在三维空间的一维流形。

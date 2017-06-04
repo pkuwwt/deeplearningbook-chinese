@@ -84,8 +84,8 @@
 随着时间的推移，\glssymbol{GPU}~也变得更灵活，允许定制的子程序处理转化顶点坐标或者计算像素颜色的任务。
 原则上，\glssymbol{GPU}~不要求这些像素值实际基于渲染任务。
 只要将计算的输出值作为像素值写入缓冲区，\glssymbol{GPU}~就可以用于科学计算。
-\citet{Steinkrau2005}在GPU上实现了一个两层全连接的\gls{NN}，并获得了相对基于CPU的基准方法三倍的加速。
-不久以后，\citet{chellapilla:inria-00112631}也论证了相同的技术可以用来加速\gls{supervised}\gls{convolutional_network}的训练。
+\citet{Steinkrau-et-al-2005}在GPU上实现了一个两层全连接的\gls{NN}，并获得了相对基于CPU的基准方法三倍的加速。
+不久以后，\citet{Chellapilla-et-al-2006}也论证了相同的技术可以用来加速\gls{supervised}\gls{convolutional_network}的训练。
 % 433
 
 
@@ -93,7 +93,7 @@
 这种\gls{GP_GPU}~可以执行任意的代码，而并非仅仅渲染子程序。
 NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任意代码。
 由于相对简便的编程模型，强大的并行能力以及巨大的内存带宽，\gls{GP_GPU}~为我们提供了训练\gls{NN}的理想平台。
-在它发布以后不久，这个平台就迅速被\gls{DL}的研究者们所采纳~\citep{RainaICML09-small,Ciresan-2010}。
+在它发布以后不久，这个平台就迅速被\gls{DL}的研究者们所采纳~\citep{Raina-et-al-2009,Ciresan-et-al-2010}。
 
 
 
@@ -116,10 +116,10 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 
 由于实现高效~\glssymbol{GPU}~代码的困难性，研究人员应该组织好他们的工作流程，避免对每一个新的模型或算法都编写新的~\glssymbol{GPU}~代码。
 通常来讲，人们会选择建立一个包含高效操作（如卷积和矩阵乘法）的软件库解决这个问题，然后再从库中调用所需要的操作确定模型。
-例如，\gls{ML}库Pylearn2 \citep{pylearn2_arxiv_2013}将其所有的\gls{ML}算法都通过调用Theano~\citep{bergstra+al:2010-scipy-short,Bastien-2012}和cuda-convnet~\citep{Krizhevsky2010tr} 所提供的高性能操作来指定。
+例如，\gls{ML}库Pylearn2 \citep{Goodfellow-et-al-2013c}将其所有的\gls{ML}算法都通过调用Theano~\citep{Bergstra-et-al-2010,Bastien-et-al-2012}和cuda-convnet~\citep{Krizhevsky-2010} 所提供的高性能操作来指定。
 这种分解方法还可以简化对多种硬件的支持。
 例如，同一个Theano程序可以在CPU或者~\glssymbol{GPU}~上运行，而不需要改变调用Theano的方式。
-其他库如Tensorflow~\citep{tensorflow}和Torch~\citep{Torch-2011}也提供了类似的功能。
+其他库如Tensorflow~\citep{Abadi-et-al-2015}和Torch~\citep{Collobert-et-al-2011b}也提供了类似的功能。
 % 434 end
 
 
@@ -147,15 +147,15 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 % 435
 
 
-这个问题可以使用\firstgls{ASGD}\citep{Bengio+Bengio96,Recht-et-al-NIPS2011}解决。
+这个问题可以使用\firstgls{ASGD}\citep{Bengio-et-al-2001,Recht-et-al-2011}解决。
 在这个方法中，几个处理器的核共用存有参数的内存。
 每一个核在无锁情况下读取这些参数并计算对应的梯度，然后在无锁状态下更新这些参数。
 %这种方法减少了每一个\gls{GD}所获得的平均提升，因为一些核把其他的核所更新的参数（写）覆盖了。
 由于一些核把其他的核所更新的参数覆盖了，因此这种方法减少了每一步\gls{GD}所获得的平均提升。
 但因为更新步数的速率增加，总体上还是加快了学习过程。
-\citet{Dean-et-al-NIPS2012}率先提出了多机器无锁的\gls{GD}方法，其中参数是由\firstgls{parameter_server}管理而非存储在共用的内存中。
-分布式的异步\gls{GD}方法保留了训练\gls{DNN}的基本策略，并被工业界很多\gls{ML}组所使用\citep{chilimbi2014project,Wu-et-al-arXiv2015}。
-学术界的\gls{DL}研究者们通常无法负担那么大规模的分布式学习系统，但是一些研究仍关注于如何在校园环境中使用相对廉价的硬件系统构造分布式网络~\citep{icml2013_coates13}。
+\citet{Dean-et-al-2012}率先提出了多机器无锁的\gls{GD}方法，其中参数是由\firstgls{parameter_server}管理而非存储在共用的内存中。
+分布式的异步\gls{GD}方法保留了训练\gls{DNN}的基本策略，并被工业界很多\gls{ML}组所使用\citep{Chilimbi-et-al-2014,Wu-et-al-2015}。
+学术界的\gls{DL}研究者们通常无法负担那么大规模的分布式学习系统，但是一些研究仍关注于如何在校园环境中使用相对廉价的硬件系统构造分布式网络~\citep{Coates-et-al-2013}。
 % 435
 
 
@@ -169,7 +169,7 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 例如，开发者们可以使用巨大的计算机集群训练一个\gls{SR}的网络，然后将其部署到移动手机上。
 
 
-减少推断所需开销的一个关键策略是\firstgls{model_compression}~\citep{bucilua2006model}。
+减少推断所需开销的一个关键策略是\firstgls{model_compression}~\citep{Bucilua-et-al-2006}。
 \gls{model_compression}的基本思想是用一个更小的模型取代替原始耗时的模型，从而使得用来存储与评估所需的内存与运行时间更少。
 
 
@@ -189,7 +189,7 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 为了更加充分地利用了这个新的小模型的\gls{capacity}，最好从类似于真实测试数据（之后将提供给模型）的分布中采样$\Vx$。
 这个过程可以通过损坏训练样本或者从原始训练数据训练的生成模型中采样完成。
 
-此外，我们还可以仅在原始训练数据上训练一个更小的模型，但只是为了复制模型的其他特征，比如在不正确的类上的后验分布\citep{Hinton-dark-2014,hinton2015distilling}。
+此外，我们还可以仅在原始训练数据上训练一个更小的模型，但只是为了复制模型的其他特征，比如在不正确的类上的后验分布\citep{Hinton-et-al-2014,Hinton-et-al-2015}。
 % 436 
 
 \subsection{\glsentrytext{dynamic_structure}}
@@ -198,7 +198,7 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 一般来说，加速数据处理系统的一种策略是构造一个系统，这个系统用\firstgls{dynamic_structure}描述图中处理输入的所需计算过程。
 在给定一个输入的情况中，数据处理系统可以动态地决定运行神经网络系统的哪一部分。
 单个神经网络内部同样也存在\gls{dynamic_structure}，给定输入信息，决定特征（\gls{hidden_unit}）哪一部分用于计算。
-这种神经网络中的\gls{dynamic_structure}有时被称为\firstgls{conditional_computation}\citep{bengio2013,bengio-arxiv13-condcomp}。
+这种神经网络中的\gls{dynamic_structure}有时被称为\firstgls{conditional_computation}\citep{Bengio-2013,Bengio-et-al-2013b}。
 由于模型结构许多部分可能只跟输入的一小部分有关，只计算那些需要的特征可以起到加速的目的。
 % 436 
 
@@ -220,31 +220,31 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 一种方法是使\gls{cascade}中靠后的成员单独具有高\gls{capacity}。
 在这种情况下，由于系统中的一些个体成员具有高\gls{capacity}，因此系统作为一个整体显然也具有高\gls{capacity}。
 还可以使用另一种\gls{cascade}，其中每个单独的模型具有低\gls{capacity}，但是由于许多小型模型的组合，整个系统具有高\gls{capacity}。
-\citet{Viola01}使用\gls{cascade}的增强\gls{decision_tree}实现了适合在手持数字相机中使用的快速并且鲁棒的面部检测器。
+\citet{Viola-Jones-2001}使用\gls{cascade}的增强\gls{decision_tree}实现了适合在手持数字相机中使用的快速并且鲁棒的面部检测器。
 本质上，它们的分类器使用滑动窗口方法来定位面部。
 分类器会检查许多的窗口，如果这些窗口内不包含面部则被拒绝。
 \gls{cascade}的另一个版本使用早期模型来实现一种硬\gls{attention_mechanism}：\gls{cascade}的先遣成员定位对象，并且\gls{cascade}的后续成员在给定对象位置的情况下执行进一步处理。
-例如，Google使用两步\gls{cascade}从街景视图图像中转换地址编号：首先使用一个\gls{ML}模型查找地址编号，然后使用另一个\gls{ML}模型将其转录\citep{Goodfellow+et+al-ICLR2014a}。
+例如，Google使用两步\gls{cascade}从街景视图图像中转换地址编号：首先使用一个\gls{ML}模型查找地址编号，然后使用另一个\gls{ML}模型将其转录\citep{Goodfellow-et-al-2014d}。
 % 437 
 
 \gls{decision_tree}本身是\gls{dynamic_structure}的一个例子，因为树中的每个节点决定应该使用哪个子树来评估输入。
-一个结合\gls{DL}和\gls{dynamic_structure}的简单方法是训练一个\gls{decision_tree}，其中每个节点使用神经网络做出决策\citep{guo1992classification}，虽然这种方法没有实现加速推断计算的目标。
+一个结合\gls{DL}和\gls{dynamic_structure}的简单方法是训练一个\gls{decision_tree}，其中每个节点使用神经网络做出决策\citep{Guo-Gelfand-1992}，虽然这种方法没有实现加速推断计算的目标。
 % 437 end
 
 
 
 类似的，我们可以使用称为\firstgls{gater}的神经网络来选择在给定当前输入的情况下将使用几个\firstgls{expert_network}中的哪一个来计算输出。
-这个想法的第一个版本被称为\firstgls{mixture_of_experts}\citep{Nowlan90,Jacobs-nc91}，其中\gls{gater}为每个专家输出一个概率或权重（通过非线性的\gls{softmax}获得），并且最终输出由各个专家输出的加权组合获得。
-在这种情况下，使用\gls{gater}不会降低计算成本，但如果每个样本的\gls{gater}选择单个专家，我们就会获得一个特殊的\firstgls{hard_mixture_of_experts}\,\citep{collobert:2001:rr01-12,collobert:2002}，这可以加速推断和训练。
+这个想法的第一个版本被称为\firstgls{mixture_of_experts}\citep{Nowlan-1990,Jacobs-et-al-1991}，其中\gls{gater}为每个专家输出一个概率或权重（通过非线性的\gls{softmax}获得），并且最终输出由各个专家输出的加权组合获得。
+在这种情况下，使用\gls{gater}不会降低计算成本，但如果每个样本的\gls{gater}选择单个专家，我们就会获得一个特殊的\firstgls{hard_mixture_of_experts}\,\citep{Collobert-et-al-2001,Collobert-et-al-2002}，这可以加速推断和训练。
 当\gls{gater}决策的数量很小时，这个策略效果会很好，因为它不是组合的。
 但是当我们想要选择不同的单元或参数子集时，不可能使用``软开关''，因为它需要枚举（和计算输出）所有的\gls{gater}配置。
 为了解决这个问题，许多工作探索了几种方法来训练组合的\gls{gater}。
-\citet{bengio-arxiv13-condcomp}提出使用\gls{gater}概率梯度的若干估计器，而~\citet{Bacon-et-al-RLDM2015,BengioE-et-al-arXiv2015}使用\gls{RL}技术（\firstgls{policy_gradient}）来学习一种条件的~\gls{dropout}~形式（作用于\gls{hidden_unit}块），减少了实际的计算成本，而不会对近似的质量产生负面影响。
+\citet{Bengio-et-al-2013b}提出使用\gls{gater}概率梯度的若干估计器，而~\citet{Bacon-et-al-2015,Bengio-et-al-2015a}使用\gls{RL}技术（\firstgls{policy_gradient}）来学习一种条件的~\gls{dropout}~形式（作用于\gls{hidden_unit}块），减少了实际的计算成本，而不会对近似的质量产生负面影响。
 % 438
 
 
 另一种\gls{dynamic_structure}是开关，其中隐藏单元可以根据具体情况从不同单元接收输入。
-这种动态路由方法可以理解为\firstgls{attention_mechanism} \citep{Olshausen1993}。
+这种动态路由方法可以理解为\firstgls{attention_mechanism} \citep{Olshausen-et-al-1993}。
 目前为止，硬性开关的使用在大规模应用中还没有被证明是有效的。
 较为先进的方法一般采用对许多可能的输入使用加权平均，因此不能完全得到\gls{dynamic_structure}所带来的计算益处。
 先进的\gls{attention_mechanism}将在\secref{sec:using_an_attention_mechanism_and_aligning_pieces_of_data}中描述。
@@ -271,17 +271,17 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 %439
 
 自从早期的神经网络研究以来，硬件设计者已经致力于可以加速\gls{NN}算法的训练和/或推断的专用硬件实现。
-读者可以查看早期和更近的专用硬件深度网络的评论\citep{Lindsey+Lindblad-1994,Beiu-et-al-2003,Misra+Saha-2010}。
+读者可以查看早期和更近的专用硬件深度网络的评论\citep{Lindsey-Lindblad-1994,Beiu-et-al-2003,Misra-Saha-2010}。
 %439
 
 
-不同形式的专用硬件\citep{Graf+Jackel-1989,Mead+Ismail-2012,Kim-et-al-2009,Pham-et-al-2012,Chen-et-al-IEEE2014,Chen-et-al-ACM2014}的研究已经持续了好几十年，比如\firstall{ASIC}的数字（基于数字的二进制表示），模拟\citep{Graf+Jackel-1989,Mead+Ismail-2012}（基于以电压或电流表示连续值的物理实现）和混合实现（组合数字和模拟组件）。
+不同形式的专用硬件\citep{Graf-Jackel-1989,Mead-Ismail-2012,Kim-et-al-2009,Pham-et-al-2012,Chen-et-al-2014a,Chen-et-al-2014b}的研究已经持续了好几十年，比如\firstall{ASIC}的数字（基于数字的二进制表示），模拟\citep{Graf-Jackel-1989,Mead-Ismail-2012}（基于以电压或电流表示连续值的物理实现）和混合实现（组合数字和模拟组件）。
 近年来更灵活的\firstall{FPGA}实现（其中电路的具体细节可以在制造完成后写入芯片）也得到了长足发展。
 % 439 mid
 
 
 
-虽然CPU和~\glssymbol{GPU}~上的软件实现通常使用32或64位的精度来表示浮点数，但是长期以来使用较低的精度在更短的时间内完成推断也是可行的\citep{Holt-et-al-1991,Holi+Hwang-1993,Presley-et-al-1994,Simard+Graf-NIPS1994,Wawrzynek-et-al-IEEE1996,Savich-et-al-2007}。
+虽然CPU和~\glssymbol{GPU}~上的软件实现通常使用32或64位的精度来表示浮点数，但是长期以来使用较低的精度在更短的时间内完成推断也是可行的\citep{Holt-Baker-1991,Holi-Hwang-1993,Presley-Haggard-1994,Simard-Graf-1994,Wawrzynek-et-al-1996,Savich-et-al-2007}。
 这已成为近年来更迫切的问题，因为\gls{DL}在工业产品中越来越受欢迎，并且由于更快的硬件产生的巨大影响已经通过~\glssymbol{GPU}~的使用得到了证明。
 激励当前对深度网络专用硬件研究的另一个因素是单个CPU或~\glssymbol{GPU}~核心的进展速度已经减慢，并且最近计算速度的改进来自于核心的并行化（无论CPU还是~\glssymbol{GPU}）。
 这与20世纪90年代的情况（上一个神经网络时代）的不同之处在于，\gls{NN}的硬件实现（从开始到芯片可用可能需要两年）跟不上快速进展和价格低廉的通用CPU的脚步。
@@ -289,7 +289,7 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 % 440 head
 
 
-最近对基于\gls{BP}\gls{NN}的低精度实现的工作\citep{Vanhoucke-et-al-2011,Courbariaux-et-al-ICLR2015workshop,Gupta-et-al-2015}表明，8和16位之间的精度足以满足使用或训练基于\gls{BP}的\gls{DNN}的要求。
+最近对基于\gls{BP}\gls{NN}的低精度实现的工作\citep{Vanhoucke-et-al-2011,Courbariaux-et-al-2015,Gupta-et-al-2015}表明，8和16位之间的精度足以满足使用或训练基于\gls{BP}的\gls{DNN}的要求。
 显而易见的是，在训练期间需要比在推断时更高的精度，并且数字某些形式的动态定点表示能够减少每个数需要的存储空间。
 传统的定点数被限制在了一个固定范围之内（其对应于浮点表示中的给定指数）。
 而动态定点表示在一组数字 （例如一个层中的所有权重） 之间共享该范围。
@@ -303,14 +303,14 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 \label{sec:computer_vision}
 
 一直以来，\gls{CV}就是\gls{DL}应用中几个最活跃的研究方向之一。
-因为视觉是一个对人类以及许多动物毫不费力，但对计算机却充满挑战的任务\citep{ballard1983parallel}。
+因为视觉是一个对人类以及许多动物毫不费力，但对计算机却充满挑战的任务\citep{Ballard-et-al-1983}。
 \gls{DL}中许多流行的标准基准任务包括\gls{object_recognition}以及光学字符识别。
 % 440  
 
 
 \gls{CV}是一个非常广阔的发展领域，其中包括多种多样的处理图片的方式以及应用方向。
 \gls{CV}的应用广泛：从复现人类视觉能力（比如识别人脸）到创造全新的视觉能力。
-举个后者的例子，近期一个新的\gls{CV}应用是从视频中可视物体的振动中识别相应的声波\citep{Davis2014VisualMic}。
+举个后者的例子，近期一个新的\gls{CV}应用是从视频中可视物体的振动中识别相应的声波\citep{Davis-et-al-2014}。
 大多数\gls{CV}领域的\gls{DL}研究未曾关注过这样一个奇异的应用，它扩展了图像的范围，而不是仅仅关注于\gls{AI}中较小的核心目标——复制人类的能力。
 无论是报告图像中存在哪个物体，还是给图像中每个对象周围添加注释性的边框，
 或从图像中转录符号序列，或给图像中的每个像素标记它所属对象的标识，
@@ -330,8 +330,8 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 将图像格式化为具有相同的比例严格上说是唯一一种必要的预处理。
 许多\gls{CV}架构需要标准尺寸的图像，因此必须裁剪或缩放图像以适应该尺寸。
 然而，严格地说即使是这种重新调整比例的操作并不总是必要的。
-一些卷积模型接受可变大小的输入并动态地调整它们的\gls{pooling}区域大小以保持输出大小恒定\citep{Waibel89b}。
-其他卷积模型具有可变大小的输出，其尺寸随输入自动缩放，例如对图像中的每个像素进行\gls{denoise}或标注的模型\citep{Hadsell-RSS-07}。
+一些卷积模型接受可变大小的输入并动态地调整它们的\gls{pooling}区域大小以保持输出大小恒定\citep{Waibel-et-al-1989}。
+其他卷积模型具有可变大小的输出，其尺寸随输入自动缩放，例如对图像中的每个像素进行\gls{denoise}或标注的模型\citep{Hadsell-et-al-2007}。
 % 441 
 
 \gls{dataset_augmentation}可以被看作是一种只对训练集做预处理的方式。
@@ -345,7 +345,7 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 更简单的任务可以通过更小的模型来解决，而更简单的解决方案\gls{generalization}能力一般更好。
 这种类型的预处理通常被设计为去除输入数据中的某种可变性，这对于人工设计者来说是容易描述的，并且人工设计者能够保证不受到任务影响。
 当使用大型数据集和大型模型训练时，这种预处理通常是不必要的，并且最好只是让模型学习哪些变化性应该保留。
-例如，用于分类ImageNet的AlexNet系统仅具有一个预处理步骤：对每个像素减去训练样本的平均值\citep{Krizhevsky-2012}。
+例如，用于分类ImageNet的AlexNet系统仅具有一个预处理步骤：对每个像素减去训练样本的平均值\citep{Krizhevsky-et-al-2012}。
 % 442 
 
 \subsubsection{对比度归一化}
@@ -386,12 +386,12 @@ NVIDIA的CUDA编程语言使得我们可以用一种像C一样的语言实现任
 
 从大图像中剪切感兴趣的对象所组成的数据集不可能包含任何强度几乎恒定的图像。
 在这些情况下，通过设置$\lambda = 0$来忽略小分母问题是安全的，并且在非常罕见的情况下为了避免除以$0$，通过将$\epsilon$设置为一个非常小的值比如说$10^{-8}$。
-这也是~\citet{Goodfellow+al-arxiv-2013}在CIFAR-10数据集上所使用的方法。
+这也是~\citet{Goodfellow-et-al-2013a}在CIFAR-10数据集上所使用的方法。
 随机剪裁的小图像更可能具有几乎恒定的强度，使得激进的\gls{regularization}更有用。
-在处理从CIFAR-10数据中随机选择的小区域时，\citet{Coates2011}使用$\epsilon = 0, \lambda = 10$。
+在处理从CIFAR-10数据中随机选择的小区域时，\citet{Coates-et-al-2011}使用$\epsilon = 0, \lambda = 10$。
 % 443
 
-尺度参数$s$通常可以设置为$1$（如~\citet{Coates2011}所采用的），或选择使所有样本上每个像素的\gls{standard_deviation}接近$1$（如\citet{Goodfellow+al-arxiv-2013}所采用的）。
+尺度参数$s$通常可以设置为$1$（如~\citet{Coates-et-al-2011}所采用的），或选择使所有样本上每个像素的\gls{standard_deviation}接近$1$（如\citet{Goodfellow-et-al-2013a}所采用的）。
 % 443 mid
 
 
@@ -465,9 +465,9 @@ $s$和$\epsilon$的取值与之前一样。}
 
 \gls{LCN}的各种定义都是可行的。
 在所有情况下，我们可以通过减去邻近像素的平均值并除以邻近像素的\gls{standard_deviation}来修改每个像素。
-在一些情况下，要计算以当前要修改的像素为中心的矩形窗口中所有像素的平均值和\gls{standard_deviation}~\citep{Pinto08}。
+在一些情况下，要计算以当前要修改的像素为中心的矩形窗口中所有像素的平均值和\gls{standard_deviation}~\citep{Pinto-et-al-2008}。
 在其他情况下，使用的则是以要修改的像素为中心的高斯权重的加权平均和加权\gls{standard_deviation}。
-在彩色图像的情况下，一些策略单独处理不同的颜色通道，而其他策略组合来自不同通道的信息以使每个像素归一化\citep{sermanet-icpr-12}。
+在彩色图像的情况下，一些策略单独处理不同的颜色通道，而其他策略组合来自不同通道的信息以使每个像素归一化\citep{Sermanet-et-al-2012}。
 % 444
 
 \gls{LCN}通常可以通过使用可分离卷积（参考\secref{sec:efficient_convolution_algorithms}）来计算\gls{feature_map}的局部平均值和局部\gls{standard_deviation}，然后在不同的\gls{feature_map}上使用逐元素的减法和除法。
@@ -489,7 +489,7 @@ $s$和$\epsilon$的取值与之前一样。}
 \gls{object_recognition}这个分类任务特别适合于这种形式的\gls{dataset_augmentation}，因为类别信息对于许多变换是不变的，而我们可以简单地对输入应用诸多几何变换。
 如前所述，分类器可以受益于随机转换或者旋转，某些情况下输入的翻转可以增强数据集。
 在专门的\gls{CV}应用中，存在很多更高级的用以\gls{dataset_augmentation}的变换。
-这些方案包括图像中颜色的随机扰动~\citep{Krizhevsky-2012}，以及对输入的非线性几何变形~\citep{chapter-gradient-document-2001}。
+这些方案包括图像中颜色的随机扰动~\citep{Krizhevsky-et-al-2012}，以及对输入的非线性几何变形~\citep{LeCun-et-al-1998b}。
 % 445
 
 
@@ -501,7 +501,7 @@ $s$和$\epsilon$的取值与之前一样。}
 
 \gls{SR}任务在于将一段包括了自然语言发音的声学信号投影到对应说话人的词序列上。
 令$\MX=(\Vx^{(1)},\Vx^{(2)},\ldots,\Vx^{(T)})$表示语音的输入向量（传统做法以$20$ms为一帧分割信号）。
-许多\gls{SR}的系统通过特殊的手工设计方法预处理输入信号，从而提取特征，但是某些\gls{DL}系统\citep{jaitly2011learning}直接从原始输入中学习特征。
+许多\gls{SR}的系统通过特殊的手工设计方法预处理输入信号，从而提取特征，但是某些\gls{DL}系统\citep{Jaitly-Hinton-2011}直接从原始输入中学习特征。
 令$\Vy=(y_{1},y_{2},\ldots,y_{N})$表示目标的输出序列（通常是一个词或者字符的序列）。
 \firstall{ASR}任务指的是构造一个函数$f^*_{\text{ASR}}$，使得它能够在给定声学序列$\MX$的情况下计算最有可能的语言序列$\Vy$：
 \begin{align}
@@ -512,12 +512,12 @@ f^*_{\text{ASR}}(\MX) =  \underset{\Vy}{\arg\max}  P^*(\RVy \mid \RMX = \MX),
 % 446
 
 从20世纪80年代直到约2009-2012年，最先进的\gls{SR}系统是\firstall{HMM}和\firstall{GMM}的结合。
-\glssymbol{GMM}~对声学特征和\firstgls{phoneme}之间的关系建模\citep{Bahl87}，\glssymbol{HMM}~对\gls{phoneme}序列建模。
+\glssymbol{GMM}~对声学特征和\firstgls{phoneme}之间的关系建模\citep{Bahl-et-al-1987}，\glssymbol{HMM}~对\gls{phoneme}序列建模。
 \glssymbol{GMM}-\glssymbol{HMM}~模型将语音信号视作由如下过程生成：首先，一个~\glssymbol{HMM}~生成了一个\gls{phoneme}的序列以及离散的子\gls{phoneme}状态（比如每一个\gls{phoneme}的开始，中间，结尾），然后~\glssymbol{GMM}~把每一个离散的状态转化为一个简短的声音信号。
 尽管直到最近~\glssymbol{GMM}-\glssymbol{HMM}~一直在~\glssymbol{ASR}~中占据主导地位，\gls{SR}仍然是\gls{NN}所成功应用的第一个领域。
-从20世纪80年代末期到90年代初期，大量\gls{SR}系统使用了\gls{NN}~\citep{Bourlard-cspla89,Waibel89b,Robinson+Fallside91,Bengio91z,Bengio92c,Konig96}。
+从20世纪80年代末期到90年代初期，大量\gls{SR}系统使用了\gls{NN}~\citep{Bourlard-Wellekens-1989,Waibel-et-al-1989,Robinson-Fallside-1991,Bengio-et-al-1991,Bengio-et-al-1992,Konig-et-al-1996}。
 当时，基于\gls{NN}的~\glssymbol{ASR}~的表现和~\glssymbol{GMM}-\glssymbol{HMM}~系统的表现差不多。
-比如说，\citet{Robinson+Fallside91}在TIMIT数据集\citep{garofolo1993darpa}（有$39$个区分的\gls{phoneme}% ?? error
+比如说，\citet{Robinson-Fallside-1991}在TIMIT数据集\citep{Garofolo-et-al-1993}（有$39$个区分的\gls{phoneme}% ?? error
 ）上达到了$26$\%的\gls{phoneme}错误率，这个结果优于或者说是可以与基于~\glssymbol{HMM}~的结果相比。
 从那时起，TIMIT成为了\gls{phoneme}识别的一个基准数据集，在\gls{SR}中的作用就和MNIST在\gls{object_recognition}中的作用差不多。
 然而，由于\gls{SR}软件系统中复杂的工程因素以及在基于~\glssymbol{GMM}-\glssymbol{HMM}~的系统中已经付出的巨大努力，工业界并没有迫切转向\gls{NN}的需求。
@@ -531,13 +531,13 @@ f^*_{\text{ASR}}(\MX) =  \underset{\Vy}{\arg\max}  P^*(\RVy \mid \RMX = \MX),
  \gls{RBM}将会在第三部分中描述。
  为了完成\gls{SR}任务，\gls{unsupervised}的\gls{pretraining}被用来构造一个\gls{deep_feedforward_network}，这个\gls{NN}每一层都是通过训练\gls{RBM}来初始化的。
  这些网络的输入是从一个固定规格的输入窗（以当前帧为中心）的谱声学表示抽取，预测了当前帧所对应的~\glssymbol{HMM}~状态的条件概率。
- 训练一个这样的\gls{NN}能够可以显著提高在TIMIT数据集上的识别率~\citep{mohamed2009deep,Mohamed+Dahl+Hinton-2012}，并将\gls{phoneme}级别的错误率从大约$26$\%降到了$20.7$\%。
-关于这个模型成功原因的详细分析可以参考\citet{mohamed2012understanding}。
-对于基本的电话识别工作流程的一个扩展工作是添加说话人自适应相关特征\citep{mohamed2011deep}的方法，这可以进一步地降低错误率。
-紧接着的工作则将结构从\gls{phoneme}识别（TIMIT所主要关注的）转向了大规模词汇语音识别\citep{Dahl2012}，这不仅包含了识别\gls{phoneme}，还包括了识别大规模词汇的序列。
-\gls{SR}上的深度网络从最初的使用\gls{RBM}进行\gls{pretraining}发展到了使用诸如\gls{ReLU}和~\gls{dropout}~这样的技术~\citep{Zeiler+al-ICASSP-2013,Dahl-et-al-ICASSP2013}。
+ 训练一个这样的\gls{NN}能够可以显著提高在TIMIT数据集上的识别率~\citep{Mohamed-et-al-2009,Mohamed-et-al-2012a}，并将\gls{phoneme}级别的错误率从大约$26$\%降到了$20.7$\%。
+关于这个模型成功原因的详细分析可以参考\citet{Mohamed-et-al-2012b}。
+对于基本的电话识别工作流程的一个扩展工作是添加说话人自适应相关特征\citep{Mohamed-et-al-2011}的方法，这可以进一步地降低错误率。
+紧接着的工作则将结构从\gls{phoneme}识别（TIMIT所主要关注的）转向了大规模词汇语音识别\citep{Dahl-et-al-2012}，这不仅包含了识别\gls{phoneme}，还包括了识别大规模词汇的序列。
+\gls{SR}上的深度网络从最初的使用\gls{RBM}进行\gls{pretraining}发展到了使用诸如\gls{ReLU}和~\gls{dropout}~这样的技术~\citep{Zeiler-et-al-2013,Dahl-et-al-2013}。
 从那时开始，工业界的几个语音研究组开始寻求与学术圈的研究者之间的合作。
-\citet{Hinton-et-al-2012}描述了这些合作所带来的突破性进展，这些技术现在被广泛应用在产品中，比如移动手机端。
+\citet{Hinton-et-al-2012a}描述了这些合作所带来的突破性进展，这些技术现在被广泛应用在产品中，比如移动手机端。
 % 447
 
 随后，当研究组使用了越来越大的带标签的数据集，加入了各种初始化，训练方法以及调试\gls{DNN}的结构之后，
@@ -545,24 +545,24 @@ f^*_{\text{ASR}}(\MX) =  \underset{\Vy}{\arg\max}  P^*(\RVy \mid \RMX = \MX),
 % 447
 
 用\gls{SR}中词错误率来衡量，在\gls{SR}性能上的这些突破是史无前例的（大约$30$\%的提高）。
-在这之前的长达十年左右的时间内，尽管数据集的规模是随时间增长的（见~\citet{Deng+Yu-2014}的图2.4），但基于~\glssymbol{GMM}-\glssymbol{HMM}~的系统的传统技术已经停滞不前了。
+在这之前的长达十年左右的时间内，尽管数据集的规模是随时间增长的（见~\citet{Deng-Yu-2014}的图2.4），但基于~\glssymbol{GMM}-\glssymbol{HMM}~的系统的传统技术已经停滞不前了。
 这也导致了\gls{SR}领域快速地转向\gls{DL}的研究。
 在大约的两年时间内，工业界的大多数的\gls{SR}产品都包含了\gls{DNN}，这种成功也激发了~\glssymbol{ASR}领~域对\gls{DL}算法和结构的一波新的研究浪潮，并且影响至今。
 % 448
 
-其中的一个创新点是\gls{convolutional_network}的应用~\citep{Sainath-et-al-ICASSP2013}。
+其中的一个创新点是\gls{convolutional_network}的应用~\citep{Sainath-et-al-2013}。
 \gls{convolutional_network}在时域与频域上复用了权重，改进了之前的仅在时域上使用重复权值的\gls{TDNNs}。
 这种新的二维的卷积模型并不是将输入的频谱当作一个长的向量，而是当成是一个图像，其中一个轴对应着时间，另一个轴对应的是谱分量的频率。
 % 448
 
 完全抛弃~\glssymbol{HMM}~并转向研究\gls{end_to_end}\gls{DL}\gls{SR}系统是至今仍然活跃的另一个重要推动。
-这个领域第一个主要的突破是~\citet{Graves-et-al-ICASSP2013}，其中训练了一个深度的\gls{LSTM}\gls{RNN}（见\secref{sec:the_long_short_term_memory_and_other_gated_rnns}），使用了帧－\gls{phoneme}排列的~\glssymbol{MAP}~推断，就像~\citet{chapter-gradient-document-2001}以及CTC框架~\citep{Graves-et-al-2006,Graves-book2012}中一样。
-一个深度\gls{RNN}~\citep{Graves-et-al-ICASSP2013}每个\gls{time_step}的各层都有状态变量，两种\gls{unfolded_graph}的方式导致两种不同深度：一种是普通的根据层的堆叠衡量的深度，另一种根据时间\gls{unfolding}衡量的深度。
+这个领域第一个主要的突破是~\citet{Graves-et-al-2013}，其中训练了一个深度的\gls{LSTM}\gls{RNN}（见\secref{sec:the_long_short_term_memory_and_other_gated_rnns}），使用了帧－\gls{phoneme}排列的~\glssymbol{MAP}~推断，就像~\citet{LeCun-et-al-1998b}以及CTC框架~\citep{Graves-et-al-2006,Graves-2012}中一样。
+一个深度\gls{RNN}~\citep{Graves-et-al-2013}每个\gls{time_step}的各层都有状态变量，两种\gls{unfolded_graph}的方式导致两种不同深度：一种是普通的根据层的堆叠衡量的深度，另一种根据时间\gls{unfolding}衡量的深度。
 这个工作把TIMIT数据集上\gls{phoneme}的错误率记录降到了的新低$17.7$\%。
-关于应用于其他领域的深度\gls{RNN}的变种可以参考~\citet{Pascanu-et-al-ICLR2014,Chung-et-al-NIPSDL2014-small}。
+关于应用于其他领域的深度\gls{RNN}的变种可以参考~\citet{Pascanu-et-al-2014a,Chung-et-al-2014}。
 % 448
 
-另一个\gls{end_to_end}\gls{DL}\gls{SR}方向的最新方法是让系统学习如何利用\firstgls{phonetic}层级的信息``排列''\firstgls{acoustic}层级的信息~\citep{Chorowski-et-al-arxiv2014,llu_is2015b}。
+另一个\gls{end_to_end}\gls{DL}\gls{SR}方向的最新方法是让系统学习如何利用\firstgls{phonetic}层级的信息``排列''\firstgls{acoustic}层级的信息~\citep{Chorowski-et-al-2014,Lu-et-al-2015}。
 % 448
 
 
@@ -604,7 +604,7 @@ P(x_1, \dots, x_\tau) = P(x_1, \dots, x_{n-1}) \prod_{t=n}^\tau P(x_t \mid x_{t-
 初始序列 $P(x_1, \dots, x_{n-1})$的概率分布可以通过带有较小$n$值的不同模型建模。
 
 训练~\gls{n_gram}~模型是简单的，因为\gls{maximum_likelihood_estimation}可以通过简单地统计每个可能的~\gls{n_gram}~在训练集中出现的次数来获得。                                   
-几十年来，基于~\gls{n_gram}~的模型都是统计\gls{language_model}的核心模块~\citep{Jelinek+Mercer80,Katz87,Chen+Goodman99}。
+几十年来，基于~\gls{n_gram}~的模型都是统计\gls{language_model}的核心模块~\citep{Jelinek-Mercer-1980,Katz-1987,Chen-Goodman-1999}。
 
 对于小的$n$值，模型有特定的名称：$n=1$称为\firstgls{unigram}，$n=2$称为\firstgls{bigram}及$n=3$称为\firstgls{trigram}。
 这些名称源于相应数字的拉丁前缀和希腊后缀``-gram''，分别表示所写之物。
@@ -635,7 +635,7 @@ P({\tt THE\ DOG\ RAN\ AWAY}) = P_3({\tt THE\ DOG\ RAN}) P_3({\tt DOG\ RAN\ AWAY}
 当$P_{n-1}$非零而$P_n$为零时，测试样本的对数似然为 $-\infty$。
 为避免这种灾难性的后果，大多数~\gls{n_gram}~模型采用某种形式的\firstgls{smoothing}。
 \gls{smoothing}技术将概率质量从观察到的元组转移到类似的未观察到的元组。
-见~\citet{Chen+Goodman99}的综述和实验对比。
+见~\citet{Chen-Goodman-1999}的综述和实验对比。
 其中一种基本技术基于向所有可能的下一个符号值添加非零概率质量。
 这个方法可以被证明是，计数参数具有均匀或~\ENNAME{Dirichlet}~先验的贝叶斯\gls{inference}。
 另一个非常流行的想法是包含高阶和低阶~\gls{n_gram}~模型的混合模型，其中高阶模型提供更多的\gls{capacity}，而低阶模型尽可能地避免零计数。
@@ -654,7 +654,7 @@ P({\tt THE\ DOG\ RAN\ AWAY}) = P_3({\tt THE\ DOG\ RAN}) P_3({\tt DOG\ RAN\ AWAY}
 因此，难以大量利用来自任意``邻居''的信息 —— 只有重复相同上下文的训练样本对局部泛化有用。
 为了克服这些问题，\gls{language_model}必须能够在一个词和其他语义相似的词之间共享知识。
 
-为了提高~\gls{n_gram}~模型的统计效率，\textbf{基于类的语言模型}(class-based language model)~\citep{Brown92,Ney+Kneser93,Niesler98}引入词类别的概念，然后属于同一类别的词共享词之间的统计强度。
+为了提高~\gls{n_gram}~模型的统计效率，\textbf{基于类的语言模型}(class-based language model)~\citep{Brown-et-al-1992,Ney-Kneser-1993,Niesler-et-al-1998}引入词类别的概念，然后属于同一类别的词共享词之间的统计强度。
 这个想法使用了聚类算法，基于它们与其他词同时出现的频率，将该组词分成集群或类。
 随后，模型可以在条件竖杠的右侧使用词类ID而不是单个词ID。
 混合（或回退）词模型和类模型的复合模型也是可能的。
@@ -663,7 +663,7 @@ P({\tt THE\ DOG\ RAN\ AWAY}) = P_3({\tt THE\ DOG\ RAN}) P_3({\tt DOG\ RAN\ AWAY}
 \subsection{\glsentrytext{NLM}}
 \label{sec:neural_language_models}
 
-\firstall{NLM}是一类用来克服\gls{curse_of_dimensionality}的\gls{language_model}，它使用词的\gls{distributed_representation}对自然语言序列建模~\citep{BenDucVin01-small}。
+\firstall{NLM}是一类用来克服\gls{curse_of_dimensionality}的\gls{language_model}，它使用词的\gls{distributed_representation}对自然语言序列建模~\citep{Bengio-et-al-2001}。
 不同于基于类的~\gls{n_gram}~模型，\gls{NLM}在能够识别两个相似的词，并且不丧失将每个词编码为彼此不同的能力。
 \gls{NLM}共享一个词（及其上下文）和其他类似词（和上下文之间）的统计强度。
 模型为每个词学习的\gls{distributed_representation}，允许模型处理具有类似共同特征的词来实现这种共享。
@@ -689,7 +689,7 @@ P({\tt THE\ DOG\ RAN\ AWAY}) = P_3({\tt THE\ DOG\ RAN}) P_3({\tt DOG\ RAN\ AWAY}
 \else
 \includegraphics{Chapter12/figures/word_embeddings_color.pdf}
 \fi
-\caption{从\gls{NMT}模型获得的\gls{word_embedding}的二维可视化\citep{Bahdanau-et-al-ICLR2015-small}。
+\caption{从\gls{NMT}模型获得的\gls{word_embedding}的二维可视化\citep{Bahdanau-et-al-2015}。
 此图在语义相关词的特定区域放大，它们具有彼此接近的嵌入向量。
 国家在左图，数字在右图。
 注意，这些嵌入是为了可视化才表示为2维。
@@ -706,7 +706,7 @@ P({\tt THE\ DOG\ RAN\ AWAY}) = P_3({\tt THE\ DOG\ RAN}) P_3({\tt DOG\ RAN\ AWAY}
 % -- 452 --
 
 使用\gls{distributed_representation}来改进\gls{NLP}模型的基本思想不必局限于\gls{NN}。
-它还可以用于\gls{graphical_model}，其中\gls{distributed_representation}是多个\gls{latent_variable}的形式\citep{Mnih-Hinton2007}。
+它还可以用于\gls{graphical_model}，其中\gls{distributed_representation}是多个\gls{latent_variable}的形式\citep{Mnih-Hinton-2007}。
 
 \subsection{高维输出}
 \label{sec:high_dimensional_outputs}
@@ -720,7 +720,7 @@ P({\tt THE\ DOG\ RAN\ AWAY}) = P_3({\tt THE\ DOG\ RAN}) P_3({\tt DOG\ RAN\ AWAY}
 这造成了表示该矩阵的高存储成本，以及与之相乘的高计算成本。
 因为~\ENNAME{softmax}~要在所有$| \SetV |$输出之间归一化，所以在训练时以及测试时执行全矩阵乘法是必要的 ——我们不能仅计算与正确输出的权重向量的点积。
 因此，输出层的高计算成本在训练期间（计算似然性及其梯度）和测试期间（计算所有或所选词的概率）都有出现。
-对于专门的\gls{loss_function}，可以有效地计算梯度 \citep{Vincent2015}，但是应用于传统~\ENNAME{softmax}~输出层的标准\gls{cross_entropy}损失时会出现许多困难。
+对于专门的\gls{loss_function}，可以有效地计算梯度 \citep{Vincent-et-al-2015}，但是应用于传统~\ENNAME{softmax}~输出层的标准\gls{cross_entropy}损失时会出现许多困难。
 
 假设$\Vh$是用于预测输出概率$\hat \Vy$的顶部隐藏层。
 如果我们使用学到的权重$\MW$和学到的\gls{bias_aff} $\Vb$参数化从$\Vh$到$\hat \Vy$的变换，则仿射~\ENNAME{softmax}~输出层执行以下计算：
@@ -735,8 +735,8 @@ P({\tt THE\ DOG\ RAN\ AWAY}) = P_3({\tt THE\ DOG\ RAN}) P_3({\tt DOG\ RAN\ AWAY}
 % -- 453 --
 
 \subsubsection{使用\glsentrytext{shortlist}}
-第一个\gls{NLM}~\citep{BenDucVin01-small,Bengio-nnlm2003-small}通过将词汇量限制为10,000或20,000来减轻大词汇表上~\ENNAME{softmax}~的高成本。
-\citet{Schwenk+Gauvain2002}和 \citet{Schwenk-2007}在这种方法的基础上建立新的方式，将词汇表$\SetV$分为最常见词汇（由\gls{NN}处理）的\firstgls{shortlist}~$\SetL$和较稀有词汇的尾列表$\SetT = \SetV \backslash \SetL$（由\gls{n_gram}模型处理）。
+第一个\gls{NLM}~\citep{Bengio-et-al-2001,Bengio-et-al-2003}通过将词汇量限制为10,000或20,000来减轻大词汇表上~\ENNAME{softmax}~的高成本。
+\citet{Schwenk-Gauvain-2002}和 \citet{Schwenk-2007}在这种方法的基础上建立新的方式，将词汇表$\SetV$分为最常见词汇（由\gls{NN}处理）的\firstgls{shortlist}~$\SetL$和较稀有词汇的尾列表$\SetT = \SetV \backslash \SetL$（由\gls{n_gram}模型处理）。
 为了组合这两个预测，\gls{NN}还必须预测在上下文$C$之后出现的词位于尾列表的概率。
 我们可以添加额外的~\ENNAME{sigmoid}~输出单元估计 $P(i \in \SetT \mid C)$实现这个预测。
 额外输出则可以用来估计$\SetV$中所有词的概率分布，如下：
@@ -751,9 +751,9 @@ P({\tt THE\ DOG\ RAN\ AWAY}) = P_3({\tt THE\ DOG\ RAN}) P_3({\tt DOG\ RAN\ AWAY}
 这个缺点引发了处理高维输出替代方法的探索，如下所述。
 
 \subsubsection{分层Softmax}
-减少大词汇表$\SetV$上高维输出层计算负担的经典方法~\citep{Goodman2001}是分层地分解概率。
+减少大词汇表$\SetV$上高维输出层计算负担的经典方法~\citep{Goodman-2001}是分层地分解概率。
 $|\SetV|$因子可以降低到$\log |\SetV|$一样低，而无需执行与$|\SetV|$成比例数量（并且也与隐藏单元数量$n_h$成比例）的计算。
-\citet{BengioTR1215}和~\citet{Morin+Bengio-2005-small} 将这种因子分解方法引入\gls{NLM}中。
+\citet{Bengio-2002}和~\citet{Morin-Bengio-2005} 将这种因子分解方法引入\gls{NLM}中。
 
 % -- 454 --
 
@@ -762,7 +762,7 @@ $|\SetV|$因子可以降低到$\log |\SetV|$一样低，而无需执行与$|\Set
 在平衡树中，树的深度为$\log |\SetV|$。
 选择一个词的概率是由路径（从树根到包含该词叶子的路径）上的每个节点通向该词分支概率的乘积给出。
 \figref{fig:chap12_word_hierarchy}是一个简单的例子。
-\citet{Mnih+Hinton-2009}也描述了使用多个路径来识别单个词的方法，以便更好地建模具有多个含义的词。
+\citet{Mnih-Hinton-2009}也描述了使用多个路径来识别单个词的方法，以便更好地建模具有多个含义的词。
 计算词的概率则涉及在导向该词所有路径上的求和。
 \begin{figure}[htp]
 \centering
@@ -816,7 +816,7 @@ $|\SetV|$因子可以降低到$\log |\SetV|$一样低，而无需执行与$|\Set
 % -- 455 --
 
 一个仍然有点开放的问题是如何最好地定义这些词类，或者如何定义一般的词层次结构。
-早期工作使用现有的层次结构\citep{Morin+Bengio-2005-small} ，但也可以理想地与\gls{NLM}联合学习层次结构。
+早期工作使用现有的层次结构\citep{Morin-Bengio-2005} ，但也可以理想地与\gls{NLM}联合学习层次结构。
 学习层次结构很困难。
 对数似然的精确优化似乎难以解决，因为词层次的选择是离散的，不适于基于梯度的优化。
 然而，我们可以使用离散优化来近似地最优化词类的分割。
@@ -849,7 +849,7 @@ $|\SetV|$因子可以降低到$\log |\SetV|$一样低，而无需执行与$|\Set
 然而，这将需要从模型本身采样。
 从模型中采样需要对词汇表中所有的$i$计算$P(i \mid C)$，这正是我们试图避免的。
 
-我们可以从另一个分布中采样，而不是从模型中采样，这个分布称为\firstgls{proposal_distribution}（记为$q$），并通过适当的权重校正从错误分布采样引入的\gls{bias_sta} \citep{Bengio+Senecal-2003-small,Bengio+Senecal-2008}。
+我们可以从另一个分布中采样，而不是从模型中采样，这个分布称为\firstgls{proposal_distribution}（记为$q$），并通过适当的权重校正从错误分布采样引入的\gls{bias_sta} \citep{Bengio-Senecal-2003,Bengio-Senecal-2008}。
 这是一种称为\firstgls{importance_sampling}的更通用技术的应用，我们将在\secref{sec:importance_sampling_chap12}中更详细地描述。
 不幸的是，即使精确\gls{importance_sampling}也不一定有效，因为我们需要计算权重$p_i / q_i$，其中的$p_i = P(i \mid C)$只能在计算所有得分$a_i$后才能计算。
 这个应用采取的解决方案称为\gls{biased_importance_sampling}，其中重要性权重被归一化加和为1。
@@ -874,7 +874,7 @@ $|\SetV|$因子可以降低到$\log |\SetV|$一样低，而无需执行与$|\Set
 在学习的早期，模型可能不会真的使输出真正稀疏。
 此外，将输出的每个元素与目标的每个元素进行比较，可能是描述训练的\gls{loss_function}最自然的方式。
 这意味着稀疏输出并不一定能带来计算上的好处，因为模型可以选择使大多数输出非零，并且所有这些非零值需要与相应的训练目标进行比较（ 即使训练目标是零）。
-\citet{Dauphin2011-small} 证明可以使用\gls{importance_sampling}加速这种模型。
+\citet{Dauphin-et-al-2011} 证明可以使用\gls{importance_sampling}加速这种模型。
 高效算法最小化``正词''（在目标中非零的那些词）和相等数量的``负词''的重构损失。
 负词是被随机选取的，如使用启发式采样更可能被误解的词。
 该启发式过采样引入的偏差则可以使用重要性权重校正。
@@ -889,7 +889,7 @@ $|\SetV|$因子可以降低到$\log |\SetV|$一样低，而无需执行与$|\Set
 
 \label{sec:combining_neural_language_models_with_n_grams}
 为减少训练大词汇表的\gls{NLM}的计算成本，研究者也提出了其他基于采样的方法。
-早期的例子是 \citet{Collobert+Weston-ICML2008}提出的排名损失，将\gls{NLM}每个词的输出视为一个得分，并试图使正确词的得分$a_y$比其他词$a_i$排名更高。提出的排名损失则是
+早期的例子是 \citet{Collobert-Weston-2008a}提出的排名损失，将\gls{NLM}每个词的输出视为一个得分，并试图使正确词的得分$a_y$比其他词$a_i$排名更高。提出的排名损失则是
 \begin{align} 
  L = \sum_i \max(0,1-a_y+a_i).
 \end{align} 
@@ -897,7 +897,7 @@ $|\SetV|$因子可以降低到$\log |\SetV|$一样低，而无需执行与$|\Set
 这个\gls{criterion}的一个问题是它不提供估计的条件概率，条件概率在很多应用中是有用的，包括语音识别和文本生成（包括诸如翻译的条件文本生成任务）。
 
 最近用于\gls{NLM}的训练目标是噪声对比估计，将在\secref{sec:noise_contrastive_estimation}中介绍。
-这种方法已成功应用于\gls{NLM}~\citep{Mnih+Teh-ICML2012,Mnih2013}。
+这种方法已成功应用于\gls{NLM}~\citep{Mnih-Teh-2012,Mnih-Kavukcuoglu-2013}。
 
 % -- 459 --
 
@@ -909,12 +909,12 @@ $|\SetV|$因子可以降低到$\log |\SetV|$一样低，而无需执行与$|\Set
 嵌入层每次只索引单个嵌入，所以我们可以增加词汇量，而不会增加每个样本的计算时间。
 一些其他模型，例如平铺\gls{convolutional_network}，可以在减少\gls{parameter_sharing}程度的同时添加参数以保持相同的计算量。然而，基于矩阵乘法的典型\gls{NN}层需要与参数数量成比例的计算量。
 
-因此，增加\gls{capacity}的一种简单方法是将两种方法结合，由\gls{NLM}和~\gls{n_gram}~\gls{language_model}组成\gls{ensemble}~\citep{BenDucVin01-small,Bengio-nnlm2003-small}。
+因此，增加\gls{capacity}的一种简单方法是将两种方法结合，由\gls{NLM}和~\gls{n_gram}~\gls{language_model}组成\gls{ensemble}~\citep{Bengio-et-al-2001,Bengio-et-al-2003}。
 
 对于任何\gls{ensemble}，如果\gls{ensemble}成员产生独立的错误，这种技术可以减少测试误差。
 \gls{ensemble}学习领域提供了许多方法来组合\gls{ensemble}成员的预测，包括统一加权和在验证集上选择权重。
-\citet{Mikolov-Interspeech-2011} 扩展了\gls{ensemble}，不是仅包括两个模型，而是包括大量模型。
-我们也可以将\gls{NN}与最大熵模型配对并联合训练\citep{Mikolov-ASRU-2011}。
+\citet{Mikolov-et-al-2011a} 扩展了\gls{ensemble}，不是仅包括两个模型，而是包括大量模型。
+我们也可以将\gls{NN}与最大熵模型配对并联合训练\citep{Mikolov-et-al-2011b}。
 该方法可以被视为训练具有一组额外输入的\gls{NN}，额外输入直接连接到输出并且不连接到模型的任何其他部分。
 额外输入是输入上下文中特定~\gls{n_gram}~是否存在的指示器，因此这些变量是非常高维且非常稀疏的。
 
@@ -934,14 +934,14 @@ $|\SetV|$因子可以降低到$\log |\SetV|$一样低，而无需执行与$|\Set
 % -- 460 --
 
 最早的机器翻译\gls{NN}探索中已经纳入了\gls{encoder}和\gls{decoder}的想法(Allen 1987; Chrisman 1991; Forcada
-and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途是通过\gls{NLM}升级翻译系统的\gls{language_model}~\citep{Schwenk-et-al-IWSLT2006,Schwenk-2010}。
+and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途是通过\gls{NLM}升级翻译系统的\gls{language_model}~\citep{Schwenk-et-al-2006,Schwenk-2010}。
 之前，大多数机器翻译系统在该组件使用~\gls{n_gram}~模型。
-机器翻译中基于~\gls{n_gram}~的模型不仅包括传统的回退~\gls{n_gram}~模型\citep{Jelinek+Mercer80,Katz87,Chen+Goodman99}，而且包括\textbf{最大熵语言模型}(maximum entropy language models)\citep{Berger1996}，其中给定上下文中常见的词，affine-softmax层预测下一个词。
+机器翻译中基于~\gls{n_gram}~的模型不仅包括传统的回退~\gls{n_gram}~模型\citep{Jelinek-Mercer-1980,Katz-1987,Chen-Goodman-1999}，而且包括\textbf{最大熵语言模型}(maximum entropy language models)\citep{Berger-et-al-1996}，其中给定上下文中常见的词，affine-softmax层预测下一个词。
 
 传统\gls{language_model}仅仅报告自然语言句子的概率。
 因为机器翻译涉及给定输入句子产生输出句子，所以将自然\gls{language_model}扩展为条件的是有意义的。
 如\secref{sec:learning_conditional_distributions_with_maximum_likelihood}所述可以直接地扩展一个模型，该模型定义某些变量的边缘分布，以便在给定上下文$C$（$C$可以是单个变量或变量列表）的情况下定义该变量的条件分布。
-\citet{Devlin-et-al-ACL2014}在一些统计机器翻译的基准中击败了最先进的技术，他给定源语言中的短语$\RSs_1, \RSs_2,\ldots, \RSs_k$后使用~\glssymbol{MLP}~对目标语言的短语$\RSt_1, \RSt_2,\ldots, \RSt_k$进行评分。
+\citet{Devlin-et-al-2014}在一些统计机器翻译的基准中击败了最先进的技术，他给定源语言中的短语$\RSs_1, \RSs_2,\ldots, \RSs_k$后使用~\glssymbol{MLP}~对目标语言的短语$\RSt_1, \RSt_2,\ldots, \RSt_k$进行评分。
 这个~\glssymbol{MLP}~估计$P(\RSt_1, \RSt_2,\ldots, \RSt_k \mid \RSs_1, \RSs_2,\ldots, \RSs_k)$。
 这个~\glssymbol{MLP}~的估计替代了条件~\gls{n_gram}~模型提供的估计。
 
@@ -951,7 +951,7 @@ and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途
 \secref{sec:modeling_sequences_conditioned_on_context_with_rnns}描述了给定某些输入后，关于序列条件分布~\glssymbol{RNN}~的几种构造方法，并且\secref{sec:encoder_decoder_sequence_to_sequence_architectures}描述了当输入是序列时如何实现这种条件分布。
 在所有情况下，一个模型首先读取输入序列并产生概括输入序列的数据结构。我们称这个概括为``上下文''~$C$。
 上下文$C$可以是向量列表，或者向量或张量。
-读取输入以产生$C$的模型可以是~\glssymbol{RNN}~\citep{Cho-et-al-EMNLP2014,Sutskever-et-al-NIPS2014,Jean-et-al-arxiv2014}或\gls{convolutional_network}~\citep{Kalchbrenner+Blunsom-EMNLP2013}。
+读取输入以产生$C$的模型可以是~\glssymbol{RNN}~\citep{Cho-et-al-2014a,Sutskever-et-al-2014,Jean-et-al-2014}或\gls{convolutional_network}~\citep{Kalchbrenner-Blunsom-2013}。
 另一个模型（通常是RNN），则读取上下文$C$并且生成目标语言的句子。
 在\figref{fig:chap12_encoder_decoder_architecture}中展示了这种用于机器翻译的\gls{encoder}-\gls{decoder}框架的总体思想。
 
@@ -973,18 +973,18 @@ and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途
 为生成以源句为条件的整句，模型必须具有表示整个源句的方式。 
 早期模型只能表示单个词或短语。
 从\gls{representation_learning}的观点来看，具有相同含义的句子具有类似\gls{representation}是有用的，无论它们是以源语言还是以目标语言书写。
-研究者首先使用卷积和~\glssymbol{RNN}~的组合探索该策略~\citep{Kalchbrenner+Blunsom-EMNLP2013}。
-后来的工作介绍了使用~\glssymbol{RNN}~对所提议的翻译进行打分\citep{Cho-et-al-EMNLP2014}或生成翻译句子\citep{Sutskever-et-al-NIPS2014}。
-\cite{Jean-et-al-arxiv2014}将这些模型扩展到更大的词汇表。
+研究者首先使用卷积和~\glssymbol{RNN}~的组合探索该策略~\citep{Kalchbrenner-Blunsom-2013}。
+后来的工作介绍了使用~\glssymbol{RNN}~对所提议的翻译进行打分\citep{Cho-et-al-2014a}或生成翻译句子\citep{Sutskever-et-al-2014}。
+\cite{Jean-et-al-2014}将这些模型扩展到更大的词汇表。
 
 % -- 462 --
 
 \subsubsection{使用\glsentrytext{attention_mechanism}并对齐数据片段}
 \label{sec:using_an_attention_mechanism_and_aligning_pieces_of_data}
 使用固定大小的表示概括非常长的句子（例如60个词）的所有语义细节是非常困难的。 
-这需要使用足够大的RNN，并且用足够长时间训练得很好才能实现，如 \citet{Cho-et-al-EMNLP2014}和\citet{Sutskever-et-al-NIPS2014}所表明的。
+这需要使用足够大的RNN，并且用足够长时间训练得很好才能实现，如 \citet{Cho-et-al-2014a}和\citet{Sutskever-et-al-2014}所表明的。
 然而，更高效的方法是先读取整个句子或段落（以获得正在表达的上下文和焦点），然后一次翻译一个词，每次聚焦于输入句子的不同部分来收集产生下一个输出词所需的语义细节。
-这正是~\citet{Bahdanau-et-al-ICLR2015-small}第一次引入的想法。
+这正是~\citet{Bahdanau-et-al-2015}第一次引入的想法。
 \figref{fig:chap12_attention}中展示了\gls{attention_mechanism}，其中每个\gls{time_step}关注输入序列的特定部分。
 
  \begin{figure}[htp]
@@ -993,7 +993,7 @@ and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途
 \else
 \centerline{\includegraphics{Chapter12/figures/attention.pdf}}
 \fi
-\caption{由~\citet{Bahdanau-et-al-ICLR2015-small}引入的现代\gls{attention_mechanism}，本质上是加权平均。
+\caption{由~\citet{Bahdanau-et-al-2015}引入的现代\gls{attention_mechanism}，本质上是加权平均。
 \gls{attention_mechanism}对具有权重$\alpha^{(t)}$的特征向量$\Vh^{(t)}$进行加权平均形成上下文向量$\Vc$。
 在一些应用中，特征向量$\Vh$是\gls{NN}的\gls{hidden_unit}，但它们也可以是模型的原始输入。
 权重$\alpha^{(t)}$由模型本身产生。
@@ -1016,38 +1016,38 @@ and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途
 % -- 463 --
 
 当用一种语言书写的句子中的词与另一种语言的翻译语句中的相应词对齐时，可以使对应的\gls{word_embedding}相关联。
-早期的工作表明，我们可以学习将一种语言中的\gls{word_embedding}与另一种语言中的\gls{word_embedding}相关联的翻译矩阵\citep{Kocisky-et-al-ACL2014}，与传统的基于短语表中频率计数的方法相比，可以产生较低的对齐错误率。
-更早的工作\citep{Klementiev-et-al-COLING2012}也对跨语言词向量进行了研究。 
+早期的工作表明，我们可以学习将一种语言中的\gls{word_embedding}与另一种语言中的\gls{word_embedding}相关联的翻译矩阵\citep{Kocisky-et-al-2014}，与传统的基于短语表中频率计数的方法相比，可以产生较低的对齐错误率。
+更早的工作\citep{Klementiev-et-al-2012}也对跨语言词向量进行了研究。 
 这种方法的存在很多扩展。
-例如，允许在更大数据集上训练的更高效的跨语言对齐~\citep{Gouws-et-al-arxiv2014} 。
+例如，允许在更大数据集上训练的更高效的跨语言对齐~\citep{Gouws-et-al-2014} 。
 
 \subsection{历史展望}
 \label{sec:historical_perspective_chap12}
 
-在对\gls{back_propagation}的第一次探索中，\citet{Rumelhart86b-small}等人提出了\gls{distributed_representation}符号的思想，其中符号对应于族成员的身份，而\gls{NN}捕获族成员之间的关系，训练样本形成三元组如（Colin，Mother，Victoria）。
+在对\gls{back_propagation}的第一次探索中，\citet{Rumelhart-et-al-1986a}等人提出了\gls{distributed_representation}符号的思想，其中符号对应于族成员的身份，而\gls{NN}捕获族成员之间的关系，训练样本形成三元组如（Colin，Mother，Victoria）。
 \gls{NN}的第一层学习每个族成员的表示。例如，Colin的特征可能代表Colin所在的族树，他所在树的分支，他来自哪一代等等。
 我们可以将\gls{NN}认为是将这些属性关联在一起的计算学习规则，可以获得期望预测。
 模型则可以进行预测，例如推断谁是Colin的母亲。
 
-\cite{Deerwester90}将符号嵌入的想法扩展到对词的嵌入。
+\cite{Deerwester-et-al-1990}将符号嵌入的想法扩展到对词的嵌入。
 这些嵌入使用SVD学习。 
 之后，嵌入将通过\gls{NN}学习。
 
 \gls{NLP}的历史是由流行表示（对模型输入不同方式的表示）的变化为标志的。
-在早期对符号和词建模的工作之后，\gls{NN}在\glssymbol{NLP}上一些最早的应用\citep{Miikkulainen91,Schmidhuber96}将输入表示为字符序列。
+在早期对符号和词建模的工作之后，\gls{NN}在\glssymbol{NLP}上一些最早的应用\citep{Miikkulainen-Dyer-1991,Schmidhuber-1996}将输入表示为字符序列。
 
-\citet{BenDucVin01-small} 将焦点重新引到对词建模并引入\gls{NLM}，能产生可解释的\gls{word_embedding}。
+\citet{Bengio-et-al-2001} 将焦点重新引到对词建模并引入\gls{NLM}，能产生可解释的\gls{word_embedding}。
 这些神经模型已经从在一小组符号上的定义表示（20世纪80年代）扩展到现代应用中的数百万字（包括专有名词和拼写错误）。
 这种计算扩展的努力导致了\secref{sec:high_dimensional_outputs}中描述的技术发明。
 
 % -- 464 --
 
-最初，使用词作为\gls{language_model}的基本单元可以改进语言建模的性能 \citep{BenDucVin01-small}。
-而今，新技术不断推动基于字符 \citep{Sutskever-et-al-ICML2011}）和基于词的模型向前发展，最近的工作 \citep{gillick2015multilingual}甚至建模Unicode字符的单个字节。
+最初，使用词作为\gls{language_model}的基本单元可以改进语言建模的性能 \citep{Bengio-et-al-2001}。
+而今，新技术不断推动基于字符 \citep{Sutskever-et-al-2011}）和基于词的模型向前发展，最近的工作 \citep{Gillick-et-al-2015}甚至建模Unicode字符的单个字节。
 
-\gls{NLM}背后的思想已经扩展到多个\gls{NLP}应用，如解析\citep{Henderson-NAACL2003,Henderson-ACL2004,Collobert-AISTATS2011}、词性标注、语义角色标注、分块等，有时使用共享\gls{word_embedding}的单一多任务学习架构\citep{Collobert+Weston-ICML2008,collobert2011natural}。
+\gls{NLM}背后的思想已经扩展到多个\gls{NLP}应用，如解析\citep{Henderson-2003,Henderson-2004,Collobert-2011}、词性标注、语义角色标注、分块等，有时使用共享\gls{word_embedding}的单一多任务学习架构\citep{Collobert-Weston-2008a,Collobert-et-al-2011a}。
 
-随着t-SNE~\gls{dimensionality_reduction}算法的发展\citep{VanDerMaaten08-small}以及Joseph Turian在2009年引入的专用于可视化词嵌入的应用，用于分析\gls{language_model}嵌入的二维可视化成为一种流行的工具。
+随着t-SNE~\gls{dimensionality_reduction}算法的发展\citep{van-der-Maaten-Hinton-2008}以及Joseph Turian在2009年引入的专用于可视化词嵌入的应用，用于分析\gls{language_model}嵌入的二维可视化成为一种流行的工具。
 
 \section{其他应用}
 \label{sec:other_applications}
@@ -1095,16 +1095,16 @@ and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途
 \glssymbol{SVD}的一个问题是它以任意方式处理缺失条目，如同它们对应于目标值0。
 相反，我们希望避免为缺失条目做出的预测付出任何代价。
 幸运的是，观察到的评级的平方误差总和也可以使用基于梯度的优化最小化。
-\glssymbol{SVD}~和\eqnref{eq:bilinear-prediction}中的双线性预测在~\ENNAME{Netflix}~奖竞赛中（目的是仅基于大量匿名用户的之前评级预测电影的评级）表现得非常好\citep{bennett2007netflix}。
+\glssymbol{SVD}~和\eqnref{eq:bilinear-prediction}中的双线性预测在~\ENNAME{Netflix}~奖竞赛中（目的是仅基于大量匿名用户的之前评级预测电影的评级）表现得非常好\citep{Bennett-Lanning-2007}。
 许多\gls{ML}专家参加了2006年和2009年之间的这场比赛。
 它提高了使用先进\gls{ML}的\gls{recommender_system}的研究水平，并改进了\gls{recommender_system}。
-即使简单的双线性预测或~\glssymbol{SVD}~本身并没有赢得比赛，但它是大多数竞争对手提出的整体模型中一个组成部分，包括胜者\citep{BigChaos-Netflix2009,Koren09}。
+即使简单的双线性预测或~\glssymbol{SVD}~本身并没有赢得比赛，但它是大多数竞争对手提出的整体模型中一个组成部分，包括胜者\citep{Toscher-et-al-2009,Koren-2009}。
 
 % -- 466 --
 
-除了这些具有\gls{distributed_representation}的双线性模型之外，第一次用于\gls{collaborative_filtering}的\gls{NN}之一是基于~\glssymbol{RBM}~的无向概率模型~\citep{Salakhutdinov-2007-short}。
-\glssymbol{RBM}~是~\ENNAME{Netflix}~比赛获胜方法的一个重要组成部分\citep{BigChaos-Netflix2009,Koren09}。
-\gls{NN}社群中也已经探索了对评级矩阵进行因子分解的更高级变体\citep{Salakhutdinov2008-small}。
+除了这些具有\gls{distributed_representation}的双线性模型之外，第一次用于\gls{collaborative_filtering}的\gls{NN}之一是基于~\glssymbol{RBM}~的无向概率模型~\citep{Salakhutdinov-et-al-2007}。
+\glssymbol{RBM}~是~\ENNAME{Netflix}~比赛获胜方法的一个重要组成部分\citep{Toscher-et-al-2009,Koren-2009}。
+\gls{NN}社群中也已经探索了对评级矩阵进行因子分解的更高级变体\citep{Salakhutdinov-Mnih-2008}。
 
 然而，\gls{collaborative_filtering}系统有一个基本限制：当引入新项目或新用户时，缺乏评级历史意味着无法评估其与其他项目或用户的相似性，或者说无法评估新的用户和现有项目的联系。
 这被称为冷启动推荐问题。
@@ -1113,7 +1113,7 @@ and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途
 使用这种信息的系统被称为\,\textbf{基于内容的推荐系统}(content-based recommender system)。
 从丰富的用户特征或项目特征集到嵌入的映射可以通过\gls{DL}架构学习\citep{Huang-et-al-2013,Elkahky-et-al-2015}。
 
-专用的\gls{DL}架构，如\gls{convolutional_network}已经应用于从丰富内容中提取特征，如提取用于音乐推荐的音乐音轨\citep{vandenOord-et-al-NIPS2013}。
+专用的\gls{DL}架构，如\gls{convolutional_network}已经应用于从丰富内容中提取特征，如提取用于音乐推荐的音乐音轨\citep{van-den-Oord-et-al-2013}。
 在该工作中，\gls{convolutional_network}将声学特征作为输入并计算相关歌曲的嵌入。
 该歌曲嵌入和用户嵌入之间的点积则可以预测用户是否将收听该歌曲。
 
@@ -1121,7 +1121,7 @@ and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途
 
 \subsubsection{\glsentrytext{exploration}与\glsentrytext{exploitation}}
 当向用户推荐时，会产生超出普通\gls{supervised_learning}范围的问题，并进入\gls{RL}的领域。
-理论上，许多推荐问题最准确的描述是\gls{contextual_bandit}\citep{Langford+Zhang-NIPS2008,Lu-et-al-2010}。
+理论上，许多推荐问题最准确的描述是\gls{contextual_bandit}\citep{Langford-Zhang-2008,Lu-et-al-2010}。
 问题是，当我们使用\gls{recommender_system}收集数据时，我们得到是一个有偏且不完整的用户偏好观：我们只能看到用户对推荐给他们项目的反应，而不是其他项目。
 此外，在某些情况下，我们可能无法获得未向其进行推荐的用户的任何信息（例如，在广告竞价中，可能是广告的建议价格低于最低价格阈值，或者没有赢得竞价，因此广告不会显示）。
 更重要的是，我们不知道推荐任何其他项目会产生什么结果。
@@ -1164,13 +1164,13 @@ and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途
 \gls{RL}包括学习者和环境之间的相互作用。
 这个反馈回路意味着使用固定的测试集输入评估学习者的表现不是直接的。
 \gls{policy}本身确定将看到哪些输入。
-\citet{Dudik-2011} 提出了评估\gls{contextual_bandit}的技术。
+\citet{Dudik-et-al-2011} 提出了评估\gls{contextual_bandit}的技术。
 
 % -- 469 --
 
 \subsection{知识表示、推理和回答}
 \label{sec:knowledge_representation_reasoning and_question_answering}
-因为使用符号\citep{Rumelhart86b-small}和词嵌入\citep{Deerwester90,BenDucVin01-small}，\gls{DL}方法在\gls{language_model}、机器翻译和\gls{NLP}方面非常成功。
+因为使用符号\citep{Rumelhart-et-al-1986a}和词嵌入\citep{Deerwester-et-al-1990,Bengio-et-al-2001}，\gls{DL}方法在\gls{language_model}、机器翻译和\gls{NLP}方面非常成功。
 这些嵌入表示关于单个词或概念的语义知识。
 研究前沿是为短语或词和事实之间的关系开发嵌入。
 搜索引擎已经使用\gls{ML}来实现这一目的，但是要改进这些更高级的表示还有许多工作要做。
@@ -1213,23 +1213,23 @@ and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途
 当数据库旨在将日常生活中常识或关于应用领域的专业知识传达给\gls{AI}系统时，我们将这种数据库称为\gls{knowledge_base}。
 \gls{knowledge_base}包括一般的像{\tt Freebase}、{\tt OpenCyc}、 {\tt WordNet}、 {\tt Wikibase}\footnote{分别可以在如下网址获取: \url{freebase.com}, \url{cyc.com/opencyc},
 \url{wordnet.princeton.edu}, \url{wikiba.se}}~等等，和专业的知识库，如GeneOntology\footnote{\url{geneontology.org}}。
-实体和\gls{relation}的\gls{representation}可以将\gls{knowledge_base}中的每个三元组作为训练样本来学习，并且以最大化捕获它们的联合分布为训练目标\citep{Bordes-et-al-LSML2013}。
+实体和\gls{relation}的\gls{representation}可以将\gls{knowledge_base}中的每个三元组作为训练样本来学习，并且以最大化捕获它们的联合分布为训练目标\citep{Bordes-et-al-2013a}。
 
 除了训练数据，我们还需定义训练的模型族。
 一种常见的方法是将\gls{NLM}扩展到模型实体和\gls{relation}。
 \gls{NLM}学习提供每个词\gls{distributed_representation}的向量。
 他们还通过学习这些向量的函数来学习词之间的相互作用，例如哪些词可能出现在词序列之后。
 我们可以学习每个关系的嵌入向量将这种方法扩展到实体和\gls{relation}。
-事实上，建模语言和通过\gls{relation}编码建模知识的联系非常接近，研究人员可以\emph{同时}使用\gls{knowledge_base}\emph{和}自然语言句子训练这样的实体表示\citep{bordes-aaai-2011,Bordes-et-al-AISTATS2012-small,Wang-et-al-EMNLP2014}，或组合来自多个\gls{relational_database}的数据~\citep{Bordes-et-al-NIPS2013}。
+事实上，建模语言和通过\gls{relation}编码建模知识的联系非常接近，研究人员可以\emph{同时}使用\gls{knowledge_base}\emph{和}自然语言句子训练这样的实体表示\citep{Bordes-et-al-2011,Bordes-et-al-2012,Wang-et-al-2014a}，或组合来自多个\gls{relational_database}的数据~\citep{Bordes-et-al-2013b}。
 可能与这种模型相关联的特定参数化有许多种。
-早期关于学习实体间\gls{relation}的工作~\citep{Paccanaro2000}假定高度受限的参数形式（``线性关系嵌入''），通常对\gls{relation}使用与实体形式不同的表示。
-例如，\citet{Paccanaro2000}和~\citet{bordes-aaai-2011} 用向量表示实体而矩阵表示\gls{relation}，其思想是\gls{relation}在实体上相当于运算符。
-或者，关系可以被认为是任何其他实体\citep{Bordes-et-al-AISTATS2012-small}，允许我们关于关系作声明，但是更灵活的是将它们结合在一起并建模联合分布的机制。
+早期关于学习实体间\gls{relation}的工作~\citep{Paccanaro-Hinton-2000}假定高度受限的参数形式（``线性关系嵌入''），通常对\gls{relation}使用与实体形式不同的表示。
+例如，\citet{Paccanaro-Hinton-2000}和~\citet{Bordes-et-al-2011} 用向量表示实体而矩阵表示\gls{relation}，其思想是\gls{relation}在实体上相当于运算符。
+或者，关系可以被认为是任何其他实体\citep{Bordes-et-al-2012}，允许我们关于关系作声明，但是更灵活的是将它们结合在一起并建模联合分布的机制。
 
 这种模型的实际短期应用是\firstgls{link_prediction}：预测\gls{knowledge_graph}中缺失的弧。
 这是基于旧事实推广新事实的一种形式。
 目前存在的大多数\gls{knowledge_base}都是通过人力劳动构建的，这往往使\gls{knowledge_base}缺失许多并且可能是大多数真正的关系。
-请查看~\citet{Wang-et-al-AAAI2014}、\citet{Lin-et-al-AAAI2015}和~\citet{Garcia-Duran-et-al-arxiv2015}中这样应用的例子。
+请查看~\citet{Wang-et-al-2014b}、\citet{Lin-et-al-2015}和~\citet{Garcia-Duran-et-al-2015}中这样应用的例子。
 
 我们很难评估\gls{link_prediction}任务上模型的性能，因为我们的数据集只有正样本（已知是真实的事实）。
 如果模型提出了不在数据集中的事实，我们不确定模型是犯了错误还是发现了一个新的以前未知的事实。
@@ -1237,14 +1237,14 @@ and Ñeco 1997)，而翻译中\gls{NN}的第一个大规模有竞争力的用途
 构造感兴趣的负样本（可能为假的事实）的常见方式是从真实事实开始，并创建该事实的损坏版本，例如用随机选择的不同实体替换\gls{relation}中的一个实体 。
 通用的测试精度（10$\%$度量）计算模型在该事实的所有损坏版本的前10$\%$中选择``正确''事实的次数。
 
-\gls{knowledge_base}和\gls{distributed_representation}的另一个应用是\firstgls{word_sense_disambiguation} \citep{Navigli+Verlardi-2005,Bordes-et-al-AISTATS2012-small}，这个任务决定在某些语境中哪个词的意义是恰当。
+\gls{knowledge_base}和\gls{distributed_representation}的另一个应用是\firstgls{word_sense_disambiguation} \citep{Navigli-Velardi-2005,Bordes-et-al-2012}，这个任务决定在某些语境中哪个词的意义是恰当。
 
 最后，知识的\gls{relation}结合一个推理过程和对自然语言的理解可以让我们建立一个一般的问答系统。
 一般的问答系统必须能处理输入信息并记住重要的事实，并以之后能检索和推理的方式组织。
 这仍然是一个困难的开放性问题，只能在受限的``玩具''环境下解决。
 目前，记住和检索特定声明性事实的最佳方法是使用显式记忆机制，如\secref{sec:explicit_memory}所述。
-\gls{memory_network}最开始是被用来解决一个玩具问答任务\citep{Weston2014}。
-\citet{Kumar-et-al-arxiv2015} 提出了一种扩展，使用GRU~\gls{recurrent_network}将输入读入存储器并且在给定存储器的内容后产生回答。
+\gls{memory_network}最开始是被用来解决一个玩具问答任务\citep{Weston-et-al-2014}。
+\citet{Kumar-et-al-2015} 提出了一种扩展，使用GRU~\gls{recurrent_network}将输入读入存储器并且在给定存储器的内容后产生回答。
 
 \gls{DL}已经应用于其他许多应用（除了这里描述的应用以外），并且肯定会在此之后应用于更多的场景。
 我们不可能全面描述与此主题相关的所有应用 。
