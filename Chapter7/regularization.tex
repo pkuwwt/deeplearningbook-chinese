@@ -990,7 +990,7 @@ $\Omega(\Vh) = \norm{\Vh}_1 = \sum_i |h_i|$。
 
 \section{\glsentrytext{dropout}}
 \label{sec:dropout}
-\textbf{dropout}\citep{Srivastava-et-al-2014}提供了\gls{regularization}一大类模型的方法，计算方便但功能强大。
+\textbf{Dropout}\citep{Srivastava-et-al-2014}提供了\gls{regularization}一大类模型的方法，计算方便但功能强大。
 在第一种近似下，\gls{dropout}可以被认为是\gls{ensemble}大量深层\gls{NN}的实用\gls{bagging}方法。
 \gls{bagging}涉及训练多个模型，并在每个测试样本上评估多个模型。
 当每个模型都是一个很大的\gls{NN}时，这似乎是不切实际的，因为训练和评估这样的网络需要花费很多运行时间和内存。
@@ -1206,7 +1206,7 @@ P_{\text{ensemble}}(\RSy = \Sy \mid \RVv)  = \frac{\tilde{P}_{\text{ensemble}}(\
 % -- 258 --
 
 随机性对实现\gls{dropout}的\gls{regularization}效果不是必要的，同时也不是充分的。
-为了证明这一点，\cite{WardeFarley-et-al-2014}使用一种被称为\textbf{dropout_boosting}的方法设计了一个对照实验，具有与传统\gls{dropout}方法完全相同的噪声\gls{mask}， 但缺乏\gls{regularization}效果。
+为了证明这一点，\cite{WardeFarley-et-al-2014}使用一种被称为\textbf{Dropout Boosting}的方法设计了一个对照实验，具有与传统\gls{dropout}方法完全相同的噪声\gls{mask}， 但缺乏\gls{regularization}效果。
 \gls{dropout_boosting}训练整个\gls{ensemble}以最大化训练集上的似然。
 从传统\gls{dropout}类似于\gls{bagging}的角度来看，这种方式类似于\gls{boosting}。
 如预期一样，和单一模型训练整个网络相比，\gls{dropout_boosting}几乎没有\gls{regularization}效果。
