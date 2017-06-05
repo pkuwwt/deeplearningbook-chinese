@@ -211,7 +211,7 @@ $ f^\prime(\Sx)=0 $的点称为临界点或驻点。
 ## 梯度之上：Jacobian和Hessian矩阵
 
 有时我们需要计算输入和输出都为向量的函数的所有偏导数。
-包含所有这样的偏导数的矩阵被称为Jacobian矩阵。
+包含所有这样的偏导数的矩阵被称为\textbf{Jacobian}矩阵。
 具体来说，如果我们有一个函数：$\Vf: \SetR^m \rightarrow \SetR^n$，$\Vf$的~Jacobian~矩阵$\MJ \in \SetR^{n \times m}$定义为$J_{i,j} = \frac{\partial}{\partial \Sx_j} f(\Vx)_i$。
 
 有时，我们也对导数的导数感兴趣，即二阶导数。
@@ -244,7 +244,7 @@ $ f^\prime(\Sx)=0 $的点称为临界点或驻点。
 \end{figure}
 
 当我们的函数具有多维输入时，二阶导数也有很多。
-我们可以将这些导数合并成一个矩阵，称为Hessian矩阵。
+我们可以将这些导数合并成一个矩阵，称为\textbf{Hessian}矩阵。
 Hessian~矩阵$\MH(f)(\Vx)$定义为
 \begin{align}
  \MH(f)(\Vx)_{i,j} = \frac{\partial^2}{\partial \Sx_i \partial  \Sx_j} f(\Vx).

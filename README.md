@@ -18,7 +18,7 @@
 面向的读者
 --------------------
 
-请直接下载[PDF](https://github.com/exacity/deeplearningbook-chinese/releases/download/v0.5-beta/dlbook_cn_v0.5-beta.pdf.zip)阅读。
+请直接下载[PDF](https://github.com/exacity/deeplearningbook-chinese/releases/download/v0.5-beta/dlbook_cn_v0.5-beta.pdf.zip)阅读(或[百度云](https://pan.baidu.com/s/1o8v19Om))。
 
 这一版准确性已经有所提高，读者可以以中文版为主、英文版为辅来阅读学习，但我们仍建议研究者阅读[原版](http://www.deeplearningbook.org/)。
 
@@ -61,7 +61,7 @@
 | [第四章 数值计算](https://exacity.github.io/deeplearningbook-chinese/Chapter4_numerical_computation/) | @swordyork | @zhangyafeikimi | @hengqujushi |
 | [第五章 机器学习基础](https://exacity.github.io/deeplearningbook-chinese/Chapter5_machine_learning_basics/) | @liber145 | @wheaio, @huangpingchun | @fairmiracle, @linzhp |
 | [第六章 深度前馈网络](https://exacity.github.io/deeplearningbook-chinese/Chapter6_deep_feedforward_networks/) | @KevinLee1110 | David_Chow, @linzhp, @sailordiary |  |
-| [第七章 深度学习中的正则化](https://exacity.github.io/deeplearningbook-chinese/Chapter7_regularization/) | @swordyork | | |
+| [第七章 深度学习中的正则化](https://exacity.github.io/deeplearningbook-chinese/Chapter7_regularization/) | @swordyork | | @NBZCC |
 | [第八章 深度模型中的优化](https://exacity.github.io/deeplearningbook-chinese/Chapter8_optimization_for_training_deep_models/) | @liber145 | @happynoom, @codeVerySlow |  @huangpingchun |
 | [第九章 卷积网络](https://exacity.github.io/deeplearningbook-chinese/Chapter9_convolutional_networks/) | @KevinLee1110 | @zhaoyu611, @corenel | @zhiding |
 | [第十章 序列建模：循环和递归网络](https://exacity.github.io/deeplearningbook-chinese/Chapter10_sequence_modeling_rnn/) | @swordyork | lc | @zhaoyu611, @yinruiqing |
@@ -72,8 +72,8 @@
 | [第十五章 表示学习](https://exacity.github.io/deeplearningbook-chinese/Chapter15_representation_learning/) | @liber145 | @cnscottzheng | |
 | [第十六章 深度学习中的结构化概率模型](https://exacity.github.io/deeplearningbook-chinese/Chapter16_structured_probabilistic_modelling/) | @futianfan | |
 | [第十七章 蒙特卡罗方法](https://exacity.github.io/deeplearningbook-chinese/Chapter17_monte_carlo_methods/) | @futianfan |  | @sailordiary  |
-| [第十八章 面对配分函数](https://exacity.github.io/deeplearningbook-chinese/Chapter18_confronting_the_partition_function/) | @liber145 | |  |
-| [第十九章 近似推断](https://exacity.github.io/deeplearningbook-chinese/Chapter19_approximate_inference/) | @futianfan | | @sailordiary, @hengqujushi  |
+| [第十八章 面对配分函数](https://exacity.github.io/deeplearningbook-chinese/Chapter18_confronting_the_partition_function/) | @liber145 | | @tankeco |
+| [第十九章 近似推断](https://exacity.github.io/deeplearningbook-chinese/Chapter19_approximate_inference/) | @futianfan | | @sailordiary, @hengqujushi, huanghaojun |
 | [第二十章 深度生成模型](https://exacity.github.io/deeplearningbook-chinese/Chapter20_deep_generative_models/) | @swordyork | | |
 
 我们会在纸质版正式出版的时候，在书中致谢，正式感谢各位作出贡献的同学！
@@ -84,7 +84,8 @@
 @weijy026a @RuiZhang1993 @zymiboxpay @xingkongliang @oisc @tielei @yuduowu @Qingmu @HC-2016 @xiaomingabc 
 @bengordai @Bojian @JoyFYan @minoriwww @khty2000 @gump88 @zdx3578 @PassStory @imwebson @wlbksy @roachsinai @Elvinczp 
 @endymecy name:YUE-DaJiong @9578577 @linzhp @cnscottzheng @germany-zhu  @zhangyafeikimi @showgood163 @gump88
-@kangqf @NeutronT @badpoem @kkpoker @Seaball @wheaio @angrymidiao @ZhiweiYang @corenel @zhaoyu611 @SiriusXDJ @dfcv24 EmisXXY FlyingFire vsooda @friskit-china
+@kangqf @NeutronT @badpoem @kkpoker @Seaball @wheaio @angrymidiao @ZhiweiYang @corenel @zhaoyu611 @SiriusXDJ @dfcv24 EmisXXY FlyingFire vsooda @friskit-china @poerin @ninesunqian @JiaqiYao
+@Sofring @wenlei @wizyoung @imageslr @@indam @XuLYC @zhouqingping @freedomRen @runPenguin
 
 如有遗漏，请务必通知我们，可以发邮件至`echo c3dvcmQueW9ya0BnbWFpbC5jb20K | base64 -d`。
 这是我们必须要感谢的，所以不要不好意思。
