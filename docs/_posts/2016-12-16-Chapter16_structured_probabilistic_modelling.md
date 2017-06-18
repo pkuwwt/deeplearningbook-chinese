@@ -1,8 +1,4 @@
----
-title: 深度学习中的结构化概率模型
-layout: post
-share: false
----
+---ntitle: 深度学习中的结构化概率模型nlayout: postnshare: falsen---
 <!-- % 549 -->
 
 
@@ -42,9 +38,7 @@ share: false
 
 
 
-
-# 非结构化建模的挑战
-
+n# 非结构化建模的挑战n
 <!-- % 16.1   p 550  -->
 
 
@@ -99,7 +93,7 @@ share: false
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/137.png}}
 \else
 	\centerline{\includegraphics[width=0.9\textwidth]{Chapter16/figures/fig-ssrbm_nearest_train}}\ \\
      \centerline{\includegraphics[width=0.9\textwidth]{Chapter16/figures/fig-ssrbm_samples}}
@@ -110,7 +104,7 @@ share: false
 每一个样本都出现在与其欧式距离最近的训练样本的格点中。
 这种比较使得我们发现这个模型确实能够生成新的图片，而不是记住训练样本。
 为了方便展示，两个集合的图片都经过了微调。
-图片经~{Courville+al-2011-small}许可转载。}
+图片经~{Courville-et-al-2011}许可转载。}
 \end{figure}
 
 对上千甚至是上百万随机变量的分布建模，无论从计算上还是从统计意义上说，都是一个极具挑战性的任务。
@@ -185,9 +179,7 @@ Bob的完成时间依赖于Alice的完成时间，因为Bob只能在Alice跑完�
 <!-- % 554 head   -->
 
 
-
-# 使用图描述模型结构
-
+n# 使用图描述模型结构n
 <!-- % 554 -->
 
 
@@ -204,9 +196,7 @@ Bob的完成时间依赖于Alice的完成时间，因为Bob只能在Alice跑完�
 <!-- % 554 -->
 
 
-
-## 有向模型
-
+n## 有向模型n
 <!-- % 554 -->
 
 
@@ -231,7 +221,7 @@ Bob的完成时间依赖于Alice的完成时间，因为Bob只能在Alice跑完�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/138.png}}
 \else
 \centerline{\includegraphics{Chapter16/figures/relay_race_graph}}	
 \fi
@@ -306,9 +296,7 @@ p(\RSt_0,\RSt_1,\RSt_2) = p(\RSt_0)p(\RSt_1\mid \RSt_0)p(\RSt_2\mid \RSt_1).
 
 
 
-
-## 无向模型
-
+n## 无向模型n
 <!-- % 556 -->
 
 
@@ -354,7 +342,7 @@ p(\RSt_0,\RSt_1,\RSt_2) = p(\RSt_0)p(\RSt_1\mid \RSt_0)p(\RSt_2\mid \RSt_1).
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/139.png}}
 \else
 	\centerline{\includegraphics{Chapter16/figures/cold_undirected_graph}}	
 \fi
@@ -382,7 +370,7 @@ p(\RSt_0,\RSt_1,\RSt_2) = p(\RSt_0)p(\RSt_1\mid \RSt_0)p(\RSt_2\mid \RSt_1).
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/140.png}}
 \else
 	\centerline{\includegraphics{Chapter16/figures/example_undirected}}
 \fi
@@ -421,9 +409,7 @@ p(\RSt_0,\RSt_1,\RSt_2) = p(\RSt_0)p(\RSt_1\mid \RSt_0)p(\RSt_2\mid \RSt_1).
 <!-- % 559 head -->
 
 
-
-## 配分函数
-
+n## 配分函数n
 <!-- %  16.2.3   p 559 -->
 
 
@@ -486,9 +472,7 @@ Z = \int x^2 dx.
 <!-- % P560    -->
 
 
-
-## 基于能量的模型
-
+n## 基于能量的模型n
 <!-- % 560 -->
 
 
@@ -530,7 +514,7 @@ $E(\RVx)$被称作是能量函数。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/141.png}}
 \else
 	\centerline{\includegraphics{Chapter16/figures/example_undirected}}
 \fi
@@ -548,7 +532,7 @@ $E(\RVx)$被称作是能量函数。
 这个负号的存在主要是为了保持机器学习文献和物理学文献之间的兼容性。
 概率建模的许多研究最初都是由统计物理学家做出的，其中$E$是指实际的、物理概念的能量，没有任何符号。
 诸如"能量"和"配分函数"这类术语仍然与这些技术相关联，尽管它们的数学适用性比在物理中更宽。
-一些机器学习研究者（例如，{Smolensky86}将负能量称为~\textbf{harmony}）发出了不同的声音，但这些都不是标准惯例。
+一些机器学习研究者（例如，{Smolensky-1986}将负能量称为~\textbf{harmony}）发出了不同的声音，但这些都不是标准惯例。
 <!-- % 562  head -->
 
 
@@ -561,9 +545,7 @@ $E(\RVx)$被称作是能量函数。
 <!-- % 562 -->
 
 
-
-## 分离和d-分离
-
+n## 分离和d-分离n
 
 图模型中的边告诉我们哪些变量直接相互作用。
 我们经常需要知道哪些变量\emph{间接}相互作用。 
@@ -591,7 +573,7 @@ $E(\RVx)$被称作是能量函数。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/142.png}}
 \else
 \centering
 \begin{tabular}{cc}
@@ -610,7 +592,7 @@ $E(\RVx)$被称作是能量函数。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/143.png}}
 \else
 	\centerline{\includegraphics{Chapter16/figures/example_sep}}
 \fi
@@ -662,7 +644,7 @@ $E(\RVx)$被称作是能量函数。
 <!-- % 565  1 page -->
 \begin{figure}[!htb]
 	\ifOpenSource
-	\centerline{\includegraphics{figure.pdf}}
+	\centerline{\includegraphics[scale=0.5]{images/144.png}}
 	\else
 	\centerline{\includegraphics{Chapter16/figures/directed_paths.pdf}}
 	\fi
@@ -699,7 +681,7 @@ $E(\RVx)$被称作是能量函数。
 \begin{figure}[!htb]
 	\centering
 	\ifOpenSource
-	\includegraphics{figure.pdf}
+	\centerline{\includegraphics[scale=0.5]{images/145.png}}
 	\else
 	\includegraphics{Chapter16/figures/example_dsep}
 	\fi
@@ -719,9 +701,7 @@ $E(\RVx)$被称作是能量函数。
 \end{figure}
 <!-- % 566 head -->
 
-
-## 在有向模型和无向模型中转换
-
+n## 在有向模型和无向模型中转换n
 
 我们经常将特定的机器学习模型称为无向模型或有向模型。
 例如，我们通常将受限玻尔兹曼机称为无向模型， 而稀疏编码则被称为有向模型。
@@ -751,7 +731,7 @@ $E(\RVx)$被称作是能量函数。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/146.png}}
 \else
 	\centerline{\includegraphics{Chapter16/figures/complete}}	
 \fi
@@ -795,7 +775,7 @@ $E(\RVx)$被称作是能量函数。
 <!-- % 568 1 page -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/147.png}}
 \else
 	\centerline{\includegraphics{Chapter16/figures/dm_to_um}}	
 \fi
@@ -835,7 +815,7 @@ $E(\RVx)$被称作是能量函数。
 <!-- % 569 head -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/148.png}}
 \else
 	\centerline{\includegraphics{Chapter16/figures/um_to_dm}}	
 \fi
@@ -854,9 +834,7 @@ $E(\RVx)$被称作是能量函数。
 
 
 
-
-## 因子图
-
+n## 因子图n
 <!-- % 569      16.2.7 -->
 
 
@@ -882,7 +860,7 @@ $E(\RVx)$被称作是能量函数。
 <!-- % 570 head -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/149.png}}
 \else
 	\centerline{\includegraphics{Chapter16/figures/factor_graph}}	
 \fi
@@ -897,9 +875,7 @@ $E(\RVx)$被称作是能量函数。
 <!-- % 570 head -->
 
 
-
-# 从图模型中采样
-
+n# 从图模型中采样n
 
 <!-- % 570   -->
 图模型同样简化了从模型中采样的过程。
@@ -960,9 +936,7 @@ $E(\RVx)$被称作是能量函数。
 
 
 
-
-# 结构化建模的优势
-
+n# 结构化建模的优势n
 <!-- % 572 -->
 
 
@@ -988,9 +962,7 @@ $E(\RVx)$被称作是能量函数。
 
 
 
-
-# 学习依赖关系
-
+n# 学习依赖关系n
 <!-- % 572 -->
 
 良好的生成模型需要准确地捕获所观察到的或"可见"变量$\RVv$上的分布。
@@ -1007,7 +979,7 @@ $E(\RVx)$被称作是能量函数。
 
 当模型旨在描述直接连接的可见变量之间的依赖关系时，通常不可能连接所有变量，因此设计图模型时需要连接那些紧密相关的变量，并忽略其他变量之间的作用。
 机器学习中有一个称为结构学习的领域专门讨论这个问题。
-{koller-book2009}是一个不错的结构学习参考资料。
+{Koller-Friedman-2009}是一个不错的结构学习参考资料。
 大多数结构学习技术基于一种贪婪搜索的形式。
 它们提出了一种结构，对具有该结构的模型进行训练，然后给出分数。 
 该分数奖励训练集上的高精度并对模型的复杂度进行惩罚。
@@ -1033,9 +1005,7 @@ $E(\RVx)$被称作是能量函数。
 通常，给定$\RVv$和$\RVh$，实验观察显示$\SetE[\RVh\mid\RVv]$或${\arg\max}_{\Vh}\ p(\Vh,\Vv)$都是$\Vv$的良好特征映射。
 <!-- % 573 -->
 
-
-# 推断和近似推断
-
+n# 推断和近似推断n
 <!-- % 573 end -->
 
 
@@ -1083,9 +1053,7 @@ NP中的问题只需确定其中一个问题是否有解决方案，并找到一
 
 
 
-
-# 结构化概率模型的深度学习方法
-
+n# 结构化概率模型的深度学习方法n
 <!-- % 575 head    16.7   -->
 
 <!-- %深度学习实践者通常使用与从事结构化概率模型研究的其它机器学习研究者相同的基本计算工具。 -->
@@ -1153,9 +1121,7 @@ NP中的问题只需确定其中一个问题是否有解决方案，并找到一
 
 
 
-
-## 实例：受限玻尔兹曼机
-
+n## 实例：受限玻尔兹曼机n
 受限玻尔兹曼机{cite?}或者簧风琴是图模型如何用于深度学习的典型例子。 
 RBM~本身不是一个深层模型。 
 相反，它有一层潜变量，可用于学习输入的表示。 
@@ -1183,7 +1149,7 @@ E(\Vv,\Vh) = -\Vb^{\top}\Vv - \Vc^{\top}\Vh - \Vv^{\top}\MW\Vh,
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/150.png}}
 \else
 	\centerline{\includegraphics{Chapter16/figures/rbm}}	
 \fi
@@ -1213,7 +1179,7 @@ RBM~模型通过~Gibbs采样产生的样本展示在\fig?中。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/151.png}}
 \else
 	\centerline{\includegraphics[width=0.9\textwidth]{Chapter16/figures/rbm_samples}}	
 \fi
@@ -1228,7 +1194,7 @@ RBM~模型通过~Gibbs采样产生的样本展示在\fig?中。
 采样时~RBM~能够学习到哪些特征需要一起出现。
 另一方面说，RBM~后验$p(\Vh \mid \Vv)$是因子的，而稀疏编码的后验并不是，所以在特征提取上稀疏编码模型表现得更好。
 其他的模型可以使用非因子的$p(\Vh)$和非因子的$p(\Vh \mid \Vh)$。
-图片经~{lisa_tutorial_rbm}允许转载。}
+图片经~{LISA-2008}允许转载。}
 \end{figure}
 
 

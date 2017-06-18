@@ -1,8 +1,4 @@
----
-title: 线性代数
-layout: post
-share: false
----
+---ntitle: 线性代数nlayout: postnshare: falsen---
 
 线性代数作为数学的一个分支，广泛用于科学和工程中。
 然而，因为线性代数主要是面向连续数学，而非离散数学，所以很多计算机科学家很少接触它。
@@ -12,15 +8,13 @@ share: false
 
 如果你已经很熟悉线性代数，那么你可以轻松地跳过本章。
 如果你已经了解这些概念，但是需要一份索引表来回顾一些重要公式，那么我们推荐\emph{The Matrix Cookbook} {cite?}。
-如果你没有接触过线性代数，那么本章将告诉你本书所需的线性代数知识，不过我们仍然非常建议你参考其他专注于讲解线性代数的文献，例如~{shilov1977linear}。
+如果你没有接触过线性代数，那么本章将告诉你本书所需的线性代数知识，不过我们仍然非常建议你参考其他专注于讲解线性代数的文献，例如~{Shilov-1977}。
 最后，本章跳过了很多重要但是对于理解深度学习非必需的线性代数知识。
 
 
 
 
-
-# 标量、向量、矩阵和张量
-
+n# 标量、向量、矩阵和张量n
 
 学习线性代数，会涉及以下几类数学概念：
 
@@ -102,7 +96,7 @@ share: false
 
 \begin{figure}[!hbt]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/13.png}}
 \else
 \centerline{\includegraphics{Chapter2/figures/transpose}}
 \fi
@@ -127,9 +121,7 @@ share: false
 
 
 
-
-# 矩阵和向量相乘
-
+n# 矩阵和向量相乘n
 
 矩阵乘法是矩阵运算中最重要的操作之一。
 两个矩阵$\MA$和$\MB$的矩阵乘积是第三个矩阵$\MC$。
@@ -219,9 +211,7 @@ share: false
 <!-- % -- 33 -- -->
 
 
-
-# 单位矩阵和逆矩阵
-
+n# 单位矩阵和逆矩阵n
 
 
 线性代数提供了被称为矩阵逆的强大工具。
@@ -239,7 +229,7 @@ share: false
 如\fig?所示的例子。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centering\begin{equation*}\begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix}\end{equation*}
 \else
 \centering
 \begin{equation*}
@@ -280,9 +270,7 @@ share: false
 <!-- % -- 34 -- -->
 
 
-
-# 线性相关和生成子空间
-
+n# 线性相关和生成子空间n
 
 如果逆矩阵$\MA^{-1}$存在，那么\eqn?肯定对于每一个向量$\Vb$恰好存在一个解。
 但是，对于方程组而言，对于向量$\Vb$的某些值，有可能不存在解，或者存在无限多个解。
@@ -361,9 +349,7 @@ share: false
 
 
 
-
-# 范数
-
+n# 范数n
 
 有时我们需要衡量一个向量的大小。
 在机器学习中，我们经常使用被称为范数的函数衡量向量大小。
@@ -443,9 +429,7 @@ $L^1$范数可以简化如下：
 
 
 
-
-# 特殊类型的矩阵和向量
-
+n# 特殊类型的矩阵和向量n
 
 有些特殊类型的矩阵和向量是特别有用的。
 
@@ -506,9 +490,7 @@ $L^1$范数可以简化如下：
 
 
 
-
-# 特征分解
-
+n# 特征分解n
 
 许多数学对象可以通过将它们分解成多个组成部分，或者找到它们的一些属性而更好地理解，这些属性是通用的，而不是由我们选择表示它们的方式产生的。
 
@@ -574,7 +556,7 @@ $L^1$范数可以简化如下：
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/15.png}}
 \else
 \centerline{\includegraphics[width=0.8\textwidth]{Chapter2/figures/eigen_ellipse_color}}
 \fi
@@ -605,9 +587,7 @@ $L^1$范数可以简化如下：
 
 
 
-
-# 奇异值分解
-
+n# 奇异值分解n
 
 在\sec?，我们探讨了如何将矩阵分解成特征向量和特征值。
 还有另一种分解矩阵的方法，被称为奇异值分解，将矩阵分解为奇异向量和奇异值。
@@ -653,9 +633,7 @@ SVD\,最有用的一个性质可能是拓展矩阵求逆到非方矩阵上。我
 
 
 
-
-# Moore-Penrose 伪逆
-
+n# Moore-Penrose 伪逆n
 
 
 对于非方矩阵而言，其逆矩阵没有定义。
@@ -699,9 +677,7 @@ Moore-Penrose 伪逆使我们在这类问题上取得了一定的进展。
 
 
 
-
-# 迹运算
-
+n# 迹运算n
 
 迹运算返回的是矩阵对角元素的和：
 \begin{equation}
@@ -746,9 +722,7 @@ Moore-Penrose 伪逆使我们在这类问题上取得了一定的进展。
 
 
 
-
-# 行列式
-
+n# 行列式n
 
 行列式，记作$\text{det}(\MA)$，是一个将方阵$\MA$映射到实数的函数。
 行列式等于矩阵特征值的乘积。
@@ -759,9 +733,7 @@ Moore-Penrose 伪逆使我们在这类问题上取得了一定的进展。
 
 
 
-
-# 实例：主成分分析
-
+n# 实例：主成分分析n
 
 主成分分析是一个简单的机器学习算法，可以通过基础的线性代数知识推导。
 

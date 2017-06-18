@@ -1,8 +1,4 @@
----
-title: 线性因子模型
-layout: post
-share: false
----
+---ntitle: 线性因子模型nlayout: postnshare: falsen---
 
 
 
@@ -47,7 +43,7 @@ share: false
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/115.png}}
 \else
 	\centerline{\includegraphics{Chapter13/figures/linear_factors}}
 \fi
@@ -56,9 +52,7 @@ share: false
 \end{figure}
 
 
-
-# 概率PCA和因子分析
-
+n# 概率PCA和因子分析n
 <!-- % 480 -->
 
 概率PCA、因子分析和其他线性因子模型是上述等式（\eqn?和\eqn?）的特殊情况，并且仅在对观测到$\Vx$之前的噪声分布和潜变量 $\Vh$先验的选择上有所不同。
@@ -94,12 +88,12 @@ share: false
 \RVx = \MW\RVh + \Vb + \sigma\RVz,
 \end{align}
 其中$\RVz \sim \CalN(\Vz;\mathbf{0},\MI)$是高斯噪声。
-之后~{Tipping99}提出了一种迭代的~EM~算法来估计参数$\MW$和$\sigma^2$。
+之后~{Tipping-Bishop-1999}提出了一种迭代的~EM~算法来估计参数$\MW$和$\sigma^2$。
 <!-- % 481 -->
 
 
 这个概率PCA模型利用了这样一种观察现象：除了一些微小残余的重构误差（至多为$\sigma^2$），数据中的大多数变化可以由潜变量 $\Vh$描述。
-通过{Tipping99}的研究我们可以发现，当$\sigma \xrightarrow{} 0$时，概率PCA~退化为~PCA。
+通过{Tipping-Bishop-1999}的研究我们可以发现，当$\sigma \xrightarrow{} 0$时，概率PCA~退化为~PCA。
 在这种情况下，给定$\Vx$情况下$\Vh$的条件期望等于将$\Vx - \Vb$投影到$\MW$的$d$列所生成的空间上，与~PCA~一样。
 <!-- % 481 -->
 
@@ -109,9 +103,7 @@ share: false
 <!-- % 481 -->
 <!-- %导致模型会为没有在一个超空间附近聚集的数据分配非常低的概率” -->
 
-
-# 独立成分分析
-
+n# 独立成分分析n
 <!-- % 481 -->
 
 
@@ -171,7 +163,7 @@ ICA~的许多变种仅知道如何在$\Vx$和$\Vh$之间变换，而没有任何
 
 
 正如~PCA~可以推广到\chap?中描述的非线性自编码器，ICA~也可以推广到非线性生成模型，其中我们使用非线性函数$f$来生成观测数据。
-关于非线性~ICA~最初的工作可以参考~{hyvarinen1999nonlinear}，它和集成学习的成功结合可以参见~{roberts2001independent,lappalainen2000nonlinear}。
+关于非线性~ICA~最初的工作可以参考~{Hyvarinen-Pajunen-1999}，它和集成学习的成功结合可以参见~{Roberts-Everson-2001,Lappalainen-et-al-2000}。
 ICA~的另一个非线性扩展是非线性独立成分估计方法~{cite?}，这个方法堆叠了一系列可逆变换（在编码器阶段），其特性是能高效地计算每个变换的~Jacobian~行列式。
 这使得我们能够精确地计算似然，并且像~ICA~一样，NICE~尝试将数据变换到具有因子的边缘分布的空间。
 由于非线性编码器的使用，这种方法更可能成功。%\footnote{译者注：相比于~ICA}
@@ -188,9 +180,7 @@ ICA~的另一个推广是通过鼓励组内统计依赖关系、抑制组间依�
 <!-- % 483 end -->
 
 
-
-# 慢特征分析
-
+n# 慢特征分析n
 <!-- % 484 head -->
 
 
@@ -286,9 +276,7 @@ SFA~的一个主要优点是，即使在深度非线性条件下，它依然能�
 <!-- % 486 -->
 
 
-
-# 稀疏编码
-
+n# 稀疏编码n
 <!-- % 486 -->
 
 
@@ -356,7 +344,7 @@ p(h_i)\propto \frac{1}{(1+\frac{h_i^2}{\nu})^{\frac{\nu+1}{2}}}.
 
 如果我们从Laplace先验中采样$\Vh$，$\Vh$的元素实际上为$0$是一个零概率事件。
 生成模型本身并不稀疏，只有特征提取器是稀疏的。
-{Goodfeli-et-al-TPAMI-Deep-PrePrint-2013-small}描述了不同模型族中的近似推断，如尖峰和平板稀疏编码模型，其中先验的样本通常包含许多真正的$0$。
+{Goodfellow-et-al-2013d}描述了不同模型族中的近似推断，如尖峰和平板稀疏编码模型，其中先验的样本通常包含许多真正的$0$。
 <!-- % 488 head -->
 
 与非参数编码器结合的稀疏编码方法原则上可以比任何特定的参数化编码器更好地最小化重构误差和对数先验的组合。
@@ -366,8 +354,8 @@ p(h_i)\propto \frac{1}{(1+\frac{h_i^2}{\nu})^{\frac{\nu+1}{2}}}.
 对于稀疏编码模型的绝大多数形式，推断问题是凸的，优化过程总能找到最优编码（除非出现退化的情况，例如重复的权重向量）。
 显然，稀疏和重构成本仍然可以在不熟悉的点上升，但这归因于解码器权重中的泛化误差，而不是编码器中的泛化误差。
 当稀疏编码用作分类器的特征提取器，而不是使用参数化的函数来预测编码值时，基于优化的稀疏编码模型的编码过程中较小的泛化误差可以得到更好的泛化能力。
-{Coates2011b}证明了在对象识别任务中稀疏编码特征比基于参数化的编码器（线性-sigmoid~自编码器）的特征拥有更好的泛化能力。
-受他们的工作启发，{Goodfeli-et-al-TPAMI-Deep-PrePrint-2013-small}表明一种稀疏编码的变体在标签极少（每类20个或更少标签）的情况中比相同情况下的其他特征提取器拥有更好的泛化能力。
+{Coates-Ng-2011}证明了在对象识别任务中稀疏编码特征比基于参数化的编码器（线性-sigmoid~自编码器）的特征拥有更好的泛化能力。
+受他们的工作启发，{Goodfellow-et-al-2013d}表明一种稀疏编码的变体在标签极少（每类20个或更少标签）的情况中比相同情况下的其他特征提取器拥有更好的泛化能力。
 <!-- % 488  -->
 
 
@@ -385,7 +373,7 @@ p(h_i)\propto \frac{1}{(1+\frac{h_i^2}{\nu})^{\frac{\nu+1}{2}}}.
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/116.png}}
 \else
     \centerline{\includegraphics[width=\figwidth]{Chapter13/figures/s3c_samples}}
 \fi
@@ -397,16 +385,14 @@ p(h_i)\propto \frac{1}{(1+\frac{h_i^2}{\nu})^{\frac{\nu+1}{2}}}.
 问题在于特征的因子先验会导致特征子集合随机的组合。
 一些这样的子集能够合成可识别的MNIST集上的数字。
 这也促进了拥有更强大潜在编码分布的生成模型的发展。
-此图经~{Goodfeli-et-al-TPAMI-Deep-PrePrint-2013-small}允许转载。}
+此图经~{Goodfellow-et-al-2013d}允许转载。}
 \end{figure}
 
 <!-- %这促进了更深层模型的发展，可以在最深层上施加non-factorial分布，以及开发更复杂的浅层模型。 -->
 <!-- % 489 head -->
 
 
-
-# PCA的流形解释
-
+n# PCA的流形解释n
 <!-- % 489 au -->
 
 
@@ -419,7 +405,7 @@ PCA~可以理解为将该薄饼与更高维空间中的线性流形对准。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/117.png}}
 \else
 	\centerline{\includegraphics{Chapter13/figures/PPCA_pancake_color}}
 \fi

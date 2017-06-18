@@ -1,8 +1,4 @@
----
-title: 自编码器
-layout: post
-share: false
----
+---ntitle: 自编码器nlayout: postnshare: falsen---
 自编码器是神经网络的一种，经过训练后能尝试将输入复制到输出。
 自编码器内部有一个隐藏层 $\Vh$，可以产生编码表示输入。
 该网络可以看作由两部分组成：一个由函数$ \Vh = f(\Vx)$表示的编码器和一个生成重构的解码器 $\Vr=g(\Vh)$。
@@ -25,7 +21,7 @@ share: false
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/118.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/autoencoder}}
 \fi
@@ -36,9 +32,7 @@ share: false
 
 <!-- % -- 493 -- -->
 
-
-# 欠完备自编码器
-
+n# 欠完备自编码器n
 将输入复制到输出听起来没什么用，但我们通常不关心解码器的输出。
 相反，我们希望通过训练自编码器对输入进行复制而使$\Vh$获得有用的特性。
 
@@ -66,9 +60,7 @@ share: false
 
 <!-- % -- 494 -- -->
 
-
-# 正则自编码器
-
+n# 正则自编码器n
 编码维数小于输入维数的欠完备自编码器可以学习数据分布最显著的特征。
 我们已经知道，如果赋予这类自编码器过大的容量，它就不能学到任何有用的信息。
 
@@ -91,9 +83,7 @@ share: false
 
 <!-- % -- 495 -- -->
 
-
-## 稀疏自编码器
-
+n## 稀疏自编码器n
 稀疏自编码器简单地在训练时结合编码层的稀疏惩罚$\Omega(\Vh)$和重构误差：
 \begin{align}
     L(\Vx, g(f(\Vx))) + \Omega(\Vh),
@@ -158,15 +148,13 @@ p_{\text{model}}(h_i) = \frac{\lambda}{2} e^{-\lambda | h_i |},
 在数学上更容易解释稀疏惩罚对应于有向模型$p_{\text{model}}(\Vh)p_{\text{model}}(\Vx \mid \Vh) $中的$\log p_{\text{model}}(\Vh)$。
 
 
-{Glorot+al-ICML-2011-small}提出了一种在稀疏（和去噪）自编码器的$\Vh$中实现\emph{真正为零}的方式。
+{Glorot-et-al-2011b}提出了一种在稀疏（和去噪）自编码器的$\Vh$中实现\emph{真正为零}的方式。
 该想法是使用整流线性单元产生编码层。
 基于将表示真正推向零（如绝对值惩罚）的先验，可以间接控制表示中零的平均数量。
 
 
 
-
-## 去噪自编码器
-
+n## 去噪自编码器n
 除了向代价函数增加一个惩罚项，我们也可以通过改变重构误差项来获得一个能学到有用信息的自编码器。
 
 
@@ -185,16 +173,14 @@ p_{\text{model}}(h_i) = \frac{\lambda}{2} e^{-\lambda | h_i |},
 其中 $\tilde \Vx$是被某种噪声损坏的$\Vx$的副本。
 因此去噪自编码器必须撤消这些损坏，而不是简单地复制输入。
 
-{Alain+Bengio-ICLR2013-small}和~{Bengio-et-al-NIPS2013-small}指出去噪训练过程强制$f$和$g$隐式地学习$p_{\text{data}} (\Vx)$的结构。
+{Alain-Bengio-2013}和~{Bengio-et-al-2013c}指出去噪训练过程强制$f$和$g$隐式地学习$p_{\text{data}} (\Vx)$的结构。
 因此去噪自编码器也是一个通过最小化重构误差获取有用特性的例子。
 这也是将过完备、高容量的模型用作自编码器的一个例子——只要小心防止这些模型仅仅学习一个恒等函数。
 去噪自编码器将在\sec?给出更多细节。
 
 <!-- % -- 498 -- -->
 
-
-## 惩罚导数作为正则
-
+n## 惩罚导数作为正则n
 另一正则化自编码器的策略是使用一个类似稀疏自编码器中的惩罚项$\Omega$，
 \begin{align}
     L(\Vx, g(f(\Vx))) + \Omega(\Vh, \Vx),
@@ -214,9 +200,7 @@ p_{\text{model}}(h_i) = \frac{\lambda}{2} e^{-\lambda | h_i |},
 收缩自编码器将在\sec?更详细地描述。
 
 
-
-# 表示能力、层的大小和深度
-
+n# 表示能力、层的大小和深度n
 自编码器通常只有单层的编码器和解码器，但这不是必然的。
 实际上深度编码器和解码器能提供更多优势。
 
@@ -245,9 +229,7 @@ p_{\text{model}}(h_i) = \frac{\lambda}{2} e^{-\lambda | h_i |},
 所以即使最终目标是训练深度自编码器，我们也经常会遇到浅层自编码器。
 
 
-
-# 随机编码器和解码器
-
+n# 随机编码器和解码器n
 自编码器本质上是一个前馈网络，可以使用与传统前馈网络相同的损失函数和输出单元。
 
 
@@ -272,7 +254,7 @@ p_{\text{model}}(h_i) = \frac{\lambda}{2} e^{-\lambda | h_i |},
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/119.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/stochastic-autoencoder}}
 \fi
@@ -289,13 +271,11 @@ p_{\text{encoder}}(\Vh \mid \Vx) = p_{\text{model}}(\Vh\mid\Vx)
 p_{\text{decoder}}(\Vx \mid \Vh) = p_{\text{model}}(\Vx\mid\Vh).
 \end{align}
 通常情况下，编码器和解码器的分布没有必要是与唯一一个联合分布$p_{\text{model}}(\Vx, \Vh)$相容的条件分布。
-{Alain-et-al-arxiv2015}指出，在保证足够的容量和样本的情况下，将编码器和解码器作为去噪自编码器训练，能使它们渐近地相容。
+{Alain-et-al-2015}指出，在保证足够的容量和样本的情况下，将编码器和解码器作为去噪自编码器训练，能使它们渐近地相容。
 
 
 
-
-# 去噪自编码器
-
+n# 去噪自编码器n
 去噪自编码器是一类接受损坏数据作为输入，并训练来预测原始未被损坏数据作为输出的自编码器。
 
 <!-- % -- 501 -- -->
@@ -314,7 +294,7 @@ $p_{\text{reconstruct}} (\Vx \mid \tilde \Vx) = p_{\text{decoder}}(\Vx \mid\Vh)$
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/120.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/DAE}}
 \fi
@@ -332,9 +312,7 @@ $p_{\text{reconstruct}} (\Vx \mid \tilde \Vx) = p_{\text{decoder}}(\Vx \mid\Vh)$
 
 <!-- % -- 502 -- -->
 
-
-## 得分估计
-
+n## 得分估计n
 得分匹配~{cite?}是最大似然的代替。
 它提供了概率分布的一致估计，促使模型在各个数据点$\Vx$上获得与数据分布相同的得分。
 在这种情况下，得分是一个特定的梯度场：
@@ -351,7 +329,7 @@ DAE~的训练准则（条件高斯$p(\Vx \mid \Vh)$）能让自编码器学到�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/121.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/denoising_task}}
 \fi
@@ -376,7 +354,7 @@ $g(f(\tilde \Vx))$对可能产生$\tilde \Vx$的原始点$\Vx$的质心进行估
 
 自编码器和~RBM~还存在其他联系。
 在~RBM~上应用得分匹配后，其代价函数将等价于重构误差结合类似~CAE~惩罚的正则项 {cite?}。
-{Bengio+Delalleau-2009}指出自编码器的梯度是对~RBM~对比散度训练的近似。
+{Bengio-Delalleau-2009}指出自编码器的梯度是对~RBM~对比散度训练的近似。
 
 
 对于连续的$\Vx$，高斯损坏和重构分布的去噪准则得到的得分估计适用于一般编码器和解码器的参数化{cite?}。
@@ -393,7 +371,7 @@ $g(f(\tilde \Vx))$对可能产生$\tilde \Vx$的原始点$\Vx$的质心进行估
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/122.png}}
 \else
 \centerline{\includegraphics[width=0.8\textwidth]{Chapter14/figures/vector_field_color}}
 \fi
@@ -405,13 +383,13 @@ $g(f(\tilde \Vx))$对可能产生$\tilde \Vx$的原始点$\Vx$的质心进行估
 当重构误差的范数（由箭头的长度示出）很大时，在箭头的方向上移动可以显著增加概率，并且在低概率的地方大多也是如此。
 自编码器将这些低概率点映射到较高的概率重构。
 在概率最大的情况下，重构变得更准确，因此箭头会收缩。
-经~{Alain+Bengio-ICLR2013-small}许可转载此图。
+经~{Alain-Bengio-2013}许可转载此图。
 }
 \end{figure}
 
 一般情况下，不能保证重构函数$g(f(\Vx))$减去输入$\Vx$后对应于某个函数的梯度，更不用说得分 。
 这是早期工作~{cite?}专用于特定参数化的原因（其中$g(f(\Vx)) - \Vx$能通过另一个函数的导数获得）。
-{Kamyshanska+Memisevic-2015}通过标识一类特殊的浅层自编码器家族，使$g(f(\Vx)) - \Vx$对应于这个家族所有成员的一个得分，以此推广~{Vincent-NC-2011-small}的结果。
+{Kamyshanska-Memisevic-2015}通过标识一类特殊的浅层自编码器家族，使$g(f(\Vx)) - \Vx$对应于这个家族所有成员的一个得分，以此推广~{Vincent-2011}的结果。
 
 <!-- % -- 504 -- -->
 
@@ -421,10 +399,8 @@ $g(f(\tilde \Vx))$对可能产生$\tilde \Vx$的原始点$\Vx$的质心进行估
 
 <!-- % -- 505 -- -->
 
-
-## 历史展望
-
-采用~MLP~去噪的想法可以追溯到~{Lecun-these87}和~{Gallinari87}的工作。
+n## 历史展望n
+采用~MLP~去噪的想法可以追溯到~{LeCun-1987}和~{Gallinari-et-al-1987}的工作。
 {Behnke-2001}也曾使用循环网络对图像去噪。
 在某种意义上，去噪自编码器仅仅是被训练去噪的~MLP。
 然而，"去噪自编码器"的命名指的不仅仅是学习去噪，而且可以学到一个好的内部表示（作为学习去噪的副效用）。
@@ -433,15 +409,13 @@ $g(f(\tilde \Vx))$对可能产生$\tilde \Vx$的原始点$\Vx$的质心进行估
 与稀疏自编码器、稀疏编码、收缩自编码器等正则化的自编码器类似， DAE~的动机是允许学习容量很高的编码器，同时防止在编码器和解码器学习一个无用的恒等函数 。
 
 
-在引入现代~DAE~之前，{Inayoshi-and-Kurita-2005}探索了其中一些相同的方法和目标。
+在引入现代~DAE~之前，{Inayoshi-Kurita-2005}探索了其中一些相同的方法和目标。
 他们除了在监督目标的情况下最小化重构误差之外，还在监督~MLP~的隐藏层注入噪声，通过引入重构误差和注入噪声提升泛化能力。
 然而，他们的方法基于线性编码器，因此无法学习到现代~DAE~能学习的强大函数族。
 
 
 
-
-# 使用自编码器学习流形
-
+n# 使用自编码器学习流形n
 
 如\sec?描述，自编码器跟其他很多机器学习算法一样，也利用了数据集中在一个低维流形或者一小组这样的流形的思想。
 其中一些机器学习算法仅能学习到在流形上表现良好但给定不在流形上的输入会导致异常的函数。
@@ -457,7 +431,7 @@ $d$维流形上的一点$\Vx$，切平面由能张成流形上允许变动的局
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/123.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/tangent_plane_color}}
 \fi
@@ -501,7 +475,7 @@ $\Vx$是从训练数据挑出的这一事实很关键，因为这意味着在自
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/124.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/1d_autoencoder_color}}
 \fi
@@ -532,7 +506,7 @@ $\Vx$是从训练数据挑出的这一事实很关键，因为这意味着在自
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/125.png}}
 \else
 \centerline{\includegraphics{Chapter14/figures/faces_graph_manifold}}
 \fi
@@ -549,7 +523,7 @@ $\Vx$是从训练数据挑出的这一事实很关键，因为这意味着在自
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/126.png}}
 \else
 \centerline{\includegraphics[width=0.8\textwidth]{Chapter14/figures/tiling-a-manifold}}
 \fi
@@ -559,7 +533,7 @@ $\Vx$是从训练数据挑出的这一事实很关键，因为这意味着在自
 }
 \end{figure}
 
-然而，{Bengio+Monperrus-2005}指出了这些局部非参数方法应用于流形学习的根本困难：如果流形不是很光滑（它们有许多波峰、波谷和曲折），为覆盖其中的每一个变化，我们可能需要非常多的训练样本，导致没有能力泛化到没见过的变化。
+然而，{Bengio-Monperrus-2005}指出了这些局部非参数方法应用于流形学习的根本困难：如果流形不是很光滑（它们有许多波峰、波谷和曲折），为覆盖其中的每一个变化，我们可能需要非常多的训练样本，导致没有能力泛化到没见过的变化。
 实际上，这些方法只能通过内插，概括相邻实例之间流形的形状。
 不幸的是，AI~问题中涉及的流形可能具有非常复杂的结构，难以仅从局部插值捕获特征。
 考虑\fig?转换所得的流形样例。
@@ -569,9 +543,7 @@ $\Vx$是从训练数据挑出的这一事实很关键，因为这意味着在自
 
 <!-- % -- 509 -- -->
 
-
-# 收缩自编码器
-
+n# 收缩自编码器n
 收缩自编码器~{cite?}在编码 $\Vh = f(\Vx)$的基础上添加了显式的正则项，鼓励$f$的导数尽可能小：
 \begin{align}
  \Omega(\Vh) = \lambda \Bigg\| \frac{\partial f(\Vx)}{\partial \Vx} \Bigg\|_F^2 .
@@ -579,7 +551,7 @@ $\Vx$是从训练数据挑出的这一事实很关键，因为这意味着在自
 惩罚项$\Omega(\Vh)$为平方~Frobenius~范数（元素平方之和），作用于与编码器的函数相关偏导数的~Jacobian~矩阵。
 
 
-去噪自编码器和收缩自编码器之间存在一定联系：{Alain+Bengio-ICLR2013-small}指出在小高斯噪声的限制下，当重构函数将$\Vx$映射到$\Vr = g(f(\Vx))$时，去噪重构误差与收缩惩罚项是等价的。
+去噪自编码器和收缩自编码器之间存在一定联系：{Alain-Bengio-2013}指出在小高斯噪声的限制下，当重构函数将$\Vx$映射到$\Vr = g(f(\Vx))$时，去噪重构误差与收缩惩罚项是等价的。
 换句话说，去噪自编码器能抵抗小且有限的输入扰动，而收缩自编码器使特征提取函数能抵抗极小的输入扰动。
 
 分类任务中，基于~Jacobian~的收缩惩罚预训练特征函数$f(\Vx)$，将收缩惩罚应用在$f(\Vx)$而不是$g(f(\Vx))$可以产生最好的分类精度。
@@ -614,7 +586,7 @@ $f$扩展到数据流形的中间或远处是合理的（见\fig?中小例子的
 
 CAE~的目标是学习数据的流形结构。
 使$\MJ\Vx$很大的方向$\Vx$，会快速改变$\Vh$，因此很可能是近似流形切平面的方向。
-{Rifai+al-2011-small,Salah+al-2011-small}的实验显示训练~CAE~会导致$\MJ$中大部分奇异值（幅值）比1小，因此是收缩的。
+{Rifai-et-al-2011a,Rifai-et-al-2011b}的实验显示训练~CAE~会导致$\MJ$中大部分奇异值（幅值）比1小，因此是收缩的。
 然而，有些奇异值仍然比1大，因为重构误差的惩罚鼓励~CAE~对最大局部变化的方向进行编码。
 对应于最大奇异值的方向被解释为收缩自编码器学到的切方向。
 理想情况下，这些切方向应对应于数据的真实变化。
@@ -626,7 +598,7 @@ CAE~的目标是学习数据的流形结构。
 \begin{figure}[ht]
 \centering
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/127.png}}
 \else
 <!-- % ?? I do NOT which is correct ... -->
 \begin{tabular}{p{.1\figwidth}|p{.86\figwidth}}
@@ -646,13 +618,13 @@ Input point & Tangent vectors\\
 切向量通过输入到代码映射的~Jacobian~矩阵$\frac{\partial \Vh}{\partial \Vx}$ 的前导奇异向量估计。
 虽然局部~PCA~和~CAE~都可以捕获局部切方向，但~CAE~能够从有限训练数据形成更准确的估计，因为它利用了不同位置的参数共享（共享激活的隐藏单元子集）。
 CAE切方向通常对应于物体的移动或改变部分（例如头或腿）。
-经~{Dauphin-et-al-NIPS2011-small}许可转载此图。
+经~{Rifai-et-al-2011c}许可转载此图。
 }
 \end{figure}
 
 
 收缩自编码器正则化准则的一个实际问题是，尽管它在单一隐藏层的自编码器情况下是容易计算的，但在更深的自编码器情况下会变的难以计算。
-根据~{Rifai+al-2011-small}的策略，分别训练一系列单层的自编码器，并且每个被训练为重构前一个自编码器的隐藏层。
+根据~{Rifai-et-al-2011a}的策略，分别训练一系列单层的自编码器，并且每个被训练为重构前一个自编码器的隐藏层。
 这些自编码器的组合就组成了一个深度自编码器。
 因为每个层分别训练成局部收缩，深度自编码器自然也是收缩的。
 这个结果与联合训练深度模型完整架构（带有关于Jacobian的惩罚项）获得的结果是不同的，但它抓住了许多理想的定性特征。
@@ -662,14 +634,12 @@ CAE切方向通常对应于物体的移动或改变部分（例如头或腿）�
 例如，编码器将输入乘一个小常数$\epsilon$，解码器将编码除以一个小常数$\epsilon$。
 随着$\epsilon$趋向于0，编码器会使收缩惩罚项$\Omega(\Vh)$趋向于0而学不到任何关于分布的信息。
 同时，解码器保持完美的重构。
-{Rifai+al-2011-small}通过绑定$f$和$g$的权重来防止这种情况。
+{Rifai-et-al-2011a}通过绑定$f$和$g$的权重来防止这种情况。
 $f$和$g$都是由线性仿射变换后进行逐元素非线性变换的标准神经网络层组成，因此将$g$的权重矩阵设成$f$权重矩阵的转置是很直观的。
 
 <!-- % -- 513 -- -->
 
-
-# 预测稀疏分解
-
+n# 预测稀疏分解n
 
 预测稀疏分解是稀疏编码和参数化自编码器~{cite?}的混合模型。
 参数化编码器被训练为能预测迭代推断的输出。
@@ -701,20 +671,18 @@ PSD~训练过程正则化解码器，使用$f(\Vx)$可以推断出良好编码�
 
 <!-- % -- 514 -- -->
 
-
-# 自编码器的应用
-
+n# 自编码器的应用n
 
 自编码器已成功应用于降维和信息检索任务。
 降维是表示学习和深度学习的第一批应用之一。
 它是研究自编码器早期驱动力之一。
-例如， {Hinton-Science2006}训练了一个栈式~RBM，然后利用它们的权重初始化一个隐藏层逐渐减小的深度自编码器，终结于30个单元的瓶颈。
+例如， {Hinton-Salakhutdinov-2006}训练了一个栈式~RBM，然后利用它们的权重初始化一个隐藏层逐渐减小的深度自编码器，终结于30个单元的瓶颈。
 生成的编码比30维的~PCA~产生更少的重构误差，所学到的表示更容易定性解释，并能联系基础类别，这些类别表现为分离良好的集群。
 
 
 低维表示可以提高许多任务的性能，例如分类。
 小空间的模型消耗更少的内存和运行时间。
-据~{Salakhutdinov+Hinton2007-small}和~{Torralba+Fergus+Weiss-2008}观察，许多降维的形式会将语义上相关的样本置于彼此邻近的位置。
+据~{Salakhutdinov-Hinton-2007b}和~{Torralba-et-al-2008}观察，许多降维的形式会将语义上相关的样本置于彼此邻近的位置。
 映射到低维空间所提供的线索有助于泛化。
 
 

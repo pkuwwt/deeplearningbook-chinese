@@ -1,8 +1,4 @@
----
-title: 概率与信息论
-layout: post
-share: false
----
+---ntitle: 概率与信息论nlayout: postnshare: falsen---
 
 本章我们讨论概率论和信息论。
 
@@ -20,13 +16,11 @@ share: false
 
 如果你已经对概率论和信息论很熟悉了，那么除了\sec?以外的整章内容，你都可以跳过。
 而在\sec?中，我们会介绍用来描述机器学习中结构化概率模型的图。
-即使你对这些主题没有任何的先验知识，本章对于完成深度学习的研究项目来说也已经足够，尽管如此我们还是建议你能够参考一些额外的资料，例如~{Jaynes03}。
+即使你对这些主题没有任何的先验知识，本章对于完成深度学习的研究项目来说也已经足够，尽管如此我们还是建议你能够参考一些额外的资料，例如~{Jaynes-2003}。
 
 <!-- % -- 51 -- -->
 
-
-# 为什么要使用概率？
-
+n# 为什么要使用概率？n
 
 计算机科学的许多分支处理的实体大部分都是完全确定且必然的。
 程序员通常可以安全地假定CPU将完美地执行每条机器指令。
@@ -37,7 +31,7 @@ share: false
 <!-- %(这里uncertain和stochastic有什么区别？) -->
 不确定性和随机性可能来自多个方面。
 至少从20世纪80年代开始，研究人员就对使用概率论来量化不确定性提出了令人信服的论据。
-这里给出的许多论据都是根据~{Pearl88}的工作总结或启发得到的。
+这里给出的许多论据都是根据~{Pearl-1988}的工作总结或启发得到的。
 
 几乎所有的活动都需要一些在不确定性存在的情况下进行推理的能力。
 事实上，除了那些被定义为真的数学声明，我们很难认定某个命题是千真万确的或者确保某件事一定会发生。
@@ -78,7 +72,7 @@ share: false
 
 关于不确定性的常识推理，如果我们已经列出了若干条我们期望它具有的性质，那么满足这些性质的唯一一种方法就是将贝叶斯概率和频率派概率视为等同的。
 例如，如果我们要在扑克牌游戏中根据玩家手上的牌计算她能够获胜的概率，我们使用和医生情境完全相同的公式，就是我们依据病人的某些症状计算她是否患病的概率。
-为什么一小组常识性假设蕴含了必须是相同的公理控制两种概率？更多的细节参见~{Ramsey1926}。
+为什么一小组常识性假设蕴含了必须是相同的公理控制两种概率？更多的细节参见~{Ramsey-1926}。
 
 <!-- % -- 53 -- -->
 
@@ -86,9 +80,7 @@ share: false
 逻辑提供了一套形式化的规则，可以在给定某些命题是真或假的假设下，判断另外一些命题是真的还是假的。
 概率论提供了一套形式化的规则，可以在给定一些命题的似然后，计算其他命题为真的似然。
 
-
-# 随机变量
-
+n# 随机变量n
 
 随机变量是可以随机地取不同值的变量。
 我们通常用无格式字体(plain typeface)中的小写字母来表示随机变量本身，而用手写体中的小写字母来表示随机变量能够取到的值。
@@ -101,16 +93,12 @@ share: false
 注意这些状态不一定非要是整数；它们也可能只是一些被命名的状态而没有数值。
 连续随机变量伴随着实数值。
 
-
-# 概率分布
-
+n# 概率分布n
 
 概率分布用来描述随机变量或一簇随机变量在每一个可能取到的状态的可能性大小。
 我们描述概率分布的方式取决于随机变量是离散的还是连续的。
 
-
-## 离散型变量和概率质量函数
-
+n## 离散型变量和概率质量函数n
 
 离散型变量的概率分布可以用概率质量函数\footnote{译者注：国内有些教材也将它翻译成概率分布律。}来描述。
 我们通常用大写字母$P$来表示概率质量函数。
@@ -153,9 +141,7 @@ P(\RSx = x_i) = \frac{1}{k}
 
 <!-- % -- 55 -- -->
 
-
-## 连续型变量和概率密度函数
-
+n## 连续型变量和概率密度函数n
 
 当我们研究的对象是连续型随机变量时，我们用概率密度函数而不是概率质量函数来描述它的概率分布。
 如果一个函数$p$是概率密度函数，必须满足下面这几个条件：
@@ -181,9 +167,7 @@ P(\RSx = x_i) = \frac{1}{k}
 我们可以看出任何一点都非负。
 另外，它的积分为1。我们通常用$\RSx \sim U(a, b)$表示$x$在$[a, b]$上是均匀分布的。
 
-
-# 边缘概率
-
+n# 边缘概率n
 
 有时候，我们知道了一组变量的联合概率分布，但想要了解其中一个子集的概率分布。
 这种定义在子集上的概率分布被称为边缘概率分布。
@@ -204,9 +188,7 @@ P(\RSx = x_i) = \frac{1}{k}
 p(x) = \int p(x, y)dy.
 \end{equation}
 
-
-# 条件概率
-
+n# 条件概率n
 
 在很多情况下，我们感兴趣的是某个事件，在给定其他事件发生时出现的概率。
 这种概率叫做条件概率。
@@ -223,9 +205,7 @@ P(\RSy = y\mid \RSx = x) = \frac{P(\RSy = y, \RSx = x)}{P(\RSx = x)} .
 计算一个行动的后果被称为干预查询。
 干预查询属于因果模型的范畴，我们不会在本书中讨论。
 
-
-# 条件概率的链式法则
-
+n# 条件概率的链式法则n
 
 任何多维随机变量的联合概率分布，都可以分解成只有一个变量的条件概率相乘的形式：
 \begin{equation}
@@ -243,9 +223,7 @@ P(\RSb, \RSc) &=& P(\RSb \mid \RSc) P(\RSc)\\
 P(\RSa, \RSb, \RSc) &=& P(\RSa \mid \RSb, \RSc) P(\RSb \mid \RSc) P(\RSc).
 \end{eqnarray*}
 
-
-# 独立性和条件独立性
-
+n# 独立性和条件独立性n
 
 两个随机变量 $\RSx$和$\RSy$，如果它们的概率分布可以表示成两个因子的乘积形式，并且一个因子只包含$\RSx$另一个因子只包含$\RSy$，我们就称这两个随机变量是相互独立的：
 \begin{equation}
@@ -260,9 +238,7 @@ p(\RSx = x \mid \RSz = z) p(\RSy = y \mid \RSz = z).
 
 我们可以采用一种简化形式来表示独立性和条件独立性：$\RSx \bot \RSy$表示$\RSx$和$\RSy$相互独立，$\RSx \bot \RSy \mid \RSz$表示$\RSx$和$\RSy$在给定$\RSz$时条件独立。
 
-
-# 期望、方差和协方差
-
+n# 期望、方差和协方差n
 
 函数$f(x)$关于某分布$P(\RSx)$的期望或者期望值是指，当$x$由$P$产生，$f$作用于$x$时，$f(x)$的平均值。
 对于离散型随机变量，这可以通过求和得到：
@@ -325,15 +301,11 @@ $s$以$\frac{1}{2}$的概率值为1，否则为-1。
 \Cov(\RSx_i, \RSx_i) = \Var(\RSx_i).
 \end{equation}
 
-
-# 常用概率分布
-
+n# 常用概率分布n
 
 许多简单的概率分布在机器学习的众多领域中都是有用的。
 
-
-## Bernoulli分布
-
+n## Bernoulli分布n
 
 Bernoulli分布是单个二值随机变量的分布。
 它由单个参数$\phi \in [0, 1]$控制，$\phi$给出了随机变量等于1的概率。
@@ -346,11 +318,9 @@ P(\RSx = x) = \phi^x (1-\phi)^{1-x}\\
 \Var_{\RSx}(\RSx) = \phi(1-\phi)
 \end{gather}
 
+n## Multinoulli分布n
 
-## Multinoulli分布
-
-
-Multinoulli分布或者范畴分布是指在具有$k$个不同状态的单个离散型随机变量上的分布，其中$k$是一个有限值。\footnote{"multinoulli"这个术语是最近被Gustavo Lacerdo发明、被{MurphyBook2012}推广的。
+Multinoulli分布或者范畴分布是指在具有$k$个不同状态的单个离散型随机变量上的分布，其中$k$是一个有限值。\footnote{"multinoulli"这个术语是最近被Gustavo Lacerdo发明、被{Murphy-2012}推广的。
 Multinoulli分布是多项式分布的一个特例。
 多项式分布是$\{0,\ldots, n\}^k$中的向量的分布，用于表示当对~Multinoulli分布采样$n$次时$k$个类中的每一个被访问的次数。
 很多文章使用"多项式分布"而实际上说的是~Multinoulli分布，但是他们并没有说是对$n=1$的情况，这点需要注意。}
@@ -367,9 +337,7 @@ Bernoulli分布和~Multinoulli分布足够用来描述在它们领域内的任�
 它们可以对那些，能够将所有的状态进行枚举的离散型随机变量进行建模。
 当处理的是连续型随机变量时，会有不可数无限多的状态，所以任何通过少量参数描述的概率分布都必须在分布上加以严格的限制。
 
-
-## 高斯分布
-
+n## 高斯分布n
 
 
 实数上最常用的分布就是正态分布，也称为高斯分布：
@@ -381,7 +349,7 @@ Bernoulli分布和~Multinoulli分布足够用来描述在它们领域内的任�
 <!-- % fig 3.1 -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/16.png}}
 \else
 \centerline{\includegraphics{Chapter3/figures/normal_color}}
 \fi
@@ -433,9 +401,7 @@ Bernoulli分布和~Multinoulli分布足够用来描述在它们领域内的任�
 我们常常把协方差矩阵固定成一个对角阵。
 一个更简单的版本是各向同性高斯分布，它的协方差矩阵是一个标量乘以单位阵。
 
-
-## 指数分布和Laplace分布
-
+n## 指数分布和Laplace分布n
 
 在深度学习中，我们经常会需要一个在$x=0$点处取得边界点(sharp point)的分布。
 为了实现这一目的，我们可以使用指数分布：
@@ -449,9 +415,7 @@ p(x; \lambda) = \lambda \Vone_{x\ge 0} \exp(-\lambda x).
 \text{Laplace}(x; \mu, \gamma) = \frac{1}{2\gamma} \exp \left( -\frac{|x-\mu|}{\gamma}  \right).
 \end{equation}
 
-
-## Dirac分布和经验分布
-
+n## Dirac分布和经验分布n
 
 在一些情况下，我们希望概率分布中的所有质量都集中在一个点上。
 这可以通过Dirac delta函数 $\delta(x)$定义概率密度函数来实现：
@@ -477,9 +441,7 @@ Dirac分布经常作为经验分布的一个组成部分出现：
 当我们在训练集上训练模型时，我们可以认为从这个训练集上得到的经验分布指明了我们采样来源的分布。
 关于经验分布另外一种重要的观点是，它是训练数据的似然最大的那个概率密度函数(见\sec?)。
 
-
-## 分布的混合
-
+n## 分布的混合n
 
 通过组合一些简单的概率分布来定义新的概率分布也是很常见的。
 一种通用的组合方法是构造混合分布。
@@ -519,7 +481,7 @@ P(\RSx) = \sum_i P(\RSc = i) P(\RSx \mid \RSc = i),
 <!-- % fig 3.2 -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/17.png}}
 \else
 \centerline{\includegraphics{Chapter3/figures/mog_color}}
 \fi
@@ -530,9 +492,7 @@ P(\RSx) = \sum_i P(\RSc = i) P(\RSx \mid \RSc = i),
 \end{figure}
 
 
-
-# 常用函数的有用性质
-
+n# 常用函数的有用性质n
 
 某些函数在处理概率分布时经常会出现，尤其是深度学习的模型中用到的概率分布。
 
@@ -548,7 +508,7 @@ sigmoid函数在变量取绝对值非常大的正值或负值时会出现饱和�
 <!-- % fig 3.3 -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/18.png}}
 \else
 \centerline{\includegraphics{Chapter3/figures/sigmoid_color}}
 \fi
@@ -569,7 +529,7 @@ x^+ = \max(0, x).
 <!-- % fig 3.4 -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/19.png}}
 \else
 \centerline{\includegraphics{Chapter3/figures/softplus_color}}
 \fi
@@ -601,9 +561,7 @@ softplus函数被设计成正部函数的平滑版本，这个正部函数是指
 为了获得类似负部函数的一个平滑函数，我们可以使用$\zeta(-x)$。
 就像$x$可以用它的正部和负部通过等式$x^+ - x^- = x$恢复一样，我们也可以用同样的方式对$\zeta(x)$和$\zeta(-x)$进行操作，就像\eqn?中那样。
 
-
-# 贝叶斯规则
-
+n# 贝叶斯规则n
 
 我们经常会需要在已知$P(\RSy \mid \RSx)$时计算$P(\RSx \mid \RSy)$。
 幸运的是，如果还知道$P(\RSx)$，我们可以用贝叶斯规则来实现这一目的：
@@ -616,9 +574,7 @@ P(\RSx \mid \RSy) = \frac{P(\RSx) P(\RSy \mid \RSx)}{P(\RSy)}.
 这个公式是以牧师Thomas Bayes的名字来命名的，他是第一个发现这个公式特例的人。
 这里介绍的一般形式由Pierre-Simon Laplace独立发现。
 
-
-# 连续型变量的技术细节
-
+n# 连续型变量的技术细节n
 
 连续型随机变量和概率密度函数的深入理解需要用到数学分支测度论的相关内容来扩展概率论。
 测度论超出了本书的范畴，但我们可以简要勾勒一些测度论用来解决的问题。
@@ -684,17 +640,16 @@ p_x(x) = p_y(g(x)) \left | \frac{\partial g(x)}{\partial x} \right |.
 p_x(\Vx) = p_y(g(\Vx)) \left | \det \left ( \frac{\partial g(\Vx)}{\partial \Vx} \right) \right |.
 \end{equation}
 
-
-# 信息论
-
+n# 信息论n
 
 信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。
 它最初被发明是用来研究在一个含有噪声的信道上用离散的字母表来发送消息，例如通过无线电传输来通信。
-在这种情况下，信息论告诉我们如何设计最优编码，以及计算从一个特定的概率分布上采样得到、使用多种不同编码机制的消息的期望长度。
-在机器学习中，我们也可以把信息论应用在连续型变量上，而信息论中一些消息长度的解释不怎么使用。
+在这种情况下，信息论告诉我们如何对消息设计最优编码以及计算消息的期望长度，这些消息是使用多种不同编码机制、从特定的概率分布上采
+样得到的。
+在机器学习中，我们也可以把信息论应用于连续型变量，此时某些消息长度的解释不再适用。
 信息论是电子工程和计算机科学中许多领域的基础。
 在本书中，我们主要使用信息论的一些关键思想来描述概率分布或者量化概率分布之间的相似性。
-有关信息论的更多细节，参见~{cover-book2006}或者~{MacKay03}。
+有关信息论的更多细节，参见~{Cover-Thomas-2006}或者~{MacKay-2003}。
 
 信息论的基本想法是一个不太可能的事件居然发生了，要比一个非常可能的事件发生，能提供更多的信息。
 消息说："今天早上太阳升起"信息量是如此之少以至于没有必要发送，但一条消息说："今天早上有日食"信息量就很丰富。
@@ -738,7 +693,7 @@ H(\RSx) = \SetE_{\RSx \sim P}[I(x)] = -\SetE_{\RSx \sim P}[\log P(x)],
 <!-- % fig 3.5 -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/20.png}}
 \else
 \centerline{\includegraphics{Chapter3/figures/entropy_demo_color}}
 \fi
@@ -771,7 +726,7 @@ KL散度为0当且仅当$P$和$Q$在离散型变量的情况下是相同的分�
 <!-- % fig 3.6 -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/21.png}}
 \else
 \centerline{\includegraphics{Chapter3/figures/kl_direction_color}}
 \fi
@@ -807,9 +762,7 @@ H(P, Q) = -\SetE_{\RSx\sim P} \log Q(x).
 
 <!-- % -- 73 -- -->
 
-
-# 结构化概率模型
-
+n# 结构化概率模型n
 
 机器学习的算法经常会涉及到在非常多的随机变量上的概率分布。
 通常，这些概率分布涉及到的直接相互作用都是介于非常少的变量之间的。
@@ -842,7 +795,7 @@ p(\RVx) = \prod_i p(\RSx_i \mid Pa_\CalG(\RSx_i)).
 <!-- % fig 3.7 -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/22.png}}
 \else
 \centerline{\includegraphics{Chapter3/figures/directed}}
 \fi
@@ -876,7 +829,7 @@ p(\RVx) = \frac{1}{Z} \prod_i \phi^{(i)} \left (\CalC^{(i)} \right).
 <!-- % fig 3.8 -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/23.png}}
 \else
 \centerline{\includegraphics{Chapter3/figures/undirected}}
 \fi

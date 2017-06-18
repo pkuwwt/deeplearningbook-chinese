@@ -1,8 +1,4 @@
----
-title: 引言
-layout: post
-share: false
----
+---ntitle: 引言nlayout: postnshare: falsen---
 远在古希腊时期，发明家就梦想着创造能自主思考的机器。
 神话人物皮格马利翁(Pygmalion)、代达罗斯(Daedalus)和赫淮斯托斯(Hephaestus)可以被看作传说中的发明家，而加拉蒂亚(Galatea)、塔洛斯(Talos)和潘多拉(Pandora)则可以被视为人造生命{cite?}。
 
@@ -75,7 +71,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/1.png}}
 \else
 \centerline{\includegraphics{Chapter1/figures/polar_color}}
 \fi
@@ -134,7 +130,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/2.png}}
 \else
 \centerline{\includegraphics{Chapter1/figures/deep_learning}}
 \fi
@@ -150,7 +146,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 有了第一隐藏层描述的边缘，第二隐藏层可以容易地搜索可识别为角和扩展轮廓的边集合。
 给定第二隐藏层中关于角和轮廓的图像描述，第三隐藏层可以找到轮廓和角的特定集合来检测特定对象的整个部分。
 最后，根据图像描述中包含的对象部分，可以识别图像中存在的对象。
-经~{ZeilerFergus14}许可转载此图。
+经~{Zeiler-Fergus-2014}许可转载此图。
 }
 \end{figure}
 
@@ -181,7 +177,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/3.png}}
 \else
 \centerline{\includegraphics{Chapter1/figures/language}}
 \fi
@@ -215,7 +211,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 
 \begin{figure}[!hbt]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/4.png}}
 \else
 \centerline{\includegraphics[width=0.65\textwidth]{Chapter1/figures/venn}}
 \fi
@@ -226,7 +222,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/5.png}}
 \else
 \centerline{\includegraphics{Chapter1/figures/which_part_learned}}
 \fi
@@ -234,9 +230,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 阴影框表示能从数据中学习的组件。}
 \end{figure}
 
-
-# 本书面向的读者
-
+n# 本书面向的读者n
 
 这本书对各类读者都有一定用处，但我们主要是为两类受众对象而写的。
 其中一类受众对象是学习机器学习的大学生（本科或研究生），包括那些已经开始职业生涯的深度学习和人工智能研究者。
@@ -245,7 +239,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/6.png}}
 \else
 \centerline{\includegraphics[width=0.65\textwidth]{Chapter1/figures/dependency}}
 \fi
@@ -269,9 +263,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 我们假设所有读者都具备计算机科学背景。
 也假设读者熟悉编程，并且对计算的性能问题、复杂性理论、入门级微积分和一些图论术语有基本的了解。
 <!-- %  -->
-
-# 深度学习的历史趋势
-
+n# 深度学习的历史趋势n
 通过历史背景了解深度学习是最简单的方式。
 这里我们仅指出深度学习的几个关键趋势，而不是提供其详细的历史：
 
@@ -281,9 +273,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 + 随着时间的推移，深度学习已经解决日益复杂的应用，并且精度不断提高。
 
 
-
-## 神经网络的众多名称和命运变迁
-
+n## 神经网络的众多名称和命运变迁n
 
 我们期待这本书的许多读者都听说过深度学习这一激动人心的新技术，并对一本书提及一个新兴领域的"历史"而感到惊讶。
 事实上，深度学习的历史可以追溯到20世纪40年代。
@@ -297,7 +287,7 @@ MRI扫描的单一像素与分娩过程中并发症之间的相关性微乎其�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/7.png}}
 \else
 \centerline{\includegraphics{Chapter1/figures/cybernetics_connectionism_ngrams_color}}
 \fi
@@ -369,7 +359,7 @@ McCulloch-Pitts~神经元{cite?}是脑功能的早期模型。
 新认知机{cite?}受哺乳动物视觉系统的结构启发，引入了一个处理图片的强大模型架构，它后来成为了现代卷积网络的基础{cite?}（我们将会在\sec?看到）。
 目前大多数神经网络是基于一个称为整流线性单元的神经单元模型。
 原始认知机{cite?}受我们关于大脑功能知识的启发， 引入了一个更复杂的版本。
-简化的现代版通过吸收来自不同观点的思想而形成，{Nair-2010}和~{Glorot+al-AI-2011-small}援引神经科学作为影响，{Jarrett-ICCV2009}援引更多面向工程的影响。
+简化的现代版通过吸收来自不同观点的思想而形成，{Nair-Hinton-2010}和~{Glorot-et-al-2011a}援引神经科学作为影响，{Jarrett-et-al-2009}援引更多面向工程的影响。
 虽然神经科学是灵感的重要来源，但它不需要被视为刚性指导。
 我们知道，真实的神经元计算着与现代整流线性单元非常不同的函数，但更接近真实神经网络的系统并没有导致机器学习性能的提升。
 此外，虽然神经科学已经成功地启发了一些神经网络\emph{架构}，但我们对用于神经科学的生物学习还没有足够多的了解，因此也就不能为训练这些架构用的\emph{学习算法}提供太多的借鉴。
@@ -414,8 +404,8 @@ McCulloch-Pitts~神经元{cite?}是脑功能的早期模型。
 这个算法虽然曾黯然失色不再流行，但截至写书之时，它仍是训练深度模型的主导方法。% ??
 
 在20世纪90年代，研究人员在使用神经网络进行序列建模的方面取得了重要进展。
-{Hochreiter91}和~{Bengio-trnn93-small}指出了对长序列进行建模的一些根本性数学难题，这将在\sec?中描述。
-{Hochreiter+Schmidhuber-1997}引入长短期记忆网络来解决这些难题。
+{Hochreiter-1991}和~{Bengio-et-al-1994}指出了对长序列进行建模的一些根本性数学难题，这将在\sec?中描述。
+{Hochreiter-Schmidhuber-1997}引入长短期记忆网络来解决这些难题。
 如今，LSTM~在许多序列建模任务中广泛应用，包括Google的许多自然语言处理任务。
 
 神经网络研究的第二次浪潮一直持续到上世纪90年代中期。
@@ -444,9 +434,7 @@ Geoffrey Hinton~表明名为深度信念网络的神经网络可以使用一种�
 在写这本书的时候，神经网络的第三次发展浪潮仍在继续，尽管深度学习的研究重点在这一段时间内发生了巨大变化。
 第三次浪潮已开始着眼于新的无监督学习技术和深度模型在小数据集的泛化能力，但目前更多的兴趣点仍是比较传统的监督学习算法和深度模型充分利用大型标注数据集的能力。
 
-
-## 与日俱增的数据量
-
+n## 与日俱增的数据量n
 人们可能想问，既然人工神经网络的第一个实验在20世纪50年代就完成了，但为什么深度学习直到最近才被认为是关键技术。
 自20世纪90年代以来，深度学习就已经成功用于商业应用，但通常被视为是一种只有专家才可以使用的艺术而不是一种技术，这种观点一直持续到最近。
 确实，要从一个深度学习算法获得良好的性能需要一些技巧。
@@ -463,7 +451,7 @@ Geoffrey Hinton~表明名为深度信念网络的神经网络可以使用一种�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/8.png}}
 \else
 \centerline{\includegraphics{Chapter1/figures/dataset_size_color}}
 \fi
@@ -479,7 +467,7 @@ Geoffrey Hinton~表明名为深度信念网络的神经网络可以使用一种�
 \end{figure}
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/9.png}}
 \else
 \centerline{\includegraphics[width=0.8\textwidth]{Chapter1/figures/mnist}}
 \fi
@@ -495,9 +483,7 @@ Geoffrey Hinton将其描述为"机器学习的\emph{果蝇}"，这意味着机�
 
 <!-- % -- 20 -- -->
 
-
-## 与日俱增的模型规模
-
+n## 与日俱增的模型规模n
 
 
 20世纪80年代，神经网络只能取得相对较小的成功，而现在神经网络非常成功的另一个重要原因是我们现在拥有的计算资源可以运行更大的模型。
@@ -509,7 +495,7 @@ Geoffrey Hinton将其描述为"机器学习的\emph{果蝇}"，这意味着机�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/10.png}}
 \else
 \centerline{\includegraphics{Chapter1/figures/number_of_synapses_color}}
 \fi
@@ -518,7 +504,7 @@ Geoffrey Hinton将其描述为"机器学习的\emph{果蝇}"，这意味着机�
 而现在，神经元之间的连接数大多是出于设计考虑。
 一些人工神经网络中每个神经元的连接数与猫一样多，并且对于其他神经网络来说，每个神经元的连接与较小哺乳动物（如小鼠）一样多是非常普遍的。
 甚至人类大脑每个神经元的连接也没有过高的数量。
-生物神经网络规模来自{number_of_neurons}。
+生物神经网络规模来自{Wikipedia-2015}。
 }
 {\tiny
 \begin{enumerate}
@@ -557,13 +543,13 @@ Geoffrey Hinton将其描述为"机器学习的\emph{果蝇}"，这意味着机�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/11.png}}
 \else
 \centerline{\includegraphics{Chapter1/figures/number_of_neurons_color}}
 \fi
 \caption{与日俱增的神经网络规模。
 自从引入隐藏单元，人工神经网络的大小大约每2.4年翻一倍。
-生物神经网络规模来自~{number_of_neurons}。
+生物神经网络规模来自~{Wikipedia-2015}。
 }
 {\tiny
 \begin{enumerate}
@@ -621,9 +607,7 @@ Geoffrey Hinton将其描述为"机器学习的\emph{果蝇}"，这意味着机�
 
 <!-- % -- 21 -- -->
 
-
-## 与日俱增的精度、复杂度和对现实世界的冲击
-
+n## 与日俱增的精度、复杂度和对现实世界的冲击n
 
 20世纪80年代以来，深度学习提供精确识别和预测的能力一直在提高。
 而且，深度学习持续成功地被应用于越来越广泛的实际问题中。
@@ -638,13 +622,13 @@ Geoffrey Hinton将其描述为"机器学习的\emph{果蝇}"，这意味着机�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/12.png}}
 \else
 \centerline{\includegraphics{Chapter1/figures/imagenet_color}}
 \fi
 \caption{日益降低的错误率。
 由于深度网络达到了在ImageNet大规模视觉识别挑战中竞争所必需的规模，它们每年都能赢得胜利，并且产生越来越低的错误率。
-数据来源于 {russakovsky2014imagenet}和~{He-et-al-arxiv2015}。}
+数据来源于 {Russakovsky-et-al-2014a}和~{He-et-al-2015}。}
 \end{figure}
 
 <!-- % -- 23 -- -->
@@ -657,7 +641,7 @@ Geoffrey Hinton将其描述为"机器学习的\emph{果蝇}"，这意味着机�
 深度网络在行人检测和图像分割中也取得了引人注目的成功{cite?}，并且在交通标志分类上取得了超越人类的表现{cite?}。
 
 在深度网络的规模和精度有所提高的同时，它们可以解决的任务也日益复杂。
-{Goodfellow+et+al-ICLR2014a}表明，神经网络可以学习输出描述图像的整个字符序列，而不是仅仅识别单个对象。
+{Goodfellow-et-al-2014d}表明，神经网络可以学习输出描述图像的整个字符序列，而不是仅仅识别单个对象。
 此前，人们普遍认为，这种学习需要对序列中的单个元素进行标注{cite?}。
 循环神经网络，如之前提到的~LSTM~序列模型，现在用于对序列和其他序列之间的关系进行建模，而不是仅仅固定输入之间的关系。
 这种序列到序列的学习似乎引领着另一个应用的颠覆性发展，即机器翻译{cite?}。

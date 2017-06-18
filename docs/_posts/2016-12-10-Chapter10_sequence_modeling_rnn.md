@@ -1,8 +1,4 @@
----
-title: 序列建模：循环和递归网络
-layout: post
-share: false
----
+---ntitle: 序列建模：循环和递归网络nlayout: postnshare: falsen---
 循环神经网络或~RNN~{cite?}是一类用于处理序列数据的神经网络。
 就像卷积网络是专门用于处理网格化数据$\TSX$（如一个图像）的神经网络，循环神经网络是专门用于处理序列$\Vx^{(1)}, \dots, \Vx^{(\tau)}$的神经网络。
 正如卷积网络可以很容易地扩展到具有很大宽度和高度的图像，以及处理大小可变的图像，循环网络可以扩展到更长的序列（比不基于序列的特化网络长得多）。
@@ -44,13 +40,11 @@ RNN~也可以应用于跨越两个维度的空间数据（如图像）。
 这样的计算图允许我们定义循环神经网络。
 然后，我们描述许多构建、训练和使用循环神经网络的不同方式。
 
-本章将简要介绍循环神经网络，为获取更多详细信息，我们建议读者参考~{Graves-book2012}的著作。
+本章将简要介绍循环神经网络，为获取更多详细信息，我们建议读者参考~{Graves-2012}的著作。
 
 <!-- % -- 364 -- -->
 
-
-# 展开计算图
-
+n# 展开计算图n
 计算图是形式化一组计算结构的方式，如那些涉及将输入和参数映射到输出和损失的计算。
 综合的介绍请参考\sec?。
 本节，我们对展开递归或循环计算得到的重复结构进行解释，这些重复结构通常对应于一个事件链。
@@ -77,7 +71,7 @@ $\Vs$在时刻$t$的定义需要参考时刻$t-1$时同样的定义，因此\eqn
 \eqn?和\eqn?的展开计算图如\fig?所示。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/89.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/unfolded_dynsys}}
 \fi
@@ -106,7 +100,7 @@ $\Vs$在时刻$t$的定义需要参考时刻$t-1$时同样的定义，因此\eqn
 如\fig?所示，典型~RNN~会增加额外的架构特性，如读取状态信息$\Vh$进行预测的输出层。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.4]{images/90.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/rnn_circuit_unfolded}}
 \fi
@@ -155,13 +149,11 @@ $\Vs$在时刻$t$的定义需要参考时刻$t-1$时同样的定义，因此\eqn
 展开图能够明确描述其中的计算流程。
 展开图还通过显式的信息流动路径帮助说明信息在时间上向前（计算输出和损失）和向后（计算梯度）的思想。
 
-
-# 循环神经网络
-
+n# 循环神经网络n
 基于\sec?中的图展开和参数共享的思想，我们可以设计各种循环神经网络。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/91.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/hidden_recurrence_rnn}}
 \fi
@@ -186,7 +178,7 @@ RNN输入到隐藏的连接由权重矩阵$\MU$参数化，隐藏到隐藏的循
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/92.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/output_recurrence_rnn}}
 \fi
@@ -206,7 +198,7 @@ $\Vo$通常缺乏过去的重要信息，除非它非常高维且内容丰富。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/93.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/single_output_rnn}}
 \fi
@@ -220,7 +212,7 @@ $\Vo$通常缺乏过去的重要信息，除非它非常高维且内容丰富。
 RNN~经过若干时间步后读取输出，这与由图灵机所用的时间步是渐近线性的，与输入长度也是渐近线性的{cite?}。
 由图灵机计算的函数是离散的，所以这些结果都是函数的具体实现，而不是近似。
 RNN~作为图灵机使用时，需要一个二进制序列作为输入，其输出必须离散化以提供二进制输出。
-利用单个有限大小的特定~RNN~计算在此设置下的所有函数是可能的（~{Siegelmann+Sontag-1995}用了886个单元）。
+利用单个有限大小的特定~RNN~计算在此设置下的所有函数是可能的（~{Siegelmann-Sontag-1995}用了886个单元）。
 图灵机的"输入"是要计算函数的详细说明(specification)，所以模拟此图灵机的相同网络足以应付所有问题。
 用于证明的理论~RNN~可以通过激活和权重（由无限精度的有理数表示）来模拟无限堆栈。
 
@@ -260,9 +252,7 @@ RNN~从特定的初始状态$\Vh^{(0)}$开始前向传播。
 
 <!-- % -- 371 -- -->
 
-
-## 导师驱动过程和输出循环网络
-
+n## 导师驱动过程和输出循环网络n
 仅在一个时间步的输出和下一个时间步的隐藏单元间存在循环连接的网络（示于\fig?）确实没有那么强大（因为缺乏隐藏到隐藏的循环连接）。
 例如，它不能模拟通用图灵机。
 因为这个网络缺少隐藏到隐藏的循环，它要求输出单元捕捉用于预测未来的关于过去的所有信息。
@@ -287,7 +277,7 @@ RNN~从特定的初始状态$\Vh^{(0)}$开始前向传播。
 如\fig?所示。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/94.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/teacher_forcing}}
 \fi
@@ -313,9 +303,7 @@ RNN~从特定的初始状态$\Vh^{(0)}$开始前向传播。
 另外一种方式{cite?}是通过随意选择生成值或真实的数据值作为输入以减小训练时和测试时看到的输入之间的差别。
 这种方法利用了课程学习策略，逐步使用更多生成值作为输入。
 
-
-## 计算循环神经网络的梯度
-
+n## 计算循环神经网络的梯度n
 计算循环神经网络的梯度是容易的。
 我们可以简单地将\sec?中的推广反向传播算法应用于展开的计算图，而不需要特殊化的算法。
 由反向传播计算得到的梯度，并结合任何通用的基于梯度的技术就可以训练~RNN。
@@ -379,9 +367,7 @@ RNN~从特定的初始状态$\Vh^{(0)}$开始前向传播。
 
 <!-- % -- 375 -- -->
 
-
-## 作为有向图模型的循环网络
-
+n## 作为有向图模型的循环网络n
 目前为止，我们接触的循环网络例子中损失$L^{(t)}$是训练目标$\Vy^{(t)}$和输出$\Vo^{(t)}$之间的交叉熵。
 与前馈网络类似，原则上循环网络几乎可以使用任何损失。
 但必须根据任务来选择损失。
@@ -403,7 +389,7 @@ RNN~从特定的初始状态$\Vh^{(0)}$开始前向传播。
 当我们反馈真实的$\Vy$值（不是它们的预测值，而是真正观测到或生成的值）给网络时，那么有向图模型包含所有从过去$\Vy^{(i)}$到当前$\Vy^{(t)}$的边。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/95.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/fully_connected_chain}}
 \fi
@@ -435,7 +421,7 @@ RNN~可以通过高效的参数化获得相同的全连接，如\fig?所示。
 \end{align}
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/96.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/rnn_graphical_model_with_state}}
 \fi
@@ -508,11 +494,9 @@ RNN~必须有某种机制来确定序列的长度。
 \begin{align}
  P(\Vx^{(1)},\dots, \Vx^{(\tau)}) = P(\tau) P(\Vx^{(1)},\dots,\Vx^{(\tau)} \mid \tau) .
 \end{align}
-直接预测$\tau$的例子见{Goodfellow+et+al-ICLR2014a}。
+直接预测$\tau$的例子见{cite?}。
 
-
-## 基于上下文的~RNN~序列建模
-
+n## 基于上下文的~RNN~序列建模n
 上一节描述了没有输入$\Vx$时，关于随机变量序列$y^{(t)}$的RNN如何对应于有向图模型。
 当然，如\eqn?所示的RNN包含一个输入序列$\Vx^{(1)},\Vx^{(2)},\dots,\Vx^{(\tau)}$。
 一般情况下，RNN~允许将图模型的观点扩展到不仅代表$y$变量的联合分布也能表示给定$\Vx$后$y$条件分布。
@@ -542,7 +526,7 @@ RNN~必须有某种机制来确定序列的长度。
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/97.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/conditional_rnn}}
 \fi
@@ -566,7 +550,7 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/98.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/causal_rnn}}
 \fi
@@ -580,9 +564,7 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 
 <!-- % -- 382 -- -->
 
-
-# 双向~RNN
-
+n# 双向~RNNn
 目前为止我们考虑的所有循环神经网络有一个"因果"结构，意味着在时刻$t$的状态只能从过去的序列$\Vx^{(1)},\dots,\Vx^{(t-1)}$以及当前的输入$\Vx^{(t)}$捕获信息。
 我们还讨论了某些在$\Vy$可用时，允许过去的$\Vy$值信息影响当前状态的模型。
 
@@ -601,7 +583,7 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/99.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/bidirectional_rnn}}
 \fi
@@ -618,9 +600,7 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 
 <!-- % -- 384 -- -->
 
-
-# 基于编码-解码的序列到序列架构
-
+n# 基于编码-解码的序列到序列架构n
 我们已经在\fig?看到RNN如何将输入序列映射成固定大小的向量，在\fig?中看到RNN如何将固定大小的向量映射成一个序列，在\fig?、\fig?、\fig?和\fig?中看到RNN如何将一个输入序列映射到等长的输出序列。
 
 本节我们讨论如何训练RNN，使其将输入序列映射到不一定等长的输出序列。
@@ -630,7 +610,7 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 我们希望产生此上下文的表示，$C$。
 这个上下文$C$可能是一个概括输入序列$\MX=(\Vx^{(1)},\dots,\Vx^{(n_x)})$的向量或者向量序列。
 
-用于映射可变长度序列到另一可变长度序列最简单的RNN架构最初由{cho-al-emnlp14}提出，之后不久由{Sutskever-et-al-NIPS2014}独立开发，并且第一个使用这种方法获得翻译的最好结果。
+用于映射可变长度序列到另一可变长度序列最简单的RNN架构最初由{Cho-et-al-2014a}提出，之后不久由{Sutskever-et-al-2014}独立开发，并且第一个使用这种方法获得翻译的最好结果。
 前一系统是对另一个机器翻译系统产生的建议进行评分，而后者使用独立的循环网络生成翻译。
 这些作者分别将该架构称为编码-解码或序列到序列架构，如\fig?所示。
 这个想法非常简单：（1）编码器或\,\textbf{读取器}\,(reader)或\,\textbf{输入}(input)~RNN~处理输入序列。
@@ -643,7 +623,7 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 <!-- % -- 385 -- -->
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/100.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/rnn_encdec}}
 \fi
@@ -661,16 +641,14 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 这里并不强制要求编码器与解码器的隐藏层具有相同的大小。
 
 此架构的一个明显不足是，编码器~RNN~输出的上下文$C$的维度太小而难以适当地概括一个长序列。
-这种现象由{Bahdanau-et-al-ICLR2015-small}在机器翻译中观察到。
+这种现象由{Bahdanau-et-al-2015}在机器翻译中观察到。
 他们提出让$C$成为可变长度的序列，而不是一个固定大小的向量。
 此外，他们还引入了将序列$C$的元素和输出序列的元素相关联的注意力机制。
 读者可在\sec?了解更多细节。
 
 <!-- % -- 386 -- -->
 
-
-# 深度循环网络
-
+n# 深度循环网络n
 大多数~RNN~中的计算可以分解成三块参数及其相关的变换：
 \begin{enumerate}
 + 从输入到隐藏状态，
@@ -685,21 +663,21 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 在这些操作中引入深度会有利的吗？
 实验证据{cite?}强烈暗示理应如此。
 实验证据与我们需要足够的深度以执行所需映射的想法一致。
-读者可以参考~{Schmidhuber92,ElHihi+Bengio-nips8}或~{Jaeger2007}了解更早的关于深度~RNN~的研究。
+读者可以参考~{Schmidhuber-1992,Hihi-Bengio-1996}或~{Jaeger-2007a}了解更早的关于深度~RNN~的研究。
 
-{Graves-et-al-ICASSP2013}第一个展示了将~RNN~的状态分为多层的显著好处，如\fig?~\emph{(左)}。
+{Graves-et-al-2013}第一个展示了将~RNN~的状态分为多层的显著好处，如\fig?~\emph{(左)}。
 我们可以认为，在\fig?(a)所示层次结构中较低的层起到了将原始输入转化为对更高层的隐藏状态更合适表示的作用。
-{Pascanu-et-al-ICLR2014}更进一步提出在上述三个块中各使用一个单独的~MLP（可能是深度的），如\fig?(b)所示。
+{Pascanu-et-al-2014a}更进一步提出在上述三个块中各使用一个单独的~MLP（可能是深度的），如\fig?(b)所示。
 考虑表示容量，我们建议在这三个步中都分配足够的容量，但增加深度可能会因为优化困难而损害学习效果。
 在一般情况下，更容易优化较浅的架构，加入\fig?(b)的额外深度导致从时间步~$t$的变量到时间步~$t+1$的最短路径变得更长。
 例如，如果具有单个隐藏层的~MLP~被用于状态到状态的转换，那么与\fig?相比，我们就会加倍任何两个不同时间步变量之间最短路径的长度。
-然而{Pascanu-et-al-ICLR2014}认为，在隐藏到隐藏的路径中引入跳跃连接可以缓和这个问题，如\fig?(c)所示。
+然而{Pascanu-et-al-2014a}认为，在隐藏到隐藏的路径中引入跳跃连接可以缓和这个问题，如\fig?(c)所示。
 
 <!-- % -- 387 -- -->
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/101.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/deep}}
 \fi
@@ -711,12 +689,10 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 }
 \end{figure}
 
-
-# 递归神经网络
-
+n# 递归神经网络n
 递归神经网络\footnote{我们建议不要将"递归神经网络"缩写为"RNN"，以免与"循环神经网络"混淆。}代表循环网络的另一个扩展，它被构造为深的树状结构而不是~RNN~的链状结构，因此是不同类型的计算图。
 递归网络的典型计算图如\fig?所示。
-递归神经网络由~{Pollack90}引入，而~{tr-bottou-2011}描述了这类网络的潜在用途——学习推论。
+递归神经网络由~{Pollack-1990}引入，而~{Bottou-2011}描述了这类网络的潜在用途——学习推论。
 递归网络已成功地应用于输入是\emph{数据结构}的神经网络~{cite?}，如自然语言处理{cite?}和计算机视觉{cite?}。
 
 <!-- % -- 388 -- -->
@@ -732,7 +708,7 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/102.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/recursive_net}}
 \fi
@@ -743,13 +719,11 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 \end{figure}
 
 递归网络想法的变种存在很多。
-例如，{Frasconi97}和~{Frasconi-1998}将数据与树结构相关联，并将输入和目标与树的单独节点相关联。
+例如，{Frasconi-et-al-1997}和~{Frasconi-et-al-1998}将数据与树结构相关联，并将输入和目标与树的单独节点相关联。
 由每个节点执行的计算无须是传统的人工神经计算（所有输入的仿射变换后跟一个单调非线性）。
-例如，{Socher-et-al-EMNLP2013}提出用张量运算和双线性形式，在这之前人们已经发现当概念是由连续向量（嵌入）表示时，这种方式有利于建模概念之间的联系{cite?}。
+例如，{Socher-et-al-2013a}提出用张量运算和双线性形式，在这之前人们已经发现当概念是由连续向量（嵌入）表示时，这种方式有利于建模概念之间的联系{cite?}。
 
-
-# 长期依赖的挑战
-
+n# 长期依赖的挑战n
 学习循环网络长期依赖的数学挑战在\sec?中引入。
 根本问题是，经过许多阶段传播后的梯度倾向于消失（大部分情况）或爆炸（很少，但对优化过程影响很大）。
 即使我们假设循环网络是参数稳定的（可存储记忆，且梯度不爆炸），但长期依赖的困难来自比短期相互作用指数小的权重（涉及许多~Jacobian~相乘）。
@@ -763,7 +737,7 @@ RNN~可以接收向量序列$\Vx^{(t)}$作为输入，而不是仅接收单个�
 这些组合可以导致极端非线性行为，如\fig?所示。
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/103.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/composition_color}}
 \fi
@@ -807,7 +781,7 @@ $x$轴是100维空间中沿着随机方向的初始状态的坐标。
 假设$w^{(t)}$的值是随机生成的，各自独立，且有$0$均值$v$方差。
 乘积的方差就为$\CalO(v^n)$。
 为了获得某些期望的方差$v^*$，我们可以选择单个方差为$v=\sqrt[n]{v^*}$权重。
-因此，非常深的前馈网络通过精心设计的比例可以避免梯度消失和爆炸问题，如~{Sussillo14}所主张的。
+因此，非常深的前馈网络通过精心设计的比例可以避免梯度消失和爆炸问题，如~{Sussillo-2014}所主张的。
 
 <!-- % -- 391 -- -->
 
@@ -816,16 +790,14 @@ RNN~梯度消失和爆炸问题是由不同研究人员独立发现{cite?}。
 不幸的是，为了储存记忆并对小扰动具有鲁棒性，RNN~必须进入参数空间中的梯度消失区域{cite?}。
 具体来说，每当模型能够表示长期依赖时，长期相互作用的梯度幅值就会变得指数小（相比短期相互作用的梯度幅值）。
 这并不意味着这是不可能学习的，由于长期依赖关系的信号很容易被短期相关性产生的最小波动隐藏，因而学习长期依赖可能需要很长的时间。
-实践中，{Bengio1994ITNN}的实验表明，当我们增加了需要捕获的依赖关系的跨度，基于梯度的优化变得越来越困难，SGD~在长度仅为10或20的序列上成功训练传统~RNN~的概率迅速变为0。
+实践中，{Bengio-et-al-1994}的实验表明，当我们增加了需要捕获的依赖关系的跨度，基于梯度的优化变得越来越困难，SGD~在长度仅为10或20的序列上成功训练传统~RNN~的概率迅速变为0。
 
-将循环网络作为动力系统更深入探讨的资料见~{Doya93,Bengio1994ITNN,Siegelmann+Sontag-1995}及~
-{Pascanu-et-al-ICML2013}的回顾。
+将循环网络作为动力系统更深入探讨的资料见~{Doya-1993,Bengio-et-al-1994,Siegelmann-Sontag-1995}及~
+{Pascanu-et-al-2013}的回顾。
 本章的其余部分将讨论目前已经提出的降低学习长期依赖（在某些情况下，允许一个~RNN~学习横跨数百步的依赖）难度的不同方法，但学习长期依赖的问题仍是深度学习中的一个主要挑战。
 
 
-
-# 回声状态网络
-
+n# 回声状态网络n
 从$\Vh^{(t-1)}$到$\Vh^{(t)}$的循环权重映射以及从$\Vx^{(t)}$到$\Vh^{(t)}$的输入权重映射是循环网络中最难学习的参数。
 研究者{cite?}提出避免这种困难的方法是设定循环隐藏单元，使其能很好地捕捉过去输入历史，并且\emph{只学习输出权重}。
 回声状态网络或~ESN~{cite?}，以及流体状态机{cite?}分别独立地提出了这种想法。
@@ -893,18 +865,14 @@ Jacobian~矩阵告诉我们$\Vh^{(t)}$一个微小的变化如何向前一步传
 最近，已经有研究表明，用于设置~ESN~权重的技术可以用来\emph{初始化}完全可训练的循环网络的权重（通过时间反向传播来训练隐藏到隐藏的循环权重），帮助学习长期依赖~{cite?}。
 在这种设定下，结合\sec?中稀疏初始化的方案，设置$1.2$的初始谱半径表现不错。
 
-
-# 渗漏单元和其他多时间尺度的策略
-
+n# 渗漏单元和其他多时间尺度的策略n
 处理长期依赖的一种方法是设计工作在多个时间尺度的模型，使模型的某些部分在细粒度时间尺度上操作并能处理小细节，而其他部分在粗时间尺度上操作并能把遥远过去的信息更有效地传递过来。
 存在多种同时构建粗细时间尺度的策略。
 这些策略包括在时间轴增加跳跃连接，"渗漏单元"使用不同时间常数整合信号，并去除一些用于建模细粒度时间尺度的连接。
 
-
-## 时间维度的跳跃连接
-
+n## 时间维度的跳跃连接n
 增加从遥远过去的变量到目前变量的直接连接是得到粗时间尺度的一种方法。
-使用这样跳跃连接的想法可以追溯到{Lin-ieeetnn96}，紧接是向前馈网络引入延迟的想法{cite?}。
+使用这样跳跃连接的想法可以追溯到{Lin-et-al-1996}，紧接是向前馈网络引入延迟的想法{cite?}。
 在普通的循环网络中，循环从时刻$t$的单元连接到时刻$t+1$单元。
 构造较长的延迟循环网络是可能的{cite?}。
 
@@ -916,9 +884,7 @@ Jacobian~矩阵告诉我们$\Vh^{(t)}$一个微小的变化如何向前一步传
 
 <!-- % -- 395 -- -->
 
-
-## 渗漏单元和一系列不同时间尺度
-
+n## 渗漏单元和一系列不同时间尺度n
 获得导数乘积接近1的另一方式是设置\emph{线性}自连接单元，并且这些连接的权重接近1。
 
 我们对某些$v$值应用更新$\mu^{(t)} \gets \alpha \mu^{(t-1)} + (1-\alpha) v^{(t)}$累积一个滑动平均值$\mu^{(t)}$，其中$\alpha$是一个从$ \mu^{(t-1)}$到$ \mu^{(t)}$线性自连接的例子。
@@ -926,11 +892,11 @@ Jacobian~矩阵告诉我们$\Vh^{(t)}$一个微小的变化如何向前一步传
 线性自连接的隐藏单元可以模拟滑动平均的行为。
 这种隐藏单元称为渗漏单元。
 
-$d$~时间步的跳跃连接可以确保单元总能被先前的$d$个时间步值影响。
+$d$~时间步的跳跃连接可以确保单元总能被$d$个时间步前的那个值影响。
 使用权重接近1的线性自连接是确保该单元可以访问过去值的不同方式。
 线性自连接通过调节实值$\alpha$更平滑灵活地调整这种效果，而不是调整整数值的跳跃长度。
 
-这个想法由~{Mozer-nips92}和~{ElHihi+Bengio-nips8}提出。
+这个想法由~{Mozer-1992}和~{Hihi-Bengio-1996}提出。
 在回声状态网络中，渗漏单元也被发现很有用{cite?}。
 
 我们可以通过两种基本策略设置渗漏单元使用的时间常数。
@@ -938,9 +904,7 @@ $d$~时间步的跳跃连接可以确保单元总能被先前的$d$个时间步�
 另一种策略是使时间常数成为自由变量，并学习出来。
 在不同时间尺度使用这样的渗漏单元似乎能帮助学习长期依赖~{cite?}。
 
-
-## 删除连接
-
+n## 删除连接n
 处理长期依赖另一种方法是在多个时间尺度组织~RNN~状态的想法{cite?}，信息在较慢的时间尺度上更容易长距离流动。
 
 这个想法与之前讨论的时间维度上的跳跃连接不同，因为它涉及主动\emph{删除}长度为一的连接并用更长的连接替换它们。
@@ -952,14 +916,12 @@ $d$~时间步的跳跃连接可以确保单元总能被先前的$d$个时间步�
 
 强制一组循环单元在不同时间尺度上运作有不同的方式。
 一种选择是使循环单元变成渗漏单元，但不同的单元组关联不同的固定时间尺度。
-这由~{Mozer-nips92}提出，并被成功应用于~{Pascanu+al-ICML2013-small}。
+这由~{Mozer-1992}提出，并被成功应用于~{Pascanu-et-al-2013}。
 另一种选择是使显式且离散的更新发生在不同的时间，不同的单元组有不同的频率。
-这是~{ElHihi+Bengio-nips8}和~{Koutnik-et-al-ICML2014}的方法。
+这是~{Hihi-Bengio-1996}和~{Koutnik-et-al-2014}的方法。
 它在一些基准数据集上表现不错。
 
-
-# 长短期记忆和其他门控RNN
-
+n# 长短期记忆和其他门控RNNn
 本文撰写之时，实际应用中最有效的序列模型称为门控RNN。
 包括基于长短期记忆和基于门控循环单元的网络。
 
@@ -973,9 +935,7 @@ $d$~时间步的跳跃连接可以确保单元总能被先前的$d$个时间步�
 我们希望神经网络学会决定何时清除状态，而不是手动决定。
 这就是门控RNN~要做的事。
 
-
-## LSTM
-
+n## LSTMn
 引入自循环的巧妙构思，以产生梯度长时间持续流动的路径是初始长短期记忆模型的核心贡献{cite?}。
 其中一个关键扩展是使自循环的权重视上下文而定，而不是固定的{cite?}。
 门控此自循环（由另一个隐藏单元控制）的权重，累积的时间尺度可以动态地改变。
@@ -986,7 +946,7 @@ LSTM~已经在许多应用中取得重大成功，如无约束手写识别{cite?
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/104.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/lstm}}
 \fi
@@ -1038,9 +998,7 @@ LSTM~细胞的输出$h_i^{(t)}$也可以由\textbf{输出门}(output gate)~$q_i^
 LSTM~网络比简单的循环架构更易于学习长期依赖，先是用于测试长期依赖学习能力的人工数据集{cite?}，然后是在具有挑战性的序列处理任务上获得最先进的表现{cite?}。
 LSTM~的变体和替代也已经被研究和使用，这将在下文进行讨论。
 
-
-## 其他门控RNN
-
+n## 其他门控RNNn
 LSTM~架构中哪些部分是真正必须的？
 还可以设计哪些其他成功架构允许网络动态地控制时间尺度和不同单元的遗忘行为？
 
@@ -1070,28 +1028,24 @@ LSTM~架构中哪些部分是真正必须的？
 例如复位门（或遗忘门）的输出可以在多个隐藏单元间共享。
 或者，全局门的乘积（覆盖一整组的单元，例如整一层）和一个局部门（每单元）可用于结合全局控制和局部控制。
 然而，一些调查发现这些~LSTM~和GRU架构的变种，在广泛的任务中难以明显地同时击败这两个原始架构{cite?}。
-{Greff-et-al-arxiv2015}发现其中的关键因素是遗忘门，而~{Jozefowicz-et-al-ICML2015}发现向~LSTM~遗忘门加入1的偏置(由~{Gers-et-al-2000}提倡)能让~LSTM~变得与已探索的最佳变种一样健壮。
+{Greff-et-al-2015}发现其中的关键因素是遗忘门，而~{Jozefowicz-et-al-2015}发现向~LSTM~遗忘门加入1的偏置(由~{Gers-et-al-2000}提倡)能让~LSTM~变得与已探索的最佳变种一样健壮。
 
-
-# 优化长期依赖
-
+n# 优化长期依赖n
 我们已经在\sec?和\sec?中描述过在许多时间步上优化~RNN~时发生的梯度消失和爆炸的问题。
 
-由~{Martens+Sutskever-ICML2011}提出了一个有趣的想法是，二阶导数可能在一阶导数消失的同时消失。
+由~{Martens-Sutskever-2011}提出了一个有趣的想法是，二阶导数可能在一阶导数消失的同时消失。
 二阶优化算法可以大致被理解为将一阶导数除以二阶导数（在更高维数，由梯度乘以~Hessian~的逆）。
 如果二阶导数与一阶导数以类似的速率收缩，那么一阶和二阶导数的比率可保持相对恒定。
 不幸的是，二阶方法有许多缺点，包括高的计算成本、需要一个大的小批量、并且倾向于被吸引到鞍点。
-{Martens+Sutskever-ICML2011}发现采用二阶方法的不错结果。
-之后，{sutskeverimportance}发现使用较简单的方法可以达到类似的结果，例如经过谨慎初始化的~Nesterov~动量法。
-更详细的内容参考~{Sutskever-thesis2012}。
+{Martens-Sutskever-2011}发现采用二阶方法的不错结果。
+之后，{Sutskever-et-al-2013}发现使用较简单的方法可以达到类似的结果，例如经过谨慎初始化的~Nesterov~动量法。
+更详细的内容参考~{Sutskever-2012}。
 应用于~LSTM~时，这两种方法在很大程度上会被单纯的~SGD（甚至没有动量）取代。
 这是机器学习中一个延续的主题，设计一个易于优化模型通常比设计出更加强大的优化算法更容易。
 
 <!-- % -- 401 -- -->
 
-
-## 截断梯度
-
+n## 截断梯度n
 如\sec?讨论，强非线性函数（如由许多时间步计算的循环网络）往往倾向于非常大或非常小幅度的梯度。
 如\fig?和\fig?所示，我们可以看到，目标函数（作为参数的函数）存在一个伴随"悬崖"的"地形"：宽且相当平坦区域被目标函数变化快的小区域隔开，形成了一种悬崖。
 
@@ -1104,7 +1058,7 @@ LSTM~架构中哪些部分是真正必须的？
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/105.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/cliff_clipping_color}}
 \fi
@@ -1116,7 +1070,7 @@ LSTM~架构中哪些部分是真正必须的？
 大梯度灾难性地将参数推到图的轴外。
 \emph{(右)}使用梯度截断的梯度下降对悬崖的反应更温和。
 当它上升到悬崖面时，步长受到限制，使得它不会被推出靠近解的陡峭区域。
-经~{Pascanu+al-ICML2013-small}许可改编此图。
+经~{Pascanu-et-al-2013}许可改编此图。
 }
 \end{figure}
 
@@ -1146,9 +1100,7 @@ LSTM~架构中哪些部分是真正必须的？
 
 <!-- % -- 403 -- -->
 
-
-## 引导信息流的正则化
-
+n## 引导信息流的正则化n
 梯度截断有助于处理爆炸的梯度，但它无助于消失的梯度。
 为了解决消失的梯度问题并更好地捕获长期依赖，我们讨论了如下想法：在展开循环架构的计算图中，沿着与弧边相关联的梯度乘积接近1的部分创建路径。
 在\sec?中已经讨论过，实现这一点的一种方法是使用~LSTM~以及其他自循环和门控机制。
@@ -1163,13 +1115,13 @@ LSTM~架构中哪些部分是真正必须的？
 \nabla_{\Vh^{(t)}} L 
 \end{align}
 一样大。
-在这个目标下，{Pascanu+al-ICML2013-small}提出以下正则项：
+在这个目标下，{Pascanu-et-al-2013}提出以下正则项：
 \begin{align}
  \Omega = \sum_t \Bigg(  \frac{
  \norm{ (\nabla_{\Vh^{(t)}} L) \frac{\partial \Vh^{(t)}}{\partial \Vh^{(t-1)}}}}
  {\norm{\nabla_{\Vh^{(t)}} L}} -1 \Bigg)^2.
 \end{align}
-计算这一梯度的正则项可能会出现困难，但~{Pascanu+al-ICML2013-small}提出可以将后向传播向量$\nabla_{\Vh^{(t)}} L$考虑为恒值作为近似（为了计算正则化的目的，没有必要通过它们向后传播）。
+计算这一梯度的正则项可能会出现困难，但~{Pascanu-et-al-2013}提出可以将后向传播向量$\nabla_{\Vh^{(t)}} L$考虑为恒值作为近似（为了计算正则化的目的，没有必要通过它们向后传播）。
 使用该正则项的实验表明，如果与标准的启发式截断（处理梯度爆炸）相结合，该正则项可以显著地增加~RNN~可以学习的依赖跨度。
 梯度截断特别重要，因为它保持了爆炸梯度边缘的~RNN~动态。
 如果没有梯度截断，梯度爆炸将阻碍学习的成功。
@@ -1178,9 +1130,7 @@ LSTM~架构中哪些部分是真正必须的？
 
 <!-- % -- 404 -- -->
 
-
-# 外显记忆
-
+n# 外显记忆n
 智能需要知识并且可以通过学习获取知识，这已促使大型深度架构的发展。
 然而，知识是不同的并且种类繁多。
 有些知识是隐含的、潜意识的并且难以用语言表达——比如怎么行走或狗与猫的样子有什么不同。
@@ -1189,14 +1139,14 @@ LSTM~架构中哪些部分是真正必须的？
 
 神经网络擅长存储隐性知识，但是他们很难记住事实。
 被存储在神经网络参数中之前，随机梯度下降需要多次提供相同的输入，即使如此，该输入也不会被特别精确地存储。
-{Graves-et-al-arxiv2014}推测这是因为神经网络缺乏\textbf{工作存储}(working memory)系统，即类似人类为实现一些目标而明确保存和操作相关信息片段的系统。
+{Graves-et-al-2014a}推测这是因为神经网络缺乏\textbf{工作存储}(working memory)系统，即类似人类为实现一些目标而明确保存和操作相关信息片段的系统。
 这种外显记忆组件将使我们的系统不仅能够快速"故意"地存储和检索具体的事实，也能利用他们循序推论。
 神经网络处理序列信息的需要，改变了每个步骤向网络注入输入的方式，长期以来推理能力被认为是重要的，而不是对输入做出自动的、直观的反应{cite?} 。
 
 
-为了解决这一难题，{Weston2014}引入了记忆网络，其中包括一组可以通过寻址机制来访问的记忆单元。
+为了解决这一难题，{Weston-et-al-2014}引入了记忆网络，其中包括一组可以通过寻址机制来访问的记忆单元。
 记忆网络原本需要监督信号指示他们如何使用自己的记忆单元。
-{Graves-et-al-arxiv2014}引入的神经网络图灵机，不需要明确的监督指示采取哪些行动而能学习从记忆单元读写任意内容，并通过使用基于内容的软注意机制（~见{Bahdanau-et-al-ICLR2015-small}和\sec?），允许端到端的训练。
+{Graves-et-al-2014a}引入的神经网络图灵机，不需要明确的监督指示采取哪些行动而能学习从记忆单元读写任意内容，并通过使用基于内容的软注意机制（~见{Bahdanau-et-al-2015}和\sec?），允许端到端的训练。
 这种软寻址机制已成为其他允许基于梯度优化的模拟算法机制的相关架构的标准{cite?}。
 
 每个记忆单元可以被认为是~LSTM~和GRU中记忆单元的扩展。
@@ -1230,7 +1180,7 @@ LSTM~架构中哪些部分是真正必须的？
 
 \begin{figure}[!htb]
 \ifOpenSource
-\centerline{\includegraphics{figure.pdf}}
+\centerline{\includegraphics[scale=0.5]{images/106.png}}
 \else
 \centerline{\includegraphics{Chapter10/figures/memory_network}}
 \fi
